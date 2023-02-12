@@ -4,11 +4,11 @@ For this assignment you will be writing an http proxy – a server whose job it 
 
 # Table of Contents
 
-- [1 Review](#Review)
-  - [1.1 Socket](#Socket)
-   - [1.1.1 Socket Communication Basic](#Socket-Communication-Basic)
-- [2 Proxy Design](#Proxy-Design)
-- [3 Implementation](#Implementation)
+- [1 Review](#1-Review)
+  - [1.1 Socket](#1-.-1Socket)
+   - [1.1.1 Socket Communication Basic](#1-.-1-.-1-Socket-Communication-Basic)
+- [2 Proxy Design](#2-Proxy-Design)
+- [3 Implementation](#3-Implementation)
 
 ## 1 Review
 
