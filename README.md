@@ -6,10 +6,10 @@ For this assignment you will be writing an http proxy – a server whose job it 
 
 - [Review](#Review)
   - [Socket](#Socket)
-- [Design Overview](#Proxy-Overview)
+- [Design Overview](#Design-Overview)
 - [Implementation](#Implementation)
 
-## 1 Review
+## Review
 
 ### Socket
 
