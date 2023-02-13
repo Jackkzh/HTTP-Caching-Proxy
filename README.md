@@ -50,7 +50,8 @@ sequenceDiagram
 
 ### Requirements
 1. The proxy must **cache** responses to GET requests. (Caching is typically controlled by headers in the HTTP response, such as the "Cache-Control" header and the "Expires" header. These headers specify the caching policies for the response, such as how long the response can be cached and whether it can be reused.).    
-    **Implementation**: Client Side Cache -- Hash Table(?)
-                      Intermediate Cache(Proxy Server) -- utilize HTTP protocol, 
+    &nbsp **Implementation**:   
+    &nbsp&nbsp  Client Side Cache -- Hash Table(?).  
+    &nbsp&nbsp  Intermediate Cache(Proxy Server) -- utilize HTTP protocol.  
 
 
