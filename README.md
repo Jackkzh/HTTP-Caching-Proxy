@@ -53,8 +53,8 @@ sequenceDiagram
 **Implementation**:   
     &nbsp;&nbsp;  Client Side Cache -- Hash Table(?).  
     &nbsp;&nbsp;  Intermediate Cache(Proxy Server) -- utilize HTTP protocol.   
-Reference:
- - https://blog.csdn.net/zongzhiyuan/article/details/53700294
+&nbsp; Reference:
+&nbsp;&nbsp; - https://blog.csdn.net/zongzhiyuan/article/details/53700294
   
 
 
