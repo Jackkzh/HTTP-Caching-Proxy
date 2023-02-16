@@ -8,6 +8,7 @@ For this assignment you will be writing an http proxy – a server whose job it 
   - [Socket](#Socket)
   - [Method](#Method)
 - [Design Overview](#Design-Overview)
+  - [Workflow](#Workflow)
 - [Implementation](#Implementation)
 
 ## Review
@@ -57,6 +58,45 @@ sequenceDiagram
 | [Connect](https://www.rfc-editor.org/rfc/rfc7231#section-4.3.6)  | The CONNECT method requests that the recipient establish a tunnel to the destination origin server identified by the request-target and, if successful, thereafter restrict its behavior to blind forwarding of packets, in both directions, until the tunnel is closed.  | **Not Cacheable** |
 
 ## Design Overview
+
+### Workflow
+
+```mermaid
+flowchart TD
+    Start -->InitSocket
+    InitSocket --> CreateSocket
+    CreateSocket --> AcceptConnection[Socket AcceptConnection]
+    subgraph WhileLoop
+    AcceptConnection --> thread[spawn a thread/process]
+    thread --> recRequest
+    recRequest --> Header[/Header Handle\]
+    Header --> Get
+    Header --> Post
+    Header --> Connect
+    subgraph Get
+    checkCache --> |Exist| FindinCache
+    checkCache --> |Non exist| connectServer
+    connectServer --> recResponse
+    recResponse --> storeCache
+    end
+    subgraph Post
+    connectServer2[connectServer] --> recResponse2[recResponse]
+    end
+    subgraph Connect
+    200-OK --> Broswer
+    Broswer --> |Communication|Server
+    end
+    Get --> Success
+    Post --> Success
+    Connect --> Success
+    end
+
+    Browser2[Browser] --> Proxy
+    Proxy --> sendRequest
+    sendRequest --> recRequest
+    
+```
+
 ## Implementation
 
 ### Requirements
