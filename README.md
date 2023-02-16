@@ -53,13 +53,8 @@ sequenceDiagram
 | Method  | Description | Response |
 | ------------- | ------------- | ------------- |
 | [Get](https://www.rfc-editor.org/rfc/rfc7231#section-4.3.1) | The GET method requests transfer of a current selected representation for the target resource. | **Cacheable** |
-| [Head](https://www.rfc-editor.org/rfc/rfc7231#section-4.3.2)  | The HEAD method is identical to GET except that the server MUST NOT send a message body in the response (i.e., the response terminates at the end of the header section). | **Cacheable** |
 | [Post](https://www.rfc-editor.org/rfc/rfc7231#section-4.3.3)  | The POST method requests that the target resource process the representation enclosed in the request according to the resource's own specific semantics.  | **Cacheable** when they include [explicit freshness information](https://www.rfc-editor.org/rfc/rfc7234#section-4.2.1) |
-| [Put](https://www.rfc-editor.org/rfc/rfc7231#section-4.3.4)  | The PUT method requests that the state of the target resource be created or replaced with the state defined by the representation enclosed in the request message payload.  | **Not Cacheable** |
-| [Delete](https://www.rfc-editor.org/rfc/rfc7231#section-4.3.5)  | The DELETE method requests that the origin server remove the association between the target resource and its current functionality.   | **Not Cacheable** |
 | [Connect](https://www.rfc-editor.org/rfc/rfc7231#section-4.3.6)  | The CONNECT method requests that the recipient establish a tunnel to the destination origin server identified by the request-target and, if successful, thereafter restrict its behavior to blind forwarding of packets, in both directions, until the tunnel is closed.  | **Not Cacheable** |
-| [Options](https://www.rfc-editor.org/rfc/rfc7231#section-4.3.7)  | The OPTIONS method requests information about the communication options available for the target resource, at either the origin server or an intervening intermediary.  | **Not Cacheable** |
-| [Trace](https://www.rfc-editor.org/rfc/rfc7231#section-4.3.8)  | The TRACE method requests a remote, application-level loop-back of the request message. <br />A client **MUST NOT** generate header fields in a TRACE request containing sensitive data that might be disclosed by the response. | **Not Cacheable** |
 
 ## Design Overview
 ## Implementation
