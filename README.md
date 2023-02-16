@@ -99,6 +99,24 @@ flowchart TD
 
 ## Implementation
 
+### UML
+
+```mermaid
+classDiagram
+    class HTTP_Command{
+      +String request
+      +String method
+      +String port
+      +String host
+      +String url
+      +parseRequest(String req):void
+      -parseMethod():void
+      -parseport():void
+      -parseHost():void
+      -parseURL():void
+    }
+```
+
 ### Requirements
 1. The proxy must **cache** responses to GET requests. (Caching is typically controlled by headers in the HTTP response, such as the "Cache-Control" header and the "Expires" header. These headers specify the caching policies for the response, such as how long the response can be cached and whether it can be reused.).    
 **Implementation**:   
