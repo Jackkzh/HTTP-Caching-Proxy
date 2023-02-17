@@ -57,6 +57,11 @@ sequenceDiagram
 | [Post](https://www.rfc-editor.org/rfc/rfc7231#section-4.3.3)  | The POST method requests that the target resource process the representation enclosed in the request according to the resource's own specific semantics.  | **Cacheable** when they include [explicit freshness information](https://www.rfc-editor.org/rfc/rfc7234#section-4.2.1) |
 | [Connect](https://www.rfc-editor.org/rfc/rfc7231#section-4.3.6)  | The CONNECT method requests that the recipient establish a tunnel to the destination origin server identified by the request-target and, if successful, thereafter restrict its behavior to blind forwarding of packets, in both directions, until the tunnel is closed.  | **Not Cacheable** |
 
+### Error
+
+- 400 Bad Request: the proxy receives a malformed request
+- 502 Bad Gateway If it contacts the destination webserver and receives a corrupted response
+
 ## Design Overview
 
 ### Workflow
