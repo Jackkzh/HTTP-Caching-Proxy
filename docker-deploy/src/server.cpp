@@ -1,5 +1,9 @@
 #include "server.h"
-
+/*
+  * init socket status
+  * @param _hostname 
+  * @param _port
+*/
 void Server::initStatus(const char * _hostname, const char * _port) {
   hostname = _hostname;
   port = _port;
@@ -16,6 +20,9 @@ void Server::initStatus(const char * _hostname, const char * _port) {
   }
 }
 
+/*
+  * create socket, wait and stay listening
+*/
 void Server::createSocket() {
   if (port == NULL) {
     //OS will assign a port
@@ -49,6 +56,11 @@ void Server::createSocket() {
   freeaddrinfo(host_info_list);
 }
 
+/*
+  * accept connection on socket
+  * @param ip
+  * @return client_connection_fd
+*/
 int Server::acceptConnection(string & ip) {
   struct sockaddr_storage socket_addr;
   socklen_t socket_addr_len = sizeof(socket_addr);
@@ -65,6 +77,10 @@ int Server::acceptConnection(string & ip) {
   return client_connection_fd;
 }
 
+/*
+  * get the port number
+  * @return port number
+*/
 int Server::getPort() {
   struct sockaddr_in sin;
   socklen_t len = sizeof(sin);
