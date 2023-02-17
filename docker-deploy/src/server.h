@@ -1,3 +1,5 @@
+#ifndef __SERVER__H__
+#define __SERVER__H__
 #include <arpa/inet.h>
 #include <netdb.h>
 #include <sys/socket.h>
@@ -22,3 +24,4 @@ class Server {
   int acceptConnection(string & ip);
   int getPort();
 };
+#endif
