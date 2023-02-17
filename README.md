@@ -115,8 +115,7 @@ classDiagram
       +String host
       +String url
       -parseMethod():void
-      -parseport():void
-      -parseHost():void
+      -parseHostPort():void
       -parseURL():void
     }
     class Server {
