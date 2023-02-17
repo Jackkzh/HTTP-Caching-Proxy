@@ -109,7 +109,6 @@ classDiagram
       +String port
       +String host
       +String url
-      +parseRequest(String req):void
       -parseMethod():void
       -parseport():void
       -parseHost():void
