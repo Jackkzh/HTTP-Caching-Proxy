@@ -10,7 +10,7 @@ httpcommand::httpcommand(string req) : request(req) {
   parseURL();
 };
 /*
-  * request-line   = method SP request-target SP HTTP-version CRLF
+  * request-line = method SP request-target SP HTTP-version CRLF
   * get method
 */
 void httpcommand::parseMethod() {

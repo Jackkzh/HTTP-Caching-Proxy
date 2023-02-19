@@ -3,6 +3,9 @@
 
 int main() {
   string httpTest = "CONNECT server.example.com:90 HTTP/1.1\nHost: server.example.com:90";
+  Server s;
+  s.run();
+  
   httpcommand h_Test(httpTest);
   cout << h_Test.method << endl;
   cout << h_Test.port << endl;

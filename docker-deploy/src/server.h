@@ -23,5 +23,10 @@ class Server {
   void createSocket();
   int acceptConnection(string & ip);
   int getPort();
+  void run();
+
+  // server get what type of request it is from the browser, and print out the request
+  void getRequest(char * client_request);
+
 };
 #endif
