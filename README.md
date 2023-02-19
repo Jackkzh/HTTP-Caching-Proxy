@@ -114,22 +114,31 @@ classDiagram
       +String port
       +String host
       +String url
+      +httpcommand()
+      +httpcommand(string req)
       -parseMethod():void
       -parseHostPort():void
       -parseURL():void
     }
     class Server {
-      +int status;
-      +int socket_fd;
-      +int client_connection_fd;
-      +struct addrinfo host_info;
-      +struct addrinfo * host_info_list;
-      +const char * hostname;
-      +const char * port;
+      +int status
+      +int socket_fd
+      +int client_connection_fd
+      +struct addrinfo host_info
+      +struct addrinfo * host_info_list
+      +const char * hostname
+      +const char * port
       +initStatus(const char * _hostname, const char * _port):void
       +createSocket():void
       +acceptConnection(string & ip):int
       +getPort():int  
+      +requestConnect(int id):void
+      -connect_Transferdata(int send, int recv):void
+   }
+   exception <|-- myException
+   class exception {
+   }
+   class myException {
    }
 ```
 

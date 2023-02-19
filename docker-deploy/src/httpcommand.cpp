@@ -1,4 +1,8 @@
 #include "httpcommand.h"
+
+httpcommand::httpcommand() :
+    request(NULL), method(NULL), port(NULL), host(NULL), url(NULL) {
+}
 /*
   * read the request string and parse the method, host, port and
   * url

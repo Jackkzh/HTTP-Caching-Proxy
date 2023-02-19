@@ -6,8 +6,11 @@
 #include <unistd.h>
 
 #include <cstring>
+#include <fstream>
 #include <iostream>
+#include <vector>
 using namespace std;
+ofstream log("/var/log/erss/proxy.log");
 
 class Server {
  public:
@@ -28,5 +31,9 @@ class Server {
   // server get what type of request it is from the browser, and print out the request
   void getRequest(char * client_request);
 
+  void requestConnect(int id);
+
+ private:
+  void connect_Transferdata(int send, int recv);
 };
 #endif
