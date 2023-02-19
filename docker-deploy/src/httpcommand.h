@@ -15,6 +15,7 @@ class httpcommand {
   string url;
 
  public:
+  httpcommand();
   httpcommand(string req);
 
  private:
