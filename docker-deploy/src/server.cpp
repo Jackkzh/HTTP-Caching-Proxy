@@ -74,7 +74,10 @@ int Server::acceptConnection(string & ip) {
 
   //only use IPv4
   struct sockaddr_in * addr = (struct sockaddr_in *)&socket_addr;
-  inet_ntop(socket_addr.ss_family, &(((struct sockaddr_in*)addr)->sin_addr), str, INET_ADDRSTRLEN);
+  inet_ntop(socket_addr.ss_family,
+            &(((struct sockaddr_in *)addr)->sin_addr),
+            str,
+            INET_ADDRSTRLEN);
   ip = str;
 
   return client_connection_fd;
@@ -92,4 +95,42 @@ int Server::getPort() {
     exit(EXIT_FAILURE);
   }
   return ntohs(sin.sin_port);
+}
+
+/*
+  * The CONNECT method requests that the recipient establish a tunnel to
+  * the destination origin server identified by the request-target and,
+  * if successful, thereafter restrict its behavior to blind forwarding
+  * of packets, in both directions, until the tunnel is closed. 
+  * @param thread_id
+*/
+void Server::requestConnect(int id) {
+  string msg = "HTTP/1.1 200 OK\r\n\r\n";
+  int status = send(client_connection_fd, msg.c_str(), strlen(msg.c_str()), 0);
+  if (status == -1) {
+    cerr << "Error(Connection): message buffer being sent is broken" << endl;
+    return;
+  }
+  log << id << ": Responding \"HTTP/1.1 200 OK\"" << endl;
+  fd_set read_fds;
+  int maxfd = socket_fd > client_connection_fd ? socket_fd : client_connection_fd;
+  while (true) {
+    FD_ZERO(&read_fds);
+    FD_SET(socket_fd, &read_fds);
+    FD_SET(client_connection_fd, &read_fds);
+    status = select(maxfd + 1, &read_fds, NULL, NULL, NULL);
+    if (status == -1) {
+      cerr << "Error(Connection): select() failed" << endl;
+      break;
+    }
+
+    connect_Transferdata(fd);
+  }
+}
+
+/*
+  * Transfer Data between sender and receiver
+*/
+void Server::connect_Transferdata(int fd[]) {
+  int fd[2] = {socket_fd, client_connection_fd};
 }

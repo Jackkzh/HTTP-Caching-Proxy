@@ -6,8 +6,10 @@
 #include <unistd.h>
 
 #include <cstring>
+#include <fstream>
 #include <iostream>
 using namespace std;
+ofstream log("/var/log/erss/proxy.log");
 
 class Server {
  public:
@@ -23,5 +25,9 @@ class Server {
   void createSocket();
   int acceptConnection(string & ip);
   int getPort();
+  void requestConnect(int id);
+
+ private:
+  void connect_Transferdata(int sender, int reciever);
 };
 #endif
