@@ -16,7 +16,7 @@ void Server::initStatus(const char * _hostname, const char * _port) {
   if (status != 0) {
     cerr << "Error: cannot get address info for host" << endl;
     cerr << "  (" << hostname << "," << port << ")" << endl;
-    exit(EXIT_FAILURE);
+    exit(EXIT_FAILURE);  //add throw expection
   }
 }
 
@@ -35,7 +35,7 @@ void Server::createSocket() {
   if (socket_fd == -1) {
     cerr << "Error: cannot create socket" << endl;
     cerr << "  (" << hostname << "," << port << ")" << endl;
-    exit(EXIT_FAILURE);
+    exit(EXIT_FAILURE);  //add throw expection
   }
 
   int yes = 1;
@@ -44,15 +44,15 @@ void Server::createSocket() {
   if (status == -1) {
     cerr << "Error: cannot bind socket" << endl;
     cerr << "  (" << hostname << "," << port << ")" << endl;
-    exit(EXIT_FAILURE);
-  }  //if
+    exit(EXIT_FAILURE);  //add throw expection
+  }                      //if
 
   status = listen(socket_fd, 100);
   if (status == -1) {
     cerr << "Error: cannot listen on socket" << endl;
     cerr << "  (" << hostname << "," << port << ")" << endl;
-    exit(EXIT_FAILURE);
-  }  //if
+    exit(EXIT_FAILURE);  //add throw expection
+  }                      //if
   freeaddrinfo(host_info_list);
 }
 
@@ -69,8 +69,8 @@ int Server::acceptConnection(string & ip) {
       accept(socket_fd, (struct sockaddr *)&socket_addr, &socket_addr_len);
   if (client_connection_fd == -1) {
     cerr << "Error: cannot accept connection on socket" << endl;
-    return -1;
-  }  //if
+    return -1;  //add throw expection
+  }             //if
 
   //only use IPv4
   struct sockaddr_in * addr = (struct sockaddr_in *)&socket_addr;
@@ -92,7 +92,7 @@ int Server::getPort() {
   socklen_t len = sizeof(sin);
   if (getsockname(socket_fd, (struct sockaddr *)&sin, &len) == -1) {
     cerr << "Error: cannot get socket name" << endl;
-    exit(EXIT_FAILURE);
+    exit(EXIT_FAILURE);  //add throw expection
   }
   return ntohs(sin.sin_port);
 }
@@ -102,14 +102,14 @@ int Server::getPort() {
   * the destination origin server identified by the request-target and,
   * if successful, thereafter restrict its behavior to blind forwarding
   * of packets, in both directions, until the tunnel is closed. 
-  * @param thread_id
+  * @param id client's unique id
 */
 void Server::requestConnect(int id) {
   string msg = "HTTP/1.1 200 OK\r\n\r\n";
   int status = send(client_connection_fd, msg.c_str(), strlen(msg.c_str()), 0);
   if (status == -1) {
     cerr << "Error(Connection): message buffer being sent is broken" << endl;
-    return;
+    return;  //add throw expection
   }
   log << id << ": Responding \"HTTP/1.1 200 OK\"" << endl;
   fd_set read_fds;
@@ -121,16 +121,32 @@ void Server::requestConnect(int id) {
     status = select(maxfd + 1, &read_fds, NULL, NULL, NULL);
     if (status == -1) {
       cerr << "Error(Connection): select() failed" << endl;
-      break;
+      break;  //add throw expection
     }
-
-    connect_Transferdata(fd);
+    if (FD_ISSET(client_connection_fd, &read_fds)) {  //add try/catch
+      connect_Transferdata(client_connection_fd, socket_fd);
+    }
+    else {
+      connect_Transferdata(socket_fd, client_connection_fd);
+    }
   }
+  log << id << ": Tunnel closed" << endl;
 }
 
 /*
   * Transfer Data between sender and receiver
+  * @param send_fd
+  * @param recv_fd
 */
-void Server::connect_Transferdata(int fd[]) {
-  int fd[2] = {socket_fd, client_connection_fd};
+void Server::connect_Transferdata(int send_fd, int recv_fd) {
+  char buffer[65535] = {0};
+  int len = send(send_fd, buffer, sizeof(buffer), 0);
+  if (len <= 0) {
+    return;  //add throw expection
+  }
+
+  len = recv(recv_fd, buffer, sizeof(buffer), 0);
+  if (len <= 0) {
+    return;  //add throw expection
+  }
 }

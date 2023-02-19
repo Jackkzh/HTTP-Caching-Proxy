@@ -8,6 +8,7 @@
 #include <cstring>
 #include <fstream>
 #include <iostream>
+#include <vector>
 using namespace std;
 ofstream log("/var/log/erss/proxy.log");
 
@@ -28,6 +29,6 @@ class Server {
   void requestConnect(int id);
 
  private:
-  void connect_Transferdata(int sender, int reciever);
+  void connect_Transferdata(int send, int recv);
 };
 #endif
