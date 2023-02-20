@@ -1,9 +1,7 @@
 #ifndef __MYEXCEPTION__H__
 #define __MYEXCEPTION__H__
-#include <exception>
-#include <string>
 
-using namespace std;
+#include "helper.h"
 
 class myException : public exception {
  private:

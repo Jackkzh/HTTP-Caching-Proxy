@@ -1,7 +1,7 @@
 all: main
 
-main: main.cpp server.cpp server.h httpcommand.cpp httpcommand.h client.h client.cpp
-	g++ -g  -o main main.cpp server.cpp httpcommand.cpp client.cpp -lpthread
+main: main.cpp server.cpp server.h client.h client.cpp httpcommand.cpp httpcommand.h myexception.h helper.cpp helper.h
+	g++ -g  -o main main.cpp server.cpp client.cpp httpcommand.cpp helper.cpp -lpthread
 
 .PHONY:
 	clean

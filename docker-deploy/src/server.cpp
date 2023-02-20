@@ -100,6 +100,7 @@ void Server::acceptConnection(string &ip) {
     ip = str;
     cout << "Connection accepted"
          << "from client ip: " << ip << endl;
+    writeLog("Connection accepted from client ip: " + ip);
 }
 
 /**
@@ -133,31 +134,32 @@ void Server::getRequest(char *buffer, int client_connection_fd) {
  * @param id client's unique id
  */
 void Server::requestConnect(int id) {
-    string msg = "HTTP/1.1 200 OK\r\n\r\n";
-    int status = send(client_connection_fd, msg.c_str(), strlen(msg.c_str()), 0);
+  string msg = "HTTP/1.1 200 OK\r\n\r\n";
+  int status = send(client_connection_fd, msg.c_str(), strlen(msg.c_str()), 0);
+  if (status == -1) {
+    string msg = "Error(Connection): message buffer being sent is broken";
+    throw myException(msg);
+  }
+  writeLog(id + ": Responding \"HTTP/1.1 200 OK\"");
+  fd_set read_fds;
+  int maxfd = listen_fd > client_connection_fd ? listen_fd : client_connection_fd;
+  while (true) {
+    FD_ZERO(&read_fds);
+    FD_SET(listen_fd, &read_fds);
+    FD_SET(client_connection_fd, &read_fds);
+    status = select(maxfd + 1, &read_fds, NULL, NULL, NULL);
     if (status == -1) {
-        cerr << "Error(Connection): message buffer being sent is broken" << endl;
-        return;  // add throw expection
+      string msg = "Error(Connection): select() failed";
+      throw myException(msg);
     }
-    cout << id << ": Responding \"HTTP/1.1 200 OK\"" << endl;
-    fd_set read_fds;
-    int maxfd = listen_fd > client_connection_fd ? listen_fd : client_connection_fd;
-    while (true) {
-        FD_ZERO(&read_fds);
-        FD_SET(listen_fd, &read_fds);
-        FD_SET(client_connection_fd, &read_fds);
-        status = select(maxfd + 1, &read_fds, NULL, NULL, NULL);
-        if (status == -1) {
-            cerr << "Error(Connection): select() failed" << endl;
-            break;  // add throw expection
-        }
-        if (FD_ISSET(client_connection_fd, &read_fds)) {  // add try/catch
-            connect_Transferdata(client_connection_fd, listen_fd);
-        } else {
-            connect_Transferdata(listen_fd, client_connection_fd);
-        }
+    if (FD_ISSET(client_connection_fd, &read_fds)) {  //add try/catch
+      connect_Transferdata(client_connection_fd, listen_fd);
     }
-    cout << id << ": Tunnel closed" << endl;
+    else {
+      connect_Transferdata(listen_fd, client_connection_fd);
+    }
+  }
+  writeLog(id + ": Tunnel closed");
 }
 
 /*
@@ -166,15 +168,16 @@ void Server::requestConnect(int id) {
  * @param recv_fd
  */
 void Server::connect_Transferdata(int send_fd, int recv_fd) {
-    char buffer[65535] = {0};
-    int len = send(send_fd, buffer, sizeof(buffer), 0);
-    if (len <= 0) {
-        return;  // add throw expection
-    }
+  char buffer[65535] = {0};
+  int len = send(send_fd, buffer, sizeof(buffer), 0);
+  if (len <= 0) {
+    throw myException("Error(CONNECT): transfer data failed.");
+  }
 
     len = recv(recv_fd, buffer, sizeof(buffer), 0);
     if (len <= 0) {
-        return;  // add throw expection
+        //return;  // add throw expection
+        throw myException("Error(CONNECT): transfer data failed.");
     }
 }
 
