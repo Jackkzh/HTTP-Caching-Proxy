@@ -9,19 +9,8 @@ void ClientInfo::addRequest(string req) {
   request = req;
 }
 
-ofstream LogFile::logFile;
-
-LogFile::LogFile() {
-  logFile.open(logFileLocation);
-  if (logFile.is_open()) {
-    return;
-  }
+void writeLog(string msg) {
   ofstream logFile(logFileLocation);
-  logFile.open(logFileLocation);
-  assert(logFile.is_open());
-}
-
-void LogFile::writeLog(string msg) {
   pthread_mutex_lock(&mutex);
   logFile << msg << endl;
   pthread_mutex_unlock(&mutex);

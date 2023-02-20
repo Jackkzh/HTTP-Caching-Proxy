@@ -1,13 +1,17 @@
 #include "server.h"
 
+#include <pthread.h>
+
+#include "client.h"
 #include "httpcommand.h"
 #include "myexception.h"
-
 /*
  * init socket status, bind socket, listen on socket as a server(to accept connection from browser)
  * @param _port
  * @return listen_fd
  */
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+
 int Server::initListenfd(const char * _port) {
   port = _port;
   int status;
@@ -76,7 +80,7 @@ int Server::initListenfd(const char * _port) {
 /**
  * accept connection on socket, using IPv4 only
  * @param ip
-*/
+ */
 void Server::acceptConnection(string & ip) {
   struct sockaddr_storage socket_addr;
   char str[INET_ADDRSTRLEN];
@@ -86,23 +90,24 @@ void Server::acceptConnection(string & ip) {
   if (client_connection_fd == -1) {
     string msg = "Error: cannot accept connection on socket";
     throw myException(msg);
-  }  //if
+  }  // if
 
-  //only use IPv4
+  // only use IPv4
   struct sockaddr_in * addr = (struct sockaddr_in *)&socket_addr;
   inet_ntop(socket_addr.ss_family,
             &(((struct sockaddr_in *)addr)->sin_addr),
             str,
             INET_ADDRSTRLEN);
   ip = str;
-  LogFile log;
-  log.writeLog("Connection accepted from client ip: " + ip);
+  cout << "Connection accepted"
+       << "from client ip: " << ip << endl;
+  writeLog("Connection accepted from client ip: " + ip);
 }
 
 /**
  * get the port number
  * @return port number
-*/
+ */
 int Server::getPort() {
   struct sockaddr_in sin;
   socklen_t len = sizeof(sin);
@@ -114,7 +119,7 @@ int Server::getPort() {
 }
 
 // write a fucntion to get the request from the client and parse it, and store to a outer char * buffer
-void Server::getRequest(char * buffer) {
+void Server::getRequest(char * buffer, int client_connection_fd) {
   int len_recv = recv(client_connection_fd, buffer, 4096, 0);
   cout << "len_recv: " << len_recv << endl;
 
@@ -123,12 +128,12 @@ void Server::getRequest(char * buffer) {
   cout << "------" << endl;
 }
 /*
-  * The CONNECT method requests that the recipient establish a tunnel to
-  * the destination origin server identified by the request-target and,
-  * if successful, thereafter restrict its behavior to blind forwarding
-  * of packets, in both directions, until the tunnel is closed. 
-  * @param id client's unique id
-*/
+ * The CONNECT method requests that the recipient establish a tunnel to
+ * the destination origin server identified by the request-target and,
+ * if successful, thereafter restrict its behavior to blind forwarding
+ * of packets, in both directions, until the tunnel is closed.
+ * @param id client's unique id
+ */
 void Server::requestConnect(int id) {
   string msg = "HTTP/1.1 200 OK\r\n\r\n";
   int status = send(client_connection_fd, msg.c_str(), strlen(msg.c_str()), 0);
@@ -136,8 +141,7 @@ void Server::requestConnect(int id) {
     string msg = "Error(Connection): message buffer being sent is broken";
     throw myException(msg);
   }
-  LogFile log;
-  log.writeLog(id + ": Responding \"HTTP/1.1 200 OK\"");
+  writeLog(id + ": Responding \"HTTP/1.1 200 OK\"");
   fd_set read_fds;
   int maxfd = listen_fd > client_connection_fd ? listen_fd : client_connection_fd;
   while (true) {
@@ -156,14 +160,14 @@ void Server::requestConnect(int id) {
       connect_Transferdata(listen_fd, client_connection_fd);
     }
   }
-  log.writeLog(id + ": Tunnel closed");
+  writeLog(id + ": Tunnel closed");
 }
 
 /*
-  * Transfer Data between sender and receiver
-  * @param send_fd
-  * @param recv_fd
-*/
+ * Transfer Data between sender and receiver
+ * @param send_fd
+ * @param recv_fd
+ */
 void Server::connect_Transferdata(int send_fd, int recv_fd) {
   char buffer[65535] = {0};
   int len = send(send_fd, buffer, sizeof(buffer), 0);
@@ -173,6 +177,151 @@ void Server::connect_Transferdata(int send_fd, int recv_fd) {
 
   len = recv(recv_fd, buffer, sizeof(buffer), 0);
   if (len <= 0) {
+    //return;  // add throw expection
     throw myException("Error(CONNECT): transfer data failed.");
   }
 }
+
+void Server::run() {
+  try {
+    initListenfd("12345");
+  }
+  catch (exception & e) {
+    std::cout << e.what() << std::endl;
+    return;
+  }
+  cout << "Server is listening on port: " << getPort() << endl;
+  string ip;
+  while (true) {
+    try {
+      acceptConnection(ip);
+    }
+    catch (exception & e) {
+      std::cout << e.what() << std::endl;
+      continue;
+    }
+    pthread_t thread;
+    Client * client = new Client(client_connection_fd);
+    pthread_create(&thread, NULL, handleRequest, client);
+  }
+}
+
+void * Server::handleRequest(void * a) {
+  Client * client = (Client *)a;
+  char browser_request[4096];
+  getRequest(browser_request, client->client_connection_fd);
+  // converrt the client_request to string
+  string client_request(browser_request);
+  httpcommand h(client_request);
+
+  // print out the h object
+  cout << "------" << endl;
+  cout << "Request: " << client_request << endl;
+  cout << "------" << endl;
+
+  // print size of httpcommand
+  cout << "size of httpcommand: " << sizeof(h) << endl;
+  cout << "Method: " << h.method << endl;
+  cout << "Path: " << h.url << endl;
+  cout << "port: " << h.port << endl;
+  cout << "------------------" << endl;
+
+  cout << "init connection with web server" << endl;
+
+  try {
+    client->initClientfd(h.host.c_str(), h.port.c_str());
+  }
+  catch (exception & e) {
+    std::cout << e.what() << std::endl;
+    //return;
+  }
+
+  send(client->client_fd, browser_request, strlen(browser_request), 0);
+  char buffer[40960];
+
+  int recv_len = 0;
+  while (true) {
+    ssize_t n = recv(client->client_fd, buffer + recv_len, sizeof(buffer) - recv_len, 0);
+    if (n == -1) {
+      perror("recv");
+      exit(EXIT_FAILURE);
+    }
+    else if (n == 0) {
+      break;
+    }
+    else {
+      recv_len += n;
+    }
+  }
+  cout << "recv_len: " << recv_len << endl;
+  // cout << "done sending to web server" << endl;
+  // int len_recv = recv(client_fd, buffer, 40960, 0);
+  // cout << "len_recv: " << len_recv << endl;
+  // cout << "using strlen" << strlen(buffer) << endl;  // this is wrong
+  cout << sizeof(buffer) << endl;
+  cout << "-------printing buffer from remote server-------" << endl;
+  cout << buffer << endl;
+  cout << "----end of priting----" << endl;
+  send(client->client_connection_fd, buffer, sizeof(buffer), 0);
+  return NULL;
+}
+
+// // first creates and runs the server and listen for connections
+// void Server::run() {
+//   initStatus(NULL, "12345");
+//   createSocket();
+//   cout << "Server is listening on port: " << getPort() << endl;
+//   string ip;
+//   while (true) {
+//     client_connection_fd = acceptConnection(ip);
+//     if (client_connection_fd == -1) {
+//       continue;
+//     }
+//     char client_request[1024];
+//     getRequest(client_request);
+//     // converrt the client_request to string
+//     string client_request_str(client_request);
+//     httpcommand h(client_request_str);
+
+//     // print out the h object
+//     //cout << h << endl;
+//     cout << "------" << endl;
+//     cout << "Request: " << client_request << endl;
+//     cout << "------" << endl;
+//     //print size of httpcommand
+//     cout << "size of httpcommand: " << sizeof(h) << endl;
+//     cout << "Method: " << h.method << endl;
+//     cout << "Path: " << h.url << endl;
+//     cout << "port: " << h.port << endl;
+
+//     cout << "------------------" << endl;
+//     cout << "init connection with web server" << endl;
+//     int toweb_fd = clientInit(h.host.c_str(), h.port.c_str());
+//     send(toweb_fd, client_request, strlen(client_request), 0);
+//     char buffer[40960];
+//     cout << "done sending to web server" << endl;
+//     int len_recv = recv(toweb_fd, buffer, 40960, 0);
+//       cout << "len_recv: " << len_recv << endl;
+//     cout << "using strlen" << strlen(buffer) << endl; // this is wrong
+//     cout << sizeof(buffer) << endl;
+//     cout << client_request << endl;
+//     send(client_connection_fd, client_request, sizeof(client_request), 0);
+
+//     //cout << "Connection accepted" << "from client ip: " << ip << endl;
+//     // handle the connection
+//     // ...
+//   }
+// }
+
+// // write a fucntion to get the request from the client and parse it, and store to a outer char * buffer
+// void Server::getRequest(char * buffer) {
+//   int len_recv = recv(client_connection_fd, buffer, 4096, 0);
+//   cout << "len_recv: " << len_recv << endl;
+//   // print out the h object
+//   //cout << h << endl;
+//   cout << "------" << endl;
+//   cout << "Request: " << buffer << endl;
+//   //cout << "Method: " << h.method << endl;
+//   //cout << "Path: " << h.url << endl;
+//   //cout << "port: " << h.port << endl;
+// }

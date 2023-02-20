@@ -33,14 +33,7 @@ class ClientInfo {
   void addRequest(string req);
 };
 
-class LogFile {
- public:
-  LogFile();
-  void writeLog(string msg);
-
- private:
-  static ofstream logFile;
-};
+void writeLog(string msg);
 
 class TimeMake {
  public:
