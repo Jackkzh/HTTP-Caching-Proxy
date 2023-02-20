@@ -10,21 +10,16 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-ofstream log("/var/log/erss/proxy.log");
 
 class Server {
  public:
-  int status;
-  int socket_fd;
-  int client_connection_fd;
-  struct addrinfo host_info;
-  struct addrinfo * host_info_list;
-  const char * hostname;
-  const char * port;
+  int listen_fd;             // this is the fd for listening as a server
+  int client_connection_fd;  // this is the fd for client connection after accept
+  // const char * hostname;  // as a server, dont need to know the hostname
+  const char * port;  // might not need to be a field, not sure(?)
 
-  void initStatus(const char * _hostname, const char * _port);
-  void createSocket();
-  int acceptConnection(string & ip);
+  int initListenfd(const char * _port);
+  void acceptConnection(string & ip);
   int getPort();
   void run();
 
@@ -32,6 +27,9 @@ class Server {
   void getRequest(char * client_request);
 
   void requestConnect(int id);
+
+  // server get what type of request it is from the browser, and print out the request
+  void getRequest(char * client_request);
 
  private:
   void connect_Transferdata(int send, int recv);

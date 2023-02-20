@@ -17,6 +17,7 @@ class httpcommand {
  public:
   httpcommand();
   httpcommand(string req);
+  void printRequestInfo();
 
  private:
   void parseMethod();
