@@ -1,8 +1,6 @@
 #ifndef __HTTPCOMMAND__H__
 #define __HTTPCOMMAND__H__
-#include <exception>
-#include <iostream>
-#include <string>
+#include "helper.h"
 
 using namespace std;
 

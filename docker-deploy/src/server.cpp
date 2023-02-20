@@ -133,8 +133,8 @@ void Server::requestConnect(int id) {
   string msg = "HTTP/1.1 200 OK\r\n\r\n";
   int status = send(client_connection_fd, msg.c_str(), strlen(msg.c_str()), 0);
   if (status == -1) {
-    cerr << "Error(Connection): message buffer being sent is broken" << endl;
-    return;  //add throw expection
+    string msg = "Error(Connection): message buffer being sent is broken";
+    throw myException(msg);
   }
   cout << id << ": Responding \"HTTP/1.1 200 OK\"" << endl;
   fd_set read_fds;
@@ -145,8 +145,8 @@ void Server::requestConnect(int id) {
     FD_SET(client_connection_fd, &read_fds);
     status = select(maxfd + 1, &read_fds, NULL, NULL, NULL);
     if (status == -1) {
-      cerr << "Error(Connection): select() failed" << endl;
-      break;  //add throw expection
+      string msg = "Error(Connection): select() failed";
+      throw myException(msg);
     }
     if (FD_ISSET(client_connection_fd, &read_fds)) {  //add try/catch
       connect_Transferdata(client_connection_fd, listen_fd);

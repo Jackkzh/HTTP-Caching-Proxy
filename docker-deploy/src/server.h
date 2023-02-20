@@ -1,15 +1,6 @@
 #ifndef __SERVER__H__
 #define __SERVER__H__
-#include <arpa/inet.h>
-#include <netdb.h>
-#include <sys/socket.h>
-#include <unistd.h>
-
-#include <cstring>
-#include <fstream>
-#include <iostream>
-#include <vector>
-using namespace std;
+#include "helper.h"
 
 class Server {
  public:

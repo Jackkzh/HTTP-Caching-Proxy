@@ -82,6 +82,9 @@ int main() {
 
   httpcommand h_Test(httpTest);
   h_Test.printRequestInfo();
-  run();
+
+  writeLog(httpTest);
+
+  //run();
   return EXIT_SUCCESS;
 }
