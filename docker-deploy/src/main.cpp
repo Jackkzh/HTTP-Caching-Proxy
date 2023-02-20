@@ -78,16 +78,13 @@
 // }
 
 int main() {
-  //string httpTest = "CONNECT server.example.com:90 HTTP/1.1\nHost: server.example.com:90";
-  //httpcommand h_Test(httpTest);
-  //h_Test.printRequestInfo();
+  string httpTest = "CONNECT server.example.com:90 HTTP/1.1\nHost: server.example.com:90";
 
-  //  httpcommand h_Test(httpTest);
-  //   h_Test.printRequestInfo();
+  httpcommand h_Test(httpTest);
+  h_Test.printRequestInfo();
 
-  //   writeLog(httpTest);
+  writeLog(httpTest);
 
-  Server server;
-  server.run();
+  //run();
   return EXIT_SUCCESS;
 }
