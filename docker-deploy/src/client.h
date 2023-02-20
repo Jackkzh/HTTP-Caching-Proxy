@@ -1,3 +1,5 @@
+#ifndef __CLIENT__H__
+#define __CLIENT__H__
 #include <arpa/inet.h>
 #include <netdb.h>
 #include <sys/socket.h>
@@ -9,13 +11,8 @@ using namespace std;
 
 class Client {
  public:
-  int status;
-  int socket_fd;
-  struct addrinfo host_info;
-  struct addrinfo * host_info_list;
-  const char * hostname;
-  const char * port;
+  int client_fd;
 
-  void initStatus(const char * _hostname, const char * _port);
-  void createSocket();
+  void initClientfd(const char * hostname, const char * port);
 };
+#endif

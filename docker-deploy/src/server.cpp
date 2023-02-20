@@ -1,76 +1,92 @@
 #include "server.h"
-/*
-  * init socket status
-  * @param _hostname 
-  * @param _port
-*/
-void Server::initStatus(const char * _hostname, const char * _port) {
-  hostname = _hostname;
-  port = _port;
-  memset(&host_info, 0, sizeof(host_info));
 
+#include "httpcommand.h"
+#include "myexception.h"
+
+/*
+ * init socket status, bind socket, listen on socket as a server(to accept connection from browser)
+ * @param _port
+ * @return listen_fd
+ */
+int Server::initListenfd(const char * _port) {
+  port = _port;
+  int status;
+  struct addrinfo host_info;
+  struct addrinfo * host_info_list;
+
+  memset(&host_info, 0, sizeof(host_info));
   host_info.ai_family = AF_UNSPEC;
   host_info.ai_socktype = SOCK_STREAM;
   host_info.ai_flags = AI_PASSIVE;
-  status = getaddrinfo(hostname, port, &host_info, &host_info_list);
-  if (status != 0) {
-    cerr << "Error: cannot get address info for host" << endl;
-    cerr << "  (" << hostname << "," << port << ")" << endl;
-    exit(EXIT_FAILURE);  //add throw expection
-  }
-}
 
-/*
-  * create socket, wait and stay listening
-*/
-void Server::createSocket() {
+  status = getaddrinfo(NULL, port, &host_info, &host_info_list);
+  // const char * hostname
+  struct sockaddr_in * sa = (struct sockaddr_in *)host_info_list->ai_addr;
+  const char * hostname = inet_ntoa(sa->sin_addr);
+  cout << "hostname: " << hostname << endl;  // test if hostname is correct
+
+  char ip4[INET_ADDRSTRLEN];
+  inet_ntop(AF_INET, &(sa->sin_addr), ip4, INET_ADDRSTRLEN);
+  string ip4_str(ip4);
+  cout << "ip4 in char[]: " << ip4 << endl;
+  cout << "ip4_str: " << ip4_str << endl;
+  // using ntop to convert ip address to hostname
+
+  if (status != 0) {
+    string msg = "Error: cannot get address info for host\n";
+    msg = msg + "  (" + hostname + "," + port + ")";
+    throw myException(msg);
+  }
+
   if (port == NULL) {
-    //OS will assign a port
+    // OS will assign a port
     struct sockaddr_in * addr_in = (struct sockaddr_in *)(host_info_list->ai_addr);
     addr_in->sin_port = 0;
   }
-  socket_fd = socket(host_info_list->ai_family,
+
+  listen_fd = socket(host_info_list->ai_family,
                      host_info_list->ai_socktype,
                      host_info_list->ai_protocol);
-  if (socket_fd == -1) {
-    cerr << "Error: cannot create socket" << endl;
-    cerr << "  (" << hostname << "," << port << ")" << endl;
-    exit(EXIT_FAILURE);  //add throw expection
+  if (listen_fd == -1) {
+    string msg = "Error: cannot create socket\n";
+    msg = msg + "  (" + hostname + "," + port + ")";
+    throw myException(msg);
   }
 
   int yes = 1;
-  status = setsockopt(socket_fd, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int));
-  status = bind(socket_fd, host_info_list->ai_addr, host_info_list->ai_addrlen);
+  status = setsockopt(listen_fd, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int));
+  status = bind(listen_fd, host_info_list->ai_addr, host_info_list->ai_addrlen);
   if (status == -1) {
-    cerr << "Error: cannot bind socket" << endl;
-    cerr << "  (" << hostname << "," << port << ")" << endl;
-    exit(EXIT_FAILURE);  //add throw expection
-  }                      //if
+    string msg = "Error: cannot bind socket\n";
+    msg = msg + "  (" + hostname + "," + port + ")";
+    throw myException(msg);
+  }  // if
 
-  status = listen(socket_fd, 100);
+  status = listen(listen_fd, 100);
   if (status == -1) {
-    cerr << "Error: cannot listen on socket" << endl;
-    cerr << "  (" << hostname << "," << port << ")" << endl;
-    exit(EXIT_FAILURE);  //add throw expection
-  }                      //if
+    string msg = "Error: cannot listen on socket\n";
+    msg = msg + "  (" + hostname + "," + port + ")";
+    throw myException(msg);
+  }  // if
+
   freeaddrinfo(host_info_list);
-}
 
-/*
-  * accept connection on socket, using IPv4 only
-  * @param ip
-  * @return client_connection_fd
+  return listen_fd;
+}
+/**
+ * accept connection on socket, using IPv4 only
+ * @param ip
 */
-int Server::acceptConnection(string & ip) {
+void Server::acceptConnection(string & ip) {
   struct sockaddr_storage socket_addr;
   char str[INET_ADDRSTRLEN];
   socklen_t socket_addr_len = sizeof(socket_addr);
   client_connection_fd =
-      accept(socket_fd, (struct sockaddr *)&socket_addr, &socket_addr_len);
+      accept(listen_fd, (struct sockaddr *)&socket_addr, &socket_addr_len);
   if (client_connection_fd == -1) {
-    cerr << "Error: cannot accept connection on socket" << endl;
-    return -1;  //add throw expection
-  }             //if
+    string msg = "Error: cannot accept connection on socket";
+    throw myException(msg);
+  }  //if
 
   //only use IPv4
   struct sockaddr_in * addr = (struct sockaddr_in *)&socket_addr;
@@ -79,24 +95,33 @@ int Server::acceptConnection(string & ip) {
             str,
             INET_ADDRSTRLEN);
   ip = str;
-
-  return client_connection_fd;
+  cout << "Connection accepted"
+       << "from client ip: " << ip << endl;
 }
 
-/*
-  * get the port number
-  * @return port number
+/**
+ * get the port number
+ * @return port number
 */
 int Server::getPort() {
   struct sockaddr_in sin;
   socklen_t len = sizeof(sin);
-  if (getsockname(socket_fd, (struct sockaddr *)&sin, &len) == -1) {
-    cerr << "Error: cannot get socket name" << endl;
-    exit(EXIT_FAILURE);  //add throw expection
+  if (getsockname(listen_fd, (struct sockaddr *)&sin, &len) == -1) {
+    string msg = "Error: cannot get socket name";
+    throw myException(msg);
   }
   return ntohs(sin.sin_port);
 }
 
+// write a fucntion to get the request from the client and parse it, and store to a outer char * buffer
+void Server::getRequest(char * buffer) {
+  int len_recv = recv(client_connection_fd, buffer, 4096, 0);
+  cout << "len_recv: " << len_recv << endl;
+
+  cout << "------" << endl;
+  cout << "Request: " << buffer << endl;
+  cout << "------" << endl;
+}
 /*
   * The CONNECT method requests that the recipient establish a tunnel to
   * the destination origin server identified by the request-target and,
@@ -111,12 +136,12 @@ void Server::requestConnect(int id) {
     cerr << "Error(Connection): message buffer being sent is broken" << endl;
     return;  //add throw expection
   }
-  log << id << ": Responding \"HTTP/1.1 200 OK\"" << endl;
+  cout << id << ": Responding \"HTTP/1.1 200 OK\"" << endl;
   fd_set read_fds;
-  int maxfd = socket_fd > client_connection_fd ? socket_fd : client_connection_fd;
+  int maxfd = listen_fd > client_connection_fd ? listen_fd : client_connection_fd;
   while (true) {
     FD_ZERO(&read_fds);
-    FD_SET(socket_fd, &read_fds);
+    FD_SET(listen_fd, &read_fds);
     FD_SET(client_connection_fd, &read_fds);
     status = select(maxfd + 1, &read_fds, NULL, NULL, NULL);
     if (status == -1) {
@@ -124,13 +149,13 @@ void Server::requestConnect(int id) {
       break;  //add throw expection
     }
     if (FD_ISSET(client_connection_fd, &read_fds)) {  //add try/catch
-      connect_Transferdata(client_connection_fd, socket_fd);
+      connect_Transferdata(client_connection_fd, listen_fd);
     }
     else {
-      connect_Transferdata(socket_fd, client_connection_fd);
+      connect_Transferdata(listen_fd, client_connection_fd);
     }
   }
-  log << id << ": Tunnel closed" << endl;
+  cout << id << ": Tunnel closed" << endl;
 }
 
 /*
