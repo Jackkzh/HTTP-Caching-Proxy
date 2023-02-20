@@ -83,8 +83,6 @@ int main() {
   httpcommand h_Test(httpTest);
   h_Test.printRequestInfo();
 
-  writeLog(httpTest);
-
   //run();
   Server server;
   server.run();
