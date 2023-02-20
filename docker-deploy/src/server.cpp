@@ -95,8 +95,7 @@ void Server::acceptConnection(string & ip) {
             str,
             INET_ADDRSTRLEN);
   ip = str;
-  cout << "Connection accepted"
-       << "from client ip: " << ip << endl;
+  writeLog("Connection accepted from client ip: " + ip);
 }
 
 /**
@@ -136,7 +135,7 @@ void Server::requestConnect(int id) {
     string msg = "Error(Connection): message buffer being sent is broken";
     throw myException(msg);
   }
-  cout << id << ": Responding \"HTTP/1.1 200 OK\"" << endl;
+  writeLog(id + ": Responding \"HTTP/1.1 200 OK\"");
   fd_set read_fds;
   int maxfd = listen_fd > client_connection_fd ? listen_fd : client_connection_fd;
   while (true) {
@@ -155,7 +154,7 @@ void Server::requestConnect(int id) {
       connect_Transferdata(listen_fd, client_connection_fd);
     }
   }
-  cout << id << ": Tunnel closed" << endl;
+  writeLog(id + ": Tunnel closed");
 }
 
 /*
@@ -167,11 +166,11 @@ void Server::connect_Transferdata(int send_fd, int recv_fd) {
   char buffer[65535] = {0};
   int len = send(send_fd, buffer, sizeof(buffer), 0);
   if (len <= 0) {
-    return;  //add throw expection
+    throw myException("Error(CONNECT): transfer data failed.");
   }
 
   len = recv(recv_fd, buffer, sizeof(buffer), 0);
   if (len <= 0) {
-    return;  //add throw expection
+    throw myException("Error(CONNECT): transfer data failed.");
   }
 }
