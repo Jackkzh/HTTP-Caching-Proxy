@@ -12,10 +12,14 @@ class Server {
   int initListenfd(const char * _port);
   void acceptConnection(string & ip);
   int getPort();
+
+  void run();
+
   void requestConnect(int id);
 
   // server get what type of request it is from the browser, and print out the request
-  void getRequest(char * client_request);
+  static void getRequest(char * client_request, int id);
+  static void * handleRequest(void * a);
 
  private:
   void connect_Transferdata(int send, int recv);

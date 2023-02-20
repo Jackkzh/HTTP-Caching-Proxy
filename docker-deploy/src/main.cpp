@@ -86,5 +86,7 @@ int main() {
   writeLog(httpTest);
 
   //run();
+  Server server;
+  server.run();
   return EXIT_SUCCESS;
 }

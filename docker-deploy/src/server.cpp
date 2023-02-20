@@ -1,7 +1,12 @@
 #include "server.h"
 
+#include <pthread.h>
+
+#include "client.h"
 #include "httpcommand.h"
 #include "myexception.h"
+
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 /*
  * init socket status, bind socket, listen on socket as a server(to accept connection from browser)
@@ -95,6 +100,8 @@ void Server::acceptConnection(string & ip) {
             str,
             INET_ADDRSTRLEN);
   ip = str;
+  cout << "Connection accepted"
+       << "from client ip: " << ip << endl;
   writeLog("Connection accepted from client ip: " + ip);
 }
 
@@ -113,7 +120,7 @@ int Server::getPort() {
 }
 
 // write a fucntion to get the request from the client and parse it, and store to a outer char * buffer
-void Server::getRequest(char * buffer) {
+void Server::getRequest(char * buffer, int client_connection_fd) {
   int len_recv = recv(client_connection_fd, buffer, 4096, 0);
   cout << "len_recv: " << len_recv << endl;
 
@@ -173,4 +180,88 @@ void Server::connect_Transferdata(int send_fd, int recv_fd) {
   if (len <= 0) {
     throw myException("Error(CONNECT): transfer data failed.");
   }
+}
+
+void Server::run() {
+  try {
+    initListenfd("12345");
+  }
+  catch (exception & e) {
+    std::cout << e.what() << std::endl;
+    return;
+  }
+  cout << "Server is listening on port: " << getPort() << endl;
+  string ip;
+  while (true) {
+    try {
+      acceptConnection(ip);
+    }
+    catch (exception & e) {
+      std::cout << e.what() << std::endl;
+      continue;
+    }
+    pthread_t thread;
+    Client * client = new Client(client_connection_fd);
+    pthread_create(&thread, NULL, handleRequest, client);
+  }
+}
+
+void * Server::handleRequest(void * a) {
+  Client * client = (Client *)a;
+  char browser_request[4096];
+  getRequest(browser_request, client->client_connection_fd);
+  // converrt the client_request to string
+  string client_request(browser_request);
+  httpcommand h(client_request);
+
+  // print out the h object
+  cout << "------" << endl;
+  cout << "Request: " << client_request << endl;
+  cout << "------" << endl;
+
+  // print size of httpcommand
+  cout << "size of httpcommand: " << sizeof(h) << endl;
+  cout << "Method: " << h.method << endl;
+  cout << "Path: " << h.url << endl;
+  cout << "port: " << h.port << endl;
+  cout << "------------------" << endl;
+
+  cout << "init connection with web server" << endl;
+
+  try {
+    client->initClientfd(h.host.c_str(), h.port.c_str());
+  }
+  catch (exception & e) {
+    std::cout << e.what() << std::endl;
+    //return;
+  }
+
+  send(client->client_fd, browser_request, strlen(browser_request), 0);
+  char buffer[40960];
+
+  int recv_len = 0;
+  while (true) {
+    ssize_t n = recv(client->client_fd, buffer + recv_len, sizeof(buffer) - recv_len, 0);
+    if (n == -1) {
+      perror("recv");
+      exit(EXIT_FAILURE);
+    }
+    else if (n == 0) {
+      break;
+    }
+    else {
+      recv_len += n;
+    }
+  }
+  cout << "recv_len: " << recv_len << endl;
+  // cout << "done sending to web server" << endl;
+  // int len_recv = recv(client_fd, buffer, 40960, 0);
+  // cout << "len_recv: " << len_recv << endl;
+  // cout << "using strlen" << strlen(buffer) << endl;  // this is wrong
+  cout << sizeof(buffer) << endl;
+  cout << "-------printing buffer from remote server-------" << endl;
+  cout << buffer << endl;
+  cout << "----end of priting----" << endl;
+  send(client->client_connection_fd, buffer, sizeof(buffer), 0);
+  return NULL;
 }
