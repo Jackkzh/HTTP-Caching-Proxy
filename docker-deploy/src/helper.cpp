@@ -9,13 +9,6 @@ void ClientInfo::addRequest(string req) {
   request = req;
 }
 
-void writeLog(string msg) {
-  ofstream logFile(logFileLocation);
-  pthread_mutex_lock(&mutex);
-  logFile << msg << endl;
-  pthread_mutex_unlock(&mutex);
-}
-
 string TimeMake::getTime() {
   time_t currTime = time(0);
   struct tm * localTime = localtime(&currTime);

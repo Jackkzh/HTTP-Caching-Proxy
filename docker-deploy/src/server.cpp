@@ -6,6 +6,13 @@
 #include "httpcommand.h"
 #include "myexception.h"
 
+ofstream log(logFileLocation);
+void writeLog(string msg) {
+  pthread_mutex_lock(&mutex);
+  log << msg << endl;
+  pthread_mutex_unlock(&mutex);
+}
+
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 /*
@@ -120,12 +127,12 @@ int Server::getPort() {
 }
 
 // write a fucntion to get the request from the client and parse it, and store to a outer char * buffer
-void Server::getRequest(char * buffer, int client_connection_fd) {
-  int len_recv = recv(client_connection_fd, buffer, 4096, 0);
+void Server::getRequest(char * client_request, int id) {
+  int len_recv = recv(id, client_request, 4096, 0);
   cout << "len_recv: " << len_recv << endl;
 
   cout << "------" << endl;
-  cout << "Request: " << buffer << endl;
+  cout << "Request: " << client_request << endl;
   cout << "------" << endl;
 }
 /*
@@ -221,10 +228,7 @@ void * Server::handleRequest(void * a) {
 
   // print size of httpcommand
   cout << "size of httpcommand: " << sizeof(h) << endl;
-  cout << "Method: " << h.method << endl;
-  cout << "Path: " << h.url << endl;
-  cout << "port: " << h.port << endl;
-  cout << "------------------" << endl;
+  h.printRequestInfo();
 
   cout << "init connection with web server" << endl;
 

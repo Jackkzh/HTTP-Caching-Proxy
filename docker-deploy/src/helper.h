@@ -33,8 +33,6 @@ class ClientInfo {
   void addRequest(string req);
 };
 
-void writeLog(string msg);
-
 class TimeMake {
  public:
   string getTime();

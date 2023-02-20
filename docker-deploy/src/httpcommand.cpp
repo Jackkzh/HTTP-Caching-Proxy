@@ -23,6 +23,7 @@ void httpcommand::printRequestInfo() {
   cout << "Path: " << url << endl;
   cout << "Port: " << port << endl;
   cout << "Host: " << host << endl;
+  cout << "------------------" << endl;
 }
 /**
   * request-line   = method SP request-target SP HTTP-version CRLF
