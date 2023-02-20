@@ -36,10 +36,7 @@ void run() {
 
     // print size of httpcommand
     cout << "size of httpcommand: " << sizeof(h) << endl;
-    cout << "Method: " << h.method << endl;
-    cout << "Path: " << h.url << endl;
-    cout << "port: " << h.port << endl;
-    cout << "------------------" << endl;
+    h.printRequestInfo();
 
     cout << "init connection with web server" << endl;
     Client client;

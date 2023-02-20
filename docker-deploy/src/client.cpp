@@ -40,7 +40,7 @@ void Client::initClientfd(const char * hostname, const char * port) {
   // connect to the server
   status = connect(client_fd, client_info_list->ai_addr, client_info_list->ai_addrlen);
   if (status == -1) {
-    string msg = "Error: cannot bind socket\n";
+    string msg = "Error: cannot connect to socket\n";
     msg = msg + "  (" + hostname + "," + port + ")";
     throw myException(msg);
   }
