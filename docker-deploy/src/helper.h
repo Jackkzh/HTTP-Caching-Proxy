@@ -8,7 +8,9 @@
 #include <unistd.h>
 
 #include <cstring>
+#include <ctime>
 #include <exception>
+#include <filesystem>
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -31,6 +33,18 @@ class ClientInfo {
   void addRequest(string req);
 };
 
-void writeLog(string msg);
+class LogFile {
+ public:
+  LogFile();
+  void writeLog(string msg);
+
+ private:
+  static ofstream logFile;
+};
+
+class TimeMake {
+ public:
+  string getTime();
+};
 
 #endif

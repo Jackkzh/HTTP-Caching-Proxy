@@ -1,4 +1,5 @@
 #include "client.h"
+#include "helper.h"
 #include "httpcommand.h"
 #include "server.h"
 
@@ -82,9 +83,13 @@ int main() {
 
   httpcommand h_Test(httpTest);
   h_Test.printRequestInfo();
+  LogFile log;
+  log.writeLog(httpTest);
+  TimeMake t;
+  log.writeLog(t.getTime());
 
-  writeLog(httpTest);
-
+  LogFile log2;
+  log2.writeLog("log2");
   //run();
   return EXIT_SUCCESS;
 }

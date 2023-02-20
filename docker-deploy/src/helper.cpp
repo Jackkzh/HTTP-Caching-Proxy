@@ -9,9 +9,27 @@ void ClientInfo::addRequest(string req) {
   request = req;
 }
 
-void writeLog(string msg) {
+ofstream LogFile::logFile;
+
+LogFile::LogFile() {
+  logFile.open(logFileLocation);
+  if (logFile.is_open()) {
+    return;
+  }
   ofstream logFile(logFileLocation);
+  logFile.open(logFileLocation);
+  assert(logFile.is_open());
+}
+
+void LogFile::writeLog(string msg) {
   pthread_mutex_lock(&mutex);
   logFile << msg << endl;
   pthread_mutex_unlock(&mutex);
+}
+
+string TimeMake::getTime() {
+  time_t currTime = time(0);
+  struct tm * localTime = localtime(&currTime);
+  const char * t = asctime(localTime);
+  return string(t);
 }

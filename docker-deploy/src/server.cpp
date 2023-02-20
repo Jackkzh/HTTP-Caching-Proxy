@@ -95,7 +95,8 @@ void Server::acceptConnection(string & ip) {
             str,
             INET_ADDRSTRLEN);
   ip = str;
-  writeLog("Connection accepted from client ip: " + ip);
+  LogFile log;
+  log.writeLog("Connection accepted from client ip: " + ip);
 }
 
 /**
@@ -135,7 +136,8 @@ void Server::requestConnect(int id) {
     string msg = "Error(Connection): message buffer being sent is broken";
     throw myException(msg);
   }
-  writeLog(id + ": Responding \"HTTP/1.1 200 OK\"");
+  LogFile log;
+  log.writeLog(id + ": Responding \"HTTP/1.1 200 OK\"");
   fd_set read_fds;
   int maxfd = listen_fd > client_connection_fd ? listen_fd : client_connection_fd;
   while (true) {
@@ -154,7 +156,7 @@ void Server::requestConnect(int id) {
       connect_Transferdata(listen_fd, client_connection_fd);
     }
   }
-  writeLog(id + ": Tunnel closed");
+  log.writeLog(id + ": Tunnel closed");
 }
 
 /*
