@@ -16,6 +16,7 @@
 #include <string>
 #include <vector>
 
+#define MAX_LENGTH 65536
 #define logFileLocation "./proxy.log"  //"/var/log/erss/proxy.log"
 
 using namespace std;
@@ -23,13 +24,13 @@ using namespace std;
 class ClientInfo {
  public:
   string request;
-  string uid;          //unique identifier for the client request
+  int uid;             //unique identifier for the client request
   string ip;           //IP address that client made request from
   int fd;              //file descriptor
   string arrivalTime;  //the time when the request arrived
 
   ClientInfo(){};
-  ClientInfo(string uid, string ip, int fd, string arr);
+  ClientInfo(int uid, string ip, int fd, string arr);
   void addRequest(string req);
 };
 
@@ -37,5 +38,7 @@ class TimeMake {
  public:
   string getTime();
 };
+
+bool messageBodyHandler(int len, string req, int & idx, bool & body);
 
 #endif
