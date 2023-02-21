@@ -40,5 +40,5 @@ class TimeMake {
 };
 
 bool messageBodyHandler(int len, string req, int & idx, bool & body);
-
+bool checkBadRequest(string req, int client_fd);
 #endif

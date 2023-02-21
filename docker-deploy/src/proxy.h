@@ -81,7 +81,7 @@ class Proxy {
     freeaddrinfo(host_info_list);
   }
 
-  int build_connection(string host, string port, int client_sock_fd) {
+  int build_connection(string host, string port) {
     int status;
     int socket_fd;
     struct addrinfo host_info;
@@ -214,43 +214,30 @@ class Proxy {
  * @param recv_fd
  */
   void connect_Transferdata(int fd1, int fd2) {
-    // vector<char> buffer(MAX_LENGTH, 0);
-    // int len = recv(fd1, &(buffer.data()[0]), MAX_LENGTH, 0);
-    // if (len <= 0) {
-    //   throw myException("Error(CONNECT_recv): transfer data failed.");
-    // }
-    // len = send(fd2, &(buffer.data()[0]), MAX_LENGTH, 0);
-    // if (len <= 0) {
-    //   throw myException("Error(CONNECT_send): transfer data failed.");
-    // }
     vector<char> buffer(MAX_LENGTH, 0);
-    ssize_t total = 0;
-    ssize_t n = 0;
-
-    total = n;
-    while ((n = read(fd1, &buffer[total], MAX_LENGTH)) == MAX_LENGTH) {
+    int total = 0;
+    int n = 0;
+    //if size is not enough
+    while ((n = recv(fd1, &buffer[total], MAX_LENGTH, 0)) == MAX_LENGTH) {
       buffer.resize(total + 2 * MAX_LENGTH);
       total += n;
     }
-
     total += n;
     buffer.resize(total);
 
     if (buffer.empty()) {
-      return;
+      throw myException("Error(CONNECT_empty): transfer data failed.");
     }
 
-    int status = write(fd2, &buffer.data()[0], buffer.size());
+    int status = send(fd2, &buffer.data()[0], buffer.size(), 0);
     if (status == -1) {
-      return;
+      throw myException("Error(CONNECT_send): transfer data failed.");
     }
   }
 
   void handleRequest(int thread_id) {
     vector<char> buffer(MAX_LENGTH);
-    int endPos = 0;
-    int byts = 0;
-    int idx = 0;
+    int endPos = 0, byts = 0, idx = 0;
     bool body = true;
     while (true) {
       int len_recv = recv(client_connection_fd, &(buffer.data()[0]), MAX_LENGTH, 0);
@@ -274,14 +261,7 @@ class Proxy {
     string client_request(buffer.data());
     httpcommand h(client_request);
 
-    if (client_request.find("Host:", 0) == string::npos) {
-      string badRequest = "HTTP/1.1 400 Bad Request\r\n\r\n";
-      int status =
-          send(client_connection_fd, badRequest.c_str(), strlen(badRequest.c_str()), 0);
-      if (status == -1) {
-        string msg = "400 Bad Request";
-        throw myException(msg);
-      }
+    if (!checkBadRequest(client_request, client_connection_fd)) {
       close(client_connection_fd);
       return;
     }
@@ -289,14 +269,15 @@ class Proxy {
     TimeMake currTime;
     writeLog(thread_id + ": \"" + h.request + "\" from " + client_ip + " @ " +
              currTime.getTime());
+
     Client client;
     try {
-      client.initClientfd(h.host.c_str(), h.port.c_str());
+      int client_fd = build_connection(h.host.c_str(), h.port.c_str());
       if (h.method == "CONNECT") {
-        requestCONNECT(client.client_fd, thread_id);
+        requestCONNECT(client_fd, thread_id);
       }
       else if (h.method == "GET") {
-        requestGET(client.client_fd, h, thread_id);
+        requestGET(client_fd, h, thread_id);
       }
     }
     catch (exception & e) {

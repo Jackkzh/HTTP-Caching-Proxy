@@ -45,9 +45,20 @@ bool messageBodyHandler(int len, string req, int & idx, bool & body) {
     }
     else {
       contLen -= len;
-      if (contLen <= 0) {
+      if (contLen <= 0) {  // invaild content-Length field value
         return false;
       }
+    }
+  }
+  return true;
+}
+
+bool checkBadRequest(string req, int client_fd) {
+  if (req.find("Host:", 0) == string::npos) {
+    string badRequest = "HTTP/1.1 400 Bad Request\r\n\r\n";
+    int status = send(client_fd, badRequest.c_str(), strlen(badRequest.c_str()), 0);
+    if (status == -1) {
+      return false;
     }
   }
   return true;
