@@ -132,10 +132,10 @@ class Proxy {
               str,
               INET_ADDRSTRLEN);
     ip = str;
-    cout << "Connection accepted"
-         << "from client ip: " << ip << endl;
+    // cout << "Connection accepted"
+    //      << "from client ip: " << ip << endl;
     client_ip = ip;
-    writeLog("Connection accepted from client ip: " + ip);
+    // writeLog("Connection accepted from client ip: " + ip);
   }
 
   /**
@@ -226,9 +226,8 @@ class Proxy {
     buffer.resize(total);
 
     if (buffer.empty()) {
-      throw myException("Error(CONNECT_empty): transfer data failed.");
+      return;
     }
-
     int status = send(fd2, &buffer.data()[0], buffer.size(), 0);
     if (status == -1) {
       throw myException("Error(CONNECT_send): transfer data failed.");
@@ -236,7 +235,7 @@ class Proxy {
   }
 
   void handleRequest(int thread_id) {
-    vector<char> buffer(MAX_LENGTH);
+    vector<char> buffer(MAX_LENGTH, 0);
     int endPos = 0, byts = 0, idx = 0;
     bool body = true;
     while (true) {
@@ -276,63 +275,37 @@ class Proxy {
       if (h.method == "CONNECT") {
         requestCONNECT(client_fd, thread_id);
       }
-      else if (h.method == "GET") {
+      else if (h.method == "GET" || h.method == "POST") {
         requestGET(client_fd, h, thread_id);
       }
     }
     catch (exception & e) {
       std::cout << e.what() << std::endl;
+      return;
     }
   }
 
   void requestGET(int client_fd, httpcommand h, int thread_id) {
-    int numbytes;
-    string response;
-    size_t response_line_position;
-    int status = send(socket_fd, h.request.c_str(), h.request.length(), 0);
-    if (status == -1) {
-      string msg = "Error(GET): Failed to send data";
-      throw myException(msg);
-    }
+    send(client_fd, h.request.c_str(), h.request.length(), 0);
+    char buffer[40960];
 
-    vector<char> buffer(4096);
-    int endPos = 0;
-    int byts = 0;
-    int idx = 0;
-    bool body = true;
+    int recv_len = 0;
     while (true) {
-      int len_recv = recv(client_connection_fd, &(buffer.data()[0]), 4096, 0);
-      idx += len_recv;
-      if (len_recv >= 0) {
-        string client_request(buffer.data());
-        //find header
-        if (!messageBodyHandler(len_recv, client_request, idx, body)) {
-          break;
-        }
+      ssize_t n = recv(client_fd, buffer + recv_len, sizeof(buffer) - recv_len, 0);
+      if (n == -1) {
+        perror("recv");
+        exit(EXIT_FAILURE);
+      }
+      else if (n == 0) {
+        break;
       }
       else {
-        string msg = "Error(Handle):Failed to receive data";
-        throw myException(msg);
-      }
-      if (idx == buffer.size()) {
-        buffer.resize(2 * buffer.size());
+        recv_len += n;
       }
     }
-
-    if (response.find("\r\n\r\n", 0) == string::npos) {
-      cout << "HTTP/1.1 502 Bad Gateway\r\n\r\n" << endl;
-    }
-    string response_line;
-    if ((response_line_position = response.find("\r\n", 0)) != string::npos) {
-      response_line = response.substr(0, response_line_position);
-    }
-    status = send(client_fd, response.c_str(), response.length(), 0);
-    if (status == -1) {
-      string msg = "Error(GET): Failed to send data";
-      throw myException(msg);
-    }
+    send(client_connection_fd, buffer, sizeof(buffer), 0);
     close(client_fd);
-    close(socket_fd);
+    close(client_connection_fd);
   }
 
   void run(int thread_id) {
@@ -341,6 +314,7 @@ class Proxy {
     }
     catch (exception & e) {
       std::cout << e.what() << std::endl;
+      return;
     }
     return;
   }
