@@ -1,6 +1,7 @@
 #ifndef __SERVER__H__
 #define __SERVER__H__
 #include "helper.h"
+//include <boost/beast/http.hpp>
 
 class Server {
  public:
@@ -22,6 +23,6 @@ class Server {
   static void * handleRequest(void * a);
 
  private:
-  void connect_Transferdata(int send, int recv);
+  static void connect_Transferdata(int send, int recv);
 };
 #endif

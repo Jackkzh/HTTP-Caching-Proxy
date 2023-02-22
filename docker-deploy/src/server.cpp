@@ -5,6 +5,12 @@
 #include "client.h"
 #include "httpcommand.h"
 #include "myexception.h"
+#include <boost/beast.hpp>
+#include <boost/asio.hpp>
+
+using tcp = boost::asio::ip::tcp;
+namespace beast = boost::beast;
+namespace http = beast::http;
 
 // ofstream log(logFileLocation);
 //  void writeLog(string msg) {
@@ -14,7 +20,7 @@
 //  }
 
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
-
+ 
 /*
  * init socket status, bind socket, listen on socket as a server(to accept connection from browser)
  * @param _port
@@ -166,16 +172,18 @@ void Server::requestConnect(int id) {
  * @param send_fd
  * @param recv_fd
  */
-void Server::connect_Transferdata(int send_fd, int recv_fd) {
+void Server::connect_Transferdata(int recv_fd, int send_fd) {
     char buffer[65535] = {0};
-    int len = send(send_fd, buffer, sizeof(buffer), 0);
+    int len = recv(recv_fd, buffer, sizeof(buffer), 0);
     if (len <= 0) {
-        throw myException("Error(CONNECT): transfer data failed.");
+        return;
+        // throw myException("Error(CONNECT): transfer data failed.");
     }
 
-    len = recv(recv_fd, buffer, sizeof(buffer), 0);
+    len = send(send_fd, buffer, sizeof(buffer), 0);
     if (len <= 0) {
-        throw myException("Error(CONNECT): transfer data failed.");
+        return;
+        // throw myException("Error(CONNECT): transfer data failed.");
     }
 }
 
@@ -209,7 +217,7 @@ void Server::run() {
  * @param id
  */
 void Server::getRequest(char *client_request, int id) {
-    int len_recv = recv(id, client_request, 4096, 0); // ***here, actual size need to be changed later***
+    int len_recv = recv(id, client_request, 4096, 0);  // ***here, actual size need to be changed later***
     cout << "len_recv: " << len_recv << endl;
 
     cout << "--------------------" << endl;
@@ -242,36 +250,87 @@ void *Server::handleRequest(void *a) {
         std::cout << e.what() << std::endl;
         // return;
     }
-    //client->initClientfd(h.host.c_str(), h.port.c_str());
+    // client->initClientfd(h.host.c_str(), h.port.c_str());
     cout << "proxy to brwoser fd: " << client->client_connection_fd << endl;
     cout << "proxy to remote server fd: " << client->client_fd << endl;
 
     send(client->client_fd, browser_request, strlen(browser_request), 0);
     char buffer[40960];
-
+    vector<char> ba(40960, 0);
     int recv_len = 0;
     while (true) {
-        ssize_t n = recv(client->client_fd, buffer + recv_len, sizeof(buffer) - recv_len, 0);
-        if (n == -1) {
-            perror("recv");
-            exit(EXIT_FAILURE);
-        } else if (n == 0) {
-            break;
-        } else {
-            recv_len += n;
+        ssize_t n = recv(client->client_fd, ba.data(), ba.size(), 0);
+
+    }
+    // while (true) {
+    //     ssize_t n = recv(client->client_fd, buffer + recv_len, sizeof(buffer) - recv_len, 0);
+    //     if (n == -1) {
+    //         perror("recv");
+    //         exit(EXIT_FAILURE);
+    //     } else if (n == 0) {
+    //         break;
+    //     } else {
+    //         recv_len += n;
+    //     }
+    // }
+    // write a method to parse header in buffer (which is sent by remote server)
+    // and get if webpage is chunked
+    // if chunked, then use the method below to get the whole webpage
+    // if not chunked, then just send the whole webpage to browser
+
+    // create an instance of response_parser
+
+    beast::flat_buffer buff;
+    http::response<http::dynamic_body> response;
+    http::read(client->client_fd, buff, response);
+
+    // Check if the transfer encoding is "chunked".
+    if (response.chunked()) {
+        std::cout << "The response is chunked\n";
+        send(client->client_connection_fd, buffer, sizeof(buffer), 0);
+        char chunked_msg[28000] = {0};
+        while (1) {  // receive and send remaining message
+            int len = recv(client->client_fd, chunked_msg, sizeof(chunked_msg), 0);
+            if (len <= 0) {
+                std::cout << "chunked break\n";
+                break;
+            }
+            send(client->client_connection_fd, chunked_msg, len, 0);
         }
+    } else {
+        std::cout << "The response is not chunked\n";
     }
 
-    //ssize_t n = recv(client->client_fd, buffer + recv_len, sizeof(buffer) - recv_len, 0);
+    
+    // if (!ec) {
+    //     response = parser.get();
+    //     // check if the response is chunked
+    //     if (response.chunked()) {
+    //         // do something if the response is chunked
+    //         send(client->client_connection_fd, buffer, sizeof(buffer), 0);
+    //         char chunked_msg[28000] = {0};
+    //         while (1) {  // receive and send remaining message
+    //             int len = recv(client->client_fd, chunked_msg, sizeof(chunked_msg), 0);
+    //             if (len <= 0) {
+    //                 std::cout << "chunked break\n";
+    //                 break;
+    //             }
+    //             send(client->client_connection_fd, chunked_msg, len, 0);
+    //         }
+    //     }
+    // }
 
-    cout << "recv_len: " << recv_len << endl;
+    // ssize_t n = recv(client->client_fd, buffer + recv_len, sizeof(buffer) - recv_len, 0);
+
+    /* this is for get   cout << "recv_len: " << recv_len << endl; */
     // cout << "done sending to web server" << endl;
     // int len_recv = recv(client_fd, buffer, 40960, 0);
     // cout << "len_recv: " << len_recv << endl;
     // cout << "using strlen" << strlen(buffer) << endl;  // this is wrong
+
     cout << sizeof(buffer) << endl;
     cout << "-------printing buffer from remote server-------" << endl;
-    // cout << buffer << endl;
+    cout << buffer << endl;
     cout << "----end of priting----" << endl;
     send(client->client_connection_fd, buffer, sizeof(buffer), 0);
     free(client);
