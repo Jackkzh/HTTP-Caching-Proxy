@@ -1,7 +1,7 @@
 #ifndef __HTTPCOMMAND__H__
 #define __HTTPCOMMAND__H__
 #include "helper.h"
-
+#include "myexception.h"
 using namespace std;
 
 class httpcommand {
