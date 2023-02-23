@@ -13,6 +13,7 @@
 #include <filesystem>
 #include <fstream>
 #include <iostream>
+#include <mutex>
 #include <string>
 #include <vector>
 
@@ -20,6 +21,31 @@
 #define logFileLocation "./proxy.log"  //"/var/log/erss/proxy.log"
 
 using namespace std;
+
+class Logger {
+ private:
+  ofstream log_file;
+  mutex mtx;
+
+ public:
+  Logger() {
+    // Check if log file exists and truncate it if it does
+    if (FILE * file = fopen(logFileLocation, "r")) {
+      fclose(file);
+      ofstream(logFileLocation, ios::trunc);
+    }
+    log_file.open(logFileLocation,
+                  ios::out | ios::app);  // ios::app is a flag used to append the file
+    if (!log_file) {
+      throw runtime_error("Failed to open log file");
+    }
+  }
+
+  void log(const string & message) {
+    lock_guard<mutex> lock{mtx};
+    log_file << message << endl;
+  }
+};
 
 class ClientInfo {
  public:
