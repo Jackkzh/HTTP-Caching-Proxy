@@ -18,12 +18,18 @@ int main() {
     std::cout << e.what() << std::endl;
   }
   cout << "Server is listening on port: " << server.getPort() << endl;
+
   string ip;
   int thread_id = 0;
   while (true) {
     thread_id++;
     try {
       server.acceptConnection(ip);
+      /*   --------- for testing multithread ---------   */
+      // cout << "the thread id: " << thread_id << endl;
+      // cout << "my fd: " << server.socket_fd << endl;
+      // cout << "client connection id : " << server.client_connection_fd << endl;
+      /*   --------- for testing multithread ---------   */
     }
     catch (exception & e) {
       std::cout << e.what() << std::endl;
