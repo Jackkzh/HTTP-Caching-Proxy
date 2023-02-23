@@ -4,10 +4,8 @@
 #include "helper.h"
 #include "httpcommand.h"
 #include "myexception.h"
-// add header for boost::beast::http::read_header
-#include <boost/asio.hpp>
-#include <boost/beast.hpp>
 
+#include <boost/regex.hpp>
 
 std::mutex mtx;
 ofstream logFile(logFileLocation);
@@ -231,6 +229,10 @@ void Proxy::connect_Transferdata(int fd1, int fd2) {
 }
 
 void Proxy::requestGET(int client_fd, httpcommand h, int thread_id) {
+
+
+    cout << "in requestGET" << endl;
+
     // send(client_fd, h.request.c_str(), h.request.length(), 0);
     //  more secure way to send data
     const char *data = h.request.c_str();
@@ -278,8 +280,6 @@ void Proxy::requestGET(int client_fd, httpcommand h, int thread_id) {
     // cout << "--------------------" << endl;
     /*------------------------------------------------*/
 
-    // parse the response from server
-
     /*------- char [] way of receiving GET response from server --------*/
     char buffer[40960];
     int recv_len = 0;
@@ -300,55 +300,42 @@ void Proxy::requestGET(int client_fd, httpcommand h, int thread_id) {
     cout << "--------------------" << endl;
     /*-------------------------------------------------------------------*/
 
+
+    string buffer_received(buffer);
+    bool isChunk = isChunked(buffer_received, client_fd);
+    
+
+
+
+
     // send(client_connection_fd, &buffer_received.data()[0], buffer_received.size(), 0);
     send(client_connection_fd, buffer, recv_len, 0);
     close(client_fd);
     close(client_connection_fd);
 }
 
+
+/**
+ * check if the response is chunked
+ * @param buffer -- the response from server
+ * @param client_fd -- the client socket fd with server 
+ * @return true if the response is chunked
+*/
 bool Proxy::isChunked(string buffer, int client_fd) {
     std::size_t pos = buffer.find("\r\n\r\n");
     if (pos != std::string::npos) {
         std::string headers = buffer.substr(0, pos);
-
-        // http::response_parser<http::string_body> parser;
-        // boost::system::error_code ec;
-        // parser.put(boost::asio::buffer(header), ec);
-
-        // if (ec) {
-        //     std::cerr << "Error parsing header: " << ec.message() << std::endl;
-        //     return 1;
-        // }
-
-        // http::response<http::string_body> response;
-        // response.version(parser.get().version());
-        // response.result(parser.get().result());
-        // response.reason(parser.get().reason());
-        // response.headers().insert(parser.get().headers().begin(), parser.get().headers().end());
-        // response.body() = std::move(parser.get().body());
-
-        // bool is_chunked = response.chunked();
-        boost::beast::http::response_parser<boost::beast::http::empty_body> parser;
-        boost::beast::error_code ec;
-        boost::beast::http::read_header(client_fd, boost::asio::buffer(headers), parser, ec);
-        if (ec) {
-            // handle error
+        // use Boost to find if the header contains "Transfer-Encoding: chunked"
+        boost::regex re("Transfer-Encoding: chunked");
+        boost::smatch what;
+        if (boost::regex_search(headers, what, re)) {
+            cout << "------------------" << endl;
+            cout << "chunked" << endl;
+            cout << "------------------" << endl;
+            return true;
         }
-
-        if (parser.get().find(boost::beast::http::field::transfer_encoding) != parser.get().end()) {
-            if (parser.get().at(boost::beast::http::field::transfer_encoding) == "chunked") {
-                std::cout << "The response is chunked\n";
-            } else {
-                std::cout << "The response is not chunked\n";
-            }
-        } else {
-            std::cout << "The transfer encoding field is not present in the response headers\n";
-        }
-    } else {
-        std::cout << "Invalid header format\n";
     }
-
-    return 0;
+    return false;
 }
 
 void Proxy::handleRequest(int thread_id) {
