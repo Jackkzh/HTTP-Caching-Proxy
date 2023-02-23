@@ -13,32 +13,56 @@
 #include <filesystem>
 #include <fstream>
 #include <iostream>
+#include <mutex>
 #include <string>
 #include <vector>
-
 #define MAX_LENGTH 65536
 #define logFileLocation "./proxy.log"  //"/var/log/erss/proxy.log"
 
-using namespace std;
+class Logger {
+ private:
+  std::ofstream log_file;
+  std::mutex mtx;
+
+ public:
+  Logger() {
+    // Check if log file exists and truncate it if it does
+    if (FILE * file = fopen(logFileLocation, "r")) {
+      fclose(file);
+      std::ofstream(logFileLocation, std::ios::trunc);
+    }
+    log_file.open(
+        logFileLocation,
+        std::ios::out | std::ios::app);  // ios::app is a flag used to append the file
+    if (!log_file) {
+      throw std::runtime_error("Failed to open log file");
+    }
+  }
+
+  void log(const std::string & message) {
+    std::lock_guard<std::mutex> lock{mtx};
+    log_file << message << std::endl;
+  }
+};
 
 class ClientInfo {
  public:
-  string request;
-  int uid;             //unique identifier for the client request
-  string ip;           //IP address that client made request from
-  int fd;              //file descriptor
-  string arrivalTime;  //the time when the request arrived
+  std::string request;
+  int uid;                  //unique identifier for the client request
+  std::string ip;           //IP address that client made request from
+  int fd;                   //file descriptor
+  std::string arrivalTime;  //the time when the request arrived
 
   ClientInfo(){};
-  ClientInfo(int uid, string ip, int fd, string arr);
-  void addRequest(string req);
+  ClientInfo(int uid, std::string ip, int fd, std::string arr);
+  void addRequest(std::string req);
 };
 
 class TimeMake {
  public:
-  string getTime();
+  std::string getTime();
 };
 
-bool messageBodyHandler(int len, string req, int & idx, bool & body);
-bool checkBadRequest(string req, int client_fd);
+bool messageBodyHandler(int len, std::string req, int & idx, bool & body);
+bool checkBadRequest(std::string req, int client_fd);
 #endif

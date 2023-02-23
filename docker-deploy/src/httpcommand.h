@@ -2,19 +2,18 @@
 #define __HTTPCOMMAND__H__
 #include "helper.h"
 #include "myexception.h"
-using namespace std;
 
 class httpcommand {
  public:
-  string request;
-  string method;
-  string port;
-  string host;
-  string url;
+  std::string request;
+  std::string method;
+  std::string port;
+  std::string host;
+  std::string url;
 
  public:
   httpcommand();
-  httpcommand(string req);
+  httpcommand(std::string req);
   void printRequestInfo();
 
  private:

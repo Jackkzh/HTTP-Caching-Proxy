@@ -1,19 +1,19 @@
 #include "helper.h"
 //pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
-ClientInfo::ClientInfo(int uid, string ip, int fd, string arr) :
+ClientInfo::ClientInfo(int uid, std::string ip, int fd, std::string arr) :
     uid(uid), ip(ip), fd(fd), arrivalTime(arr) {
 }
 
-void ClientInfo::addRequest(string req) {
+void ClientInfo::addRequest(std::string req) {
   request = req;
 }
 
-string TimeMake::getTime() {
+std::string TimeMake::getTime() {
   time_t currTime = time(0);
   struct tm * localTime = localtime(&currTime);
   const char * t = asctime(localTime);
-  return string(t);
+  return std::string(t);
 }
 
 /**
@@ -24,11 +24,11 @@ string TimeMake::getTime() {
  * @param body
  * @return bool
 */
-bool messageBodyHandler(int len, string req, int & idx, bool & body) {
+bool messageBodyHandler(int len, std::string req, int & idx, bool & body) {
   int endPos, contLen = 0;
-  if ((endPos = req.find("\r\n\r\n")) != string::npos) {
+  if ((endPos = req.find("\r\n\r\n")) != std::string::npos) {
     int contentPos = req.find("Content-Length: ", 0);
-    if (contentPos == string::npos) {
+    if (contentPos == std::string::npos) {
       return false;
     }
     int end = req.find("\r\n", contentPos);
@@ -53,9 +53,9 @@ bool messageBodyHandler(int len, string req, int & idx, bool & body) {
   return true;
 }
 
-bool checkBadRequest(string req, int client_fd) {
-  if (req.find("Host:", 0) == string::npos) {
-    string badRequest = "HTTP/1.1 400 Bad Request\r\n\r\n";
+bool checkBadRequest(std::string req, int client_fd) {
+  if (req.find("Host:", 0) == std::string::npos) {
+    std::string badRequest = "HTTP/1.1 400 Bad Request\r\n\r\n";
     int status = send(client_fd, badRequest.c_str(), strlen(badRequest.c_str()), 0);
     if (status == -1) {
       return false;
