@@ -7,6 +7,16 @@
 #include <mutex>
 #include <string>
 
+/*
+Example:
+{
+  "content": "Hello world!", // everything after headers
+  "expirationTime": "2023-02-23T00:00:00.000", //UTC
+  "lastModified": "2022-02-23T11:11:11.111",  //UTC
+  "eTag": "1512463465"
+}
+*/
+
 struct CacheItem {
   std::string content;
   boost::posix_time::ptime expirationTime;
