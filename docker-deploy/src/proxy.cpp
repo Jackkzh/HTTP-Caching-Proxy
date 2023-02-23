@@ -1,8 +1,13 @@
 #include "proxy.h"
+
 #include "client.h"
 #include "helper.h"
 #include "httpcommand.h"
 #include "myexception.h"
+// add header for boost::beast::http::read_header
+#include <boost/asio.hpp>
+#include <boost/beast.hpp>
+
 
 std::mutex mtx;
 ofstream logFile(logFileLocation);
@@ -226,25 +231,124 @@ void Proxy::connect_Transferdata(int fd1, int fd2) {
 }
 
 void Proxy::requestGET(int client_fd, httpcommand h, int thread_id) {
-    send(client_fd, h.request.c_str(), h.request.length(), 0);
-    char buffer[40960];
+    // send(client_fd, h.request.c_str(), h.request.length(), 0);
+    //  more secure way to send data
+    const char *data = h.request.c_str();
+    int request_len = h.request.size();
+    int total_sent = 0;
+    while (total_sent < request_len) {
+        int sent = send(client_fd, data + total_sent, request_len - total_sent, 0);
+        if (sent == -1) {
+            string msg = "Error(GET): message buffer being sent is broken";
+            throw myException(msg);
+        }
+        total_sent += sent;
+    }
+    cout << "successfully sent" << endl;
 
+    /*-------vector<char> type of receiving --------*/
+
+    /* problem: free(): invalid next size (normal), Aborted (core dumped) */
+
+    // vector<char> buffer_received(MAX_LENGTH, 0);
+    // int total_received = 0;
+    // // if size is not enough
+    // while (true) {
+    //     int received = recv(client_fd, &(buffer_received.data()[total_received]), MAX_LENGTH, 0);
+    //     if (received < 0) {
+    //         break;
+    //         // cout << "here" << endl;
+    //         // throw myException("Error(GET): message buffer being received is broken");
+    //     } else if (received == 0) {
+    //         break;
+    //     } else {
+    //     }
+    //     if (total_received == buffer_received.size()) {
+    //         buffer_received.resize(2 * buffer_received.size());
+    //     }
+    //     total_received += received;
+    // }
+    // cout << "successfully received" << endl;
+    // // check if the buffer received from server is empty
+    // if (buffer_received.empty()) {
+    //     return;
+    // }
+    // cout << "--------------------" << endl;
+    // cout << "the size of page " << total_received << endl;
+    // cout << "--------------------" << endl;
+    /*------------------------------------------------*/
+
+    // parse the response from server
+
+    /*------- char [] way of receiving GET response from server --------*/
+    char buffer[40960];
     int recv_len = 0;
     while (true) {
         ssize_t n = recv(client_fd, buffer + recv_len, sizeof(buffer) - recv_len, 0);
         if (n == -1) {
-            perror("recv"); // **** not necessarily an error, it's due to server side connection closed ****
-            //exit(EXIT_FAILURE);
-            return; // **** should be using return instead of exit ****
+            perror("recv");  // **** not necessarily an error, it's due to server side connection closed ****
+            // exit(EXIT_FAILURE);
+            return;  // **** should be using return instead of exit ****
         } else if (n == 0) {
             break;
         } else {
             recv_len += n;
         }
     }
-    send(client_connection_fd, buffer, sizeof(buffer), 0);
+    cout << "---------reponse header-----------" << endl;
+    cout << buffer << endl;
+    cout << "--------------------" << endl;
+    /*-------------------------------------------------------------------*/
+
+    // send(client_connection_fd, &buffer_received.data()[0], buffer_received.size(), 0);
+    send(client_connection_fd, buffer, recv_len, 0);
     close(client_fd);
     close(client_connection_fd);
+}
+
+bool Proxy::isChunked(string buffer, int client_fd) {
+    std::size_t pos = buffer.find("\r\n\r\n");
+    if (pos != std::string::npos) {
+        std::string headers = buffer.substr(0, pos);
+
+        // http::response_parser<http::string_body> parser;
+        // boost::system::error_code ec;
+        // parser.put(boost::asio::buffer(header), ec);
+
+        // if (ec) {
+        //     std::cerr << "Error parsing header: " << ec.message() << std::endl;
+        //     return 1;
+        // }
+
+        // http::response<http::string_body> response;
+        // response.version(parser.get().version());
+        // response.result(parser.get().result());
+        // response.reason(parser.get().reason());
+        // response.headers().insert(parser.get().headers().begin(), parser.get().headers().end());
+        // response.body() = std::move(parser.get().body());
+
+        // bool is_chunked = response.chunked();
+        boost::beast::http::response_parser<boost::beast::http::empty_body> parser;
+        boost::beast::error_code ec;
+        boost::beast::http::read_header(client_fd, boost::asio::buffer(headers), parser, ec);
+        if (ec) {
+            // handle error
+        }
+
+        if (parser.get().find(boost::beast::http::field::transfer_encoding) != parser.get().end()) {
+            if (parser.get().at(boost::beast::http::field::transfer_encoding) == "chunked") {
+                std::cout << "The response is chunked\n";
+            } else {
+                std::cout << "The response is not chunked\n";
+            }
+        } else {
+            std::cout << "The transfer encoding field is not present in the response headers\n";
+        }
+    } else {
+        std::cout << "Invalid header format\n";
+    }
+
+    return 0;
 }
 
 void Proxy::handleRequest(int thread_id) {
@@ -268,8 +372,11 @@ void Proxy::handleRequest(int thread_id) {
             buffer.resize(2 * buffer.size());
         }
     }
-    //print the buffer to terminal
-    cout << buffer.data() << endl;
+
+    /*------------testing-------------*/
+    // print the buffer to terminal
+    // cout << buffer.data() << endl;
+    /*------------testing-------------*/
 
     string client_request(buffer.data());
     httpcommand h(client_request);
@@ -283,8 +390,11 @@ void Proxy::handleRequest(int thread_id) {
     writeLog(thread_id + ": \"" + h.request + "\" from " + client_ip + " @ " +
              currTime.getTime());
 
-    Client client;
+    Client client;  // create a Client object to store socket for browser and server
     try {
+        // client.initClientfd(h.host.c_str(), h.port.c_str());
+
+        // build connection with remote server
         int client_fd = build_connection(h.host.c_str(), h.port.c_str());
         if (h.method == "CONNECT") {
             requestCONNECT(client_fd, thread_id);

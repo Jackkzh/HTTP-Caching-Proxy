@@ -33,5 +33,6 @@ class Proxy {
   void handleRequest(int thread_id);
   void requestGET(int client_fd, httpcommand h, int thread_id);
   void run(int thread_id);
+  bool isChunked(string buffer, int client_fd);
 };
 #endif
