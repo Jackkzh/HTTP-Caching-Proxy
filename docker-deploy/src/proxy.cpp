@@ -1,11 +1,11 @@
 #include "proxy.h"
 
+#include <boost/regex.hpp>
+
 #include "client.h"
 #include "helper.h"
 #include "httpcommand.h"
 #include "myexception.h"
-
-#include <boost/regex.hpp>
 
 std::mutex mtx;
 ofstream logFile(logFileLocation);
@@ -229,8 +229,6 @@ void Proxy::connect_Transferdata(int fd1, int fd2) {
 }
 
 void Proxy::requestGET(int client_fd, httpcommand h, int thread_id) {
-
-
     cout << "in requestGET" << endl;
 
     // send(client_fd, h.request.c_str(), h.request.length(), 0);
@@ -283,8 +281,15 @@ void Proxy::requestGET(int client_fd, httpcommand h, int thread_id) {
     /*------- char [] way of receiving GET response from server --------*/
     char buffer[40960];
     int recv_len = 0;
+    bool isChunk = false;
     while (true) {
         ssize_t n = recv(client_fd, buffer + recv_len, sizeof(buffer) - recv_len, 0);
+        isChunk = isChunked(string(buffer), client_fd);
+
+        if (isChunk) {
+            send(client_connection_fd, buffer, n, 0);
+            break;
+        }
         if (n == -1) {
             perror("recv");  // **** not necessarily an error, it's due to server side connection closed ****
             // exit(EXIT_FAILURE);
@@ -300,13 +305,13 @@ void Proxy::requestGET(int client_fd, httpcommand h, int thread_id) {
     cout << "--------------------" << endl;
     /*-------------------------------------------------------------------*/
 
-
     string buffer_received(buffer);
-    bool isChunk = isChunked(buffer_received, client_fd);
-    
+    // bool isChunk = isChunked(buffer_received, client_fd);
 
-
-
+    if (isChunk) {
+        cout << "in this 2" << endl;
+        sendChunkPacket(client_fd, client_connection_fd);
+    }
 
     // send(client_connection_fd, &buffer_received.data()[0], buffer_received.size(), 0);
     send(client_connection_fd, buffer, recv_len, 0);
@@ -314,13 +319,40 @@ void Proxy::requestGET(int client_fd, httpcommand h, int thread_id) {
     close(client_connection_fd);
 }
 
+/**
+ *
+ */
+void Proxy::sendChunkPacket(int client_fd, int client_connection_fd) {
+    while (true) {
+        vector<char> buffer_received(MAX_LENGTH, 0);
+        int total_received = 0;
+        int received = recv(client_fd, &(buffer_received.data()[total_received]), MAX_LENGTH, 0);
+        if (received <= 0) {
+            break;
+            // cout << "here" << endl;
+            // throw myException("Error(GET): message buffer being received is broken");
+        }
+        send(client_connection_fd, &(buffer_received.data()[total_received]), received, 0);
+        
+    }
+
+    // while (true) {
+    //     char respChars[MAX_LENGTH] = {0};
+    //     cout << "relat" << endl;
+    //     int size = recv(client_fd, respChars, MAX_LENGTH, 0);
+    //     if (size <= 0) {
+    //         break;
+    //     }
+    //     send(client_connection_fd, respChars, size, 0);
+    // }
+}
 
 /**
  * check if the response is chunked
  * @param buffer -- the response from server
- * @param client_fd -- the client socket fd with server 
+ * @param client_fd -- the client socket fd with server
  * @return true if the response is chunked
-*/
+ */
 bool Proxy::isChunked(string buffer, int client_fd) {
     std::size_t pos = buffer.find("\r\n\r\n");
     if (pos != std::string::npos) {
