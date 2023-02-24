@@ -1,45 +1,4 @@
- "CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Proxy-Connection: keep-alive
-Connection: keep-alive
-Host: incoming.telemetry.mozilla.org:443
-
-" from 45.37.116.131 @ Thu Feb 23 00:09:07 2023
-
- Responding "HTTP/1.1 200 OK"
-"CONNECT contile-images.services.mozilla.com:443 HTTP/1.1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Proxy-Connection: keep-alive
-Connection: keep-alive
-Host: contile-images.services.mozilla.com:443
-
-" from 45.37.116.131 @ Thu Feb 23 00:09:07 2023
-
-" from POST http://ocsp.digicert.com/ HTTP/1.1
-Host: ocsp.digicert.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Content-Type: application/ocsp-request
-Content-Length: 83
-Connection: keep-alive
-Pragma: no-cache
-Cache-Control: no-cache
-
-0Q0O0M0K0I0	+" from 45.37.116.131 @ Thu Feb 23 00:09:07 2023
-
-CONNECT img-getpocket.cdn.mozilla.net:443 HTTP/1.1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Proxy-Connection: keep-alive
-Connection: keep-alive
-Host: img-getpocket.cdn.mozilla.net:443
-
-" from 45.37.116.131 @ Thu Feb 23 00:09:07 2023
-
-esponding "HTTP/1.1 200 OK"
-Responding "HTTP/1.1 200 OK"
- from GET http://www.httpwatch.com/httpgallery/chunked/chunkedimage.aspx HTTP/1.1
+ "GET http://www.httpwatch.com/ HTTP/1.1
 Host: www.httpwatch.com
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
@@ -48,28 +7,135 @@ Accept-Encoding: gzip, deflate
 Connection: keep-alive
 Upgrade-Insecure-Requests: 1
 
-" from 45.37.116.131 @ Thu Feb 23 00:09:07 2023
+" from 45.37.116.131 @ Fri Feb 24 13:27:43 2023
 
-from CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1
+ Responding "HTTP/1.1 200 OK"
+CONNECT contile.services.mozilla.com:443 HTTP/1.1
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
 Proxy-Connection: keep-alive
 Connection: keep-alive
-Host: incoming.telemetry.mozilla.org:443
+Host: contile.services.mozilla.com:443
 
-" from 45.37.116.131 @ Thu Feb 23 00:09:07 2023
+" from 45.37.116.131 @ Fri Feb 24 13:27:58 2023
 
-onding "HTTP/1.1 200 OK"
-rom POST http://ocsp.digicert.com/ HTTP/1.1
-Host: ocsp.digicert.com
+"GET http://detectportal.firefox.com/canonical.html HTTP/1.1
+Host: detectportal.firefox.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Cache-Control: no-cache
+Pragma: no-cache
+Connection: keep-alive
+
+" from 45.37.116.131 @ Fri Feb 24 13:27:58 2023
+
+esponding "HTTP/1.1 200 OK"
+" from POST http://r3.o.lencr.org/ HTTP/1.1
+Host: r3.o.lencr.org
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
 Accept: */*
 Accept-Language: en-US,en;q=0.5
 Accept-Encoding: gzip, deflate
 Content-Type: application/ocsp-request
-Content-Length: 83
+Content-Length: 85
 Connection: keep-alive
 Pragma: no-cache
 Cache-Control: no-cache
 
-0Q0O0M0K0I0	+" from 45.37.116.131 @ Thu Feb 23 00:09:08 2023
+0S0Q0O0M0K0	+" from 45.37.116.131 @ Fri Feb 24 13:27:59 2023
+
+ from CONNECT contile-images.services.mozilla.com:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: contile-images.services.mozilla.com:443
+
+" from 45.37.116.131 @ Fri Feb 24 13:28:01 2023
+
+from CONNECT contile-images.services.mozilla.com:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: contile-images.services.mozilla.com:443
+
+" from 45.37.116.131 @ Fri Feb 24 13:28:01 2023
+
+ponding "HTTP/1.1 200 OK"
+onding "HTTP/1.1 200 OK"
+om POST http://r3.o.lencr.org/ HTTP/1.1
+Host: r3.o.lencr.org
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/ocsp-request
+Content-Length: 85
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+
+0S0Q0O0M0K0	+" from 45.37.116.131 @ Fri Feb 24 13:28:01 2023
+
+rom POST http://r3.o.lencr.org/ HTTP/1.1
+Host: r3.o.lencr.org
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/ocsp-request
+Content-Length: 85
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+
+0S0Q0O0M0K0	+" from 45.37.116.131 @ Fri Feb 24 13:28:01 2023
+
+m GET http://detectportal.firefox.com/canonical.html HTTP/1.1
+Host: detectportal.firefox.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Cache-Control: no-cache
+Pragma: no-cache
+Connection: keep-alive
+
+" from 45.37.116.131 @ Fri Feb 24 13:28:04 2023
+
+ GET http://detectportal.firefox.com/canonical.html HTTP/1.1
+Host: detectportal.firefox.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Cache-Control: no-cache
+Pragma: no-cache
+Connection: keep-alive
+
+" from 45.37.116.131 @ Fri Feb 24 13:28:08 2023
+
+GET http://detectportal.firefox.com/canonical.html HTTP/1.1
+Host: detectportal.firefox.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Cache-Control: no-cache
+Pragma: no-cache
+Connection: keep-alive
+
+" from 45.37.116.131 @ Fri Feb 24 13:28:14 2023
+
+ @ GET http://detectportal.firefox.com/canonical.html HTTP/1.1
+Host: detectportal.firefox.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Cache-Control: no-cache
+Pragma: no-cache
+Connection: keep-alive
+
+" from 45.37.116.131 @ Fri Feb 24 13:28:18 2023
 

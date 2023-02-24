@@ -1,6 +1,7 @@
 #ifndef __PROXY__H__
 #define __PROXY__H__
 #include <mutex>
+#include <boost/regex.hpp>
 
 #include "client.h"
 #include "helper.h"
@@ -33,7 +34,6 @@ class Proxy {
   void handleRequest(int thread_id);
   void requestGET(int client_fd, httpcommand h, int thread_id);
   void run(int thread_id);
-  bool isChunked(string buffer, int client_fd);
   void sendChunkPacket(int remoteFd, int client_connection_fd);
 };
 #endif
