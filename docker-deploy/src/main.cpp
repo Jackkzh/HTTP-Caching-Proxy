@@ -131,34 +131,29 @@ void testResponse() {
 }
 
 int main() {
-  testResponse();
-  // Proxy server;
-  // try {
-  //   server.initListenfd("12345");
-  // }
-  // catch (std::exception & e) {
-  //   std::cout << e.what() << std::endl;
-  // }
-  // std::cout << "Server is listening on port: " << server.getPort() << std::endl;
+  // testResponse();
+  Proxy server;
+  try {
+    server.initListenfd("12345");
+  }
+  catch (std::exception & e) {
+    std::cout << e.what() << std::endl;
+  }
+  std::cout << "Server is listening on port: " << server.getPort() << std::endl;
 
-  // std::string ip;
-  // int thread_id = 0;
-  // while (true) {
-  //   thread_id++;
-  //   try {
-  //     server.acceptConnection(ip);
-  //     /*   --------- for testing multithread ---------   */
-  //     // cout << "the thread id: " << thread_id << endl;
-  //     // cout << "my fd: " << server.socket_fd << endl;
-  //     // cout << "client connection id : " << server.client_connection_fd << endl;
-  //     /*   --------- for testing multithread ---------   */
-  //   }
-  //   catch (std::exception & e) {
-  //     std::cout << e.what() << std::endl;
-  //     continue;
-  //   }
-  //   std::thread th(test, server, thread_id);
-  //   th.detach();
-  // }
+  std::string ip;
+  int thread_id = 0;
+  while (true) {
+    thread_id++;
+    try {
+      server.acceptConnection(ip);
+    }
+    catch (std::exception & e) {
+      std::cout << e.what() << std::endl;
+      continue;
+    }
+    std::thread th(test, server, thread_id);
+    th.detach();
+  }
   return EXIT_SUCCESS;
 }

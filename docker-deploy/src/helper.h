@@ -91,7 +91,7 @@ class TimeMake {
   int getmonthMap(std::string str) { return monthMap.find(str)->second; }
   std::string getTime(int s = 0);
   std::string convertGMT(std::string timeGMT);
-  bool laterThanNow(std::string timeStr);
+  bool isLater(std::string timeStr1, std::string timeStr2);
 };
 
 bool messageBodyHandler(int len, std::string req, int & idx, bool & body);

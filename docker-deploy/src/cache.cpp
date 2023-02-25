@@ -70,11 +70,10 @@ void Cache::clear() {
 }
 
 void Cache::cleanup() {
-  boost::posix_time::ptime now = boost::posix_time::second_clock::local_time();
   std::vector<std::string> expiredKeys;
   TimeMake t;
   for (auto const & item : cache) {
-    if (!t.laterThanNow(item.second.expirationTime)) {
+    if (!t.isLater(item.second.expirationTime, t.getTime())) {
       expiredKeys.push_back(item.first);
     }
   }
@@ -104,7 +103,7 @@ bool Cache::validate(std::string key, ResponseInfo response) {
 
   CacheItem cachedItem = cache.at(key);
   TimeMake t;
-  if (!t.laterThanNow(cachedItem.expirationTime)) {
+  if (!t.isLater(cachedItem.expirationTime, t.getTime())) {
     // Cached response has expired.
     return false;
   }
