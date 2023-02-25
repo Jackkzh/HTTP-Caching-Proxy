@@ -30,7 +30,7 @@ bool Cache::has(std::string key) {
    * @param key representing the URL.
    * @return The cached response for the given URL.
    */
-CacheItem Cache::get(std::string key) {
+ResponseInfo Cache::get(std::string key) {
   std::lock_guard<std::mutex> lock(cacheMutex);
   cleanup();
   return cache.at(key);
@@ -44,30 +44,24 @@ CacheItem Cache::get(std::string key) {
    * @param lastModified the last modified time of the response, if available.
    * @param eTag the ETag of the response, if available.
    */
-void Cache::put(std::string key,
-                std::string content,
-                int maxAge,
-                std::string lastModified,
-                std::string eTag) {
+void Cache::put(std::string key, ResponseInfo response) {
   std::lock_guard<std::mutex> lock(cacheMutex);
   cleanup();
-
-  boost::posix_time::ptime expirationTime =
-      boost::posix_time::second_clock::local_time() + boost::posix_time::seconds(maxAge);
 
   if (cache.size() >= maxEntries) {
     cache.erase(cache.begin());
   }
-  CacheItem item = {content, expirationTime, lastModified, eTag};
+  // ResponseInfo item = {
+  //     response.content, response.expirationTime, response.lastModified, response.eTag};
 
-  if (lastModified != "") {
-    item.lastModified = lastModified;
-  }
-  if (eTag != "") {
-    item.eTag = eTag;
-  }
+  // if (response.lastModified != "") {
+  //   item.lastModified = response.lastModified;
+  // }
+  // if (response.eTag != "") {
+  //   item.eTag = response.eTag;
+  // }
 
-  cache[key] = item;
+  cache[key] = response;
 }
 
 void Cache::clear() {
@@ -76,11 +70,10 @@ void Cache::clear() {
 }
 
 void Cache::cleanup() {
-  boost::posix_time::ptime now = boost::posix_time::second_clock::local_time();
   std::vector<std::string> expiredKeys;
-
+  TimeMake t;
   for (auto const & item : cache) {
-    if (item.second.expirationTime < now) {
+    if (t.timeMinus(item.second.expirationTime, t.getTime()) <= 0) {
       expiredKeys.push_back(item.first);
     }
   }
@@ -100,7 +93,7 @@ void Cache::cleanup() {
  * @param eTag the ETag of the response, if available.
  * @return True if the cached response is still valid, false otherwise.
  */
-bool Cache::validate(std::string key, std::string lastModified, std::string eTag) {
+bool Cache::validate(std::string key, std::string & request) {
   std::lock_guard<std::mutex> lock(cacheMutex);
   cleanup();
   // Check if the cache has the requested URL
@@ -108,20 +101,41 @@ bool Cache::validate(std::string key, std::string lastModified, std::string eTag
     return false;
   }
 
-  CacheItem cachedItem = cache.at(key);
-
-  if (cachedItem.expirationTime < boost::posix_time::second_clock::local_time()) {
+  ResponseInfo cachedItem = cache.at(key);
+  TimeMake t;
+  if (t.timeMinus(cachedItem.expirationTime, t.getTime()) <= 0) {
     // Cached response has expired.
     return false;
   }
-  if (eTag != "" && eTag != cachedItem.eTag) {
+  if (cachedItem.eTag == "" && cachedItem.lastModified == "") {
+    return true;
+  }
+  if (cachedItem.eTag != "") {
     // ETag mismatch.
-    return false;
+    std::string ifNoneMatch = "If-None-Match: " + cachedItem.eTag.append("\r\n");
+    std::string request = request.insert(request.length() - 2, ifNoneMatch);
   }
 
-  if (lastModified != "" && lastModified != cachedItem.lastModified) {
+  if (cachedItem.lastModified != "") {
     // Last-Modified time mismatch.
-    return false;
+    std::string ifModifiedSince =
+        "If-Modified-Since: " + cachedItem.lastModified.append("\r\n");
+    std::string request = request.insert(request.length() - 2, ifModifiedSince);
   }
-  return true;
+  return false;
+}
+
+void Cache::printCache() {
+  std::map<std::string, ResponseInfo>::iterator it = cache.begin();
+  std::cout << "=================Cache===================" << std::endl;
+  while (it != cache.end()) {
+    std::cout << "-----------------------------" << std::endl;
+    std::cout << "Request: " << it->first << std::endl;
+    it->second.printCacheFields();
+    std::cout << "------------------------------" << std::endl;
+    ++it;
+  }
+  std::cout << "=================Cache Size===================" << std::endl;
+  std::cout << "cache.size=" << cache.size() << std::endl;
+  std::cout << "=================Cache End===================" << std::endl;
 }

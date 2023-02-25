@@ -31,7 +31,7 @@ class Proxy {
   void handleRequest(int thread_id);
   void requestGET(int client_fd, httpcommand h, int thread_id);
   void run(int thread_id);
-  bool isChunked(std::string buffer, int client_fd);
+  void requestPOST(int client_fd, httpcommand request_info, int thread_id);
   void sendChunkPacket(int remoteFd, int client_connection_fd);
 };
 #endif

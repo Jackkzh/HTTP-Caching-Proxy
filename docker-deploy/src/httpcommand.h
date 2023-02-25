@@ -10,6 +10,8 @@ class httpcommand {
   std::string port;
   std::string host;
   std::string url;
+  std::string ifNoneMatch;
+  std::string ifModifiedSince;
 
  public:
   httpcommand();
@@ -20,5 +22,6 @@ class httpcommand {
   void parseMethod();
   void parseHostPort();
   void parseURL();
+  void parseValidInfo();
 };
 #endif
