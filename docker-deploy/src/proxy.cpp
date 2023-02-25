@@ -243,6 +243,7 @@ void Proxy::requestGET(int client_fd, httpcommand h, int thread_id) {
         }
         total_sent += sent;
     }
+    
     // cout << "successfully sent" << endl;
     /*------------------send request to server--------------------*/
 
@@ -287,6 +288,7 @@ void Proxy::requestGET(int client_fd, httpcommand h, int thread_id) {
         // perror("recv"); // **** not necessarily an error, it's due to server side connection closed ****
         return;  // **** should be using return instead of exit ****
     }
+    cout << buffer << endl;
     string buffer_str(buffer);
     response_info.parseResponse(buffer_str);
 

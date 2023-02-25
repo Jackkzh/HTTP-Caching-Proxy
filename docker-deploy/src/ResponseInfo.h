@@ -35,7 +35,7 @@ class ResponseInfo {
         setChunked(buffer);
         setStatusCode(buffer);
         checkStatus(buffer);
-        setContentType(buffer)
+        setContentType(buffer);
     }
 
     ResponseInfo(string buffer) : is_chunk(false), content_length(-1) {
