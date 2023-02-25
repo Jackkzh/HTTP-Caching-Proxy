@@ -95,6 +95,7 @@ void ResponseInfo::checkStatus(std::string & buffer) {
  * @param buffer the buffer containing the HTTP response
  */
 void ResponseInfo::setCacheControl(std::string & buffer) {
+  TimeMake t;
   std::size_t end = buffer.find("\r\n\r\n");
   if (end != std::string::npos) {
     std::string headers = buffer.substr(0, end);
@@ -105,28 +106,50 @@ void ResponseInfo::setCacheControl(std::string & buffer) {
       // get the string after "Cache-Control: "
       std::string cache_control = what[1].str();
 
+      // check if cache-control contains "must-revalidate" directive
+      if (cache_control.find("must-revalidate") != std::string::npos) {
+        mustRevalidate = true;
+      }
+
       // check if cache-control contains "no-cache" directive
       if (cache_control.find("no-cache") != std::string::npos) {
         noCache = true;
+      }
+
+      // check if cache-control contains "no-store" directive
+      if (cache_control.find("no-store") != std::string::npos) {
+        noStore = true;
+      }
+
+      // check if cache-control contains "public" directive
+      if (cache_control.find("public") != std::string::npos) {
+        isPublic = true;
+      }
+      else if (cache_control.find("private") != std::string::npos) {
+        isPrivate = true;
+      }
+
+      // use Boost to find if the header contains "Expires: "
+      re = boost::regex("Expires:\\s*([^\r\n]*)");
+      if (boost::regex_search(headers, what, re)) {
+        expirationTime = t.convertGMT(what[1].str());
+        // std::cout << "expirationTime: " << expirationTime << std::endl;
+        // std::cout << "Convert expirationTime: " << t.convertGMT(expirationTime)
+        //           << std::endl;
       }
 
       // use Boost to find if the header contains "max-age=seconds"
       re = boost::regex("max-age=(\\d+)");
       if (boost::regex_search(cache_control, what, re)) {
         maxAge = std::stoi(what[1].str());
-      }
-
-      // use Boost to find if the header contains "Expires: "
-      re = boost::regex("Expires:\\s*([^\r\n]*)");
-      if (boost::regex_search(headers, what, re)) {
-        expirationTime = what[1].str();
-        // std::cout << "expirationTime: " << expirationTime << std::endl;
+        TimeMake t;
+        expirationTime = t.getTime(maxAge);
       }
 
       // use Boost to find if the header contains "Last-Modified: "
       re = boost::regex("Last-Modified:\\s*([^\r\n]*)");
       if (boost::regex_search(headers, what, re)) {
-        lastModified = what[1].str();
+        lastModified = t.convertGMT(what[1].str());
         // std::cout << "lastModified: " << lastModified << std::endl;
       }
 
@@ -152,4 +175,40 @@ void ResponseInfo::printCacheFields() {
   std::cout << "expirationTime: " << expirationTime << std::endl;
   std::cout << "lastModified: " << lastModified << std::endl;
   std::cout << "eTag: " << eTag << std::endl;
+}
+
+/**
+ * @param buffer the buffer containing the HTTP response
+ * @param maxStale If max-stale is assigned a value, then the client is willing 
+ * to accept a response that has exceeded its freshness lifetime
+ * by no more than the specified number of seconds.
+*/
+// void ResponseInfo::setFreshLifeTime(std::string & buffer, int maxStale) {
+//   std::size_t end = buffer.find("\r\n\r\n");
+//   if (end != std::string::npos) {
+//     std::string headers = buffer.substr(0, end);
+//     boost::regex re("Date:\\s*(\\S+)");
+
+//     // use Boost to find if the header contains "Cache-Control: "
+//     boost::regex re("Cache-Control:\\s*(\\S+)");
+//     boost::smatch what;
+//     if (boost::regex_search(headers, what, re)) {
+//       // get the string after "Cache-Control: "
+//       std::string cache_control = what[1].str();
+
+//       // check if cache-control contains "no-cache" directive
+//       if (cache_control.find("no-cache") != std::string::npos) {
+//         noCache = true;
+//       }
+//     }
+//   }
+// }
+
+bool ResponseInfo::isCacheable() {
+  if (!noStore && !isPrivate) {
+    if (expirationTime != "" || maxAge != -1 || isPublic) {
+      return true;
+    }
+  }
+  return false;
 }

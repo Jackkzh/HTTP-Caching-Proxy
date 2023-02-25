@@ -1,25 +1,28 @@
 #ifndef CACHE_H
 #define CACHE_H
 
-#include <boost/date_time/posix_time/posix_time.hpp>
+#include <boost/date_time.hpp>
 
 #include <map>
 #include <mutex>
 #include <string>
 
+#include "ResponseInfo.h"
+#include "helper.h"
+
 /*
 Example:
 {
   "content": "Hello world!", // everything after headers
-  "expirationTime": "2023-02-23T00:00:00.000", //UTC
-  "lastModified": "2022-02-23T11:11:11.111",  //UTC
+  "expirationTime": "Thu, 22 Feb 2023 13:34:56 GMT",
+  "lastModified": "Thu, 22 Feb 2023 13:34:56 GMT", 
   "eTag": "1512463465"
 }
 */
 
 struct CacheItem {
   std::string content;
-  boost::posix_time::ptime expirationTime;
+  std::string expirationTime;
   std::string lastModified = "";
   std::string eTag = "";
 };
@@ -44,16 +47,14 @@ class Cache {
 
   // caches the response for the given URL
   // the response will be removed from the cache after maxAge seconds
-  void put(std::string key,
-           std::string content,
-           int maxAge,
-           std::string lastModified,
-           std::string eTag);
+  void put(std::string key, ResponseInfo response);
 
   // removes all entries from the cache
   void clear();
 
-  bool validate(std::string key, std::string lastModified, std::string eTag);
+  bool validate(std::string key, ResponseInfo response);
+
+  bool isFresh();
 };
 
 #endif
