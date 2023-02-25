@@ -11,6 +11,7 @@ httpcommand::httpcommand(std::string req) : request(req) {
   parseMethod();
   parseHostPort();
   parseURL();
+  parseValidInfo();
 };
 
 void httpcommand::printRequestInfo() {
@@ -70,4 +71,9 @@ void httpcommand::parseURL() {
   int url_pos = request.find(" ", 0);
   int url_pos2 = request.find(" ", url_pos + 1);
   url = request.substr(url_pos + 1, url_pos2 - url_pos - 1);
+}
+
+void httpcommand::parseValidInfo() {
+  ifModifiedSince = "";
+  ifNoneMatch = "";
 }

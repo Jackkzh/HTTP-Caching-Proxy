@@ -27,11 +27,6 @@ class Logger {
 
  public:
   Logger() {
-    // Check if log file exists and truncate it if it does
-    if (FILE * file = fopen(logFileLocation, "r")) {
-      fclose(file);
-      std::ofstream(logFileLocation, std::ios::trunc);
-    }
     log_file.open(
         logFileLocation,
         std::ios::out | std::ios::app);  // ios::app is a flag used to append the file
@@ -40,7 +35,7 @@ class Logger {
     }
   }
 
-  void log(const std::string & message) {
+  void log(std::string message) {
     std::lock_guard<std::mutex> lock{mtx};
     log_file << message << std::endl;
   }
@@ -91,7 +86,7 @@ class TimeMake {
   int getmonthMap(std::string str) { return monthMap.find(str)->second; }
   std::string getTime(int s = 0);
   std::string convertGMT(std::string timeGMT);
-  bool isLater(std::string timeStr1, std::string timeStr2);
+  int timeMinus(std::string timeStr1, std::string timeStr2);
 };
 
 bool messageBodyHandler(int len, std::string req, int & idx, bool & body);

@@ -151,10 +151,11 @@ void Proxy::requestCONNECT(int client_fd, int thread_id) {
   std::string msg = "HTTP/1.1 200 OK\r\n\r\n";
   int status = send(client_connection_fd, msg.c_str(), strlen(msg.c_str()), 0);
   if (status == -1) {
-    std::string msg = "Error(Connection): message buffer being sent is broken";
+    msg = "Error(Connection): message buffer being sent is broken";
     throw myException(msg);
   }
-  logFile.log(thread_id + ": Responding \"HTTP/1.1 200 OK\"");
+  msg = std::to_string(thread_id) + ": Responding \"HTTP/1.1 200 OK\"";
+  logFile.log(msg);
   fd_set read_fds;
   int maxfd = client_fd > client_connection_fd ? client_fd : client_connection_fd;
   while (true) {
@@ -168,7 +169,7 @@ void Proxy::requestCONNECT(int client_fd, int thread_id) {
 
     status = select(maxfd + 1, &read_fds, NULL, NULL, &time);
     if (status == -1) {
-      std::string msg = "Error(Connection): select() failed";
+      msg = "Error(Connection): select() failed";
       throw myException(msg);
     }
     if (FD_ISSET(client_connection_fd, &read_fds)) {
@@ -190,7 +191,8 @@ void Proxy::requestCONNECT(int client_fd, int thread_id) {
       }
     }
   }
-  logFile.log(thread_id + ": Tunnel closed");
+  msg = std::to_string(thread_id) + ": Tunnel closed";
+  logFile.log(msg);
   close(client_fd);
   close(client_connection_fd);
   return;
@@ -223,6 +225,9 @@ void Proxy::connect_Transferdata(int fd1, int fd2) {
 }
 
 void Proxy::requestGET(int client_fd, httpcommand h, int thread_id) {
+  std::string msg = std::to_string(thread_id) + ": Requesting \"" + h.method + " " +
+                    h.url + "\" from " + h.host;
+  logFile.log(msg);
   //  more secure way to send data
   const char * data = h.request.c_str();
   int request_len = h.request.size();
@@ -246,25 +251,23 @@ void Proxy::requestGET(int client_fd, httpcommand h, int thread_id) {
     // perror("recv"); // **** not necessarily an error, it's due to server side connection closed ****
     return;  // **** should be using return instead of exit ****
   }
-
+  TimeMake t;
   std::string buffer_str(buffer);
-  response_info.parseResponse(buffer_str);
-  std::cout << "****************" << std::endl;
-  std::cout << buffer_str << std::endl;
-  response_info.printCacheFields();
-  std::cout << "****************" << std::endl;
-  std::cout << "is it chunk? " << response_info.is_chunk << std::endl;
+  response_info.parseResponse(buffer_str, t.getTime());
+  response_info.logCat(thread_id);
   if (response_info.is_chunk) {
     send(client_connection_fd, buffer, n, 0);
-    // break;
-  }
-  if (response_info.is_chunk) {
     sendChunkPacket(client_fd, client_connection_fd);
   }
   else {
     send(client_connection_fd, buffer, n, 0);
   }
-  // send(client_connection_fd, buffer, recv_len, 0);
+  if (response_info.isCacheable(thread_id)) {
+    cache.put(h.url, response_info);
+  }
+  std::string response_line = buffer_str.substr(0, buffer_str.find_first_of("\r\n"));
+  msg = std::to_string(thread_id) + ": Responding \"" + response_line + "\"";
+  logFile.log(msg);
   close(client_fd);
   close(client_connection_fd);
 }
@@ -292,16 +295,18 @@ void Proxy::sendChunkPacket(int client_fd, int client_connection_fd) {
  * @param thread_id -- the thread id of a thread
  */
 void Proxy::requestPOST(int client_fd, httpcommand request_info, int thread_id) {
-  std::cout << "in requestPOST" << std::endl;
-  std::cout << "---" << std::endl;
-
+  // std::cout << "in requestPOST" << std::endl;
+  // std::cout << "---" << std::endl;
+  std::string msg = std::to_string(thread_id) + ": Requesting \"" + request_info.method +
+                    " " + request_info.url + "\" from " + request_info.host;
+  logFile.log(msg);
   const char * data = request_info.request.c_str();
   int request_len = request_info.request.size();
   int total_sent = 0;
   while (total_sent < request_len) {
     int sent = send(client_fd, data + total_sent, request_len - total_sent, 0);
     if (sent == -1) {
-      std::string msg = "Error(GET): message buffer being sent is broken";
+      msg = "Error(GET): message buffer being sent is broken";
       throw myException(msg);
     }
     total_sent += sent;
@@ -320,7 +325,8 @@ void Proxy::requestPOST(int client_fd, httpcommand request_info, int thread_id) 
   }
   recv_len += n;
   std::string buffer_str(buffer);
-  response_info.parseResponse(buffer_str);
+  TimeMake t;
+  response_info.parseResponse(buffer_str, t.getTime());
   while (recv_len < response_info.content_length) {
     ssize_t n = recv(client_fd, buffer + recv_len, sizeof(buffer) - recv_len, 0);
     if (n == -1) {
@@ -330,8 +336,8 @@ void Proxy::requestPOST(int client_fd, httpcommand request_info, int thread_id) 
     recv_len += n;
   }
 
-  std::cout << "****************" << std::endl;
-  std::cout << buffer << std::endl;
+  // std::cout << "****************" << std::endl;
+  // std::cout << buffer << std::endl;
 
   send(client_connection_fd, buffer, strlen(buffer), 0);
   close(client_fd);
@@ -355,8 +361,10 @@ void Proxy::handleRequest(int thread_id) {
   }
 
   TimeMake currTime;
-  logFile.log(thread_id + ": \"" + request_info.method + " " + request_info.url +
-              "\" from " + client_ip + " @ " + currTime.getTime());
+  std::string request_time = currTime.getTime();
+  std::string msg = std::to_string(thread_id) + ": \"" + request_info.method + " " +
+                    request_info.url + "\" from " + client_ip + " @ " + request_time;
+  logFile.log(msg);
 
   try {
     // client.initClientfd(h.host.c_str(), h.port.c_str());
@@ -365,10 +373,60 @@ void Proxy::handleRequest(int thread_id) {
     int client_fd =
         build_connection(request_info.host.c_str(), request_info.port.c_str());
     if (request_info.method == "CONNECT") {
+      msg = std::to_string(thread_id) + ": Requesting \"" + request_info.method + " " +
+            request_info.url + "\" from " + request_info.host;
+      logFile.log(msg);
       requestCONNECT(client_fd, thread_id);
     }
     else if (request_info.method == "GET") {
-      requestGET(client_fd, request_info, thread_id);
+      if (!cache.has(request_info.url)) {  //not in cache
+        msg = std::to_string(thread_id) + ": not in cache";
+        logFile.log(msg);
+        requestGET(client_fd, request_info, thread_id);
+      }
+      else {                                        //find in cache
+        if (cache.get(request_info.url).noCache) {  // has no-cache
+          // check validation
+          if (!cache.validate(request_info.url, client_request_str)) {
+            std::string req_msg_str = client_request_str;
+            char req_new_msg[req_msg_str.size() + 1];
+            send(client_fd, req_new_msg, req_msg_str.size() + 1, 0);
+            char new_resp[65536] = {0};
+            int new_len = recv(client_fd, &new_resp, sizeof(new_resp), 0);
+            std::string checknew(new_resp, new_len);
+            if (checknew.find("HTTP/1.1 200 OK") != std::string::npos) {
+              msg = std::to_string(thread_id) + ": cached, but requires re-validation";
+              logFile.log(msg);
+            }
+            requestGET(client_fd, request_info, thread_id);
+          }
+          else {  //use cache
+            char res[cache.get(request_info.url).response.size()];
+            strcpy(res, cache.get(request_info.url).response.c_str());
+            send(client_fd, res, cache.get(request_info.url).response.size(), 0);
+            msg = std::to_string(thread_id) + ": Responding \"" + request_info.url + "\"";
+            logFile.log(msg);
+          }
+        }
+        else {
+          // check fresh
+          std::string response_time = currTime.getTime();
+          if (cache.get(request_info.url).isFresh(response_time)) {  //use cache
+            char res[cache.get(request_info.url).response.size()];
+            strcpy(res, cache.get(request_info.url).response.c_str());
+            send(client_fd, res, cache.get(request_info.url).response.size(), 0);
+            msg = std::to_string(thread_id) + ": Responding \"" + request_info.url + "\"";
+            logFile.log(msg);
+          }
+          else {
+            msg = std::to_string(thread_id) + ": cached, expires at " +
+                  currTime.getTime(cache.get(request_info.url).freshLifeTime);
+            logFile.log(msg);
+            requestGET(client_fd, request_info, thread_id);
+          }
+          cache.printCache();
+        }
+      }
     }
     else if (request_info.method == "POST") {
       requestPOST(client_fd, request_info, thread_id);

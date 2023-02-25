@@ -34,7 +34,7 @@ std::string TimeMake::convertGMT(std::string timeGMT) {
   return std::string(outputFormat);
 }
 
-bool TimeMake::isLater(std::string timeStr1, std::string timeStr2) {
+int TimeMake::timeMinus(std::string timeStr1, std::string timeStr2) {
   std::tm tm1 = {};
   strptime(timeStr1.c_str(), "%a %b %d %H:%M:%S %Y", &tm1);
   std::time_t time1 = std::mktime(&tm1);
@@ -43,7 +43,7 @@ bool TimeMake::isLater(std::string timeStr1, std::string timeStr2) {
   strptime(timeStr2.c_str(), "%a %b %d %H:%M:%S %Y", &tm2);
   std::time_t time2 = std::mktime(&tm2);
 
-  return std::difftime(time1, time2) > 0;
+  return std::difftime(time1, time2);
 }
 
 /**

@@ -29,7 +29,7 @@ struct CacheItem {
 
 class Cache {
  private:
-  std::map<std::string, CacheItem> cache;  // stores cached response for each URL
+  std::map<std::string, ResponseInfo> cache;  // stores cached response for each URL
   int maxEntries;  // maximum number of entries allowed in the cache
   std::mutex cacheMutex;
   void cleanup();  // helper function to remove expired entries from the cache
@@ -43,7 +43,7 @@ class Cache {
 
   // returns the cached response for the given URL
   // throws std::out_of_range if the cache does not contain a response for the given URL
-  CacheItem get(std::string key);
+  ResponseInfo get(std::string key);
 
   // caches the response for the given URL
   // the response will be removed from the cache after maxAge seconds
@@ -52,9 +52,11 @@ class Cache {
   // removes all entries from the cache
   void clear();
 
-  bool validate(std::string key, ResponseInfo response);
+  bool validate(std::string key, std::string & request);
 
   bool isFresh();
+
+  void printCache();
 };
 
 #endif
