@@ -26,6 +26,7 @@ class ResponseInfo {
     // for chunnk and content-length, ****havent discussed 403 yet****
     bool is_chunk;
     int content_length;
+    string content_type;
 
     ResponseInfo() : is_chunk(false), content_length(-1){};
 
@@ -34,6 +35,7 @@ class ResponseInfo {
         setChunked(buffer);
         setStatusCode(buffer);
         checkStatus(buffer);
+        setContentType(buffer)
     }
 
     ResponseInfo(string buffer) : is_chunk(false), content_length(-1) {
@@ -44,6 +46,7 @@ class ResponseInfo {
     void setChunked(string& buffer);
     void setStatusCode(string& buffer);
     void checkStatus(string& buffer);
+    void setContentType(string& buffer);
 };
 
 #endif

@@ -6,7 +6,7 @@
 #include <pthread.h>
 #include <sys/socket.h>
 #include <unistd.h>
-
+#include <mutex>
 #include <cstring>
 #include <ctime>
 #include <exception>
@@ -21,12 +21,42 @@
 
 using namespace std;
 
+class Logger {
+ private:
+  ofstream log_file;
+  mutex mtx;
+
+ public:
+  Logger() {
+    // Check if log file exists and truncate it if it does
+    if (FILE * file = fopen(logFileLocation, "r")) {
+      fclose(file);
+      ofstream(logFileLocation, ios::trunc);
+    }
+    log_file.open(
+        logFileLocation,
+        ios::out | ios::app);  // ios::app is a flag used to append the file
+    if (!log_file) {
+      throw runtime_error("Failed to open log file");
+    }
+  }
+
+  void log(const string & message) {
+    lock_guard<mutex> lock{mtx};
+    log_file << message << std::endl;
+  }
+};
+
+
+
+
+
 class ClientInfo {
  public:
   string request;
-  int uid;             //unique identifier for the client request
+  int uid;                  //unique identifier for the client request
   string ip;           //IP address that client made request from
-  int fd;              //file descriptor
+  int fd;                   //file descriptor
   string arrivalTime;  //the time when the request arrived
 
   ClientInfo(){};

@@ -53,6 +53,12 @@ bool messageBodyHandler(int len, string req, int & idx, bool & body) {
   return true;
 }
 
+/**
+ * check if the request is malformed, send 400 Bad Request if it is
+ * @param req
+ * @param client_fd
+ * @return bool
+*/
 bool checkBadRequest(string req, int client_fd) {
   if (req.find("Host:", 0) == string::npos) {
     string badRequest = "HTTP/1.1 400 Bad Request\r\n\r\n";

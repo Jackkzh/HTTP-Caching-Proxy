@@ -8,10 +8,9 @@ void writeLog(string msg) {
     logFile << msg << endl;
 }
 
-/*
+/**
  * init socket status, bind socket, listen on socket as a server(to accept connection from browser)
  * @param port
- * @return listen_fd
  */
 void Proxy::initListenfd(const char *port) {
     int status;
@@ -71,7 +70,7 @@ void Proxy::initListenfd(const char *port) {
  * @param port
  * @return socket_fd
  */
-int Proxy::build_connection(string host, string port) {
+int Proxy::build_connection(const char *host, const char *port) {
     int status;
     int client_fd;
     struct addrinfo host_info;
@@ -79,7 +78,7 @@ int Proxy::build_connection(string host, string port) {
     memset(&host_info, 0, sizeof(host_info));
     host_info.ai_family = AF_UNSPEC;
     host_info.ai_socktype = SOCK_STREAM;
-    status = getaddrinfo(host.c_str(), port.c_str(), &host_info, &host_info_list);
+    status = getaddrinfo(host, port, &host_info, &host_info_list);
     if (status != 0) {
         cerr << "Error: cannot get address info for host" << endl;
         return -1;
@@ -129,7 +128,7 @@ void Proxy::acceptConnection(string &ip) {
 }
 
 /**
- * get the port number
+ * get the port number of the connection
  * @return port number
  */
 int Proxy::getPort() {
@@ -142,15 +141,15 @@ int Proxy::getPort() {
     return ntohs(sin.sin_port);
 }
 
-/*
+/**
  * The CONNECT method requests that the recipient establish a tunnel to
  * the destination origin server identified by the request-target and,
  * if successful, thereafter restrict its behavior to blind forwarding
  * of packets, in both directions, until the tunnel is closed.
- * @param id client's unique id
+ * @param client_fd client's socket fd
+ * @param thread_id thread's id
  */
 void Proxy::requestCONNECT(int client_fd, int thread_id) {
-    cout << "in requestCONNECT" << endl;
     string msg = "HTTP/1.1 200 OK\r\n\r\n";
     int status = send(client_connection_fd, msg.c_str(), strlen(msg.c_str()), 0);
     if (status == -1) {
@@ -196,10 +195,10 @@ void Proxy::requestCONNECT(int client_fd, int thread_id) {
     return;
 }
 
-/*
+/**
  * Transfer Data between sender and receiver
- * @param send_fd
- * @param recv_fd
+ * @param fd1 -- send_fd
+ * @param fd2 -- recv_fd
  */
 void Proxy::connect_Transferdata(int fd1, int fd2) {
     vector<char> buffer(MAX_LENGTH, 0);
@@ -222,8 +221,16 @@ void Proxy::connect_Transferdata(int fd1, int fd2) {
     }
 }
 
+/**
+ * send GET request to browser, check error case and send response to browser
+ * @param client_fd
+ * @param h
+ * @param thread_id
+ */
 void Proxy::requestGET(int client_fd, httpcommand h, int thread_id) {
     // send(client_fd, h.request.c_str(), h.request.length(), 0);
+
+    /*------------------send request to server--------------------*/
     //  more secure way to send data
     const char *data = h.request.c_str();
     int request_len = h.request.size();
@@ -237,11 +244,10 @@ void Proxy::requestGET(int client_fd, httpcommand h, int thread_id) {
         total_sent += sent;
     }
     // cout << "successfully sent" << endl;
+    /*------------------send request to server--------------------*/
 
     /*-------vector<char> type of receiving --------*/
-
     /* problem: free(): invalid next size (normal), Aborted (core dumped) */
-
     // vector<char> buffer_received(MAX_LENGTH, 0);
     // int total_received = 0;
     // // if size is not enough
@@ -268,7 +274,7 @@ void Proxy::requestGET(int client_fd, httpcommand h, int thread_id) {
     // cout << "--------------------" << endl;
     // cout << "the size of page " << total_received << endl;
     // cout << "--------------------" << endl;
-    /*------------------------------------------------*/
+    /*-------vector<char> type of receiving --------*/
 
     /*------- char [] way of receiving GET response from server --------*/
     char buffer[40960];
@@ -277,13 +283,16 @@ void Proxy::requestGET(int client_fd, httpcommand h, int thread_id) {
     ResponseInfo response_info;
     // while (true) {
     ssize_t n = recv(client_fd, buffer + recv_len, sizeof(buffer) - recv_len, 0);
-    string bf(buffer);
-    response_info.parseResponse(bf);
+    if (n == -1) {
+        // perror("recv"); // **** not necessarily an error, it's due to server side connection closed ****
+        return;  // **** should be using return instead of exit ****
+    }
+    string buffer_str(buffer);
+    response_info.parseResponse(buffer_str);
 
-    // isChunk = isChunked(string(buffer), client_fd);
     if (response_info.is_chunk) {
         send(client_connection_fd, buffer, n, 0);
-        // reak;
+        // break;
     }
     // if (n == -1) {
     //     perror("recv");  // **** not necessary an error, it's due to server side connection closed ****
@@ -295,31 +304,22 @@ void Proxy::requestGET(int client_fd, httpcommand h, int thread_id) {
     //     recv_len += n;
     // }
     // }
-    response_info.checkStatus(bf);
-
-    if (response_info.status_code == 301) {
-    }
-
-    cout << "---------reponse header-----------" << endl;
-    cout << buffer << endl;
-    cout << "----------------------------------" << endl;
-    /*-------------------------------------------------------------------*/
-
-    // string buffer_received(buffer);
-    // isChunk = isChunked(buffer_received, client_fd);
+    /*------- char [] way of receiving GET response from server --------*/
 
     if (response_info.is_chunk) {
         sendChunkPacket(client_fd, client_connection_fd);
+    } else {
+        send(client_connection_fd, buffer, recv_len, 0);
     }
-
-    // send(client_connection_fd, &buffer_received.data()[0], buffer_received.size(), 0);
-    send(client_connection_fd, buffer, recv_len, 0);
+    // send(client_connection_fd, buffer, recv_len, 0);
     close(client_fd);
     close(client_connection_fd);
 }
 
 /**
- *
+ * Send chunk packets to browser, do not wait for the whole packet
+ * @param client_fd  -- fd connected to server
+ * @param client_connection_fd -- fd connected to browser
  */
 void Proxy::sendChunkPacket(int client_fd, int client_connection_fd) {
     while (true) {
@@ -344,66 +344,57 @@ void Proxy::sendChunkPacket(int client_fd, int client_connection_fd) {
 }
 
 /**
- * check if the response is chunked
- * @param buffer -- the response from server
- * @param client_fd -- the client socket fd with server
- * @return true if the response is chunked
+ * Handle POST request
+ * @param client_fd -- fd connected to server
+ * @param request_info -- httpcommand object storing the request information
+ * @param thread_id -- the thread id of a thread
  */
-// bool Proxy::isChunked(string buffer, int client_fd) {
-//     std::size_t pos = buffer.find("\r\n\r\n");
-//     if (pos != std::string::npos) {
-//         std::string headers = buffer.substr(0, pos);
-//         // use Boost to find if the header contains "Transfer-Encoding: chunked"
-//         boost::regex re("Transfer-Encoding: chunked");
-//         boost::smatch what;
-//         if (boost::regex_search(headers, what, re)) {
-//             cout << "------------------" << endl;
-//             cout << "chunked" << endl;
-//             cout << "------------------" << endl;
-//             return true;
-//         }
-//     }
-//     return false;
-// }
+void Proxy::requestPOST(int client_fd, httpcommand request_info, int thread_id) {
+    cout << "in requestPOST" << endl;
+    const char *data = request_info.request.c_str();
+    int request_len = request_info.request.size();
+    int total_sent = 0;
+    while (total_sent < request_len) {
+        int sent = send(client_fd, data + total_sent, request_len - total_sent, 0);
+        if (sent == -1) {
+            string msg = "Error(GET): message buffer being sent is broken";
+            throw myException(msg);
+        }
+        total_sent += sent;
+    }
+
+    char buffer[40960];
+    memset(buffer, 0, sizeof(buffer));
+    int recv_len = 0;
+    ResponseInfo response_info;
+    // while (true) {
+    ssize_t n = recv(client_fd, buffer + recv_len, sizeof(buffer) - recv_len, 0);
+    if (n == -1) {
+        // perror("recv"); // **** not necessarily an error, it's due to server side connection closed ****
+        return;  // **** should be using return instead of exit ****
+    }
+    string buffer_str(buffer);
+    response_info.parseResponse(buffer_str);
+
+    send(client_connection_fd, buffer, strlen(buffer), 0);
+    close(client_fd);
+    close(client_connection_fd);
+}
 
 /**
- * get the content length from the response header, return it if it exists in int
- * @param buffer -- the response from server
- * @param client_fd -- the client socket fd with server
- * @return the content length
- */
-// void Proxy::getContentLength(string & buffer) {
-//     // use Boost library to find the word "Content-Length: " in buffer, get the string after it, change to int
-//     std::size_t end = buffer.find("\r\n\r\n");
-//     if (end != std::string::npos) {
-//         std::string headers = buffer.substr(0, end);
-//         // use Boost to find if the header contains "Content-Length: "
-//         boost::regex re("Content-Length:\\s*(\\d+)");
-//         boost::smatch what;
-//         if (boost::regex_search(headers, what, re)) {
-//             // get the string after "Content-Length: "
-//             int content_length = std::stoi(what[1].str());
-//         }
-//     }
-//     // if the header does not contain "Content-Length: ", return -1
-//     return -1;
-// }
-
-/**
- * handle the request from server and send the response to client
- * @param thread_id -- the thread id
+ * Receive the request from browser, parse request type and call corresponding handler function
+ * @param thread_id -- the thread id of a thread
  */
 void Proxy::handleRequest(int thread_id) {
+    /* -------- update --------  */
+    // when receiving the 1st reponse packet from server, dont need while loop->to improve spped
     vector<char> buffer(MAX_LENGTH, 0);
     int endPos = 0, byts = 0, idx = 0;
     bool body = true;
     int len_recv = recv(client_connection_fd, &(buffer.data()[idx]), MAX_LENGTH, 0);
-    cout << "******in handle request*******" << endl;
-    cout << len_recv << endl;
-    cout << "-------*************----------" << endl;
+    // cout << "****** in handle request *******" << endl;
     cout << buffer.data() << endl;
-    /*------- problem--------  */
-    // when receiving the 1st reponse packet from server, dont need while loop to improve spped
+    // cout << "---------*************----------" << endl;
 
     // while (true) {
     //     int len_recv = recv(client_connection_fd, &(buffer.data()[idx]), MAX_LENGTH, 0);
@@ -423,89 +414,41 @@ void Proxy::handleRequest(int thread_id) {
     //     }
     // }
 
-    /*------------testing-------------*/
-    // print the buffer to terminal
-    // cout << buffer.data() << endl;
-    /*------------testing-------------*/
-    // cout << "the broser sent" << endl;
-    // cout << buffer.data() << endl;
+    string client_request_str(buffer.data());
+    httpcommand request_info(client_request_str);
+    cout << request_info.method << endl;
 
-    string client_request(buffer.data());
-    httpcommand h(client_request);
-    cout << "******check the hhist *******" << endl;
-    cout << h.host << endl;
-
-    if (!checkBadRequest(client_request, client_connection_fd)) {
+    if (!checkBadRequest(client_request_str, client_connection_fd)) {
         close(client_connection_fd);
         return;
     }
 
+    // write log
     TimeMake currTime;
-    writeLog(thread_id + ": \"" + h.request + "\" from " + client_ip + " @ " +
+    writeLog(thread_id + ": \"" + request_info.request + "\" from " + client_ip + " @ " +
              currTime.getTime());
 
     // Client client();  // create a Client object to store socket for browser and server
     try {
         // client.initClientfd(h.host.c_str(), h.port.c_str());
-
-        // build connection with remote server
-        cout << "before connect to server" << endl;
-        cout << h.host << endl;
-        cout << h.port << endl;
-        int client_fd = build_connection(h.host, h.port);
-
-        if (h.method == "CONNECT") {
+        /* ------ build connection with remote server ------ */
+        // cout << "before connect to server" << endl;
+        int client_fd = build_connection(request_info.host.c_str(), request_info.port.c_str());
+        cout << "panduan " << endl;
+        if (request_info.method == "CONNECT") {
+            //cout << "its connect" << endl;
             requestCONNECT(client_fd, thread_id);
-        } else if (h.method == "GET") {
-            const char *data = h.request.c_str();
-            int request_len = h.request.size();
-            int total_sent = 0;
-            while (total_sent < request_len) {
-                int sent = send(client_fd, data + total_sent, request_len - total_sent, 0);
-                if (sent == -1) {
-                    string msg = "Error(GET): message buffer being sent is broken";
-                    throw myException(msg);
-                }
-                total_sent += sent;
-            }
 
-            char buffer[40960];
-            memset(buffer, 0, sizeof(buffer));
-            int recv_len = 0;
-            ResponseInfo response_info;
-            // while (true) {
-            ssize_t n = recv(client_fd, buffer + recv_len, sizeof(buffer) - recv_len, 0);
-            cout << "******in handle request*******" << endl;
-            cout << buffer << endl;
-            string bf(buffer);
-            response_info.parseResponse(bf);
-            if (response_info.status_code == 301) {
-                cout << response_info.status_code << endl;
-                cout << "getting 301 from servser" << endl;
-                cout << h.port << endl;
-                cout << response_info.re_direct_url << endl;
-                // get the substring of the url from the 9th to the end
-                string url = response_info.re_direct_url.substr(8);
-                cout << url << endl;
-                string p = "443";
-                // close(client_fd);
-                // int client_fd2 = build_connection(url, p);
-                // cout << client_fd2 << endl;
-                // requestGET(client_fd2, thread_id);
-
-                client_request.replace(4, 4, "https");
-                cout << "*********change to https" << endl;
-                cout << client_request << endl;
-                send(client_fd, client_request.c_str(), client_request.size(), 0);
-                char bufferr[40960];
-                memset(bufferr, 0, sizeof(buffer));
-                recv(client_fd, bufferr, sizeof(bufferr), 0);
-                cout << "new rep    " << endl;
-                cout << bufferr << endl;
-                requestCONNECT(client_fd, thread_id);
-            }
-
-            requestGET(client_fd, h, thread_id);
+        }
+        else if (request_info.method == "GET") {
+            //cout << "its get" << endl;
+            requestGET(client_fd, request_info, thread_id);
+        }
+        else if (request_info.method == "POST") {
+            //cout << "in postr" << endl;
+            cout << client_request_str << endl;
+            requestPOST(client_fd, request_info, thread_id);
+            // handle POST request
         }
     } catch (exception &e) {
         std::cout << e.what() << std::endl;
@@ -513,6 +456,10 @@ void Proxy::handleRequest(int thread_id) {
     }
 }
 
+/**
+ * Handle requests from browser in multi-thread way
+ * @param thread_id -- the thread id of a thread
+ */
 void Proxy::run(int thread_id) {
     try {
         handleRequest(thread_id);

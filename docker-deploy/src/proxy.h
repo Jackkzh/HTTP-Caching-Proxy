@@ -26,13 +26,14 @@ class Proxy {
       socket_fd(socket_fd), client_connection_fd(client_connection_fd) {}
 
   void initListenfd(const char * port);
-  int build_connection(string host, string port);
+  int build_connection(const char * host, const char * port);
   void acceptConnection(string & ip);
   int getPort();
   void requestCONNECT(int client_fd, int thread_id);
   void connect_Transferdata(int recv_fd, int send_fd);
   void handleRequest(int thread_id);
   void requestGET(int client_fd, httpcommand h, int thread_id);
+  void requestPOST(int client_fd, httpcommand request_info, int thread_id);
   void run(int thread_id);
   void sendChunkPacket(int remoteFd, int client_connection_fd);
 };
