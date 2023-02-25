@@ -356,6 +356,8 @@ void Proxy::sendChunkPacket(int client_fd, int client_connection_fd) {
  */
 void Proxy::requestPOST(int client_fd, httpcommand request_info, int thread_id) {
     cout << "in requestPOST" << endl;
+    cout << "---" << endl;
+
     const char *data = request_info.request.c_str();
     int request_len = request_info.request.size();
     int total_sent = 0;
@@ -367,19 +369,35 @@ void Proxy::requestPOST(int client_fd, httpcommand request_info, int thread_id) 
         }
         total_sent += sent;
     }
+    cout << data << endl;
 
     char buffer[40960];
     memset(buffer, 0, sizeof(buffer));
     int recv_len = 0;
     ResponseInfo response_info;
-    // while (true) {
+
+
+
+
     ssize_t n = recv(client_fd, buffer + recv_len, sizeof(buffer) - recv_len, 0);
     if (n == -1) {
         // perror("recv"); // **** not necessarily an error, it's due to server side connection closed ****
         return;  // **** should be using return instead of exit ****
     }
+    recv_len += n;
     string buffer_str(buffer);
     response_info.parseResponse(buffer_str);
+    while (recv_len < response_info.content_length) {
+        ssize_t n = recv(client_fd, buffer + recv_len, sizeof(buffer) - recv_len, 0);
+        if (n == -1) {
+            // perror("recv"); // **** not necessarily an error, it's due to server side connection closed ****
+            return;  // **** should be using return instead of exit ****
+        }
+        recv_len += n;
+    }
+
+    cout << "****************" << endl;
+    cout << buffer << endl;
 
     send(client_connection_fd, buffer, strlen(buffer), 0);
     close(client_fd);
