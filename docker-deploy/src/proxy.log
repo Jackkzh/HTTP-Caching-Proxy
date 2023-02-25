@@ -7,106 +7,22 @@ Accept-Encoding: gzip, deflate
 Connection: keep-alive
 Upgrade-Insecure-Requests: 1
 
-" from 45.37.116.131 @ Fri Feb 24 19:09:02 2023
+" from 45.37.116.131 @ Fri Feb 24 19:26:52 2023
 
-"GET http://httpbin.org/forms/post HTTP/1.1
+"POST http://httpbin.org/post HTTP/1.1
 Host: httpbin.org
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
 Accept-Language: en-US,en;q=0.5
 Accept-Encoding: gzip, deflate
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 53
+Origin: http://httpbin.org
 Connection: keep-alive
+Referer: http://httpbin.org/forms/post
 Upgrade-Insecure-Requests: 1
 
-" from 45.37.116.131 @ Fri Feb 24 19:09:02 2023
-
-GET http://httpbin.org/forms/post HTTP/1.1
-Host: httpbin.org
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Connection: keep-alive
-Upgrade-Insecure-Requests: 1
-
-" from 45.37.116.131 @ Fri Feb 24 19:09:02 2023
-
-" from GET http://httpbin.org/forms/post HTTP/1.1
-Host: httpbin.org
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Connection: keep-alive
-Upgrade-Insecure-Requests: 1
-
-" from 45.37.116.131 @ Fri Feb 24 19:09:02 2023
-
- from GET http://httpbin.org/forms/post HTTP/1.1
-Host: httpbin.org
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Connection: keep-alive
-Upgrade-Insecure-Requests: 1
-
-" from 45.37.116.131 @ Fri Feb 24 19:09:02 2023
-
-from GET http://httpbin.org/forms/post HTTP/1.1
-Host: httpbin.org
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Connection: keep-alive
-Upgrade-Insecure-Requests: 1
-
-" from 45.37.116.131 @ Fri Feb 24 19:09:02 2023
-
-rom GET http://httpbin.org/forms/post HTTP/1.1
-Host: httpbin.org
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Connection: keep-alive
-Upgrade-Insecure-Requests: 1
-
-" from 45.37.116.131 @ Fri Feb 24 19:09:02 2023
-
-om GET http://httpbin.org/forms/post HTTP/1.1
-Host: httpbin.org
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Connection: keep-alive
-Upgrade-Insecure-Requests: 1
-
-" from 45.37.116.131 @ Fri Feb 24 19:09:02 2023
-
-m GET http://httpbin.org/forms/post HTTP/1.1
-Host: httpbin.org
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Connection: keep-alive
-Upgrade-Insecure-Requests: 1
-
-" from 45.37.116.131 @ Fri Feb 24 19:09:03 2023
-
- GET http://httpbin.org/forms/post HTTP/1.1
-Host: httpbin.org
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Connection: keep-alive
-Upgrade-Insecure-Requests: 1
-
-" from 45.37.116.131 @ Fri Feb 24 19:09:03 2023
+custname=&custtel=fasd&custemail=&delivery=&comments=" from 45.37.116.131 @ Fri Feb 24 19:26:55 2023
 
 CONNECT www.youtube.com:443 HTTP/1.1
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
@@ -114,10 +30,10 @@ Proxy-Connection: keep-alive
 Connection: keep-alive
 Host: www.youtube.com:443
 
-" from 45.37.116.131 @ Fri Feb 24 19:09:12 2023
+" from 45.37.116.131 @ Fri Feb 24 19:26:58 2023
 
-g "HTTP/1.1 200 OK"
- @ POST http://ocsp.pki.goog/gts1c3 HTTP/1.1
+esponding "HTTP/1.1 200 OK"
+" from POST http://ocsp.pki.goog/gts1c3 HTTP/1.1
 Host: ocsp.pki.goog
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
 Accept: */*
@@ -129,17 +45,117 @@ Connection: keep-alive
 Pragma: no-cache
 Cache-Control: no-cache
 
-0R0P0N0L0J0	+" from 45.37.116.131 @ Fri Feb 24 19:09:12 2023
+0R0P0N0L0J0	+" from 45.37.116.131 @ Fri Feb 24 19:26:58 2023
 
- CONNECT play.google.com:443 HTTP/1.1
+ from POST http://httpbin.org/post HTTP/1.1
+Host: httpbin.org
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 59
+Origin: http://httpbin.org
+Connection: keep-alive
+Referer: http://httpbin.org/forms/post
+Upgrade-Insecure-Requests: 1
+
+custname=fdsafa&custtel=fasd&custemail=&delivery=&comments=" from 45.37.116.131 @ Fri Feb 24 19:27:27 2023
+
+from CONNECT aus5.mozilla.org:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: aus5.mozilla.org:443
+
+" from 45.37.116.131 @ Fri Feb 24 19:27:34 2023
+
+onding "HTTP/1.1 200 OK"
+rom POST http://ocsp.digicert.com/ HTTP/1.1
+Host: ocsp.digicert.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/ocsp-request
+Content-Length: 83
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+
+0Q0O0M0K0I0	+" from 45.37.116.131 @ Fri Feb 24 19:27:34 2023
+
+om CONNECT img-getpocket.cdn.mozilla.net:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: img-getpocket.cdn.mozilla.net:443
+
+" from 45.37.116.131 @ Fri Feb 24 19:27:38 2023
+
+ding "HTTP/1.1 200 OK"
+m CONNECT img-getpocket.cdn.mozilla.net:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: img-getpocket.cdn.mozilla.net:443
+
+" from 45.37.116.131 @ Fri Feb 24 19:27:38 2023
+
+ing "HTTP/1.1 200 OK"
+ POST http://r3.o.lencr.org/ HTTP/1.1
+Host: r3.o.lencr.org
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/ocsp-request
+Content-Length: 85
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+
+0S0Q0O0M0K0	+" from 45.37.116.131 @ Fri Feb 24 19:27:38 2023
+
+POST http://httpbin.org/post HTTP/1.1
+Host: httpbin.org
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 59
+Origin: http://httpbin.org
+Connection: keep-alive
+Referer: http://httpbin.org/forms/post
+Upgrade-Insecure-Requests: 1
+
+custname=fdsafa&custtel=fasd&custemail=&delivery=&comments=" from 45.37.116.131 @ Fri Feb 24 19:27:42 2023
+
+ @ POST http://httpbin.org/post HTTP/1.1
+Host: httpbin.org
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 88
+Origin: http://httpbin.org
+Connection: keep-alive
+Referer: http://httpbin.org/forms/post
+Upgrade-Insecure-Requests: 1
+
+custname=fdsafa&custtel=fasd&custemail=&size=small&topping=onion&delivery=&comments=fdsa" from 45.37.116.131 @ Fri Feb 24 19:27:48 2023
+
+@ CONNECT play.google.com:443 HTTP/1.1
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
 Proxy-Connection: keep-alive
 Connection: keep-alive
 Host: play.google.com:443
 
-" from 45.37.116.131 @ Fri Feb 24 19:09:24 2023
+" from 45.37.116.131 @ Fri Feb 24 19:27:57 2023
 
-HTTP/1.1 200 OK"
+"HTTP/1.1 200 OK"
 POST http://ocsp.pki.goog/gts1c3 HTTP/1.1
 Host: ocsp.pki.goog
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
@@ -152,17 +168,17 @@ Connection: keep-alive
 Pragma: no-cache
 Cache-Control: no-cache
 
-0R0P0N0L0J0	+" from 45.37.116.131 @ Fri Feb 24 19:09:24 2023
+0R0P0N0L0J0	+" from 45.37.116.131 @ Fri Feb 24 19:27:57 2023
 
-@ CONNECT play.google.com:443 HTTP/1.1
+ CONNECT play.google.com:443 HTTP/1.1
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
 Proxy-Connection: keep-alive
 Connection: keep-alive
 Host: play.google.com:443
 
-" from 45.37.116.131 @ Fri Feb 24 19:09:26 2023
+" from 45.37.116.131 @ Fri Feb 24 19:27:59 2023
 
-"HTTP/1.1 200 OK"
+HTTP/1.1 200 OK"
 panduan POST http://ocsp.pki.goog/gts1c3 HTTP/1.1
 Host: ocsp.pki.goog
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
@@ -175,734 +191,171 @@ Connection: keep-alive
 Pragma: no-cache
 Cache-Control: no-cache
 
-0R0P0N0L0J0	+" from 45.37.116.131 @ Fri Feb 24 19:09:26 2023
+0R0P0N0L0J0	+" from 45.37.116.131 @ Fri Feb 24 19:28:00 2023
 
-anduan CONNECT googleads.g.doubleclick.net:443 HTTP/1.1
+anduan CONNECT www.google.com:443 HTTP/1.1
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
 Proxy-Connection: keep-alive
 Connection: keep-alive
-Host: googleads.g.doubleclick.net:443
+Host: www.google.com:443
 
-" from 45.37.116.131 @ Fri Feb 24 19:09:56 2023
+" from 45.37.116.131 @ Fri Feb 24 19:28:24 2023
 
 P/1.1 200 OK"
-nduan GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
+nduan POST http://ocsp.pki.goog/gts1c3 HTTP/1.1
+Host: ocsp.pki.goog
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
 Accept: */*
 Accept-Language: en-US,en;q=0.5
 Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
+Content-Type: application/ocsp-request
+Content-Length: 83
 Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
 
-" from 45.37.116.131 @ Fri Feb 24 19:10:21 2023
+0Q0O0M0K0I0	+" from 45.37.116.131 @ Fri Feb 24 19:28:24 2023
 
-duan GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
+duan POST http://ocsp.digicert.com/ HTTP/1.1
+Host: ocsp.digicert.com
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
 Accept: */*
 Accept-Language: en-US,en;q=0.5
 Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
+Content-Type: application/ocsp-request
+Content-Length: 83
 Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
 
-" from 45.37.116.131 @ Fri Feb 24 19:10:21 2023
+0Q0O0M0K0I0	+" from 45.37.116.131 @ Fri Feb 24 19:28:34 2023
 
-uan GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
+uan CONNECT yt3.ggpht.com:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: yt3.ggpht.com:443
+
+" from 45.37.116.131 @ Fri Feb 24 19:28:40 2023
+
+an CONNECT i.ytimg.com:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: i.ytimg.com:443
+
+" from 45.37.116.131 @ Fri Feb 24 19:28:40 2023
+
+.1 200 OK"
+1 200 OK"
+n POST http://ocsp.pki.goog/gts1c3 HTTP/1.1
+Host: ocsp.pki.goog
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
 Accept: */*
 Accept-Language: en-US,en;q=0.5
 Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
+Content-Type: application/ocsp-request
+Content-Length: 84
 Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
 
-" from 45.37.116.131 @ Fri Feb 24 19:10:21 2023
+0R0P0N0L0J0	+" from 45.37.116.131 @ Fri Feb 24 19:28:41 2023
 
-an GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
+ POST http://ocsp.pki.goog/gts1c3 HTTP/1.1
+Host: ocsp.pki.goog
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
 Accept: */*
 Accept-Language: en-US,en;q=0.5
 Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
+Content-Type: application/ocsp-request
+Content-Length: 84
 Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
 
-" from 45.37.116.131 @ Fri Feb 24 19:10:21 2023
+0R0P0N0L0J0	+" from 45.37.116.131 @ Fri Feb 24 19:28:41 2023
 
-n GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
+POST http://ocsp.digicert.com/ HTTP/1.1
+Host: ocsp.digicert.com
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
 Accept: */*
 Accept-Language: en-US,en;q=0.5
 Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
+Content-Type: application/ocsp-request
+Content-Length: 83
 Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
 
-" from 45.37.116.131 @ Fri Feb 24 19:10:22 2023
+0Q0O0M0K0I0	+" from 45.37.116.131 @ Fri Feb 24 19:29:35 2023
 
- GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
+CONNECTCONNECT contile.services.mozilla.com:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: contile.services.mozilla.com:443
+
+" from 45.37.116.131 @ Fri Feb 24 19:29:44 2023
+
+ONNECTCONNECT spocs.getpocket.com:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: spocs.getpocket.com:443
+
+" from 45.37.116.131 @ Fri Feb 24 19:29:44 2023
+
+0 OK"
+NNECTPOST http://r3.o.lencr.org/ HTTP/1.1
+Host: r3.o.lencr.org
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
 Accept: */*
 Accept-Language: en-US,en;q=0.5
 Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
+Content-Type: application/ocsp-request
+Content-Length: 85
 Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
 
-" from 45.37.116.131 @ Fri Feb 24 19:10:22 2023
+0S0Q0O0M0K0	+" from 45.37.116.131 @ Fri Feb 24 19:29:44 2023
 
-GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
+ OK"
+NECTPOST http://ocsp.sca1b.amazontrust.com/ HTTP/1.1
+Host: ocsp.sca1b.amazontrust.com
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
 Accept: */*
 Accept-Language: en-US,en;q=0.5
 Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
+Content-Type: application/ocsp-request
+Content-Length: 83
 Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
 
-" from 45.37.116.131 @ Fri Feb 24 19:10:22 2023
+0Q0O0M0K0I0	+" from 45.37.116.131 @ Fri Feb 24 19:29:44 2023
 
-CONNECTGET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
+ECTCONNECT contile-images.services.mozilla.com:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: contile-images.services.mozilla.com:443
+
+" from 45.37.116.131 @ Fri Feb 24 19:29:46 2023
+
+"
+CTPOST http://r3.o.lencr.org/ HTTP/1.1
+Host: r3.o.lencr.org
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
 Accept: */*
 Accept-Language: en-US,en;q=0.5
 Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
+Content-Type: application/ocsp-request
+Content-Length: 85
 Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:22 2023
-
-ONNECTGET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
 Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:22 2023
-
-NNECTGET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
 Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
 
-" from 45.37.116.131 @ Fri Feb 24 19:10:22 2023
-
-NECTGET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:22 2023
-
-ECTGET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:22 2023
-
-CTGET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:22 2023
-
-TGET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:23 2023
-
-GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:23 2023
-
-GETGET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:23 2023
-
-ETGET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:23 2023
-
-TGET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:23 2023
-
-GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:23 2023
-
-POSTGET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:23 2023
-
-OSTGET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:23 2023
-
-STGET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:24 2023
-
-TGET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:24 2023
-
-GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:24 2023
-
-GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:24 2023
-
-GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:24 2023
-
-GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:24 2023
-
-GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:24 2023
-
-GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:24 2023
-
-GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:25 2023
-
-GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:25 2023
-
-cannot create std::vector larger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:25 2023
-
-annot create std::vector larger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:25 2023
-
-nnot create std::vector larger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:25 2023
-
-not create std::vector larger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:25 2023
-
-ot create std::vector larger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:25 2023
-
-t create std::vector larger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:26 2023
-
- create std::vector larger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:26 2023
-
-create std::vector larger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:26 2023
-
-reate std::vector larger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:26 2023
-
-eate std::vector larger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:26 2023
-
-ate std::vector larger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:26 2023
-
-te std::vector larger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:26 2023
-
-e std::vector larger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:26 2023
-
- std::vector larger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:27 2023
-
-std::vector larger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:27 2023
-
-td::vector larger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:27 2023
-
-d::vector larger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:27 2023
-
-::vector larger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:27 2023
-
-:vector larger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:27 2023
-
-vector larger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:27 2023
-
-ector larger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:27 2023
-
-ctor larger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:27 2023
-
-tor larger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:28 2023
-
-or larger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:28 2023
-
-r larger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:28 2023
-
- larger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:28 2023
-
-larger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:28 2023
-
-arger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:28 2023
-
-rger than max_size()GET http://detectportal.firefox.com/canonical.html HTTP/1.1
-Host: detectportal.firefox.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Cache-Control: no-cache
-Pragma: no-cache
-Connection: keep-alive
-
-" from 45.37.116.131 @ Fri Feb 24 19:10:28 2023
+0S0Q0O0M0K0	+" from 45.37.116.131 @ Fri Feb 24 19:29:47 2023
 

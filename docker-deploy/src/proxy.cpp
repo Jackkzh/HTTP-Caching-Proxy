@@ -288,9 +288,12 @@ void Proxy::requestGET(int client_fd, httpcommand h, int thread_id) {
         // perror("recv"); // **** not necessarily an error, it's due to server side connection closed ****
         return;  // **** should be using return instead of exit ****
     }
-    cout << buffer << endl;
+    //cout << buffer << endl;
     string buffer_str(buffer);
     response_info.parseResponse(buffer_str);
+    cout << "****************" << endl;
+    cout << response_info.content_type << endl;
+    cout << "is it chunk? " << response_info.is_chunk << endl;
 
     if (response_info.is_chunk) {
         send(client_connection_fd, buffer, n, 0);
@@ -311,7 +314,7 @@ void Proxy::requestGET(int client_fd, httpcommand h, int thread_id) {
     if (response_info.is_chunk) {
         sendChunkPacket(client_fd, client_connection_fd);
     } else {
-        send(client_connection_fd, buffer, recv_len, 0);
+        send(client_connection_fd, buffer, n, 0);
     }
     // send(client_connection_fd, buffer, recv_len, 0);
     close(client_fd);

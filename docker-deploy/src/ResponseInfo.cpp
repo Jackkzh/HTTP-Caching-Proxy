@@ -65,7 +65,7 @@ void ResponseInfo::checkStatus(string& buffer) {
 void ResponseInfo::setContentType(string& buffer) {
     size_t content_start = buffer.find("Content-Type:");
     if (content_start != string::npos) {
-        size_t content_end = buffer.find("\r\n", content_start);
+        size_t content_end = buffer.find(";", content_start);
         content_type = buffer.substr(content_start + 14, content_end - content_start - 14);
     }
 }
