@@ -33,11 +33,13 @@ class ResponseInfo {
   bool isPublic;
   bool isPrivate;
   int maxStale;
+  std::string date;
 
   // Cache policy fields
   int cache_status;
   int freshLifeTime;
   int currAge;
+  bool isBadGateway;
 
   // Chunk and Content-Length fields
   bool is_chunk;
@@ -56,8 +58,10 @@ class ResponseInfo {
       expirationTime(""),
       lastModified(""),
       eTag(""),
+      date(""),
       freshLifeTime(-1),
-      currAge(-1){};
+      currAge(-1),
+      isBadGateway(false){};
 
   ResponseInfo(std::string buffer) :
       is_chunk(false),
@@ -71,8 +75,10 @@ class ResponseInfo {
       expirationTime(""),
       lastModified(""),
       eTag(""),
+      date(""),
       freshLifeTime(-1),
-      currAge(-1){};
+      currAge(-1),
+      isBadGateway(false){};
 
   void parseResponse(std::string & buffer, std::string requestTime) {
     request_time = requestTime;
@@ -84,6 +90,7 @@ class ResponseInfo {
     setCacheControl(buffer);
   }
 
+  bool checkBadGateway(int client_fd, int thread_id);
   void printCacheFields();
 
   bool isFresh(std::string response_time, int maxStale = 0) {

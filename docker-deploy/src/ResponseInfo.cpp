@@ -19,6 +19,9 @@ void ResponseInfo::setContentLength(std::string & buffer) {
       // get the string after "Content-Length: "
       content_length = std::stoi(what[1].str());
     }
+    else {
+      isBadGateway = true;
+    }
   }
 }
 
@@ -59,6 +62,9 @@ void ResponseInfo::setContentType(std::string & buffer) {
   if (content_start != std::string::npos) {
     size_t content_end = buffer.find(";", content_start);
     content_type = buffer.substr(content_start + 14, content_end - content_start - 14);
+  }
+  else {
+    isBadGateway = true;
   }
 }
 
@@ -109,6 +115,17 @@ void ResponseInfo::setCacheControl(std::string & buffer) {
   std::size_t end = buffer.find("\r\n\r\n");
   if (end != std::string::npos) {
     std::string headers = buffer.substr(0, end);
+
+    boost::regex d("Date:\\s*([^\r\n]*)");
+    boost::smatch whatd;
+    if (boost::regex_search(headers, whatd, d)) {
+      // get the string after "Cache-Control: "
+      date = whatd[1].str();
+    }
+    else {
+      isBadGateway = true;
+    }
+
     // use Boost to find if the header contains "Cache-Control: "
     boost::regex re("Cache-Control:\\s*(\\S+)");
     boost::smatch what;
@@ -343,4 +360,19 @@ void ResponseInfo::logCat(int thread_id) {
     std::string msg = std::to_string(thread_id) + ": NOTE Last-Modified: " + lastModified;
     log.log(msg);
   }
+}
+
+bool ResponseInfo::checkBadGateway(int client_fd, int thread_id) {
+  Logger logFile;
+  if (isBadGateway || response.find("\r\n\r\n") == std::string::npos) {
+    std::string badGateway = "HTTP/1.1 502 Bad Gateway";
+    std::string msg =
+        std::to_string(thread_id) + ": Responding \"HTTP/1.1 502 Bad Gateway\"";
+    logFile.log(msg);
+    int status = send(client_fd, badGateway.c_str(), strlen(badGateway.c_str()), 0);
+    if (status == -1) {
+      return false;
+    }
+  }
+  return true;
 }

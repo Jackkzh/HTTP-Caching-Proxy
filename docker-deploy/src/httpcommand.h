@@ -27,6 +27,4 @@ class httpcommand {
   void parseValidInfo();
 };
 
-bool checkBadGateway(std::string str, int client_fd, int thread_id);
-
 #endif
