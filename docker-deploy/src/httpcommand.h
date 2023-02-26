@@ -12,11 +12,13 @@ class httpcommand {
   std::string url;
   std::string ifNoneMatch;
   std::string ifModifiedSince;
+  bool isBadRequest;
 
  public:
   httpcommand();
   httpcommand(std::string req);
   void printRequestInfo();
+  bool checkBadRequest(int client_fd, int thread_id);
 
  private:
   void parseMethod();
@@ -24,4 +26,5 @@ class httpcommand {
   void parseURL();
   void parseValidInfo();
 };
+
 #endif

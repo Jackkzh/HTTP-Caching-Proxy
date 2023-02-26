@@ -72,7 +72,7 @@ void Proxy::initListenfd(const char * port) {
  * @param port
  * @return socket_fd
  */
-int Proxy::build_connection(std::string host, std::string port) {
+int Proxy::build_connection(const char * host, const char * port) {
   int status;
   int client_fd;
   struct addrinfo host_info;
@@ -80,7 +80,7 @@ int Proxy::build_connection(std::string host, std::string port) {
   memset(&host_info, 0, sizeof(host_info));
   host_info.ai_family = AF_UNSPEC;
   host_info.ai_socktype = SOCK_STREAM;
-  status = getaddrinfo(host.c_str(), port.c_str(), &host_info, &host_info_list);
+  status = getaddrinfo(host, port, &host_info, &host_info_list);
   if (status != 0) {
     std::cerr << "Error: cannot get address info for host" << std::endl;
     return -1;
@@ -254,7 +254,7 @@ void Proxy::requestGET(int client_fd, httpcommand h, int thread_id) {
   TimeMake t;
   std::string buffer_str(buffer);
   response_info.parseResponse(buffer_str, t.getTime());
-  response_info.logCat(thread_id);
+  response_info.logCat(thread_id);  //print NOTE: ....
   if (response_info.is_chunk) {
     send(client_connection_fd, buffer, n, 0);
     sendChunkPacket(client_fd, client_connection_fd);
@@ -311,7 +311,7 @@ void Proxy::requestPOST(int client_fd, httpcommand request_info, int thread_id) 
     }
     total_sent += sent;
   }
-  std::cout << data << std::endl;
+  // std::cout << data << std::endl;
 
   char buffer[40960];
   memset(buffer, 0, sizeof(buffer));
@@ -346,16 +346,15 @@ void Proxy::requestPOST(int client_fd, httpcommand request_info, int thread_id) 
 
 void Proxy::handleRequest(int thread_id) {
   std::vector<char> buffer(MAX_LENGTH, 0);
-  int endPos = 0, byts = 0, idx = 0;
-  bool body = true;
+  int idx = 0;
   int len_recv = recv(client_connection_fd, &(buffer.data()[idx]), MAX_LENGTH, 0);
-  std::cout << buffer.data() << std::endl;
+  // std::cout << buffer.data() << std::endl;
 
   std::string client_request_str(buffer.data());
   httpcommand request_info(client_request_str);
-  std::cout << request_info.method << std::endl;
+  // std::cout << request_info.method << std::endl;
 
-  if (!checkBadRequest(client_request_str, client_connection_fd)) {
+  if (!request_info.checkBadRequest(client_connection_fd, thread_id)) {
     close(client_connection_fd);
     return;
   }
@@ -367,8 +366,6 @@ void Proxy::handleRequest(int thread_id) {
   logFile.log(msg);
 
   try {
-    // client.initClientfd(h.host.c_str(), h.port.c_str());
-
     // build connection with remote server
     int client_fd =
         build_connection(request_info.host.c_str(), request_info.port.c_str());
@@ -401,22 +398,16 @@ void Proxy::handleRequest(int thread_id) {
             requestGET(client_fd, request_info, thread_id);
           }
           else {  //use cache
-            char res[cache.get(request_info.url).response.size()];
-            strcpy(res, cache.get(request_info.url).response.c_str());
-            send(client_fd, res, cache.get(request_info.url).response.size(), 0);
-            msg = std::to_string(thread_id) + ": Responding \"" + request_info.url + "\"";
+            msg = std::to_string(thread_id) + ": in cache, valid";
             logFile.log(msg);
+            cache.useCache(request_info, client_fd, thread_id);
           }
         }
         else {
           // check fresh
           std::string response_time = currTime.getTime();
           if (cache.get(request_info.url).isFresh(response_time)) {  //use cache
-            char res[cache.get(request_info.url).response.size()];
-            strcpy(res, cache.get(request_info.url).response.c_str());
-            send(client_fd, res, cache.get(request_info.url).response.size(), 0);
-            msg = std::to_string(thread_id) + ": Responding \"" + request_info.url + "\"";
-            logFile.log(msg);
+            cache.useCache(request_info, client_fd, thread_id);
           }
           else {
             msg = std::to_string(thread_id) + ": cached, expires at " +

@@ -6,6 +6,7 @@
  */
 void ResponseInfo::setContentLength(std::string & buffer) {
   response = buffer;
+  std::cout << response << std::endl;
   content_length = -1;
   std::size_t end = buffer.find("\r\n\r\n");
   if (end != std::string::npos) {
@@ -17,6 +18,9 @@ void ResponseInfo::setContentLength(std::string & buffer) {
     if (boost::regex_search(headers, what, re)) {
       // get the string after "Content-Length: "
       content_length = std::stoi(what[1].str());
+    }
+    else {
+      isBadGateway = true;
     }
   }
 }
@@ -50,6 +54,17 @@ void ResponseInfo::setStatusCode(std::string & buffer) {
   std::size_t status_start = buffer.find("HTTP/1.");
   if (status_start != std::string::npos) {
     status_code = stoi(buffer.substr(status_start + 9, 3));
+  }
+}
+
+void ResponseInfo::setContentType(std::string & buffer) {
+  size_t content_start = buffer.find("Content-Type:");
+  if (content_start != std::string::npos) {
+    size_t content_end = buffer.find(";", content_start);
+    content_type = buffer.substr(content_start + 14, content_end - content_start - 14);
+  }
+  else {
+    isBadGateway = true;
   }
 }
 
@@ -100,6 +115,17 @@ void ResponseInfo::setCacheControl(std::string & buffer) {
   std::size_t end = buffer.find("\r\n\r\n");
   if (end != std::string::npos) {
     std::string headers = buffer.substr(0, end);
+
+    boost::regex d("Date:\\s*([^\r\n]*)");
+    boost::smatch whatd;
+    if (boost::regex_search(headers, whatd, d)) {
+      // get the string after "Cache-Control: "
+      date = whatd[1].str();
+    }
+    else {
+      isBadGateway = true;
+    }
+
     // use Boost to find if the header contains "Cache-Control: "
     boost::regex re("Cache-Control:\\s*(\\S+)");
     boost::smatch what;
@@ -133,7 +159,10 @@ void ResponseInfo::setCacheControl(std::string & buffer) {
       // use Boost to find if the header contains "Expires: "
       re = boost::regex("Expires:\\s*([^\r\n]*)");
       if (boost::regex_search(headers, what, re)) {
-        expirationTime = t.convertGMT(what[1].str());
+        if (what[1].str() !=
+            "-1") {  // -1 in the Expires header means that the response should not be cached
+          expirationTime = t.convertGMT(what[1].str());
+        }
         // std::cout << "expirationTime: " << expirationTime << std::endl;
         // std::cout << "Convert expirationTime: " << t.convertGMT(expirationTime)
         //           << std::endl;
@@ -331,4 +360,19 @@ void ResponseInfo::logCat(int thread_id) {
     std::string msg = std::to_string(thread_id) + ": NOTE Last-Modified: " + lastModified;
     log.log(msg);
   }
+}
+
+bool ResponseInfo::checkBadGateway(int client_fd, int thread_id) {
+  Logger logFile;
+  if (isBadGateway || response.find("\r\n\r\n") == std::string::npos) {
+    std::string badGateway = "HTTP/1.1 502 Bad Gateway";
+    std::string msg =
+        std::to_string(thread_id) + ": Responding \"HTTP/1.1 502 Bad Gateway\"";
+    logFile.log(msg);
+    int status = send(client_fd, badGateway.c_str(), strlen(badGateway.c_str()), 0);
+    if (status == -1) {
+      return false;
+    }
+  }
+  return true;
 }

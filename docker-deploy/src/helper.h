@@ -17,6 +17,8 @@
 #include <mutex>
 #include <string>
 #include <vector>
+
+#include "httpcommand.h"
 #define MAX_LENGTH 65536
 #define logFileLocation "./proxy.log"  //"/var/log/erss/proxy.log"
 
@@ -90,5 +92,5 @@ class TimeMake {
 };
 
 bool messageBodyHandler(int len, std::string req, int & idx, bool & body);
-bool checkBadRequest(std::string req, int client_fd);
+
 #endif
