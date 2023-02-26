@@ -141,7 +141,10 @@ void ResponseInfo::setCacheControl(std::string & buffer) {
       // use Boost to find if the header contains "Expires: "
       re = boost::regex("Expires:\\s*([^\r\n]*)");
       if (boost::regex_search(headers, what, re)) {
-        expirationTime = t.convertGMT(what[1].str());
+        if (what[1].str() !=
+            "-1") {  // -1 in the Expires header means that the response should not be cached
+          expirationTime = t.convertGMT(what[1].str());
+        }
         // std::cout << "expirationTime: " << expirationTime << std::endl;
         // std::cout << "Convert expirationTime: " << t.convertGMT(expirationTime)
         //           << std::endl;
