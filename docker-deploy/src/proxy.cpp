@@ -72,7 +72,7 @@ void Proxy::initListenfd(const char * port) {
  * @param port
  * @return socket_fd
  */
-int Proxy::build_connection(std::string host, std::string port) {
+int Proxy::build_connection(const char * host, const char * port) {
   int status;
   int client_fd;
   struct addrinfo host_info;
@@ -80,7 +80,7 @@ int Proxy::build_connection(std::string host, std::string port) {
   memset(&host_info, 0, sizeof(host_info));
   host_info.ai_family = AF_UNSPEC;
   host_info.ai_socktype = SOCK_STREAM;
-  status = getaddrinfo(host.c_str(), port.c_str(), &host_info, &host_info_list);
+  status = getaddrinfo(host, port, &host_info, &host_info_list);
   if (status != 0) {
     std::cerr << "Error: cannot get address info for host" << std::endl;
     return -1;
@@ -354,7 +354,7 @@ void Proxy::handleRequest(int thread_id) {
   httpcommand request_info(client_request_str);
   // std::cout << request_info.method << std::endl;
 
-  if (!checkBadRequest(request_info, client_connection_fd, thread_id)) {
+  if (!request_info.checkBadRequest(client_connection_fd, thread_id)) {
     close(client_connection_fd);
     return;
   }
@@ -400,22 +400,14 @@ void Proxy::handleRequest(int thread_id) {
           else {  //use cache
             msg = std::to_string(thread_id) + ": in cache, valid";
             logFile.log(msg);
-            char res[cache.get(request_info.url).response.size()];
-            strcpy(res, cache.get(request_info.url).response.c_str());
-            send(client_fd, res, cache.get(request_info.url).response.size(), 0);
-            msg = std::to_string(thread_id) + ": Responding \"" + request_info.url + "\"";
-            logFile.log(msg);
+            cache.useCache(request_info, client_fd, thread_id);
           }
         }
         else {
           // check fresh
           std::string response_time = currTime.getTime();
           if (cache.get(request_info.url).isFresh(response_time)) {  //use cache
-            char res[cache.get(request_info.url).response.size()];
-            strcpy(res, cache.get(request_info.url).response.c_str());
-            send(client_fd, res, cache.get(request_info.url).response.size(), 0);
-            msg = std::to_string(thread_id) + ": Responding \"" + request_info.url + "\"";
-            logFile.log(msg);
+            cache.useCache(request_info, client_fd, thread_id);
           }
           else {
             msg = std::to_string(thread_id) + ": cached, expires at " +
@@ -429,8 +421,6 @@ void Proxy::handleRequest(int thread_id) {
     }
     else if (request_info.method == "POST") {
       requestPOST(client_fd, request_info, thread_id);
-    }
-    else {  // handle 400 BadRequest
     }
   }
   catch (std::exception & e) {

@@ -9,6 +9,7 @@
 
 #include "ResponseInfo.h"
 #include "helper.h"
+#include "httpcommand.h"
 
 /*
 Example:
@@ -57,6 +58,8 @@ class Cache {
   bool isFresh();
 
   void printCache();
+
+  void useCache(httpcommand req, int client_fd, int thread_id);
 };
 
 #endif

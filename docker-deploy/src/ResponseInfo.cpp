@@ -6,6 +6,7 @@
  */
 void ResponseInfo::setContentLength(std::string & buffer) {
   response = buffer;
+  std::cout << response << std::endl;
   content_length = -1;
   std::size_t end = buffer.find("\r\n\r\n");
   if (end != std::string::npos) {

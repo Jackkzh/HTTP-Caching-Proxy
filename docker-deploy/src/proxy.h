@@ -23,7 +23,7 @@ class Proxy {
       socket_fd(socket_fd), client_connection_fd(client_connection_fd) {}
 
   void initListenfd(const char * port);
-  int build_connection(std::string host, std::string port);
+  int build_connection(const char * host, const char * port);
   void acceptConnection(std::string & ip);
   int getPort();
   void requestCONNECT(int client_fd, int thread_id);
