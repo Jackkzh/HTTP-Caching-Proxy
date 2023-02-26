@@ -346,8 +346,7 @@ void Proxy::requestPOST(int client_fd, httpcommand request_info, int thread_id) 
 
 void Proxy::handleRequest(int thread_id) {
   std::vector<char> buffer(MAX_LENGTH, 0);
-  int endPos = 0, byts = 0, idx = 0;
-  bool body = true;
+  int idx = 0;
   int len_recv = recv(client_connection_fd, &(buffer.data()[idx]), MAX_LENGTH, 0);
   // std::cout << buffer.data() << std::endl;
 

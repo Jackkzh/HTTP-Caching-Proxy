@@ -77,3 +77,34 @@ void httpcommand::parseValidInfo() {
   ifModifiedSince = "";
   ifNoneMatch = "";
 }
+
+bool checkBadRequest(httpcommand req, int client_fd, int thread_id) {
+  Logger logFile;
+  if (req.host == "" ||
+      (req.method != "CONNECT" && req.method != "POST" && req.method != "GET")) {
+    std::string badRequest = "HTTP/1.1 400 Bad Request\r\n\r\n";
+    std::string msg =
+        std::to_string(thread_id) + ": Responding \"HTTP/1.1 400 Bad Request\"";
+    logFile.log(msg);
+    int status = send(client_fd, badRequest.c_str(), strlen(badRequest.c_str()), 0);
+    if (status == -1) {
+      return false;
+    }
+  }
+  return true;
+}
+
+bool checkBadGateway(std::string str, int client_fd, int thread_id) {
+  Logger logFile;
+  if (str.find("\r\n\r\n") == std::string::npos) {
+    std::string badGateway = "HTTP/1.1 502 Bad Gateway";
+    std::string msg =
+        std::to_string(thread_id) + ": Responding \"HTTP/1.1 502 Bad Gateway\"";
+    logFile.log(msg);
+    int status = send(client_fd, badGateway.c_str(), strlen(badGateway.c_str()), 0);
+    if (status == -1) {
+      return false;
+    }
+  }
+  return true;
+}

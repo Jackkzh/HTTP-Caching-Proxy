@@ -42,6 +42,7 @@ class ResponseInfo {
   // Chunk and Content-Length fields
   bool is_chunk;
   int content_length;
+  std::string content_type;
 
   ResponseInfo() :
       is_chunk(false),
@@ -79,6 +80,7 @@ class ResponseInfo {
     setChunked(buffer);
     setStatusCode(buffer);
     checkStatus(buffer);
+    setContentType(buffer);
     setCacheControl(buffer);
   }
 
@@ -103,6 +105,7 @@ class ResponseInfo {
   void setChunked(std::string & buffer);
   void setStatusCode(std::string & buffer);
   void checkStatus(std::string & buffer);
+  void setContentType(std::string & buffer);
   void setCacheControl(std::string & buffer);
   void setFreshLifeTime(int maxStale = 0);
   void setCurrentAge(std::string response_time);

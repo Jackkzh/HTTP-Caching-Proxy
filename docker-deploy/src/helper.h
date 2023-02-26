@@ -92,6 +92,5 @@ class TimeMake {
 };
 
 bool messageBodyHandler(int len, std::string req, int & idx, bool & body);
-bool checkBadRequest(httpcommand req, int client_fd, int thread_id);
-bool checkBadGateway(std::string str, int client_fd, int thread_id);
+
 #endif

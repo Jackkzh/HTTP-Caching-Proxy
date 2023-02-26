@@ -53,6 +53,14 @@ void ResponseInfo::setStatusCode(std::string & buffer) {
   }
 }
 
+void ResponseInfo::setContentType(std::string & buffer) {
+  size_t content_start = buffer.find("Content-Type:");
+  if (content_start != std::string::npos) {
+    size_t content_end = buffer.find(";", content_start);
+    content_type = buffer.substr(content_start + 14, content_end - content_start - 14);
+  }
+}
+
 /**
  * Check the status code of the HTTP response and take action
  * @param buffer the buffer containing the HTTP response

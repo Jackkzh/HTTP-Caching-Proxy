@@ -24,4 +24,7 @@ class httpcommand {
   void parseURL();
   void parseValidInfo();
 };
+bool checkBadRequest(httpcommand req, int client_fd, int thread_id);
+bool checkBadGateway(std::string str, int client_fd, int thread_id);
+
 #endif
