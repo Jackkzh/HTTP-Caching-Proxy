@@ -1,4 +1,452 @@
-CONNECT server.example.com:90 HTTP/1.1
-Host: server.example.com:90
-Mon Feb 20 00:42:31 2023
-
+1: "CONNECT incoming.telemetry.mozilla.org:443" from 45.37.116.131 @ Sun Feb 26 23:55:57 2023
+1: Requesting "CONNECT incoming.telemetry.mozilla.org:443" from incoming.telemetry.mozilla.org
+1: Responding "HTTP/1.1 200 OK"
+2: "CONNECT www.google.com:443" from 45.37.116.131 @ Sun Feb 26 23:55:58 2023
+2: Requesting "CONNECT www.google.com:443" from www.google.com
+2: Responding "HTTP/1.1 200 OK"
+3: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Sun Feb 26 23:55:58 2023
+3: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+4: "CONNECT www.artsci.utoronto.ca:443" from 45.37.116.131 @ Sun Feb 26 23:55:58 2023
+4: Requesting "CONNECT www.artsci.utoronto.ca:443" from www.artsci.utoronto.ca
+4: Responding "HTTP/1.1 200 OK"
+5: "POST http://ocsp.sectigo.com/" from 45.37.116.131 @ Sun Feb 26 23:55:58 2023
+5: Requesting "POST http://ocsp.sectigo.com/" from ocsp.sectigo.com
+7: "CONNECT www.google.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:01 2023
+9: "CONNECT firefox.settings.services.mozilla.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:01 2023
+7: Requesting "CONNECT www.google.com:443" from www.google.com
+7: Responding "HTTP/1.1 200 OK"
+10: "CONNECT www.googletagmanager.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:01 2023
+9: Requesting "CONNECT firefox.settings.services.mozilla.com:443" from firefox.settings.services.mozilla.com
+9: Responding "HTTP/1.1 200 OK"
+10: Requesting "CONNECT www.googletagmanager.com:443" from www.googletagmanager.com
+10: Responding "HTTP/1.1 200 OK"
+11: "CONNECT incoming.telemetry.mozilla.org:443" from 45.37.116.131 @ Sun Feb 26 23:56:01 2023
+11: Requesting "CONNECT incoming.telemetry.mozilla.org:443" from incoming.telemetry.mozilla.org
+11: Responding "HTTP/1.1 200 OK"
+12: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Sun Feb 26 23:56:01 2023
+12: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+13: "CONNECT www.google-analytics.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:02 2023
+13: Requesting "CONNECT www.google-analytics.com:443" from www.google-analytics.com
+13: Responding "HTTP/1.1 200 OK"
+14: "POST http://ocsp.digicert.com/" from 45.37.116.131 @ Sun Feb 26 23:56:02 2023
+14: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
+15: "CONNECT stats.g.doubleclick.net:443" from 45.37.116.131 @ Sun Feb 26 23:56:02 2023
+15: Requesting "CONNECT stats.g.doubleclick.net:443" from stats.g.doubleclick.net
+15: Responding "HTTP/1.1 200 OK"
+6: Responding "HTTP/1.1 400 Bad Request"
+6: " " from 45.37.116.131 @ Sun Feb 26 23:56:07 2023
+8: Responding "HTTP/1.1 400 Bad Request"
+8: " " from 45.37.116.131 @ Sun Feb 26 23:56:07 2023
+16: Responding "HTTP/1.1 400 Bad Request"
+16: " " from 45.37.116.131 @ Sun Feb 26 23:56:09 2023
+17: Responding "HTTP/1.1 400 Bad Request"
+17: " " from 45.37.116.131 @ Sun Feb 26 23:56:10 2023
+18: "CONNECT play.google.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:10 2023
+18: Requesting "CONNECT play.google.com:443" from play.google.com
+18: Responding "HTTP/1.1 200 OK"
+20: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Sun Feb 26 23:56:10 2023
+20: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+19: "CONNECT play.google.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:12 2023
+19: Requesting "CONNECT play.google.com:443" from play.google.com
+19: Responding "HTTP/1.1 200 OK"
+21: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Sun Feb 26 23:56:12 2023
+21: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+22: "GET http://www.httpwatch.com/httpgallery/methods/" from 45.37.116.131 @ Sun Feb 26 23:56:17 2023
+22: not in cache
+22: Requesting "GET http://www.httpwatch.com/httpgallery/methods/" from www.httpwatch.com
+22: NOTE Cache-Control:  no-cache
+22: Responding "HTTP/1.1 200 OK"
+23: "GET http://www.httpwatch.com/favicon.ico?v1" from 45.37.116.131 @ Sun Feb 26 23:56:18 2023
+23: not in cache
+23: Requesting "GET http://www.httpwatch.com/favicon.ico?v1" from www.httpwatch.com
+23: Responding "HTTP/1.1 301 Moved Permanently"
+24: "CONNECT www.httpwatch.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:18 2023
+24: Requesting "CONNECT www.httpwatch.com:443" from www.httpwatch.com
+24: Responding "HTTP/1.1 200 OK"
+25: "GET http://www.httpwatch.com/httpgallery/methods/" from 45.37.116.131 @ Sun Feb 26 23:56:26 2023
+25: not in cache
+25: Requesting "GET http://www.httpwatch.com/httpgallery/methods/" from www.httpwatch.com
+25: NOTE Cache-Control:  no-cache
+25: Responding "HTTP/1.1 200 OK"
+26: "CONNECT www.google.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:29 2023
+26: Requesting "CONNECT www.google.com:443" from www.google.com
+26: Responding "HTTP/1.1 200 OK"
+27: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Sun Feb 26 23:56:29 2023
+27: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+29: "CONNECT id.google.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:30 2023
+29: Requesting "CONNECT id.google.com:443" from id.google.com
+29: Responding "HTTP/1.1 200 OK"
+30: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Sun Feb 26 23:56:30 2023
+30: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+33: "CONNECT safebrowsing.googleapis.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:30 2023
+34: "CONNECT safebrowsing.googleapis.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:30 2023
+33: Requesting "CONNECT safebrowsing.googleapis.com:443" from safebrowsing.googleapis.com
+33: Responding "HTTP/1.1 200 OK"
+34: Requesting "CONNECT safebrowsing.googleapis.com:443" from safebrowsing.googleapis.com
+34: Responding "HTTP/1.1 200 OK"
+35: "CONNECT encrypted-tbn0.gstatic.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:30 2023
+35: Requesting "CONNECT encrypted-tbn0.gstatic.com:443" from encrypted-tbn0.gstatic.com
+35: Responding "HTTP/1.1 200 OK"
+36: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Sun Feb 26 23:56:31 2023
+37: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Sun Feb 26 23:56:31 2023
+36: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+37: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+38: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Sun Feb 26 23:56:31 2023
+38: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+31: "CONNECT www.gstatic.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:31 2023
+31: Requesting "CONNECT www.gstatic.com:443" from www.gstatic.com
+31: Responding "HTTP/1.1 200 OK"
+39: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Sun Feb 26 23:56:31 2023
+39: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+40: "CONNECT adservice.google.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:34 2023
+40: Requesting "CONNECT adservice.google.com:443" from adservice.google.com
+40: Responding "HTTP/1.1 200 OK"
+41: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Sun Feb 26 23:56:34 2023
+41: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+28: Responding "HTTP/1.1 400 Bad Request"
+28: " " from 45.37.116.131 @ Sun Feb 26 23:56:34 2023
+32: Responding "HTTP/1.1 400 Bad Request"
+32: " " from 45.37.116.131 @ Sun Feb 26 23:56:35 2023
+42: "CONNECT contile-images.services.mozilla.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:43 2023
+43: "CONNECT img-getpocket.cdn.mozilla.net:443" from 45.37.116.131 @ Sun Feb 26 23:56:43 2023
+42: Requesting "CONNECT contile-images.services.mozilla.com:443" from contile-images.services.mozilla.com
+42: Responding "HTTP/1.1 200 OK"
+44: "CONNECT www.google.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:43 2023
+43: Requesting "CONNECT img-getpocket.cdn.mozilla.net:443" from img-getpocket.cdn.mozilla.net
+43: Responding "HTTP/1.1 200 OK"
+44: Requesting "CONNECT www.google.com:443" from www.google.com
+44: Responding "HTTP/1.1 200 OK"
+45: "CONNECT www.google.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:43 2023
+45: Requesting "CONNECT www.google.com:443" from www.google.com
+45: Responding "HTTP/1.1 200 OK"
+48: "CONNECT adservice.google.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:44 2023
+48: Requesting "CONNECT adservice.google.com:443" from adservice.google.com
+48: Responding "HTTP/1.1 200 OK"
+49: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Sun Feb 26 23:56:45 2023
+49: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+50: "CONNECT www.google.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:46 2023
+50: Requesting "CONNECT www.google.com:443" from www.google.com
+50: Responding "HTTP/1.1 200 OK"
+51: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Sun Feb 26 23:56:46 2023
+51: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+52: "CONNECT googleads.g.doubleclick.net:443" from 45.37.116.131 @ Sun Feb 26 23:56:47 2023
+52: Requesting "CONNECT googleads.g.doubleclick.net:443" from googleads.g.doubleclick.net
+52: Responding "HTTP/1.1 200 OK"
+53: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Sun Feb 26 23:56:47 2023
+53: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+54: "CONNECT www.google.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:47 2023
+54: Requesting "CONNECT www.google.com:443" from www.google.com
+54: Responding "HTTP/1.1 200 OK"
+55: "CONNECT www.bilibili.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:47 2023
+56: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Sun Feb 26 23:56:47 2023
+56: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+55: Requesting "CONNECT www.bilibili.com:443" from www.bilibili.com
+55: Responding "HTTP/1.1 200 OK"
+57: "POST http://ocsp.globalsign.com/gsrsaovsslca2018" from 45.37.116.131 @ Sun Feb 26 23:56:48 2023
+57: Requesting "POST http://ocsp.globalsign.com/gsrsaovsslca2018" from ocsp.globalsign.com
+47: Responding "HTTP/1.1 400 Bad Request"
+47: " " from 45.37.116.131 @ Sun Feb 26 23:56:49 2023
+46: Responding "HTTP/1.1 400 Bad Request"
+46: " " from 45.37.116.131 @ Sun Feb 26 23:56:49 2023
+58: "CONNECT s1.hdslb.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:51 2023
+58: Requesting "CONNECT s1.hdslb.com:443" from s1.hdslb.com
+58: Responding "HTTP/1.1 200 OK"
+63: "CONNECT data.bilibili.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:51 2023
+60: "CONNECT i0.hdslb.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:51 2023
+62: "CONNECT i2.hdslb.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:51 2023
+59: "CONNECT s1.hdslb.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:51 2023
+59: Requesting "CONNECT s1.hdslb.com:443" from s1.hdslb.com
+59: Responding "HTTP/1.1 200 OK"
+64: "CONNECT api.bilibili.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:51 2023
+66: "CONNECT api.bilibili.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:52 2023
+64: Requesting "CONNECT api.bilibili.com:443" from api.bilibili.com
+64: Responding "HTTP/1.1 200 OK"
+63: Requesting "CONNECT data.bilibili.com:443" from data.bilibili.com
+63: Responding "HTTP/1.1 200 OK"
+66: Requesting "CONNECT api.bilibili.com:443" from api.bilibili.com
+66: Responding "HTTP/1.1 200 OK"
+65: "CONNECT i0.hdslb.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:52 2023
+68: "POST http://ocsp.globalsign.com/gsrsaovsslca2018" from 45.37.116.131 @ Sun Feb 26 23:56:52 2023
+69: "POST http://ocsp.globalsign.com/gsrsaovsslca2018" from 45.37.116.131 @ Sun Feb 26 23:56:52 2023
+68: Requesting "POST http://ocsp.globalsign.com/gsrsaovsslca2018" from ocsp.globalsign.com
+69: Requesting "POST http://ocsp.globalsign.com/gsrsaovsslca2018" from ocsp.globalsign.com
+67: "POST http://ocsp.globalsign.com/gsrsaovsslca2018" from 45.37.116.131 @ Sun Feb 26 23:56:52 2023
+62: Requesting "CONNECT i2.hdslb.com:443" from i2.hdslb.com
+62: Responding "HTTP/1.1 200 OK"
+60: Requesting "CONNECT i0.hdslb.com:443" from i0.hdslb.com
+60: Responding "HTTP/1.1 200 OK"
+65: Requesting "CONNECT i0.hdslb.com:443" from i0.hdslb.com
+65: Responding "HTTP/1.1 200 OK"
+67: Requesting "POST http://ocsp.globalsign.com/gsrsaovsslca2018" from ocsp.globalsign.com
+70: "CONNECT cm.bilibili.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:52 2023
+72: "CONNECT safebrowsing.googleapis.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:53 2023
+72: Requesting "CONNECT safebrowsing.googleapis.com:443" from safebrowsing.googleapis.com
+72: Responding "HTTP/1.1 200 OK"
+70: Requesting "CONNECT cm.bilibili.com:443" from cm.bilibili.com
+70: Responding "HTTP/1.1 200 OK"
+73: "POST http://ocsp.globalsign.com/gsrsaovsslca2018" from 45.37.116.131 @ Sun Feb 26 23:56:53 2023
+73: Requesting "POST http://ocsp.globalsign.com/gsrsaovsslca2018" from ocsp.globalsign.com
+74: "CONNECT api.live.bilibili.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:54 2023
+74: Requesting "CONNECT api.live.bilibili.com:443" from api.live.bilibili.com
+74: Responding "HTTP/1.1 200 OK"
+75: "POST http://ocsp.globalsign.com/gsgccr3dvtlsca2020" from 45.37.116.131 @ Sun Feb 26 23:56:55 2023
+75: Requesting "POST http://ocsp.globalsign.com/gsgccr3dvtlsca2020" from ocsp.globalsign.com
+71: "CONNECT cm.bilibili.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:55 2023
+71: Requesting "CONNECT cm.bilibili.com:443" from cm.bilibili.com
+71: Responding "HTTP/1.1 200 OK"
+76: "POST http://ocsp.globalsign.com/gsrsaovsslca2018" from 45.37.116.131 @ Sun Feb 26 23:56:56 2023
+76: Requesting "POST http://ocsp.globalsign.com/gsrsaovsslca2018" from ocsp.globalsign.com
+77: "CONNECT www.google.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:56 2023
+77: Requesting "CONNECT www.google.com:443" from www.google.com
+77: Responding "HTTP/1.1 200 OK"
+78: "CONNECT www.google.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:56 2023
+78: Requesting "CONNECT www.google.com:443" from www.google.com
+78: Responding "HTTP/1.1 200 OK"
+79: "CONNECT www.google.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:56 2023
+79: Requesting "CONNECT www.google.com:443" from www.google.com
+79: Responding "HTTP/1.1 200 OK"
+80: "CONNECT www.google.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:56 2023
+80: Requesting "CONNECT www.google.com:443" from www.google.com
+80: Responding "HTTP/1.1 200 OK"
+81: "CONNECT www.google.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:56 2023
+81: Requesting "CONNECT www.google.com:443" from www.google.com
+81: Responding "HTTP/1.1 200 OK"
+82: "CONNECT www.google.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:56 2023
+82: Requesting "CONNECT www.google.com:443" from www.google.com
+82: Responding "HTTP/1.1 200 OK"
+83: "CONNECT www.google.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:57 2023
+83: Requesting "CONNECT www.google.com:443" from www.google.com
+83: Responding "HTTP/1.1 200 OK"
+84: "CONNECT www.google.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:57 2023
+84: Requesting "CONNECT www.google.com:443" from www.google.com
+84: Responding "HTTP/1.1 200 OK"
+61: Responding "HTTP/1.1 400 Bad Request"
+61: " " from 45.37.116.131 @ Sun Feb 26 23:56:57 2023
+85: "CONNECT www.google.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:57 2023
+85: Requesting "CONNECT www.google.com:443" from www.google.com
+85: Responding "HTTP/1.1 200 OK"
+86: "CONNECT www.google.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:58 2023
+86: Requesting "CONNECT www.google.com:443" from www.google.com
+86: Responding "HTTP/1.1 200 OK"
+87: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Sun Feb 26 23:56:58 2023
+87: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+88: "CONNECT www.google.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:58 2023
+88: Requesting "CONNECT www.google.com:443" from www.google.com
+88: Responding "HTTP/1.1 200 OK"
+89: "CONNECT www.youtube.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:58 2023
+89: Requesting "CONNECT www.youtube.com:443" from www.youtube.com
+89: Responding "HTTP/1.1 200 OK"
+90: "CONNECT i.ytimg.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:58 2023
+91: "CONNECT fonts.googleapis.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:58 2023
+92: "CONNECT safebrowsing.googleapis.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:58 2023
+90: Requesting "CONNECT i.ytimg.com:443" from i.ytimg.com
+90: Responding "HTTP/1.1 200 OK"
+92: Requesting "CONNECT safebrowsing.googleapis.com:443" from safebrowsing.googleapis.com
+92: Responding "HTTP/1.1 200 OK"
+91: Requesting "CONNECT fonts.googleapis.com:443" from fonts.googleapis.com
+91: Responding "HTTP/1.1 200 OK"
+93: "CONNECT accounts.google.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:59 2023
+93: Requesting "CONNECT accounts.google.com:443" from accounts.google.com
+93: Responding "HTTP/1.1 200 OK"
+95: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Sun Feb 26 23:56:59 2023
+95: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+96: "CONNECT yt3.ggpht.com:443" from 45.37.116.131 @ Sun Feb 26 23:56:59 2023
+96: Requesting "CONNECT yt3.ggpht.com:443" from yt3.ggpht.com
+96: Responding "HTTP/1.1 200 OK"
+97: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Sun Feb 26 23:57:00 2023
+97: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+98: "CONNECT static.doubleclick.net:443" from 45.37.116.131 @ Sun Feb 26 23:57:00 2023
+99: "CONNECT jnn-pa.googleapis.com:443" from 45.37.116.131 @ Sun Feb 26 23:57:00 2023
+99: Requesting "CONNECT jnn-pa.googleapis.com:443" from jnn-pa.googleapis.com
+99: Responding "HTTP/1.1 200 OK"
+98: Requesting "CONNECT static.doubleclick.net:443" from static.doubleclick.net
+98: Responding "HTTP/1.1 200 OK"
+100: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Sun Feb 26 23:57:01 2023
+101: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Sun Feb 26 23:57:01 2023
+100: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+101: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+102: "POST http://ocsp.digicert.com/" from 45.37.116.131 @ Sun Feb 26 23:57:02 2023
+102: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
+103: "CONNECT www.netflix.com:443" from 45.37.116.131 @ Sun Feb 26 23:57:03 2023
+103: Requesting "CONNECT www.netflix.com:443" from www.netflix.com
+103: Responding "HTTP/1.1 200 OK"
+104: "POST http://ocsp.digicert.com/" from 45.37.116.131 @ Sun Feb 26 23:57:03 2023
+104: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
+94: Responding "HTTP/1.1 400 Bad Request"
+94: " " from 45.37.116.131 @ Sun Feb 26 23:57:04 2023
+108: "CONNECT cdn.cookielaw.org:443" from 45.37.116.131 @ Sun Feb 26 23:57:06 2023
+108: Requesting "CONNECT cdn.cookielaw.org:443" from cdn.cookielaw.org
+108: Responding "HTTP/1.1 200 OK"
+109: "POST http://ocsp.digicert.com/" from 45.37.116.131 @ Sun Feb 26 23:57:06 2023
+109: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
+110: "CONNECT youtube.com:443" from 45.37.116.131 @ Sun Feb 26 23:57:06 2023
+110: Requesting "CONNECT youtube.com:443" from youtube.com
+110: Responding "HTTP/1.1 200 OK"
+111: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Sun Feb 26 23:57:06 2023
+111: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+112: "CONNECT cdn.cookielaw.org:443" from 45.37.116.131 @ Sun Feb 26 23:57:08 2023
+112: Requesting "CONNECT cdn.cookielaw.org:443" from cdn.cookielaw.org
+112: Responding "HTTP/1.1 200 OK"
+118: "POST http://ocsp.digicert.com/" from 45.37.116.131 @ Sun Feb 26 23:57:08 2023
+118: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
+119: "CONNECT geolocation.onetrust.com:443" from 45.37.116.131 @ Sun Feb 26 23:57:10 2023
+119: Requesting "CONNECT geolocation.onetrust.com:443" from geolocation.onetrust.com
+119: Responding "HTTP/1.1 200 OK"
+120: "POST http://ocsp.digicert.com/" from 45.37.116.131 @ Sun Feb 26 23:57:10 2023
+120: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
+106: Responding "HTTP/1.1 400 Bad Request"
+106: " " from 45.37.116.131 @ Sun Feb 26 23:57:11 2023
+107: Responding "HTTP/1.1 400 Bad Request"
+107: " " from 45.37.116.131 @ Sun Feb 26 23:57:11 2023
+105: Responding "HTTP/1.1 400 Bad Request"
+105: " " from 45.37.116.131 @ Sun Feb 26 23:57:11 2023
+114: Responding "HTTP/1.1 400 Bad Request"
+114: " " from 45.37.116.131 @ Sun Feb 26 23:57:13 2023
+113: Responding "HTTP/1.1 400 Bad Request"
+113: " " from 45.37.116.131 @ Sun Feb 26 23:57:13 2023
+115: Responding "HTTP/1.1 400 Bad Request"
+116: Responding "HTTP/1.1 400 Bad Request"
+115: " " from 45.37.116.131 @ Sun Feb 26 23:57:13 2023
+116: " " from 45.37.116.131 @ Sun Feb 26 23:57:13 2023
+117: Responding "HTTP/1.1 400 Bad Request"
+117: " " from 45.37.116.131 @ Sun Feb 26 23:57:13 2023
+121: "CONNECT www.google.com:443" from 45.37.116.131 @ Sun Feb 26 23:57:14 2023
+121: Requesting "CONNECT www.google.com:443" from www.google.com
+121: Responding "HTTP/1.1 200 OK"
+122: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Sun Feb 26 23:57:14 2023
+122: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+123: "CONNECT neat-iodine-05e.notion.site:443" from 45.37.116.131 @ Sun Feb 26 23:57:16 2023
+123: Requesting "CONNECT neat-iodine-05e.notion.site:443" from neat-iodine-05e.notion.site
+123: Responding "HTTP/1.1 200 OK"
+124: "CONNECT o324374.ingest.sentry.io:443" from 45.37.116.131 @ Sun Feb 26 23:57:16 2023
+126: "CONNECT exp.notion.so:443" from 45.37.116.131 @ Sun Feb 26 23:57:16 2023
+125: "CONNECT neat-iodine-05e.notion.site:443" from 45.37.116.131 @ Sun Feb 26 23:57:16 2023
+124: Requesting "CONNECT o324374.ingest.sentry.io:443" from o324374.ingest.sentry.io
+124: Responding "HTTP/1.1 200 OK"
+125: Requesting "CONNECT neat-iodine-05e.notion.site:443" from neat-iodine-05e.notion.site
+125: Responding "HTTP/1.1 200 OK"
+126: Requesting "CONNECT exp.notion.so:443" from exp.notion.so
+126: Responding "HTTP/1.1 200 OK"
+127: "CONNECT http-inputs-notion.splunkcloud.com:443" from 45.37.116.131 @ Sun Feb 26 23:57:16 2023
+128: "CONNECT http-inputs-notion.splunkcloud.com:443" from 45.37.116.131 @ Sun Feb 26 23:57:17 2023
+127: Requesting "CONNECT http-inputs-notion.splunkcloud.com:443" from http-inputs-notion.splunkcloud.com
+128: Requesting "CONNECT http-inputs-notion.splunkcloud.com:443" from http-inputs-notion.splunkcloud.com
+128: Responding "HTTP/1.1 200 OK"
+127: Responding "HTTP/1.1 200 OK"
+133: "POST http://ocsp.digicert.com/" from 45.37.116.131 @ Sun Feb 26 23:57:17 2023
+134: "CONNECT connect.facebook.net:443" from 45.37.116.131 @ Sun Feb 26 23:57:17 2023
+135: "POST http://ocsp.digicert.com/" from 45.37.116.131 @ Sun Feb 26 23:57:17 2023
+136: "CONNECT snap.licdn.com:443" from 45.37.116.131 @ Sun Feb 26 23:57:17 2023
+137: "CONNECT x.clearbitjs.com:443" from 45.37.116.131 @ Sun Feb 26 23:57:17 2023
+133: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
+135: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
+136: Requesting "CONNECT snap.licdn.com:443" from snap.licdn.com
+136: Responding "HTTP/1.1 200 OK"
+139: "CONNECT d2hrivdxn8ekm8.cloudfront.net:443" from 45.37.116.131 @ Sun Feb 26 23:57:17 2023
+132: "POST http://r3.o.lencr.org/" from 45.37.116.131 @ Sun Feb 26 23:57:17 2023
+134: Requesting "CONNECT connect.facebook.net:443" from connect.facebook.net
+134: Responding "HTTP/1.1 200 OK"
+132: Requesting "POST http://r3.o.lencr.org/" from r3.o.lencr.org
+139: Requesting "CONNECT d2hrivdxn8ekm8.cloudfront.net:443" from d2hrivdxn8ekm8.cloudfront.net
+139: Responding "HTTP/1.1 200 OK"
+137: Requesting "CONNECT x.clearbitjs.com:443" from x.clearbitjs.com
+137: Responding "HTTP/1.1 200 OK"
+142: "CONNECT munchkin.marketo.net:443" from 45.37.116.131 @ Sun Feb 26 23:57:17 2023
+141: "CONNECT analytics.tiktok.com:443" from 45.37.116.131 @ Sun Feb 26 23:57:17 2023
+143: "CONNECT acdn.adnxs.com:443" from 45.37.116.131 @ Sun Feb 26 23:57:17 2023
+144: "CONNECT widget.intercom.io:443" from 45.37.116.131 @ Sun Feb 26 23:57:17 2023
+146: "CONNECT www.notion.so:443" from 45.37.116.131 @ Sun Feb 26 23:57:17 2023
+146: Requesting "CONNECT www.notion.so:443" from www.notion.so
+146: Responding "HTTP/1.1 200 OK"
+144: Requesting "CONNECT widget.intercom.io:443" from widget.intercom.io
+144: Responding "HTTP/1.1 200 OK"
+142: Requesting "CONNECT munchkin.marketo.net:443" from munchkin.marketo.net
+142: Responding "HTTP/1.1 200 OK"
+143: Requesting "CONNECT acdn.adnxs.com:443" from acdn.adnxs.com
+143: Responding "HTTP/1.1 200 OK"
+147: "CONNECT dvqigh9b7wa32.cloudfront.net:443" from 45.37.116.131 @ Sun Feb 26 23:57:17 2023
+141: Requesting "CONNECT analytics.tiktok.com:443" from analytics.tiktok.com
+141: Responding "HTTP/1.1 200 OK"
+148: "CONNECT d1lu3pmaz2ilpx.cloudfront.net:443" from 45.37.116.131 @ Sun Feb 26 23:57:17 2023
+149: "CONNECT d330aiyvva2oww.cloudfront.net:443" from 45.37.116.131 @ Sun Feb 26 23:57:17 2023
+148: Requesting "CONNECT d1lu3pmaz2ilpx.cloudfront.net:443" from d1lu3pmaz2ilpx.cloudfront.net
+148: Responding "HTTP/1.1 200 OK"
+147: Requesting "CONNECT dvqigh9b7wa32.cloudfront.net:443" from dvqigh9b7wa32.cloudfront.net
+147: Responding "HTTP/1.1 200 OK"
+149: Requesting "CONNECT d330aiyvva2oww.cloudfront.net:443" from d330aiyvva2oww.cloudfront.net
+149: Responding "HTTP/1.1 200 OK"
+145: "CONNECT cdn.linkedin.oribi.io:443" from 45.37.116.131 @ Sun Feb 26 23:57:17 2023
+145: Requesting "CONNECT cdn.linkedin.oribi.io:443" from cdn.linkedin.oribi.io
+145: Responding "HTTP/1.1 200 OK"
+140: "POST http://ocsp.digicert.com/" from 45.37.116.131 @ Sun Feb 26 23:57:17 2023
+140: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
+151: "CONNECT px.ads.linkedin.com:443" from 45.37.116.131 @ Sun Feb 26 23:57:18 2023
+150: "CONNECT segment.prod.bidr.io:443" from 45.37.116.131 @ Sun Feb 26 23:57:18 2023
+151: Requesting "CONNECT px.ads.linkedin.com:443" from px.ads.linkedin.com
+151: Responding "HTTP/1.1 200 OK"
+150: Requesting "CONNECT segment.prod.bidr.io:443" from segment.prod.bidr.io
+150: Responding "HTTP/1.1 200 OK"
+130: "CONNECT http-inputs-notion.splunkcloud.com:443" from 45.37.116.131 @ Sun Feb 26 23:57:19 2023
+130: Requesting "CONNECT http-inputs-notion.splunkcloud.com:443" from http-inputs-notion.splunkcloud.com
+130: Responding "HTTP/1.1 200 OK"
+129: "CONNECT http-inputs-notion.splunkcloud.com:443" from 45.37.116.131 @ Sun Feb 26 23:57:19 2023
+129: Requesting "CONNECT http-inputs-notion.splunkcloud.com:443" from http-inputs-notion.splunkcloud.com
+129: Responding "HTTP/1.1 200 OK"
+153: "CONNECT api-iam.intercom.io:443" from 45.37.116.131 @ Sun Feb 26 23:57:19 2023
+155: "CONNECT 414-xmy-838.mktoresp.com:443" from 45.37.116.131 @ Sun Feb 26 23:57:19 2023
+153: Requesting "CONNECT api-iam.intercom.io:443" from api-iam.intercom.io
+153: Responding "HTTP/1.1 200 OK"
+155: Requesting "CONNECT 414-xmy-838.mktoresp.com:443" from 414-xmy-838.mktoresp.com
+155: Responding "HTTP/1.1 200 OK"
+154: "CONNECT ib.adnxs.com:443" from 45.37.116.131 @ Sun Feb 26 23:57:19 2023
+154: Requesting "CONNECT ib.adnxs.com:443" from ib.adnxs.com
+154: Responding "HTTP/1.1 200 OK"
+156: "CONNECT app.clearbit.com:443" from 45.37.116.131 @ Sun Feb 26 23:57:20 2023
+156: Requesting "CONNECT app.clearbit.com:443" from app.clearbit.com
+156: Responding "HTTP/1.1 200 OK"
+138: Responding "HTTP/1.1 400 Bad Request"
+138: " " from 45.37.116.131 @ Sun Feb 26 23:57:22 2023
+131: Responding "HTTP/1.1 400 Bad Request"
+131: " " from 45.37.116.131 @ Sun Feb 26 23:57:22 2023
+158: "CONNECT www.artsci.utoronto.ca:443" from 45.37.116.131 @ Sun Feb 26 23:57:23 2023
+158: Requesting "CONNECT www.artsci.utoronto.ca:443" from www.artsci.utoronto.ca
+158: Responding "HTTP/1.1 200 OK"
+152: Responding "HTTP/1.1 400 Bad Request"
+152: " " from 45.37.116.131 @ Sun Feb 26 23:57:24 2023
+160: "CONNECT www.artsci.utoronto.ca:443" from 45.37.116.131 @ Sun Feb 26 23:57:27 2023
+160: Requesting "CONNECT www.artsci.utoronto.ca:443" from www.artsci.utoronto.ca
+160: Responding "HTTP/1.1 200 OK"
+157: Responding "HTTP/1.1 400 Bad Request"
+157: " " from 45.37.116.131 @ Sun Feb 26 23:57:29 2023
+162: Responding "HTTP/1.1 400 Bad Request"
+162: " " from 45.37.116.131 @ Sun Feb 26 23:57:32 2023
+163: Responding "HTTP/1.1 400 Bad Request"
+163: " " from 45.37.116.131 @ Sun Feb 26 23:57:32 2023
+164: Responding "HTTP/1.1 400 Bad Request"
+165: Responding "HTTP/1.1 400 Bad Request"
+164: " " from 45.37.116.131 @ Sun Feb 26 23:57:32 2023
+165: " " from 45.37.116.131 @ Sun Feb 26 23:57:32 2023
+161: Responding "HTTP/1.1 400 Bad Request"
+161: " " from 45.37.116.131 @ Sun Feb 26 23:57:32 2023
+159: Responding "HTTP/1.1 400 Bad Request"
+159: " " from 45.37.116.131 @ Sun Feb 26 23:57:32 2023
+166: Responding "HTTP/1.1 400 Bad Request"
+166: " " from 45.37.116.131 @ Sun Feb 26 23:57:32 2023
+167: "GET http://httpbin.org/forms/post" from 45.37.116.131 @ Sun Feb 26 23:57:34 2023
+167: not in cache
+167: Requesting "GET http://httpbin.org/forms/post" from httpbin.org
+167: Responding "HTTP/1.1 200 OK"
+168: "POST http://httpbin.org/post" from 45.37.116.131 @ Sun Feb 26 23:57:37 2023
+168: Requesting "POST http://httpbin.org/post" from httpbin.org
+170: "CONNECT getpocket.cdn.mozilla.net:443" from 45.37.116.131 @ Sun Feb 26 23:57:43 2023
+170: Requesting "CONNECT getpocket.cdn.mozilla.net:443" from getpocket.cdn.mozilla.net
+170: Responding "HTTP/1.1 200 OK"
+169: "CONNECT spocs.getpocket.com:443" from 45.37.116.131 @ Sun Feb 26 23:57:43 2023
+169: Requesting "CONNECT spocs.getpocket.com:443" from spocs.getpocket.com
+169: Responding "HTTP/1.1 200 OK"
+171: "POST http://ocsp.r2m01.amazontrust.com/" from 45.37.116.131 @ Sun Feb 26 23:58:03 2023
+171: Requesting "POST http://ocsp.r2m01.amazontrust.com/" from ocsp.r2m01.amazontrust.com
+172: "POST http://ocsp.sca1b.amazontrust.com/" from 45.37.116.131 @ Sun Feb 26 23:58:04 2023
+172: Requesting "POST http://ocsp.sca1b.amazontrust.com/" from ocsp.sca1b.amazontrust.com
+173: "POST http://ocsp.digicert.com/" from 45.37.116.131 @ Sun Feb 26 23:58:06 2023
+173: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com

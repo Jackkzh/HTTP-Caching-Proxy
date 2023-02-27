@@ -3,12 +3,12 @@
 
 #include "helper.h"
 
-class myException : public exception {
+class myException : public std::exception {
  private:
-  string msg;
+  std::string msg;
 
  public:
-  explicit myException(string message) : msg(message) {}
+  explicit myException(std::string message) : msg(message) {}
 
   virtual const char * what() { return msg.c_str(); }
 };
