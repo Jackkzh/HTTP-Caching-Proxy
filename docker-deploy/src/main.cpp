@@ -1,14 +1,14 @@
 #include <thread>
 
-#include "client.h"
+#include "ResponseInfo.h"
+#include "cache.h"
 #include "httpcommand.h"
 #include "proxy.h"
-#include "cache.h"
+void test(Proxy server, int thread_id) {
+  server.run(thread_id);
+}
 
-/**
- * This function tests the cache implementation.
- * It adds a response to the cache and then retrieves it.
-*/
+/*
 void testCache() {
   Cache cache(10 * 1024 * 1024);
 
@@ -113,39 +113,53 @@ void testCache() {
   }
   cache.clear();
 }
-
-/**
- * to run server and creates a thread to handle each web requset
- * @param server
- * @param thread_id
 */
-void handleTask(Proxy server, int thread_id) {
-  server.run(thread_id);
+
+void cleanfile() {
+  std::ofstream ofs(logFileLocation, std::ios::out | std::ios::trunc);
+  ofs.close();
 }
 
+void testResponse() {
+  std::string buffer = "HTTP/1.1 200 OK\r\n"
+                       "Date: Thu, 22 Feb 2023 12:34:56 GMT\r\n"
+                       "Cache-Control: max-age=3600, public, must-revalidate\r\n"
+                       "Expires: Thu, 22 Feb 2023 13:34:56 GMT\r\n"
+                       "Last-Modified: Wed, 21 Feb 2023 12:34:56 GMT\r\n"
+                       "ETag: \"123456789\"\r\n"
+                       "Content-Length: 42\r\n"
+                       "\r\n"
+                       "Hello, world! This is a test.";
+  TimeMake t;
+  ResponseInfo response;
+  response.parseResponse(buffer, t.getTime());
+  response.printCacheFields();
+}
 
 int main() {
+  cleanfile();
+  // testResponse();
   Proxy server;
   try {
     server.initListenfd("12345");
   }
-  catch (exception & e) {
+  catch (std::exception & e) {
     std::cout << e.what() << std::endl;
   }
-  cout << "Server is listening on port: " << server.getPort() << endl;
+  std::cout << "Server is listening on port: " << server.getPort() << std::endl;
 
-  string ip;
+  std::string ip;
   int thread_id = 0;
   while (true) {
     thread_id++;
     try {
       server.acceptConnection(ip);
     }
-    catch (exception & e) {
+    catch (std::exception & e) {
       std::cout << e.what() << std::endl;
       continue;
     }
-    thread th(handleTask, server, thread_id);
+    std::thread th(test, server, thread_id);
     th.detach();
   }
   return EXIT_SUCCESS;

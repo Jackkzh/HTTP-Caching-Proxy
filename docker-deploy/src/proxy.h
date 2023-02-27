@@ -1,24 +1,21 @@
 #ifndef __PROXY__H__
 #define __PROXY__H__
-#include <mutex>
 #include <boost/regex.hpp>
 
-#include "client.h"
 #include "helper.h"
 #include "httpcommand.h"
 #include "myexception.h"
-
 
 // extern std::mutex mtx;
 // extern ofstream logFile(logFileLocation);
 
 class Proxy {
-  public:
-  int socket_fd;              // this is the listen socket_fd
-  int client_connection_fd;   // socket fd on the server side after accept
+ public:
+  int socket_fd;             // this is the listen socket_fd
+  int client_connection_fd;  // socket fd on the server side after accept
 
  private:
-  string client_ip;           // the ip address of the client
+  std::string client_ip;  // the ip address of the client
 
  public:
   Proxy() {}
@@ -27,7 +24,7 @@ class Proxy {
 
   void initListenfd(const char * port);
   int build_connection(const char * host, const char * port);
-  void acceptConnection(string & ip);
+  void acceptConnection(std::string & ip);
   int getPort();
   void requestCONNECT(int client_fd, int thread_id);
   void connect_Transferdata(int recv_fd, int send_fd);
@@ -35,6 +32,7 @@ class Proxy {
   void requestGET(int client_fd, httpcommand h, int thread_id);
   void requestPOST(int client_fd, httpcommand request_info, int thread_id);
   void run(int thread_id);
+  void requestPOST(int client_fd, httpcommand request_info, int thread_id);
   void sendChunkPacket(int remoteFd, int client_connection_fd);
 };
 #endif
