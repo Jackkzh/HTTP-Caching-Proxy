@@ -30,7 +30,6 @@ class Proxy {
   void connect_Transferdata(int recv_fd, int send_fd);
   void handleRequest(int thread_id);
   void requestGET(int client_fd, httpcommand h, int thread_id);
-  void requestPOST(int client_fd, httpcommand request_info, int thread_id);
   void run(int thread_id);
   void requestPOST(int client_fd, httpcommand request_info, int thread_id);
   void sendChunkPacket(int remoteFd, int client_connection_fd);

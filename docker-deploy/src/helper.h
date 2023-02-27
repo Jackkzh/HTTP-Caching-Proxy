@@ -6,7 +6,7 @@
 #include <netdb.h>
 #include <sys/socket.h>
 #include <unistd.h>
-#include <mutex>
+
 #include <cstring>
 #include <ctime>
 #include <exception>
@@ -42,31 +42,6 @@ class Logger {
     log_file << message << std::endl;
   }
 };
-
-class Logger {
- private:
-  std::ofstream log_file;
-  std::mutex mtx;
-
- public:
-  Logger() {
-    log_file.open(
-        logFileLocation,
-        std::ios::out | std::ios::app);  // ios::app is a flag used to append the file
-    if (!log_file) {
-      throw std::runtime_error("Failed to open log file");
-    }
-  }
-
-  void log(std::string message) {
-    std::lock_guard<std::mutex> lock{mtx};
-    log_file << message << std::endl;
-  }
-};
-
-
-
-
 
 class ClientInfo {
  public:

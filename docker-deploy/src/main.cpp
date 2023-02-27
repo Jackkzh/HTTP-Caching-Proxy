@@ -11,7 +11,6 @@ void test(Proxy server, int thread_id) {
 /*
 void testCache() {
   Cache cache(10 * 1024 * 1024);
-
   // Add a response to the cache
   std::string url = "http://example.com/page1";
   std::string response = "HTTP/1.1 200 OK\r\nContent-Length: 10\r\n\r\n0123456789";
@@ -19,7 +18,6 @@ void testCache() {
   std::string lastmodified = "Fri, 09 Aug 2013 23:54:35 GMT";
   std::string etag = "1541025663";
   cache.put(url, response, max_Age, lastmodified, etag);
-
   // Check if the response is in the cache
   if (cache.has(url)) {
     // Get the response from the cache
@@ -38,7 +36,6 @@ void testCache() {
   std::string lastmodified2 = "Fri, 15 Aug 2022 20:13:35 GMT";
   std::string etag2 = "150000000";
   cache.put(url, response, max_Age, lastmodified2, etag2);
-
   // Check if the response is in the cache
   std::cout << "\n\nCheck if the response is in the cache\n\n" << std::endl;
   if (cache.has(url)) {
@@ -69,9 +66,7 @@ void testCache() {
         std::cout << "lastModified: " << lastmodified3 << std::endl;
         std::cout << "eTag: " << etag3 << std::endl;
         std::cout << "\nFailed, update cache!\n" << std::endl;
-
         cache.put(url, response, max_Age, lastmodified3, etag3);
-
         std::cout << "After update:\n" << std::endl;
         std::cout << "----------content--------------" << std::endl;
         std::cout << "Cached response: \n" << cache.get(url).content << std::endl;
@@ -92,7 +87,6 @@ void testCache() {
       std::cout << "eTag: " << cache.get(url).eTag << std::endl;
     }
   }
-
   std::cout << "\n\n----------Test Expiration Time--------------\n" << std::endl;
   Cache cache2(10);
   std::string key = "example.com";
