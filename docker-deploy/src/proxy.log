@@ -4,7 +4,7 @@ Proxy-Connection: keep-alive
 Connection: keep-alive
 Host: www.youtube.com:443
 
-" from 45.37.116.131 @ Sun Feb 26 14:48:53 2023
+" from 45.37.116.131 @ Sun Feb 26 22:40:24 2023
 
  Responding "HTTP/1.1 200 OK"
 "POST http://ocsp.pki.goog/gts1c3 HTTP/1.1
@@ -19,7 +19,7 @@ Connection: keep-alive
 Pragma: no-cache
 Cache-Control: no-cache
 
-0R0P0N0L0J0	+" from 45.37.116.131 @ Sun Feb 26 14:48:53 2023
+0R0P0N0L0J0	+" from 45.37.116.131 @ Sun Feb 26 22:40:24 2023
 
 CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
@@ -27,7 +27,7 @@ Proxy-Connection: keep-alive
 Connection: keep-alive
 Host: incoming.telemetry.mozilla.org:443
 
-" from 45.37.116.131 @ Sun Feb 26 14:48:55 2023
+" from 45.37.116.131 @ Sun Feb 26 22:40:27 2023
 
 esponding "HTTP/1.1 200 OK"
 " from POST http://ocsp.digicert.com/ HTTP/1.1
@@ -42,145 +42,96 @@ Connection: keep-alive
 Pragma: no-cache
 Cache-Control: no-cache
 
-0Q0O0M0K0I0	+" from 45.37.116.131 @ Sun Feb 26 14:48:55 2023
+0Q0O0M0K0I0	+" from 45.37.116.131 @ Sun Feb 26 22:40:28 2023
 
- from CONNECT neat-iodine-05e.notion.site:443 HTTP/1.1
+ from CONNECT www.artsci.utoronto.ca:443 HTTP/1.1
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
 Proxy-Connection: keep-alive
 Connection: keep-alive
-Host: neat-iodine-05e.notion.site:443
+Host: www.artsci.utoronto.ca:443
 
-" from 45.37.116.131 @ Sun Feb 26 14:48:55 2023
+" from 45.37.116.131 @ Sun Feb 26 22:40:29 2023
 
 ponding "HTTP/1.1 200 OK"
-from CONNECT safebrowsing.googleapis.com:443 HTTP/1.1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Proxy-Connection: keep-alive
-Connection: keep-alive
-Host: safebrowsing.googleapis.com:443
-
-" from 45.37.116.131 @ Sun Feb 26 14:48:55 2023
-
-onding "HTTP/1.1 200 OK"
-rom POST http://ocsp.pki.goog/gts1c3 HTTP/1.1
-Host: ocsp.pki.goog
+from POST http://ocsp.sectigo.com/ HTTP/1.1
+Host: ocsp.sectigo.com
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
 Accept: */*
 Accept-Language: en-US,en;q=0.5
 Accept-Encoding: gzip, deflate
 Content-Type: application/ocsp-request
-Content-Length: 84
+Content-Length: 83
 Connection: keep-alive
 Pragma: no-cache
 Cache-Control: no-cache
 
-0R0P0N0L0J0	+" from 45.37.116.131 @ Sun Feb 26 14:48:56 2023
+0Q0O0M0K0I0	+" from 45.37.116.131 @ Sun Feb 26 22:40:29 2023
 
-m CONNECT www.gstatic.com:443 HTTP/1.1
+rom CONNECT www.google.com:443 HTTP/1.1
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
 Proxy-Connection: keep-alive
 Connection: keep-alive
-Host: www.gstatic.com:443
+Host: www.google.com:443
 
-" from 45.37.116.131 @ Sun Feb 26 14:48:58 2023
+" from 45.37.116.131 @ Sun Feb 26 22:40:31 2023
 
-ing "HTTP/1.1 200 OK"
- POST http://ocsp.pki.goog/gts1c3 HTTP/1.1
-Host: ocsp.pki.goog
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Content-Type: application/ocsp-request
-Content-Length: 84
-Connection: keep-alive
-Pragma: no-cache
-Cache-Control: no-cache
-
-0R0P0N0L0J0	+" from 45.37.116.131 @ Sun Feb 26 14:48:58 2023
-
-CONNECT i.ytimg.com:443 HTTP/1.1
+ CONNECT fonts.googleapis.com:443 HTTP/1.1
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
 Proxy-Connection: keep-alive
 Connection: keep-alive
-Host: i.ytimg.com:443
+Host: fonts.googleapis.com:443
 
-" from 45.37.116.131 @ Sun Feb 26 14:48:59 2023
+" from 45.37.116.131 @ Sun Feb 26 22:40:32 2023
 
-g "HTTP/1.1 200 OK"
- @ POST http://ocsp.pki.goog/gts1c3 HTTP/1.1
-Host: ocsp.pki.goog
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Content-Type: application/ocsp-request
-Content-Length: 84
-Connection: keep-alive
-Pragma: no-cache
-Cache-Control: no-cache
-
-0R0P0N0L0J0	+" from 45.37.116.131 @ Sun Feb 26 14:48:59 2023
-
-@ CONNECT img-getpocket.cdn.mozilla.net:443 HTTP/1.1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Proxy-Connection: keep-alive
-Connection: keep-alive
-Host: img-getpocket.cdn.mozilla.net:443
-
-" from 45.37.116.131 @ Sun Feb 26 14:48:59 2023
-
-"HTTP/1.1 200 OK"
- POST http://r3.o.lencr.org/ HTTP/1.1
-Host: r3.o.lencr.org
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Content-Type: application/ocsp-request
-Content-Length: 85
-Connection: keep-alive
-Pragma: no-cache
-Cache-Control: no-cache
-
-0S0Q0O0M0K0	+" from 45.37.116.131 @ Sun Feb 26 14:49:00 2023
-
-CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Proxy-Connection: keep-alive
-Connection: keep-alive
-Host: incoming.telemetry.mozilla.org:443
-
-" from 45.37.116.131 @ Sun Feb 26 14:49:00 2023
-
-anduan CONNECT exp.notion.so:443 HTTP/1.1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Proxy-Connection: keep-alive
-Connection: keep-alive
-Host: exp.notion.so:443
-
-" from 45.37.116.131 @ Sun Feb 26 14:49:00 2023
-
-panduan CONNECT firefox.settings.services.mozilla.com:443 HTTP/1.1
+@ CONNECT firefox.settings.services.mozilla.com:443 HTTP/1.1
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
 Proxy-Connection: keep-alive
 Connection: keep-alive
 Host: firefox.settings.services.mozilla.com:443
 
-" from 45.37.116.131 @ Sun Feb 26 14:49:00 2023
+" from 45.37.116.131 @ Sun Feb 26 22:40:32 2023
 
-TTP/1.1 200 OK"
+nding "HTTP/1.1 200 OK"
+ng "HTTP/1.1 200 OK"
+"HTTP/1.1 200 OK"
+POST http://ocsp.pki.goog/gts1c3 HTTP/1.1
+Host: ocsp.pki.goog
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/ocsp-request
+Content-Length: 83
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+
+0Q0O0M0K0I0	+" from 45.37.116.131 @ Sun Feb 26 22:40:32 2023
+
+panduan POST http://ocsp.pki.goog/gts1c3 HTTP/1.1
+Host: ocsp.pki.goog
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/ocsp-request
+Content-Length: 84
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+
+0R0P0N0L0J0	+" from 45.37.116.131 @ Sun Feb 26 22:40:32 2023
+
+anduan CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: incoming.telemetry.mozilla.org:443
+
+" from 45.37.116.131 @ Sun Feb 26 22:40:32 2023
+
 P/1.1 200 OK"
-TP/1.1 200 OK"
-nduan CONNECT contile-images.services.mozilla.com:443 HTTP/1.1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Proxy-Connection: keep-alive
-Connection: keep-alive
-Host: contile-images.services.mozilla.com:443
-
-" from 45.37.116.131 @ Sun Feb 26 14:49:01 2023
-
-duan POST http://ocsp.digicert.com/ HTTP/1.1
+nduan POST http://ocsp.digicert.com/ HTTP/1.1
 Host: ocsp.digicert.com
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
 Accept: */*
@@ -192,159 +143,104 @@ Connection: keep-alive
 Pragma: no-cache
 Cache-Control: no-cache
 
-0Q0O0M0K0I0	+" from 45.37.116.131 @ Sun Feb 26 14:49:01 2023
+0Q0O0M0K0I0	+" from 45.37.116.131 @ Sun Feb 26 22:40:32 2023
 
-/1.1 200 OK"
-uan POST http://r3.o.lencr.org/ HTTP/1.1
-Host: r3.o.lencr.org
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Content-Type: application/ocsp-request
-Content-Length: 85
-Connection: keep-alive
-Pragma: no-cache
-Cache-Control: no-cache
-
-0S0Q0O0M0K0	+" from 45.37.116.131 @ Sun Feb 26 14:49:01 2023
-
-an GET http://www.httpwatch.com/httpgallery/chunked/chunkedimage.aspx HTTP/1.1
-Host: www.httpwatch.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Connection: keep-alive
-Cookie: _ga=GA1.2.1647485216.1677278271
-Upgrade-Insecure-Requests: 1
-
-" from 45.37.116.131 @ Sun Feb 26 14:49:21 2023
-
-n POST http://ocsp.digicert.com/ HTTP/1.1
-Host: ocsp.digicert.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Content-Type: application/ocsp-request
-Content-Length: 83
-Connection: keep-alive
-Pragma: no-cache
-Cache-Control: no-cache
-
-0Q0O0M0K0I0	+" from 45.37.116.131 @ Sun Feb 26 14:49:56 2023
-
- POST http://ocsp.digicert.com/ HTTP/1.1
-Host: ocsp.digicert.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Content-Type: application/ocsp-request
-Content-Length: 83
-Connection: keep-alive
-Pragma: no-cache
-Cache-Control: no-cache
-
-0Q0O0M0K0I0	+" from 45.37.116.131 @ Sun Feb 26 14:50:01 2023
-
-ONNECTCONNECT spocs.getpocket.com:443 HTTP/1.1
+uan CONNECT www.googletagmanager.com:443 HTTP/1.1
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
 Proxy-Connection: keep-alive
 Connection: keep-alive
-Host: spocs.getpocket.com:443
+Host: www.googletagmanager.com:443
 
-" from 45.37.116.131 @ Sun Feb 26 14:50:23 2023
+" from 45.37.116.131 @ Sun Feb 26 22:40:34 2023
 
-CONNECT contile.services.mozilla.com:443 HTTP/1.1
+.1 200 OK"
+CONNECT www.google-analytics.com:443 HTTP/1.1
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
 Proxy-Connection: keep-alive
 Connection: keep-alive
-Host: contile.services.mozilla.com:443
+Host: www.google-analytics.com:443
 
-" from 45.37.116.131 @ Sun Feb 26 14:50:23 2023
-
-CONNECTCONNECT getpocket.cdn.mozilla.net:443 HTTP/1.1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Proxy-Connection: keep-alive
-Connection: keep-alive
-Host: getpocket.cdn.mozilla.net:443
-
-" from 45.37.116.131 @ Sun Feb 26 14:50:23 2023
+" from 45.37.116.131 @ Sun Feb 26 22:40:34 2023
 
 00 OK"
-NNECTGET http://www.httpwatch.com/httpgallery/chunked/chunkedimage.aspx HTTP/1.1
-Host: www.httpwatch.com
+CONNECTCONNECT stats.g.doubleclick.net:443 HTTP/1.1
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-DNT: 1
+Proxy-Connection: keep-alive
 Connection: keep-alive
-Upgrade-Insecure-Requests: 1
-Pragma: no-cache
-Cache-Control: no-cache
+Host: stats.g.doubleclick.net:443
 
-" from 45.37.116.131 @ Sun Feb 26 14:50:23 2023
+" from 45.37.116.131 @ Sun Feb 26 22:40:35 2023
 
- OK"
 0 OK"
-NECTPOST http://ocsp.sca1b.amazontrust.com/ HTTP/1.1
-Host: ocsp.sca1b.amazontrust.com
+ONNECTGET http://detectportal.firefox.com/canonical.html HTTP/1.1
+Host: detectportal.firefox.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Cache-Control: no-cache
+Pragma: no-cache
+Connection: keep-alive
+
+" from 45.37.116.131 @ Sun Feb 26 22:40:37 2023
+
+NNECTGET http://detectportal.firefox.com/success.txt?ipv4 HTTP/1.1
+Host: detectportal.firefox.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+
+" from 45.37.116.131 @ Sun Feb 26 22:40:37 2023
+
+NECTCONNECT play.google.com:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: play.google.com:443
+
+" from 45.37.116.131 @ Sun Feb 26 22:41:14 2023
+
+K"
+CTPOST http://ocsp.pki.goog/gts1c3 HTTP/1.1
+Host: ocsp.pki.goog
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
 Accept: */*
 Accept-Language: en-US,en;q=0.5
 Accept-Encoding: gzip, deflate
 Content-Type: application/ocsp-request
-Content-Length: 83
+Content-Length: 84
 Connection: keep-alive
 Pragma: no-cache
 Cache-Control: no-cache
 
-0Q0O0M0K0I0	+" from 45.37.116.131 @ Sun Feb 26 14:50:23 2023
+0R0P0N0L0J0	+" from 45.37.116.131 @ Sun Feb 26 22:41:14 2023
 
-ECTPOST http://r3.o.lencr.org/ HTTP/1.1
-Host: r3.o.lencr.org
+ECTCONNECT play.google.com:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: play.google.com:443
+
+" from 45.37.116.131 @ Sun Feb 26 22:41:16 2023
+
+"
+TPOST http://ocsp.pki.goog/gts1c3 HTTP/1.1
+Host: ocsp.pki.goog
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
 Accept: */*
 Accept-Language: en-US,en;q=0.5
 Accept-Encoding: gzip, deflate
 Content-Type: application/ocsp-request
-Content-Length: 85
+Content-Length: 84
 Connection: keep-alive
 Pragma: no-cache
 Cache-Control: no-cache
 
-0S0Q0O0M0K0	+" from 45.37.116.131 @ Sun Feb 26 14:50:23 2023
-
-CTPOST http://r3.o.lencr.org/ HTTP/1.1
-Host: r3.o.lencr.org
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Content-Type: application/ocsp-request
-Content-Length: 85
-Connection: keep-alive
-Pragma: no-cache
-Cache-Control: no-cache
-
-0S0Q0O0M0K0	+" from 45.37.116.131 @ Sun Feb 26 14:50:23 2023
-
-TPOST http://ocsp.digicert.com/ HTTP/1.1
-Host: ocsp.digicert.com
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Content-Type: application/ocsp-request
-Content-Length: 83
-Connection: keep-alive
-Pragma: no-cache
-Cache-Control: no-cache
-
-0Q0O0M0K0I0	+" from 45.37.116.131 @ Sun Feb 26 14:50:56 2023
+0R0P0N0L0J0	+" from 45.37.116.131 @ Sun Feb 26 22:41:17 2023
 
 POST http://ocsp.digicert.com/ HTTP/1.1
 Host: ocsp.digicert.com
@@ -358,5 +254,162 @@ Connection: keep-alive
 Pragma: no-cache
 Cache-Control: no-cache
 
-0Q0O0M0K0I0	+" from 45.37.116.131 @ Sun Feb 26 14:51:02 2023
+0Q0O0M0K0I0	+" from 45.37.116.131 @ Sun Feb 26 22:41:28 2023
+
+GETPOST http://ocsp.digicert.com/ HTTP/1.1
+Host: ocsp.digicert.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/ocsp-request
+Content-Length: 83
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+
+0Q0O0M0K0I0	+" from 45.37.116.131 @ Sun Feb 26 22:41:33 2023
+
+ETPOST http://ocsp.digicert.com/ HTTP/1.1
+Host: ocsp.digicert.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/ocsp-request
+Content-Length: 83
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+
+0Q0O0M0K0I0	+" from 45.37.116.131 @ Sun Feb 26 22:42:28 2023
+
+TPOST http://ocsp.digicert.com/ HTTP/1.1
+Host: ocsp.digicert.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/ocsp-request
+Content-Length: 83
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+
+0Q0O0M0K0I0	+" from 45.37.116.131 @ Sun Feb 26 22:42:33 2023
+
+POSTCONNECT spocs.getpocket.com:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: spocs.getpocket.com:443
+
+" from 45.37.116.131 @ Sun Feb 26 22:42:39 2023
+
+(Connection): select() failed
+CONNECT contile.services.mozilla.com:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: contile.services.mozilla.com:443
+
+" from 45.37.116.131 @ Sun Feb 26 22:42:39 2023
+
+OSTCONNECT getpocket.cdn.mozilla.net:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: getpocket.cdn.mozilla.net:443
+
+" from 45.37.116.131 @ Sun Feb 26 22:42:39 2023
+
+r(Connection): select() failed
+STPOST http://ocsp.sca1b.amazontrust.com/ HTTP/1.1
+Host: ocsp.sca1b.amazontrust.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/ocsp-request
+Content-Length: 83
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+
+0Q0O0M0K0I0	+" from 45.37.116.131 @ Sun Feb 26 22:42:39 2023
+
+Connection): select() failed
+TPOST http://r3.o.lencr.org/ HTTP/1.1
+Host: r3.o.lencr.org
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/ocsp-request
+Content-Length: 85
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+
+0S0Q0O0M0K0	+" from 45.37.116.131 @ Sun Feb 26 22:42:39 2023
+
+POST http://r3.o.lencr.org/ HTTP/1.1
+Host: r3.o.lencr.org
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/ocsp-request
+Content-Length: 85
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+
+0S0Q0O0M0K0	+" from 45.37.116.131 @ Sun Feb 26 22:42:40 2023
+
+CONNECT contile-images.services.mozilla.com:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: contile-images.services.mozilla.com:443
+
+" from 45.37.116.131 @ Sun Feb 26 22:42:42 2023
+
+ection): select() failed
+CONNECT img-getpocket.cdn.mozilla.net:443 HTTP/1.1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Proxy-Connection: keep-alive
+Connection: keep-alive
+Host: img-getpocket.cdn.mozilla.net:443
+
+" from 45.37.116.131 @ Sun Feb 26 22:42:42 2023
+
+POST http://r3.o.lencr.org/ HTTP/1.1
+Host: r3.o.lencr.org
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/ocsp-request
+Content-Length: 85
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+
+0S0Q0O0M0K0	+" from 45.37.116.131 @ Sun Feb 26 22:42:42 2023
+
+ction): select() failed
+POST http://r3.o.lencr.org/ HTTP/1.1
+Host: r3.o.lencr.org
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/ocsp-request
+Content-Length: 85
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+
+0S0Q0O0M0K0	+" from 45.37.116.131 @ Sun Feb 26 22:42:42 2023
 
