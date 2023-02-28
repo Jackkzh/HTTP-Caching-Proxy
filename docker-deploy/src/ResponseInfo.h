@@ -96,13 +96,14 @@ class ResponseInfo {
   bool isFresh(std::string response_time, int maxStale = 0) {
     setFreshLifeTime(maxStale);
     setCurrentAge(response_time);
-    if (freshLifeTime > currAge) {
+    if (freshLifeTime + maxStale > currAge) {
       return true;
     }
     else {
       return false;
     }
   }
+  
   bool isCacheable(int thread_id);
 
   void logCat(int thread_id);

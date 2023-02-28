@@ -60,15 +60,20 @@ void Cache::put(std::string key, ResponseInfo response) {
   // if (response.eTag != "") {
   //   item.eTag = response.eTag;
   // }
-
   cache[key] = response;
 }
 
+/**
+ * This function removes all entries from the cache.
+*/
 void Cache::clear() {
   std::lock_guard<std::mutex> lock(cacheMutex);
   cache.clear();
 }
 
+/**
+ * This function removes all expired entries from the cache.
+*/
 void Cache::cleanup() {
   std::vector<std::string> expiredKeys;
   TimeMake t;
@@ -93,7 +98,7 @@ void Cache::cleanup() {
  * @param eTag the ETag of the response, if available.
  * @return True if the cached response is still valid, false otherwise.
  */
-bool Cache::validate(std::string key, std::string & request) {
+bool Cache::validate(std::string key, std::string & request) { // request -- is request sent by broser 
   std::lock_guard<std::mutex> lock(cacheMutex);
   cleanup();
   // Check if the cache has the requested URL
@@ -148,3 +153,4 @@ void Cache::useCache(httpcommand req, int client_fd, int thread_id) {
   std::string msg = std::to_string(thread_id) + ": Responding \"" + req.url + "\"";
   logFile.log(msg);
 }
+

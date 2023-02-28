@@ -8,7 +8,7 @@
 
 Logger logFile;
 Cache cache(10 * 1024 * 1024);
-
+ 
 /**
  * init socket status, bind socket, listen on socket as a server(to accept connection from browser)
  * @param port
@@ -197,8 +197,8 @@ void Proxy::requestCONNECT(int client_fd, int thread_id) {
 
 /**
  * Transfer Data between sender and receiver
- * @param fd1 -- send_fd
- * @param fd2 -- recv_fd
+ * @param fd1 send_fd
+ * @param fd2 recv_fd
  */
 void Proxy::connect_Transferdata(int fd1, int fd2) {
     std::vector<char> buffer(MAX_LENGTH, 0);
@@ -223,9 +223,9 @@ void Proxy::connect_Transferdata(int fd1, int fd2) {
 
 /**
  * send GET request to browser, check error case and send response to browser
- * @param client_fd
- * @param h
- * @param thread_id
+ * @param client_fd 
+ * @param h the request info sent by browser
+ * @param thread_id 
  */
 void Proxy::requestGET(int client_fd, httpcommand h, int thread_id) {
     std::string msg = std::to_string(thread_id) + ": Requesting \"" + h.method + " " +
@@ -249,8 +249,8 @@ void Proxy::requestGET(int client_fd, httpcommand h, int thread_id) {
     memset(buffer, 0, sizeof(buffer));
     int recv_len = 0;
     ResponseInfo response_info;
-    ssize_t n = recv(client_fd, buffer + recv_len, sizeof(buffer) - recv_len, 0);
-    if (n == -1) {
+    ssize_t recv_first = recv(client_fd, buffer + recv_len, sizeof(buffer) - recv_len, 0);
+    if (recv_first == -1) {
         // perror("recv"); // **** not necessarily an error, it's due to server side connection closed ****
         return;  // **** should be using return instead of exit ****
     }
@@ -259,10 +259,29 @@ void Proxy::requestGET(int client_fd, httpcommand h, int thread_id) {
     response_info.parseResponse(buffer_str, t.getTime());
     response_info.logCat(thread_id);  // print NOTE: ....
     if (response_info.is_chunk) {
-        send(client_connection_fd, buffer, n, 0);
+        send(client_connection_fd, buffer, recv_first, 0);
         sendChunkPacket(client_fd, client_connection_fd);
     } else {
-        send(client_connection_fd, buffer, n, 0);
+        size_t header_end = buffer_str.find("\r\n\r\n");
+        int header_len = header_end + 4;
+        int recv_left = response_info.content_length - (recv_first - header_len);
+        int len = 0;
+        if (recv_left > 0) {
+            recv_len = recv(client_fd, buffer + recv_first , sizeof(buffer) - recv_first, 0);
+        }
+        if (recv_len + recv_left < response_info.content_length) {
+            response_info.isBadGateway = true;
+            //response_info.checkbadGateway(client_fd, thread_id);
+        }
+        // while (recv_left > 0) {
+        //     int len = recv(client_fd, buffer + recv_len + recv_first , sizeof(buffer) - recv_len, 0);
+        //     if (len == -1) {
+        //         return; 
+        //     }
+        //     recv_left -= len;
+        //     recv_first += len;
+        // }
+        send(client_connection_fd, buffer, recv_first + recv_len, 0);
     }
     if (response_info.isCacheable(thread_id)) {
         cache.put(h.url, response_info);
@@ -406,7 +425,7 @@ void Proxy::handleRequest(int thread_id) {
                 } else {
                     // check fresh
                     std::string response_time = currTime.getTime();
-                    if (cache.get(request_info.url).isFresh(response_time)) {  // use cache
+                    if (cache.get(request_info.url).isFresh(response_time, request_info.maxStale)) {  // use cache
                         cache.useCache(request_info, client_fd, thread_id);
                     } else {
                         msg = std::to_string(thread_id) + ": cached, expires at " +

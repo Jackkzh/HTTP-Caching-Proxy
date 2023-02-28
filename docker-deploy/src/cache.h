@@ -53,9 +53,7 @@ class Cache {
     void clear();
 
     bool validate(std::string key, std::string& request);
-
-    bool isFresh();
-
+    
     void printCache();
 
     void useCache(httpcommand req, int client_fd, int thread_id);
