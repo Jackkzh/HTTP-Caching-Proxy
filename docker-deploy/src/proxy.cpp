@@ -261,30 +261,21 @@ void Proxy::requestGET(int client_fd, httpcommand request, int thread_id) {
   msg = std::to_string(thread_id) + ": Received \"" + tolog + "\" from " + request.host;
   logFile.log(msg);
   response_info.logCat(thread_id);  // print NOTE: ....
+  std::string response_line = buffer_str.substr(0, buffer_str.find_first_of("\r\n"));
+  msg = std::to_string(thread_id) + ": Responding \"" + response_line + "\"";
+  logFile.log(msg);
+  if (response_info.isCacheable(thread_id)) {
+    cache.put(request.url, response_info);
+  }
   if (response_info.is_chunk) {
     send(client_connection_fd, buffer, recv_first, 0);
     sendChunkPacket(client_fd, client_connection_fd);
   }
   else {
-    // size_t header_end = buffer_str.find("\r\n\r\n");
-    // int header_len = header_end + 4;
-    // int recv_left = response_info.content_length - (recv_first - header_len);
-    // int len = 0;
-    // if (recv_left > 0) {
-    //   recv_len = recv(client_fd, buffer + recv_first, sizeof(buffer) - recv_first, 0);
-    // }
-    // if (recv_len + recv_left < response_info.content_length) {
-    //   response_info.isBadGateway = true;
-    // }
     bool isBad = response_info.checkBadGateway(client_fd, thread_id);
     send(client_connection_fd, buffer, recv_first + recv_len, 0);
   }
-  if (response_info.isCacheable(thread_id)) {
-    cache.put(request.url, response_info);
-  }
-  std::string response_line = buffer_str.substr(0, buffer_str.find_first_of("\r\n"));
-  msg = std::to_string(thread_id) + ": Responding \"" + response_line + "\"";
-  logFile.log(msg);
+
   close(client_fd);
   close(client_connection_fd);
 }
@@ -325,6 +316,9 @@ void Proxy::requestPOST(int client_fd, httpcommand request_info, int thread_id) 
     if (sent == -1) {
       msg = "Error(GET): message buffer being sent is broken";
       throw myException(msg);
+    }
+    if (sent == 0) {
+      break;
     }
     total_sent += sent;
   }
