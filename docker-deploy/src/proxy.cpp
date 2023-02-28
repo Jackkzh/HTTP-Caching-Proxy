@@ -237,7 +237,7 @@ void Proxy::requestGET(int client_fd, httpcommand request, int thread_id) {
   while (total_sent < request_len) {
     int sent = send(client_fd, data + total_sent, request_len - total_sent, 0);
     if (sent == -1) {
-      std::string msg = "Error(GET): message buffer being sent is broken";
+      msg = "Error(GET): message buffer being sent is broken";
       throw myException(msg);
     }
     total_sent += sent;
@@ -256,6 +256,10 @@ void Proxy::requestGET(int client_fd, httpcommand request, int thread_id) {
   TimeMake t;
   std::string buffer_str(buffer);
   response_info.parseResponse(buffer_str, t.getTime());
+  size_t pos = response_info.response.find_first_of("\r\n");
+  std::string tolog = response_info.response.substr(0, pos);
+  msg = std::to_string(thread_id) + ": Received \"" + tolog + "\" from " + request.host;
+  logFile.log(msg);
   response_info.logCat(thread_id);  // print NOTE: ....
   if (response_info.is_chunk) {
     send(client_connection_fd, buffer, recv_first, 0);
@@ -341,11 +345,21 @@ void Proxy::requestPOST(int client_fd, httpcommand request_info, int thread_id) 
   TimeMake t;
 
   response_info.parseResponse(buffer_str, t.getTime());
+  size_t pos = response_info.response.find_first_of("\r\n");
+  std::string tolog = response_info.response.substr(0, pos);
+  msg = std::to_string(thread_id) + ": Received \"" + tolog + "\" from " +
+        request_info.host;
+  logFile.log(msg);
+  int i = 0;
   while (recv_len < response_info.content_length) {
     ssize_t n = recv(client_fd, buffer + recv_len, sizeof(buffer) - recv_len, 0);
     if (n == -1) {
       // perror("recv"); // **** not necessarily an error, it's due to server side connection closed ****
       return;  // **** should be using return instead of exit ****
+    }
+    if (n > 0 && i == 0) {
+      msg = std::to_string(thread_id) + ": Responding \"" + tolog;
+      logFile.log(msg);
     }
     recv_len += n;
   }
