@@ -136,6 +136,7 @@ void Cache::printCache() {
 
 void Cache::useCache(httpcommand req, int client_fd, int thread_id) {
   Logger logFile;
+  std::lock_guard<std::mutex> lock(cacheMutex);
   char res[get(req.url).response.size()];
   strcpy(res, get(req.url).response.c_str());
   send(client_fd, res, get(req.url).response.size(), 0);
