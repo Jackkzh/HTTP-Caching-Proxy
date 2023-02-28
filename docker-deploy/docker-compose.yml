@@ -2,10 +2,10 @@ version: '2'
 
 services:
   web:
-      build: ./logs
+      build: ./src
       user: root
-      command: "/var/log/erss/proxy" 
+      command: "/var/log/erss/main" 
       volumes:
-        - ./logs:/var/log/erss
+        - ./src:/var/log/erss
       ports:
         - "12345:12345"
