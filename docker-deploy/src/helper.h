@@ -9,7 +9,6 @@
 #include <cstring>
 #include <ctime>
 #include <exception>
-#include <filesystem>
 #include <fstream>
 #include <iostream>
 #include <map>
@@ -19,7 +18,7 @@
 
 #include "httpcommand.h"
 #define MAX_LENGTH 65536
-#define logFileLocation "./proxy.log"  //"/var/log/erss/proxy.log"
+#define logFileLocation "/var/log/erss/proxy.log"  //"/var/log/erss/proxy.log"
 
 class Logger {
  private:

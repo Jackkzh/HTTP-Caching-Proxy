@@ -2,7 +2,6 @@
 #define RESPONSEINFO_H
 
 #include <boost/algorithm/string.hpp>
-#include <boost/beast.hpp>
 #include <boost/regex.hpp>
 
 #include <algorithm>

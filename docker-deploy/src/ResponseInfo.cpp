@@ -268,6 +268,11 @@ void ResponseInfo::setCurrentAge(std::string response_time) {
 bool ResponseInfo::isCacheable(int thread_id) {
   Logger log;
   TimeMake t;
+  if (noCache) {
+    std::string msg = std::to_string(thread_id) + ": not cacheable because no-cache.";
+    log.log(msg);
+    return false;
+  }
   if (noStore) {
     std::string msg = std::to_string(thread_id) + ": not cacheable because no-store.";
     log.log(msg);

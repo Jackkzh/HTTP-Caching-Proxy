@@ -1,5 +1,24 @@
 # HTTP-Caching-Proxy
 
+# Instruction
+
+After git clone our repo, you should run (if you want to check logfile):
+```
+sudo docker-compose up -d
+sudo docker ps
+```
+Paste your container ID, then
+```
+sudo docker exec -it <container_id> /bin/bash
+cat proxy.log
+```
+
+Otherwise if you only want to visit web, you can directly run:
+```
+sudo docker-compose up
+```
+
+
 For this assignment you will be writing an http proxy – a server whose job it is to forward requests to the origin server on behalf of the client. Your proxy will cache responses, and, when appropriate, respond with the cached copy of a resource rather than re-fetching it.
 
 # Table of Contents
@@ -103,44 +122,6 @@ flowchart TD
 ```
 
 ## Implementation
-
-### UML
-
-```mermaid
-classDiagram
-    class HTTP_Command{
-      +String request
-      +String method
-      +String port
-      +String host
-      +String url
-      +httpcommand()
-      +httpcommand(string req)
-      -parseMethod():void
-      -parseHostPort():void
-      -parseURL():void
-    }
-    class Server {
-      +int status
-      +int socket_fd
-      +int client_connection_fd
-      +struct addrinfo host_info
-      +struct addrinfo * host_info_list
-      +const char * hostname
-      +const char * port
-      +initStatus(const char * _hostname, const char * _port):void
-      +createSocket():void
-      +acceptConnection(string & ip):int
-      +getPort():int  
-      +requestConnect(int id):void
-      -connect_Transferdata(int send, int recv):void
-   }
-   exception <|-- myException
-   class exception {
-   }
-   class myException {
-   }
-```
 
 ### Requirements
 1. The proxy must **cache** responses to GET requests. (Caching is typically controlled by headers in the HTTP response, such as the "Cache-Control" header and the "Expires" header. These headers specify the caching policies for the response, such as how long the response can be cached and whether it can be reused.).    

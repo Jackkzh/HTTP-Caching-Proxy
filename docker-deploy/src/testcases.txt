@@ -29,59 +29,293 @@ Output:
 
 Test GET
 Input:
-
+http://httpstat.us/200
 
 Output:
 ================================================================================
-
+1: "GET http://httpstat.us/200" from 174.109.103.165 @ Mon Feb 27 23:59:34 2023
+1: not in cache
+1: Requesting "GET http://httpstat.us/200" from httpstat.us
+1: Received "HTTP/1.1 200 OK" from httpstat.us
+1: Responding "HTTP/1.1 200 OK"
+2: "CONNECT mozilla.cloudflare-dns.com:443" from 174.109.103.165 @ Mon Feb 27 23:59:35 2023
+2: Requesting "CONNECT mozilla.cloudflare-dns.com:443" from mozilla.cloudflare-dns.com
+2: Responding "HTTP/1.1 200 OK"
 ================================================================================
 
 
 Test POST
 Input:
-
+https://httpbin.org/post
+Then fill something and click submit.
 
 Output:
 ================================================================================
-
+1: "GET http://httpbin.org/forms/post" from 174.109.103.165 @ Tue Feb 28 00:03:03 2023
+1: not in cache
+1: Requesting "GET http://httpbin.org/forms/post" from httpbin.org
+1: Received "HTTP/1.1 200 OK" from httpbin.org
+1: Responding "HTTP/1.1 200 OK"
+2: "GET http://httpbin.org/favicon.ico" from 174.109.103.165 @ Tue Feb 28 00:03:03 2023
+2: not in cache
+2: Requesting "GET http://httpbin.org/favicon.ico" from httpbin.org
+2: Received "HTTP/1.1 404 NOT FOUND" from httpbin.org
+2: Responding "HTTP/1.1 404 NOT FOUND"
+3: "POST http://httpbin.org/post" from 174.109.103.165 @ Tue Feb 28 00:03:13 2023
+3: Requesting "POST http://httpbin.org/post" from httpbin.org
+3: Received "HTTP/1.1 200 OK" from httpbin.org
 ================================================================================
 
 
 Test Cache (no in cache first and then add to cache)
 Input:
-
+http://httpbin.org/cache/60
+http://httpbin.org/cache/60
+http://httpbin.org/cache/3600
+http://httpbin.org/cache/3600
+http://httpbin.org/cache/38400
+http://httpbin.org/cache/38400
 
 Output:
 ================================================================================
-
+1: "POST http://ocsp.digicert.com/" from 174.109.103.165 @ Tue Feb 28 00:05:45 2023
+1: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
+2: "POST http://r3.o.lencr.org/" from 174.109.103.165 @ Tue Feb 28 00:05:45 2023
+2: Requesting "POST http://r3.o.lencr.org/" from r3.o.lencr.org
+3: "POST http://r3.o.lencr.org/" from 174.109.103.165 @ Tue Feb 28 00:05:45 2023
+3: Requesting "POST http://r3.o.lencr.org/" from r3.o.lencr.org
+7: "GET http://httpbin.org/cache/60" from 174.109.103.165 @ Tue Feb 28 00:05:46 2023
+7: not in cache
+7: Requesting "GET http://httpbin.org/cache/60" from httpbin.org
+7: Received "HTTP/1.1 200 OK" from httpbin.org
+7: NOTE Cache-Control: max-age=60
+7: NOTE Expires: Tue Feb 28 00:06:46 2023
+7: cacheable, expires at Tue Feb 28 00:06:46 2023
+7: Responding "HTTP/1.1 200 OK"
+8: "GET http://httpbin.org/cache/60" from 174.109.103.165 @ Tue Feb 28 00:05:49 2023
+8: in cache, valid
+8: Responding "http://httpbin.org/cache/60"
+4: Responding "HTTP/1.1 400 Bad Request"
+4: " " from 174.109.103.165 @ Tue Feb 28 00:05:50 2023
+5: Responding "HTTP/1.1 400 Bad Request"
+6: Responding "HTTP/1.1 400 Bad Request"
+5: " " from 174.109.103.165 @ Tue Feb 28 00:05:51 2023
+6: " " from 174.109.103.165 @ Tue Feb 28 00:05:51 2023
+9: "GET http://httpbin.org/cache/3600" from 174.109.103.165 @ Tue Feb 28 00:05:54 2023
+9: not in cache
+9: Requesting "GET http://httpbin.org/cache/3600" from httpbin.org
+9: Received "HTTP/1.1 200 OK" from httpbin.org
+9: NOTE Cache-Control: max-age=3600
+9: NOTE Expires: Tue Feb 28 01:05:54 2023
+9: cacheable, expires at Tue Feb 28 01:05:54 2023
+9: Responding "HTTP/1.1 200 OK"
+10: "GET http://httpbin.org/cache/3600" from 174.109.103.165 @ Tue Feb 28 00:05:56 2023
+10: in cache, valid
+10: Responding "http://httpbin.org/cache/3600"
+11: "CONNECT mozilla.cloudflare-dns.com:443" from 174.109.103.165 @ Tue Feb 28 00:06:01 2023
+11: Requesting "CONNECT mozilla.cloudflare-dns.com:443" from mozilla.cloudflare-dns.com
+11: Responding "HTTP/1.1 200 OK"
+12: "GET http://httpbin.org/cache/38400" from 174.109.103.165 @ Tue Feb 28 00:06:03 2023
+12: not in cache
+12: Requesting "GET http://httpbin.org/cache/38400" from httpbin.org
+12: Received "HTTP/1.1 200 OK" from httpbin.org
+12: NOTE Cache-Control: max-age=38400
+12: NOTE Expires: Tue Feb 28 10:46:03 2023
+12: cacheable, expires at Tue Feb 28 10:46:03 2023
+12: Responding "HTTP/1.1 200 OK"
+13: "GET http://httpbin.org/cache/38400" from 174.109.103.165 @ Tue Feb 28 00:06:05 2023
+13: in cache, valid
+13: Responding "http://httpbin.org/cache/38400"
 ================================================================================
+
+
+*****And in the terminal, we can see the cache content:
+********************************************************
+=================Cache===================
+Request: http://httpbin.org/cache/60
+=================Cache Size===================
+cache.size=1
+=================Cache End===================
+Error: cannot get address info for host
+Error: cannot get address info for host
+Error: cannot get address info for host
+=================Cache===================
+Request: http://httpbin.org/cache/3600
+Request: http://httpbin.org/cache/60
+=================Cache Size===================
+cache.size=2
+=================Cache End===================
+=================Cache===================
+Request: http://httpbin.org/cache/3600
+Request: http://httpbin.org/cache/38400
+Request: http://httpbin.org/cache/60
+=================Cache Size===================
+cache.size=3
+=================Cache End===================
+
+***********************************************************
 
 
 Test Chunked
 Input:
-
+www.httpwatch.com/httpgallery/chunked/chunkedimage.aspx
 
 Output:
 ================================================================================
-
+1: "GET http://www.httpwatch.com/httpgallery/chunked/chunkedimage.aspx" from 174.109.103.165 @ Tue Feb 28 00:14:39 2023
+1: not in cache
+1: Requesting "GET http://www.httpwatch.com/httpgallery/chunked/chunkedimage.aspx" from www.httpwatch.com
+1: Received "HTTP/1.1 200 OK" from www.httpwatch.com
+1: NOTE Cache-Control:  no-cache
+1: Responding "HTTP/1.1 200 OK"
+1: not cacheable because no-cache.
 ================================================================================
 
-Test "max-age" - 1
+Test "max-age"
 Input:
+http://httpbin.org/cache/60
+Cache-Control: max-age=60
 
+in 60 seconds ==> in cache (line 193)
+after ==> expires (line 209)
 
 Output:
 ================================================================================
-
+1: "GET http://httpbin.org/cache/60" from 174.109.103.165 @ Tue Feb 28 00:20:23 2023
+1: not in cache
+1: Requesting "GET http://httpbin.org/cache/60" from httpbin.org
+1: Received "HTTP/1.1 200 OK" from httpbin.org
+1: NOTE Cache-Control: max-age=60
+1: NOTE Expires: Tue Feb 28 00:21:23 2023
+1: Responding "HTTP/1.1 200 OK"
+1: cacheable, expires at Tue Feb 28 00:21:23 2023
+2: "GET http://httpbin.org/cache/60" from 174.109.103.165 @ Tue Feb 28 00:20:28 2023
+2: in cache, valid
+2: Responding "http://httpbin.org/cache/60"
+3: "CONNECT getpocket.cdn.mozilla.net:443" from 174.109.103.165 @ Tue Feb 28 00:20:34 2023
+4: "CONNECT spocs.getpocket.com:443" from 174.109.103.165 @ Tue Feb 28 00:20:34 2023
+3: Requesting "CONNECT getpocket.cdn.mozilla.net:443" from getpocket.cdn.mozilla.net
+3: Responding "HTTP/1.1 200 OK"
+4: Requesting "CONNECT spocs.getpocket.com:443" from spocs.getpocket.com
+4: Responding "HTTP/1.1 200 OK"
+5: "POST http://r3.o.lencr.org/" from 174.109.103.165 @ Tue Feb 28 00:20:35 2023
+5: Requesting "POST http://r3.o.lencr.org/" from r3.o.lencr.org
+6: "POST http://ocsp.sca1b.amazontrust.com/" from 174.109.103.165 @ Tue Feb 28 00:20:35 2023
+6: Requesting "POST http://ocsp.sca1b.amazontrust.com/" from ocsp.sca1b.amazontrust.com
+7: "CONNECT mozilla.cloudflare-dns.com:443" from 174.109.103.165 @ Tue Feb 28 00:20:48 2023
+7: Requesting "CONNECT mozilla.cloudflare-dns.com:443" from mozilla.cloudflare-dns.com
+7: Responding "HTTP/1.1 200 OK"
+8: "GET http://httpbin.org/cache/60" from 174.109.103.165 @ Tue Feb 28 00:21:30 2023
+8: not in cache
+8: Requesting "GET http://httpbin.org/cache/60" from httpbin.org
+8: Received "HTTP/1.1 200 OK" from httpbin.org
+8: NOTE Cache-Control: max-age=60
+8: NOTE Expires: Tue Feb 28 00:22:30 2023
+8: Responding "HTTP/1.1 200 OK"
+8: cacheable, expires at Tue Feb 28 00:22:30 2023
 ================================================================================
 
 
-
-Test "max-age" - 2
+other test cases:
 Input:
+http://www.360doc.com/index.html
+It has 4 kinds of note from line 254 to 257
 
-
-Output:
 ================================================================================
-
+4: "GET http://product.360doc.com/ajax/Common.ashx?callback=jQuery18009467749935059148_1677561931518&op=GetAppValue_YidunCaptchaId&sign=93E6CB7419971F7F96129579C8F0F853B744621E&_=1677561933671" from 174.109.103.165 @ Tue Feb 28 00:25:48 2023
+3: "GET http://userimage8.360doc.com/20/1228/15/20743124_202012281511190628_main.jpg" from 174.109.103.165 @ Tue Feb 28 00:25:48 2023
+1: "CONNECT mozilla.cloudflare-dns.com:443" from 174.109.103.165 @ Tue Feb 28 00:25:48 2023
+2: "GET http://channelpic.360doc.com/2022/20221209/2022129165530160134368.jpg" from 174.109.103.165 @ Tue Feb 28 00:25:48 2023
+1: Requesting "CONNECT mozilla.cloudflare-dns.com:443" from mozilla.cloudflare-dns.com
+1: Responding "HTTP/1.1 200 OK"
+2: not in cache
+2: Requesting "GET http://channelpic.360doc.com/2022/20221209/2022129165530160134368.jpg" from channelpic.360doc.com
+3: not in cache
+3: Requesting "GET http://userimage8.360doc.com/20/1228/15/20743124_202012281511190628_main.jpg" from userimage8.360doc.com
+2: Received "HTTP/1.1 206 Partial Content" from channelpic.360doc.com
+2: Responding "HTTP/1.1 206 Partial Content"
+3: Received "HTTP/1.1 200 OK" from userimage8.360doc.com
+3: Responding "HTTP/1.1 200 OK"
+9: "POST http://ocsp.crlocsp.cn/" from 174.109.103.165 @ Tue Feb 28 00:25:48 2023
+8: "POST http://ocsp.crlocsp.cn/" from 174.109.103.165 @ Tue Feb 28 00:25:48 2023
+10: "POST http://ocsp.globalsign.com/gsrsaovsslca2018" from 174.109.103.165 @ Tue Feb 28 00:25:48 2023
+10: Requesting "POST http://ocsp.globalsign.com/gsrsaovsslca2018" from ocsp.globalsign.com
+9: Requesting "POST http://ocsp.crlocsp.cn/" from ocsp.crlocsp.cn
+8: Requesting "POST http://ocsp.crlocsp.cn/" from ocsp.crlocsp.cn
+4: not in cache
+4: Requesting "GET http://product.360doc.com/ajax/Common.ashx?callback=jQuery18009467749935059148_1677561931518&op=GetAppValue_YidunCaptchaId&sign=93E6CB7419971F7F96129579C8F0F853B744621E&_=1677561933671" from product.360doc.com
+4: Received "HTTP/1.1 200 OK" from product.360doc.com
+4: Responding "HTTP/1.1 200 OK"
+4: not cacheable because is private.
+5: "GET http://pubimage.360doc.com/index7/banner_btn.png" from 174.109.103.165 @ Tue Feb 28 00:25:50 2023
+5: not in cache
+5: Requesting "GET http://pubimage.360doc.com/index7/banner_btn.png" from pubimage.360doc.com
+5: Received "HTTP/1.1 206 Partial Content" from pubimage.360doc.com
+5: NOTE Cache-Control: max-age=2592000
+5: NOTE Expires: Thu Mar 30 01:25:51 2023
+5: NOTE ETag: 5cb819a4-4183
+5: NOTE Last-Modified: Thu Apr 18 06:31:00 2019
+5: Responding "HTTP/1.1 206 Partial Content"
+5: cacheable, expires at Thu Mar 30 01:25:51 2023
+6: Responding "HTTP/1.1 400 Bad Request"
+6: " " from 174.109.103.165 @ Tue Feb 28 00:25:53 2023
+7: Responding "HTTP/1.1 400 Bad Request"
+7: " " from 174.109.103.165 @ Tue Feb 28 00:25:53 2023
+11: "GET http://cstatic.dun.163yun.com/plugins.min.js?v=27959365" from 174.109.103.165 @ Tue Feb 28 00:25:55 2023
+11: not in cache
+11: Requesting "GET http://cstatic.dun.163yun.com/plugins.min.js?v=27959365" from cstatic.dun.163yun.com
+11: Received "HTTP/1.1 200 OK" from cstatic.dun.163yun.com
+11: NOTE Cache-Control: max-age=300
+11: NOTE Expires: Tue Feb 28 00:30:56 2023
+11: NOTE Last-Modified: Mon Feb 20 10:11:28 2023
+11: Responding "HTTP/1.1 200 OK"
+11: cacheable, expires at Tue Feb 28 00:30:56 2023
+12: "GET http://c.dun.163.com/api/v2/getconf?referer=http%3A%2F%2Fwww.360doc.com%2Findex.html&zoneId=&id=efe5a4be4ed646f3ac4ce90e3746a12e&ipv6=false&runEnv=10&loadVersion=2.2.3&callback=__JSONP_xf2mng5_0" from 174.109.103.165 @ Tue Feb 28 00:26:01 2023
+12: not in cache
+12: Requesting "GET http://c.dun.163.com/api/v2/getconf?referer=http%3A%2F%2Fwww.360doc.com%2Findex.html&zoneId=&id=efe5a4be4ed646f3ac4ce90e3746a12e&ipv6=false&runEnv=10&loadVersion=2.2.3&callback=__JSONP_xf2mng5_0" from c.dun.163.com
+12: Received "HTTP/1.1 200 OK" from c.dun.163.com
+12: Responding "HTTP/1.1 200 OK"
+12: not cacheable because no-store.
+14: "GET http://cstaticdun.126.net/2.21.2/light.v2.21.2.min.js?v=2795936" from 174.109.103.165 @ Tue Feb 28 00:26:02 2023
+13: "GET http://cstaticdun.126.net/2.21.2/core.v2.21.2.min.js?v=2795936" from 174.109.103.165 @ Tue Feb 28 00:26:02 2023
+14: not in cache
+14: Requesting "GET http://cstaticdun.126.net/2.21.2/light.v2.21.2.min.js?v=2795936" from cstaticdun.126.net
+13: not in cache
+13: Requesting "GET http://cstaticdun.126.net/2.21.2/core.v2.21.2.min.js?v=2795936" from cstaticdun.126.net
+14: Received "HTTP/1.1 200 OK" from cstaticdun.126.net
+13: Received "HTTP/1.1 200 OK" from cstaticdun.126.net
+14: NOTE Cache-Control: max-age=300
+14: NOTE Expires: Tue Feb 28 00:31:03 2023
+14: NOTE Last-Modified: Mon Feb 6 01:46:01 2023
+14: Responding "HTTP/1.1 200 OK"
+13: NOTE Cache-Control: max-age=300
+14: cacheable, expires at Tue Feb 28 00:31:03 2023
+13: NOTE Expires: Tue Feb 28 00:31:03 2023
+13: NOTE Last-Modified: Mon Feb 6 01:46:01 2023
+13: Responding "HTTP/1.1 200 OK"
+13: cacheable, expires at Tue Feb 28 00:31:03 2023
+15: "GET http://cstaticdun1.126.net/2.21.2/core.v2.21.2.min.js?v=2795936" from 174.109.103.165 @ Tue Feb 28 00:26:03 2023
+16: "GET http://cstaticdun1.126.net/2.21.2/light.v2.21.2.min.js?v=2795936" from 174.109.103.165 @ Tue Feb 28 00:26:03 2023
+15: not in cache
+15: Requesting "GET http://cstaticdun1.126.net/2.21.2/core.v2.21.2.min.js?v=2795936" from cstaticdun1.126.net
+16: not in cache
+16: Requesting "GET http://cstaticdun1.126.net/2.21.2/light.v2.21.2.min.js?v=2795936" from cstaticdun1.126.net
+15: Received "HTTP/1.1 200 OK" from cstaticdun1.126.net
+15: Responding "HTTP/1.1 200 OK"
+16: Received "HTTP/1.1 200 OK" from cstaticdun1.126.net
+16: Responding "HTTP/1.1 200 OK"
+17: "GET http://acstatic.dun.163yun.com/tool.min.js?v=27959366" from 174.109.103.165 @ Tue Feb 28 00:26:08 2023
+17: not in cache
+17: Requesting "GET http://acstatic.dun.163yun.com/tool.min.js?v=27959366" from acstatic.dun.163yun.com
+17: Received "HTTP/1.1 200 OK" from acstatic.dun.163yun.com
+17: NOTE Cache-Control: max-age=300
+17: NOTE Expires: Tue Feb 28 00:31:09 2023
+17: NOTE Last-Modified: Mon Oct 31 09:36:46 2022
+17: Responding "HTTP/1.1 200 OK"
+17: cacheable, expires at Tue Feb 28 00:31:09 2023
+18: "GET http://ac.dun.163.com/v2/config/js?pn=YD00649663098416&cvk=9534822dc77e3b947cc0ec91edebadeb&cb=__wmjsonp_a6ff9350&t=1677561969254" from 174.109.103.165 @ Tue Feb 28 00:26:14 2023
+18: not in cache
+18: Requesting "GET http://ac.dun.163.com/v2/config/js?pn=YD00649663098416&cvk=9534822dc77e3b947cc0ec91edebadeb&cb=__wmjsonp_a6ff9350&t=1677561969254" from ac.dun.163.com
+18: Received "HTTP/1.1 200 OK" from ac.dun.163.com
+18: Responding "HTTP/1.1 200 OK"
 ================================================================================

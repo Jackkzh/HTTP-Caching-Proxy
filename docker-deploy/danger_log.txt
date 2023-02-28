@@ -1,27 +1,132 @@
 Danger Log
 
-1. In our cache strategy, we ignore the cache-control options in request while only consider those in response header.
-If there is no cache-control in response header, we will set the page to be uncacheable, which might be in conflict with the cache-control in actual request header.
+# Instruction
 
-2. In get request, when the reponse status is 301 with a new Location to be a https(connect) request, our proxy would not send the request to the new Location and redirect. 
-Instead, it would send the reponse to browser, which evantually caused a timeout.
+After git clone our repo, you should run (if you want to check logfile):
+```
+sudo docker-compose up -d
+sudo docker ps
+```
+Paste your container ID, then
+```
+sudo docker exec -it <container_id> /bin/bash
+cat proxy.log
+```
 
-3. This is not necessarily a bug. The way we handle request in multi-threading is to create a new thread with a copy of the server instance 
-passed as a parameter in main.cpp, instead of passing a pointer to a smaller data structure that can handle the request.
-While it caused no bug, it requires a lot of memory(a quite amount of which is uncessary) and 
-might be a potential problem with respect to the performance and efficiency.
+Otherwise if you only want to visit web, you can directly run:
+```
+sudo docker-compose up
+````
 
-4. In the strategy of handling GET request: we use vector<char> to receive some of the incoming packets, to accommodate incoming packets of varying sizes.
-However, in our random testing, there are times when vector<char> lead to invalid memory access, which we have not solved yet.
-As a result, we use char[] in ther other cases, which is not as flexible as vector<char> but is more stable. 
+=============================================================================================
 
-5. To receive the complete reponse from server, We attempted to use a while loop to receive the response using content-length 
-in the header and the total recv size to determine whether the response is complete. However, this method is quite slow and inefficient, compared to recv 
-just once and send to browser. The problem of recv only one time is that it may not receive the complete response sometimes. We handled it by marking this web request
-as incomplete. In future, we should balance the trade-offs between efficiency and correctness.
+Cache policy:
+Size: we set it in proxy.cpp: Cache cache(10 * 1024 * 1024);
 
-6. we first set boost::regex re("Cache-Control:\\s*(\\S+)"); to parse items after Cache-Control, but that way will stop when it comes to the first ",".
+When a request comes in, the cache should be checked to see if it has a matching response.
+If the cache entry exists and is not expired, the response should be returned immediately.
+When the response in cache is expired and there's no Etag and Last-Modified field in it, 
+we erase it from cache. Otherwise we check revalidatation, if need revalidate, add 
+If-None-Match and If-Modified-Since fields to the request header, send it to server 
+and check the response is 200OK or 304.If it's 200 OK, we erase the old response 
+from cache and ask for a new one. Otherwise we reuse the response in cache.
+If not need validate, then we check if it is fresh (follow the instruction and formula in RFC).
+If it is not fresh, we recache it. Otherwise, we reuse it.
+If the server responds with a 200 OK status code, the new response should be cached and returned.
+If the cache entry does not exist, the proxy should forward the request to the origin server 
+and cache the response.
+
+The reason we chose to use std::map in our Cache implementation instead of std::unordered_map
+is that we need to maintain a sorted order of the elements in the cache based on their access 
+time. std::map stores elements in sorted order based on their keys, which makes it easier to 
+implement a least-recently-used cache eviction policy.
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+We make storng exception guarantee (in sockets building and Http request
+handle, we all set srong exception guarantees)
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+In our cache strategy, we ignore the cache-control options in request 
+while only consider those in response header.
+
+If there is no cache-control in response header, we will set the page 
+to be uncacheable, which might be in conflict with the cache-control 
+in actual request header.
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+In get request, when the reponse status is 301 with a new Location 
+to be a https(connect) request, our proxy would not send the request
+ to the new Location and redirect. 
+
+Instead, it would send the reponse to browser, which evantually caused 
+a timeout.
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+This is not necessarily a bug. The way we handle request in 
+multi-threading is to create a new thread with a copy of the server 
+instance passed as a parameter in main.cpp, instead of passing a 
+pointer to a smaller data structure that can handle the request.
+
+While it caused no bug, it requires a lot of memory(a quite amount 
+of which is uncessary) and might be a potential problem with respect 
+to the performance and efficiency.
+
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+In the strategy of handling GET request: we use vector<char> to receive 
+some of the incoming packets, to accommodate incoming packets of varying
+ sizes.
+
+However, in our random testing, there are times when vector<char> lead to 
+invalid memory access, which we have not solved yet.
+
+As a result, we use char[] in ther other cases, which is not as flexible 
+as vector<char> but is more stable. 
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+This Web link: 
+http://www.httpwatch.com/httpgallery/chunked/chunkedimage.aspx
+
+we cannot show it successfully. Finally, we found that, the request
+it give us has:
+"Expires: -1"
+
+However, we only default this value to be a legal time as before.
+"-1" means we should not cache it. 
+
+Besides this, we also add "empty check" before parsing, if empty,
+we make our "bool isBadRequest" to be true.
+
+In the same way, we also set our "bool isBadGateway".
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+To receive the complete reponse from server, We attempted to use a
+while loop to receive the response using content-length in the header
+and the total recv size to determine whether the response is complete. 
+
+However, this method is quite slow and inefficient, compared to recv 
+just once and send to browser. The problem of recv only one time is 
+that it may not receive the complete response sometimes. We handled 
+it by marking this web request as incomplete. In future, we should 
+balance the trade-offs between 
+efficiency and correctness.
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+we first set boost::regex re("Cache-Control:\\s*(\\S+)"); to parse items
+after Cache-Control, but that way will stop when it comes to the first ",".
+
 We changed it to boost::regex re("Cache-Control:\\s*([^\\r\\n]+)");
 
-7. The functions we developed for establishing socket connections rely on the low-level socket functions, which is less efficient compared to using boost::asio. The
-latter one can better handle corner cases and be more convenient to parse header info.
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+The functions we developed for establishing socket connections rely 
+on the low-level socket functions, which is less efficient compared to 
+using boost::asio. The latter one can better handle corner cases and be 
+more convenient to parse header info.

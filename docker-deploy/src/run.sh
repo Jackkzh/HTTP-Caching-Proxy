@@ -1,6 +1,6 @@
 #!/bin/bash
 make clean
-make all
+make
 echo 'start running proxy server...'
 ./main &
 while true ; do continue ; done
