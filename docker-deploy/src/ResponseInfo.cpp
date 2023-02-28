@@ -6,7 +6,7 @@
  */
 void ResponseInfo::setContentLength(std::string & buffer) {
   response = buffer;
-  std::cout << response << std::endl;
+  //std::cout << response << std::endl;
   content_length = -1;
   std::size_t end = buffer.find("\r\n\r\n");
   if (end != std::string::npos) {
@@ -73,10 +73,7 @@ void ResponseInfo::setContentType(std::string & buffer) {
  * @param buffer the buffer containing the HTTP response
  */
 void ResponseInfo::checkStatus(std::string & buffer) {
-  if (status_code == 200) {
-    // do nothing
-  }
-  else if (status_code == 301) {
+  if (status_code == 301) {
     // move permanently
     std::size_t location_start = buffer.find("Location:");
     if (location_start != std::string::npos) {
@@ -88,21 +85,6 @@ void ResponseInfo::checkStatus(std::string & buffer) {
       re_direct_url = new_location;
     }
   }
-  else if (status_code == 304) {
-    // do nothing
-  }
-  else if (status_code == 403) {
-    // do nothing
-  }
-  else if (status_code == 404) {
-    // do nothing
-  }
-  else if (status_code == 500) {
-    // do nothing
-  }
-  else {
-    // do nothing
-  }
 }
 
 /**
@@ -112,6 +94,7 @@ void ResponseInfo::checkStatus(std::string & buffer) {
  */
 void ResponseInfo::setCacheControl(std::string & buffer) {
   TimeMake t;
+  //std::cout << buffer << std::endl;
   std::size_t end = buffer.find("\r\n\r\n");
   if (end != std::string::npos) {
     std::string headers = buffer.substr(0, end);
@@ -127,7 +110,7 @@ void ResponseInfo::setCacheControl(std::string & buffer) {
     }
 
     // use Boost to find if the header contains "Cache-Control: "
-    boost::regex re("Cache-Control:\\s*(\\S+)");
+    boost::regex re("Cache-Control:\\s*([^\\r\\n]+)");
     boost::smatch what;
     if (boost::regex_search(headers, what, re)) {
       // get the string after "Cache-Control: "
@@ -198,6 +181,9 @@ void ResponseInfo::setCacheControl(std::string & buffer) {
         // std::cout << "eTag: " << eTag << std::endl;
       }
     }
+    else {  //if there is no Cache-Control, we set it uncacheable
+      isPublic = false;
+    }
   }
 }
 
@@ -206,13 +192,17 @@ void ResponseInfo::setCacheControl(std::string & buffer) {
  * maxAge, noCache, expirationTime, lastModified, eTag.
  */
 void ResponseInfo::printCacheFields() {
-  std::cout << "==================Cache Fields=======================" << std::endl;
+  std::cout << "date: " << date << std::endl;
+  std::cout << "public: " << isPublic << std::endl;
+  std::cout << "noCache: " << noCache << std::endl;
+  std::cout << "noStore: " << noStore << std::endl;
+  std::cout << "mustRevalidate: " << mustRevalidate << std::endl;
+  std::cout << "smaxAge: " << smaxAge << std::endl;
   std::cout << "maxAge: " << maxAge << std::endl;
   std::cout << "noCache: " << noCache << std::endl;
   std::cout << "expirationTime: " << expirationTime << std::endl;
   std::cout << "lastModified: " << lastModified << std::endl;
   std::cout << "eTag: " << eTag << std::endl;
-  std::cout << "==================Cache Fields=======================" << std::endl;
 }
 
 /**
@@ -222,50 +212,19 @@ void ResponseInfo::printCacheFields() {
  * by no more than the specified number of seconds.
 */
 void ResponseInfo::setFreshLifeTime(int maxStale) {
-  std::string buffer = response;
   TimeMake t;
-  std::string date = "";
-  std::size_t end = buffer.find("\r\n\r\n");
-  if (end != std::string::npos) {
-    content = buffer.substr(end + 4);
-
-    std::string headers = buffer.substr(0, end);
-    boost::regex d("Date:\\s*([^\r\n]*)");
-    boost::smatch whatd;
-    if (boost::regex_search(headers, whatd, d)) {
-      // get the string after "Cache-Control: "
-      std::string date = t.convertGMT(whatd[1].str());
-    }
-
-    // use Boost to find if the header contains "Cache-Control: "
-    boost::regex re("Cache-Control:\\s*(\\S+)");
-    boost::smatch what;
-    if (boost::regex_search(headers, what, re)) {
-      // get the string after "Cache-Control: "
-      std::string cache_control = what[1].str();
-
-      // use Boost to find if the header contains "s-maxage=seconds"
-      re = boost::regex("s-maxage=(\\d+)");
-      if (boost::regex_search(cache_control, what, re)) {
-        freshLifeTime = std::stoi(what[1].str());
-        return;
-      }
-
-      // use Boost to find if the header contains "max-age=seconds"
-      re = boost::regex("max-age=(\\d+)");
-      if (boost::regex_search(cache_control, what, re)) {
-        freshLifeTime = std::stoi(what[1].str());
-        return;
-      }
-
-      // use Boost to find if the header contains "Expires: "
-      re = boost::regex("Expires:\\s*([^\r\n]*)");
-      if (boost::regex_search(headers, what, re)) {
-        std::string exp = t.convertGMT(what[1].str());
-        freshLifeTime = t.timeMinus(exp, date);
-        return;
-      }
-    }
+  if (smaxAge != -1) {
+    freshLifeTime = smaxAge + maxStale;
+  }
+  else if (maxAge != -1) {
+    freshLifeTime = maxAge + maxStale;
+    //std::cout << freshLifeTime << std::endl;
+  }
+  else if (expirationTime != "") {
+    freshLifeTime = t.timeMinus(expirationTime, date) + maxStale;
+  }
+  else {
+    freshLifeTime = maxStale;
   }
 }
 
@@ -321,13 +280,13 @@ bool ResponseInfo::isCacheable(int thread_id) {
   }
   if (expirationTime != "") {
     std::string msg =
-        std::to_string(thread_id) + ": cached, expires at " + expirationTime;
+        std::to_string(thread_id) + ": cacheable, expires at " + expirationTime;
     log.log(msg);
     return true;
   }
   if (maxAge != -1) {
     std::string msg =
-        std::to_string(thread_id) + ": cached, expires at " + t.getTime(maxAge);
+        std::to_string(thread_id) + ": cacheable, expires at " + t.getTime(maxAge);
     log.log(msg);
     return true;
   }
