@@ -1,21 +1,105 @@
-1: "CONNECT www.google.com:443" from 174.109.103.165 @ Mon Feb 27 23:31:20 2023
-1: Requesting "CONNECT www.google.com:443" from www.google.com
+4: "GET http://product.360doc.com/ajax/Common.ashx?callback=jQuery18009467749935059148_1677561931518&op=GetAppValue_YidunCaptchaId&sign=93E6CB7419971F7F96129579C8F0F853B744621E&_=1677561933671" from 174.109.103.165 @ Tue Feb 28 00:25:48 2023
+3: "GET http://userimage8.360doc.com/20/1228/15/20743124_202012281511190628_main.jpg" from 174.109.103.165 @ Tue Feb 28 00:25:48 2023
+1: "CONNECT mozilla.cloudflare-dns.com:443" from 174.109.103.165 @ Tue Feb 28 00:25:48 2023
+2: "GET http://channelpic.360doc.com/2022/20221209/2022129165530160134368.jpg" from 174.109.103.165 @ Tue Feb 28 00:25:48 2023
+1: Requesting "CONNECT mozilla.cloudflare-dns.com:443" from mozilla.cloudflare-dns.com
 1: Responding "HTTP/1.1 200 OK"
-4: "CONNECT adservice.google.com:443" from 174.109.103.165 @ Mon Feb 27 23:31:21 2023
-4: Requesting "CONNECT adservice.google.com:443" from adservice.google.com
+2: not in cache
+2: Requesting "GET http://channelpic.360doc.com/2022/20221209/2022129165530160134368.jpg" from channelpic.360doc.com
+3: not in cache
+3: Requesting "GET http://userimage8.360doc.com/20/1228/15/20743124_202012281511190628_main.jpg" from userimage8.360doc.com
+2: Received "HTTP/1.1 206 Partial Content" from channelpic.360doc.com
+2: Responding "HTTP/1.1 206 Partial Content"
+3: Received "HTTP/1.1 200 OK" from userimage8.360doc.com
+3: Responding "HTTP/1.1 200 OK"
+9: "POST http://ocsp.crlocsp.cn/" from 174.109.103.165 @ Tue Feb 28 00:25:48 2023
+8: "POST http://ocsp.crlocsp.cn/" from 174.109.103.165 @ Tue Feb 28 00:25:48 2023
+10: "POST http://ocsp.globalsign.com/gsrsaovsslca2018" from 174.109.103.165 @ Tue Feb 28 00:25:48 2023
+10: Requesting "POST http://ocsp.globalsign.com/gsrsaovsslca2018" from ocsp.globalsign.com
+9: Requesting "POST http://ocsp.crlocsp.cn/" from ocsp.crlocsp.cn
+8: Requesting "POST http://ocsp.crlocsp.cn/" from ocsp.crlocsp.cn
+4: not in cache
+4: Requesting "GET http://product.360doc.com/ajax/Common.ashx?callback=jQuery18009467749935059148_1677561931518&op=GetAppValue_YidunCaptchaId&sign=93E6CB7419971F7F96129579C8F0F853B744621E&_=1677561933671" from product.360doc.com
+4: Received "HTTP/1.1 200 OK" from product.360doc.com
 4: Responding "HTTP/1.1 200 OK"
-5: "CONNECT googleads.g.doubleclick.net:443" from 174.109.103.165 @ Mon Feb 27 23:31:22 2023
-5: Requesting "CONNECT googleads.g.doubleclick.net:443" from googleads.g.doubleclick.net
-5: Responding "HTTP/1.1 200 OK"
-6: "POST http://ocsp.pki.goog/gts1c3" from 174.109.103.165 @ Mon Feb 27 23:31:22 2023
-6: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
-5: Tunnel closed
-5: Tunnel closed
-3: Responding "HTTP/1.1 400 Bad Request"
-2: Responding "HTTP/1.1 400 Bad Request"
-3: " " from 174.109.103.165 @ Mon Feb 27 23:31:24 2023
-2: " " from 174.109.103.165 @ Mon Feb 27 23:31:24 2023
-1: Tunnel closed
-1: Tunnel closed
-4: Tunnel closed
-4: Tunnel closed
+4: not cacheable because is private.
+5: "GET http://pubimage.360doc.com/index7/banner_btn.png" from 174.109.103.165 @ Tue Feb 28 00:25:50 2023
+5: not in cache
+5: Requesting "GET http://pubimage.360doc.com/index7/banner_btn.png" from pubimage.360doc.com
+5: Received "HTTP/1.1 206 Partial Content" from pubimage.360doc.com
+5: NOTE Cache-Control: max-age=2592000
+5: NOTE Expires: Thu Mar 30 01:25:51 2023
+5: NOTE ETag: 5cb819a4-4183
+5: NOTE Last-Modified: Thu Apr 18 06:31:00 2019
+5: Responding "HTTP/1.1 206 Partial Content"
+5: cacheable, expires at Thu Mar 30 01:25:51 2023
+6: Responding "HTTP/1.1 400 Bad Request"
+6: " " from 174.109.103.165 @ Tue Feb 28 00:25:53 2023
+7: Responding "HTTP/1.1 400 Bad Request"
+7: " " from 174.109.103.165 @ Tue Feb 28 00:25:53 2023
+11: "GET http://cstatic.dun.163yun.com/plugins.min.js?v=27959365" from 174.109.103.165 @ Tue Feb 28 00:25:55 2023
+11: not in cache
+11: Requesting "GET http://cstatic.dun.163yun.com/plugins.min.js?v=27959365" from cstatic.dun.163yun.com
+11: Received "HTTP/1.1 200 OK" from cstatic.dun.163yun.com
+11: NOTE Cache-Control: max-age=300
+11: NOTE Expires: Tue Feb 28 00:30:56 2023
+11: NOTE Last-Modified: Mon Feb 20 10:11:28 2023
+11: Responding "HTTP/1.1 200 OK"
+11: cacheable, expires at Tue Feb 28 00:30:56 2023
+12: "GET http://c.dun.163.com/api/v2/getconf?referer=http%3A%2F%2Fwww.360doc.com%2Findex.html&zoneId=&id=efe5a4be4ed646f3ac4ce90e3746a12e&ipv6=false&runEnv=10&loadVersion=2.2.3&callback=__JSONP_xf2mng5_0" from 174.109.103.165 @ Tue Feb 28 00:26:01 2023
+12: not in cache
+12: Requesting "GET http://c.dun.163.com/api/v2/getconf?referer=http%3A%2F%2Fwww.360doc.com%2Findex.html&zoneId=&id=efe5a4be4ed646f3ac4ce90e3746a12e&ipv6=false&runEnv=10&loadVersion=2.2.3&callback=__JSONP_xf2mng5_0" from c.dun.163.com
+12: Received "HTTP/1.1 200 OK" from c.dun.163.com
+12: Responding "HTTP/1.1 200 OK"
+12: not cacheable because no-store.
+14: "GET http://cstaticdun.126.net/2.21.2/light.v2.21.2.min.js?v=2795936" from 174.109.103.165 @ Tue Feb 28 00:26:02 2023
+13: "GET http://cstaticdun.126.net/2.21.2/core.v2.21.2.min.js?v=2795936" from 174.109.103.165 @ Tue Feb 28 00:26:02 2023
+14: not in cache
+14: Requesting "GET http://cstaticdun.126.net/2.21.2/light.v2.21.2.min.js?v=2795936" from cstaticdun.126.net
+13: not in cache
+13: Requesting "GET http://cstaticdun.126.net/2.21.2/core.v2.21.2.min.js?v=2795936" from cstaticdun.126.net
+14: Received "HTTP/1.1 200 OK" from cstaticdun.126.net
+13: Received "HTTP/1.1 200 OK" from cstaticdun.126.net
+14: NOTE Cache-Control: max-age=300
+14: NOTE Expires: Tue Feb 28 00:31:03 2023
+14: NOTE Last-Modified: Mon Feb 6 01:46:01 2023
+14: Responding "HTTP/1.1 200 OK"
+13: NOTE Cache-Control: max-age=300
+14: cacheable, expires at Tue Feb 28 00:31:03 2023
+13: NOTE Expires: Tue Feb 28 00:31:03 2023
+13: NOTE Last-Modified: Mon Feb 6 01:46:01 2023
+13: Responding "HTTP/1.1 200 OK"
+13: cacheable, expires at Tue Feb 28 00:31:03 2023
+15: "GET http://cstaticdun1.126.net/2.21.2/core.v2.21.2.min.js?v=2795936" from 174.109.103.165 @ Tue Feb 28 00:26:03 2023
+16: "GET http://cstaticdun1.126.net/2.21.2/light.v2.21.2.min.js?v=2795936" from 174.109.103.165 @ Tue Feb 28 00:26:03 2023
+15: not in cache
+15: Requesting "GET http://cstaticdun1.126.net/2.21.2/core.v2.21.2.min.js?v=2795936" from cstaticdun1.126.net
+16: not in cache
+16: Requesting "GET http://cstaticdun1.126.net/2.21.2/light.v2.21.2.min.js?v=2795936" from cstaticdun1.126.net
+15: Received "HTTP/1.1 200 OK" from cstaticdun1.126.net
+15: Responding "HTTP/1.1 200 OK"
+16: Received "HTTP/1.1 200 OK" from cstaticdun1.126.net
+16: Responding "HTTP/1.1 200 OK"
+17: "GET http://acstatic.dun.163yun.com/tool.min.js?v=27959366" from 174.109.103.165 @ Tue Feb 28 00:26:08 2023
+17: not in cache
+17: Requesting "GET http://acstatic.dun.163yun.com/tool.min.js?v=27959366" from acstatic.dun.163yun.com
+17: Received "HTTP/1.1 200 OK" from acstatic.dun.163yun.com
+17: NOTE Cache-Control: max-age=300
+17: NOTE Expires: Tue Feb 28 00:31:09 2023
+17: NOTE Last-Modified: Mon Oct 31 09:36:46 2022
+17: Responding "HTTP/1.1 200 OK"
+17: cacheable, expires at Tue Feb 28 00:31:09 2023
+18: "GET http://ac.dun.163.com/v2/config/js?pn=YD00649663098416&cvk=9534822dc77e3b947cc0ec91edebadeb&cb=__wmjsonp_a6ff9350&t=1677561969254" from 174.109.103.165 @ Tue Feb 28 00:26:14 2023
+18: not in cache
+18: Requesting "GET http://ac.dun.163.com/v2/config/js?pn=YD00649663098416&cvk=9534822dc77e3b947cc0ec91edebadeb&cb=__wmjsonp_a6ff9350&t=1677561969254" from ac.dun.163.com
+18: Received "HTTP/1.1 200 OK" from ac.dun.163.com
+18: Responding "HTTP/1.1 200 OK"
+19: "GET http://acstatic-dun.126.net/2.7.5_e2891084/watchman.min.js" from 174.109.103.165 @ Tue Feb 28 00:26:20 2023
+19: not in cache
+19: Requesting "GET http://acstatic-dun.126.net/2.7.5_e2891084/watchman.min.js" from acstatic-dun.126.net
+19: Received "HTTP/1.1 200 OK" from acstatic-dun.126.net
+19: NOTE Cache-Control: max-age=300
+19: NOTE Expires: Tue Feb 28 00:31:20 2023
+19: NOTE Last-Modified: Mon Oct 31 09:36:46 2022
+19: Responding "HTTP/1.1 200 OK"
+19: cacheable, expires at Tue Feb 28 00:31:20 2023
