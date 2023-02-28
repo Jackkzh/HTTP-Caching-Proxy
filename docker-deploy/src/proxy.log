@@ -1,27 +1,81 @@
-1: "CONNECT www.google.com:443" from 45.37.116.131 @ Tue Feb 28 18:12:05 2023
-2: "CONNECT www.google.com:443" from 45.37.116.131 @ Tue Feb 28 18:12:05 2023
-2: Requesting "CONNECT www.google.com:443" from www.google.com
-2: Responding "HTTP/1.1 200 OK"
-1: Requesting "CONNECT www.google.com:443" from www.google.com
+1: "CONNECT www.youtube.com:443" from 10.197.90.119 @ Tue Feb 28 21:50:26 2023
+1: Requesting "CONNECT www.youtube.com:443" from www.youtube.com
 1: Responding "HTTP/1.1 200 OK"
-1: Tunnel closed
-1: Tunnel closed
-3: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Tue Feb 28 18:12:05 2023
-3: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
-7: "CONNECT play.google.com:443" from 45.37.116.131 @ Tue Feb 28 18:12:08 2023
-7: Requesting "CONNECT play.google.com:443" from play.google.com
+2: "POST http://ocsp.pki.goog/gts1c3" from 10.197.90.119 @ Tue Feb 28 21:50:26 2023
+2: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+3: "CONNECT www.google.com:443" from 10.197.90.119 @ Tue Feb 28 21:51:13 2023
+3: Requesting "CONNECT www.google.com:443" from www.google.com
+3: Responding "HTTP/1.1 200 OK"
+4: "CONNECT safebrowsing.googleapis.com:443" from 10.197.90.119 @ Tue Feb 28 21:51:40 2023
+4: Requesting "CONNECT safebrowsing.googleapis.com:443" from safebrowsing.googleapis.com
+4: Responding "HTTP/1.1 200 OK"
+4: Tunnel closed
+4: Tunnel closed
+5: "CONNECT play.google.com:443" from 10.197.90.119 @ Tue Feb 28 21:53:00 2023
+5: Requesting "CONNECT play.google.com:443" from play.google.com
+5: Responding "HTTP/1.1 200 OK"
+6: "CONNECT contile.services.mozilla.com:443" from 10.197.90.119 @ Tue Feb 28 21:53:10 2023
+6: Requesting "CONNECT contile.services.mozilla.com:443" from contile.services.mozilla.com
+6: Responding "HTTP/1.1 200 OK"
+7: "CONNECT contile-images.services.mozilla.com:443" from 10.197.90.119 @ Tue Feb 28 21:53:10 2023
+7: Requesting "CONNECT contile-images.services.mozilla.com:443" from contile-images.services.mozilla.com
 7: Responding "HTTP/1.1 200 OK"
-8: "CONNECT safebrowsing.googleapis.com:443" from 45.37.116.131 @ Tue Feb 28 18:12:09 2023
-9: "CONNECT encrypted-tbn0.gstatic.com:443" from 45.37.116.131 @ Tue Feb 28 18:12:09 2023
-8: Requesting "CONNECT safebrowsing.googleapis.com:443" from safebrowsing.googleapis.com
+1: Tunnel closed
+1: Tunnel closed
+8: "GET http://www.httpwatch.com/httpgallery/methods/?AddX=2&AddY=12&B1=Add" from 10.197.90.119 @ Tue Feb 28 21:53:30 2023
+8: not in cache
+8: Requesting "GET http://www.httpwatch.com/httpgallery/methods/?AddX=2&AddY=12&B1=Add" from www.httpwatch.com
+8: Received "HTTP/1.1 200 OK" from www.httpwatch.com
+8: NOTE Cache-Control:  no-cache
 8: Responding "HTTP/1.1 200 OK"
-9: Requesting "CONNECT encrypted-tbn0.gstatic.com:443" from encrypted-tbn0.gstatic.com
-9: Responding "HTTP/1.1 200 OK"
-8: Tunnel closed
-8: Tunnel closed
-10: "CONNECT adservice.google.com:443" from 45.37.116.131 @ Tue Feb 28 18:12:09 2023
-10: Requesting "CONNECT adservice.google.com:443" from adservice.google.com
-10: Responding "HTTP/1.1 200 OK"
-11: "CONNECT googleads.g.doubleclick.net:443" from 45.37.116.131 @ Tue Feb 28 18:12:09 2023
-11: Requesting "CONNECT googleads.g.doubleclick.net:443" from googleads.g.doubleclick.net
-11: Responding "HTTP/1.1 200 OK"
+8: not cacheable because no-cache.
+9: "GET http://www.httpwatch.com/httpgallery/methods/retry.png" from 10.197.90.119 @ Tue Feb 28 21:53:30 2023
+15: "CONNECT www.httpwatch.com:443" from 10.197.90.119 @ Tue Feb 28 21:53:30 2023
+9: not in cache
+9: Requesting "GET http://www.httpwatch.com/httpgallery/methods/retry.png" from www.httpwatch.com
+15: Requesting "CONNECT www.httpwatch.com:443" from www.httpwatch.com
+15: Responding "HTTP/1.1 200 OK"
+9: Received "HTTP/1.1 304 Not Modified" from www.httpwatch.com
+9: NOTE Cache-Control: max-age=0
+9: NOTE Expires: Tue Feb 28 21:53:30 2023
+9: NOTE ETag: b46ba5c8bb2fd81:0
+9: Responding "HTTP/1.1 304 Not Modified"
+9: cacheable, expires at Tue Feb 28 21:53:30 2023
+9: Responding "HTTP/1.1 502 Bad Gateway"
+17: "CONNECT www.google-analytics.com:443" from 10.197.90.119 @ Tue Feb 28 21:53:30 2023
+17: Requesting "CONNECT www.google-analytics.com:443" from www.google-analytics.com
+17: Responding "HTTP/1.1 200 OK"
+12: "POST http://www.httpwatch.com/httpgallery/methods/?AddX=2&AddY=12&B1=Add" from 10.197.90.119 @ Tue Feb 28 21:53:32 2023
+12: Requesting "POST http://www.httpwatch.com/httpgallery/methods/?AddX=2&AddY=12&B1=Add" from www.httpwatch.com
+12: Received "HTTP/1.1 200 OK" from www.httpwatch.com
+10: "GET http://www.httpwatch.com/httpgallery/methods/retry.png" from 10.197.90.119 @ Tue Feb 28 21:53:32 2023
+10: not in cache
+10: Requesting "GET http://www.httpwatch.com/httpgallery/methods/retry.png" from www.httpwatch.com
+10: Received "HTTP/1.1 304 Not Modified" from www.httpwatch.com
+10: NOTE Cache-Control: max-age=0
+10: NOTE Expires: Tue Feb 28 21:53:32 2023
+10: NOTE ETag: b46ba5c8bb2fd81:0
+10: Responding "HTTP/1.1 304 Not Modified"
+10: cacheable, expires at Tue Feb 28 21:53:32 2023
+10: Responding "HTTP/1.1 502 Bad Gateway"
+13: Responding "HTTP/1.1 400 Bad Request"
+13: " " from 10.197.90.119 @ Tue Feb 28 21:53:36 2023
+14: Responding "HTTP/1.1 400 Bad Request"
+14: " " from 10.197.90.119 @ Tue Feb 28 21:53:36 2023
+11: Responding "HTTP/1.1 400 Bad Request"
+11: " " from 10.197.90.119 @ Tue Feb 28 21:53:36 2023
+16: Responding "HTTP/1.1 400 Bad Request"
+16: " " from 10.197.90.119 @ Tue Feb 28 21:53:36 2023
+18: "POST http://www.httpwatch.com/httpgallery/methods/?AddX=2&AddY=12&B1=Add" from 10.197.90.119 @ Tue Feb 28 21:53:36 2023
+18: Requesting "POST http://www.httpwatch.com/httpgallery/methods/?AddX=2&AddY=12&B1=Add" from www.httpwatch.com
+18: Received "HTTP/1.1 200 OK" from www.httpwatch.com
+19: "GET http://www.httpwatch.com/httpgallery/methods/retry.png" from 10.197.90.119 @ Tue Feb 28 21:53:36 2023
+19: not in cache
+19: Requesting "GET http://www.httpwatch.com/httpgallery/methods/retry.png" from www.httpwatch.com
+19: Received "HTTP/1.1 304 Not Modified" from www.httpwatch.com
+19: NOTE Cache-Control: max-age=0
+19: NOTE Expires: Tue Feb 28 21:53:36 2023
+19: NOTE ETag: b46ba5c8bb2fd81:0
+19: Responding "HTTP/1.1 304 Not Modified"
+19: cacheable, expires at Tue Feb 28 21:53:36 2023
+19: Responding "HTTP/1.1 502 Bad Gateway"

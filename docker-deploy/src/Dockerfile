@@ -11,3 +11,6 @@ WORKDIR /var/log/erss
 
 RUN chmod +x run.sh
 ENTRYPOINT ["./run.sh"]
+
+
+
