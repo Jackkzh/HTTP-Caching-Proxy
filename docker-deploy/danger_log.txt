@@ -1,5 +1,25 @@
 Danger Log
 
+# Instruction
+
+After git clone our repo, you should run (if you want to check logfile):
+```
+sudo docker-compose up -d
+sudo docker ps
+```
+Paste your container ID, then
+```
+sudo docker exec -it <container_id> /bin/bash
+cat proxy.log
+```
+
+Otherwise if you only want to visit web, you can directly run:
+```
+sudo docker-compose up
+````
+
+=============================================================================================
+
 Cache policy:
 Size: we set it in proxy.cpp: Cache cache(10 * 1024 * 1024);
 
