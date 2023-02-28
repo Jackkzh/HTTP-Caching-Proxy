@@ -3,6 +3,8 @@ version: '2'
 services:
   main:
     build: ./src
+    image: project2_final
+    container_name: proj2_container
     command: /var/log/erss/run.sh
     volumes:
       - ./src:/var/log/erss
