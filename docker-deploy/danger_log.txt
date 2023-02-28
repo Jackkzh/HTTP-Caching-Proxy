@@ -16,6 +16,11 @@ If the server responds with a 200 OK status code, the new response should be cac
 If the cache entry does not exist, the proxy should forward the request to the origin server 
 and cache the response.
 
+The reason we chose to use std::map in our Cache implementation instead of std::unordered_map
+is that we need to maintain a sorted order of the elements in the cache based on their access 
+time. std::map stores elements in sorted order based on their keys, which makes it easier to 
+implement a least-recently-used cache eviction policy.
+
 -------------------------------------------------------------------
 -------------------------------------------------------------------
 We make storng exception guarantee (in sockets building and Http request
