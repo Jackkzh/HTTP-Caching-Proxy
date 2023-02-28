@@ -1,5 +1,24 @@
 # HTTP-Caching-Proxy
 
+# Instruction
+
+After git clone our repo, you should run (if you want to check logfile):
+```
+sudo docker-compose up -d
+sudo docker ps
+```
+Paste your container ID, then
+```
+sudo docker exec -it <container_id> /bin/bash
+cat proxy.log
+```
+
+Otherwise if you only want to visit web, you can directly run:
+```
+sudo docker-compose up
+```
+
+
 For this assignment you will be writing an http proxy – a server whose job it is to forward requests to the origin server on behalf of the client. Your proxy will cache responses, and, when appropriate, respond with the cached copy of a resource rather than re-fetching it.
 
 # Table of Contents
