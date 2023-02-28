@@ -3,7 +3,6 @@
 
 #include <boost/algorithm/string.hpp>
 #include <boost/beast.hpp>
-#include <boost/date_time.hpp>
 #include <boost/regex.hpp>
 
 #include <algorithm>
@@ -103,7 +102,7 @@ class ResponseInfo {
       return false;
     }
   }
-  
+
   bool isCacheable(int thread_id);
 
   void logCat(int thread_id);

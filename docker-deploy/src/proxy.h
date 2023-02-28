@@ -6,9 +6,6 @@
 #include "httpcommand.h"
 #include "myexception.h"
 
-// extern std::mutex mtx;
-// extern ofstream logFile(logFileLocation);
-
 class Proxy {
  public:
   int socket_fd;             // this is the listen socket_fd
@@ -29,7 +26,7 @@ class Proxy {
   void requestCONNECT(int client_fd, int thread_id);
   void connect_Transferdata(int recv_fd, int send_fd);
   void handleRequest(int thread_id);
-  void requestGET(int client_fd, httpcommand h, int thread_id);
+  void requestGET(int client_fd, httpcommand request, int thread_id);
   void run(int thread_id);
   void requestPOST(int client_fd, httpcommand request_info, int thread_id);
   void sendChunkPacket(int remoteFd, int client_connection_fd);

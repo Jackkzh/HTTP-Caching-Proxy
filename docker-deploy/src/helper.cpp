@@ -1,5 +1,4 @@
 #include "helper.h"
-//pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 ClientInfo::ClientInfo(int uid, std::string ip, int fd, std::string arr) :
     uid(uid), ip(ip), fd(fd), arrivalTime(arr) {
