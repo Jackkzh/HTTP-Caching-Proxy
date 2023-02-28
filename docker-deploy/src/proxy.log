@@ -1,50 +1,605 @@
-1: "CONNECT www.google.com:443" from 45.37.116.131 @ Tue Feb 28 00:02:32 2023
-1: Requesting "CONNECT www.google.com:443" from www.google.com
+1: "GET http://detectportal.firefox.com/canonical.html" from 10.197.24.174 @ Tue Feb 28 16:15:57 2023
+1: not in cache
+1: Requesting "GET http://detectportal.firefox.com/canonical.html" from detectportal.firefox.com
+1: Received "HTTP/1.1 200 OK" from detectportal.firefox.com
+1: NOTE Cache-Control: max-age=0
+1: NOTE Expires: Tue Feb 28 16:15:57 2023
 1: Responding "HTTP/1.1 200 OK"
-1: Tunnel closed
-1: Tunnel closed
-2: "CONNECT www.google.com:443" from 45.37.116.131 @ Tue Feb 28 00:02:32 2023
-2: Requesting "CONNECT www.google.com:443" from www.google.com
+1: cacheable, expires at Tue Feb 28 16:15:57 2023
+2: "GET http://detectportal.firefox.com/success.txt?ipv4" from 10.197.24.174 @ Tue Feb 28 16:15:57 2023
+2: not in cache
+2: Requesting "GET http://detectportal.firefox.com/success.txt?ipv4" from detectportal.firefox.com
+2: Received "HTTP/1.1 200 OK" from detectportal.firefox.com
+2: NOTE Cache-Control: max-age=0
+2: NOTE Expires: Tue Feb 28 16:15:57 2023
 2: Responding "HTTP/1.1 200 OK"
-3: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Tue Feb 28 00:02:32 2023
-3: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
-4: "CONNECT firefox.settings.services.mozilla.com:443" from 45.37.116.131 @ Tue Feb 28 00:02:34 2023
-4: Requesting "CONNECT firefox.settings.services.mozilla.com:443" from firefox.settings.services.mozilla.com
-4: Responding "HTTP/1.1 200 OK"
-6: "CONNECT incoming.telemetry.mozilla.org:443" from 45.37.116.131 @ Tue Feb 28 00:02:35 2023
-6: Requesting "CONNECT incoming.telemetry.mozilla.org:443" from incoming.telemetry.mozilla.org
+2: cacheable, expires at Tue Feb 28 16:15:57 2023
+3: "CONNECT mozilla.cloudflare-dns.com:443" from 10.197.24.174 @ Tue Feb 28 16:16:02 2023
+3: Requesting "CONNECT mozilla.cloudflare-dns.com:443" from mozilla.cloudflare-dns.com
+3: Responding "HTTP/1.1 200 OK"
+4: "POST http://ocsp.digicert.com/" from 10.197.24.174 @ Tue Feb 28 16:16:02 2023
+4: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
+5: "CONNECT contile-images.services.mozilla.com:443" from 10.197.24.174 @ Tue Feb 28 16:16:44 2023
+5: Requesting "CONNECT contile-images.services.mozilla.com:443" from contile-images.services.mozilla.com
+5: Responding "HTTP/1.1 200 OK"
+6: "CONNECT img-getpocket.cdn.mozilla.net:443" from 10.197.24.174 @ Tue Feb 28 16:16:45 2023
+7: "CONNECT incoming.telemetry.mozilla.org:443" from 10.197.24.174 @ Tue Feb 28 16:16:45 2023
+6: Requesting "CONNECT img-getpocket.cdn.mozilla.net:443" from img-getpocket.cdn.mozilla.net
 6: Responding "HTTP/1.1 200 OK"
-7: "GET http://www.testingmcafeesites.com/index.htmlfdsa" from 45.37.116.131 @ Tue Feb 28 00:02:35 2023
-8: "POST http://ocsp.digicert.com/" from 45.37.116.131 @ Tue Feb 28 00:02:35 2023
-8: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
-7: not in cache
-7: Requesting "GET http://www.testingmcafeesites.com/index.htmlfdsa" from www.testingmcafeesites.com
-7: Received "HTTP/1.1 404 Not Found" from www.testingmcafeesites.com
-7: Responding "HTTP/1.1 404 Not Found"
-9: "CONNECT i.ytimg.com:443" from 45.37.116.131 @ Tue Feb 28 00:02:36 2023
-9: Requesting "CONNECT i.ytimg.com:443" from i.ytimg.com
-9: Responding "HTTP/1.1 200 OK"
-13: "CONNECT play.google.com:443" from 45.37.116.131 @ Tue Feb 28 00:02:36 2023
-13: Requesting "CONNECT play.google.com:443" from play.google.com
-13: Responding "HTTP/1.1 200 OK"
-14: "CONNECT adservice.google.com:443" from 45.37.116.131 @ Tue Feb 28 00:02:36 2023
-15: "CONNECT safebrowsing.googleapis.com:443" from 45.37.116.131 @ Tue Feb 28 00:02:36 2023
-14: Requesting "CONNECT adservice.google.com:443" from adservice.google.com
-14: Responding "HTTP/1.1 200 OK"
-15: Requesting "CONNECT safebrowsing.googleapis.com:443" from safebrowsing.googleapis.com
-15: Responding "HTTP/1.1 200 OK"
-15: Tunnel closed
-15: Tunnel closed
-17: "CONNECT googleads.g.doubleclick.net:443" from 45.37.116.131 @ Tue Feb 28 00:02:36 2023
-17: Requesting "CONNECT googleads.g.doubleclick.net:443" from googleads.g.doubleclick.net
-17: Responding "HTTP/1.1 200 OK"
-18: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Tue Feb 28 00:02:37 2023
-18: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
-10: "CONNECT www.gstatic.com:443" from 45.37.116.131 @ Tue Feb 28 00:02:37 2023
-19: "CONNECT www.youtube.com:443" from 45.37.116.131 @ Tue Feb 28 00:02:37 2023
-10: Requesting "CONNECT www.gstatic.com:443" from www.gstatic.com
-10: Responding "HTTP/1.1 200 OK"
-10: Tunnel closed
-10: Tunnel closed
-19: Requesting "CONNECT www.youtube.com:443" from www.youtube.com
+7: Requesting "CONNECT incoming.telemetry.mozilla.org:443" from incoming.telemetry.mozilla.org
+7: Responding "HTTP/1.1 200 OK"
+8: "POST http://r3.o.lencr.org/" from 10.197.24.174 @ Tue Feb 28 16:16:45 2023
+8: Requesting "POST http://r3.o.lencr.org/" from r3.o.lencr.org
+9: "POST http://r3.o.lencr.org/" from 10.197.24.174 @ Tue Feb 28 16:16:45 2023
+10: "POST http://ocsp.digicert.com/" from 10.197.24.174 @ Tue Feb 28 16:16:45 2023
+9: Requesting "POST http://r3.o.lencr.org/" from r3.o.lencr.org
+10: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
+11: "GET http://www.360doc.com/index.html" from 10.197.24.174 @ Tue Feb 28 16:16:47 2023
+11: not in cache
+11: Requesting "GET http://www.360doc.com/index.html" from www.360doc.com
+11: Received "HTTP/1.1 200 OK" from www.360doc.com
+11: NOTE Cache-Control: max-age=600
+11: NOTE Expires: Tue Feb 28 16:26:48 2023
+11: NOTE Last-Modified: Tue Feb 28 16:14:15 2023
+11: Responding "HTTP/1.1 200 OK"
+11: cacheable, expires at Tue Feb 28 16:26:48 2023
+12: "GET http://pubimage.360doc.com/index7/nlogo.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:48 2023
+13: "GET http://pubimage.360doc.com/index7/bannerl_4.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:48 2023
+15: "GET http://pubimage.360doc.com/index7/dingtu.gif" from 10.197.24.174 @ Tue Feb 28 16:16:48 2023
+14: "GET http://pubimage.360doc.com/index7/bannerl_3.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:48 2023
+16: "GET http://pubimage.360doc.com/index7/bannerl_1.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:48 2023
+17: "GET http://pubimage.360doc.com/index7/bannerl_2.jpg?t=2019012801" from 10.197.24.174 @ Tue Feb 28 16:16:48 2023
+18: "GET http://pubimage.360doc.com/index7/index_rightgg.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:48 2023
+19: "CONNECT incoming.telemetry.mozilla.org:443" from 10.197.24.174 @ Tue Feb 28 16:16:48 2023
+19: Requesting "CONNECT incoming.telemetry.mozilla.org:443" from incoming.telemetry.mozilla.org
 19: Responding "HTTP/1.1 200 OK"
+20: "GET http://hm.baidu.com/hm.js?d86954201130d615136257dde062a503" from 10.197.24.174 @ Tue Feb 28 16:16:48 2023
+21: "GET http://www.360doc.com/js/scancodelogin.js?t=2022080301&_=1677601008920" from 10.197.24.174 @ Tue Feb 28 16:16:48 2023
+24: "GET http://eclick.360doc.com/pcpage.jpg?code=69-1&1677601008917" from 10.197.24.174 @ Tue Feb 28 16:16:48 2023
+21: not in cache
+21: Requesting "GET http://www.360doc.com/js/scancodelogin.js?t=2022080301&_=1677601008920" from www.360doc.com
+22: "GET http://channelpic.360doc.com/2023/20230228/202322815164965088960.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+23: "GET http://channelpic.360doc.com/2023/20230228/202322815205912086543.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+25: "GET http://channelpic.360doc.com/2023/20230228/20232281524122565512.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+26: "GET http://pubimage.360doc.com/index7/str_yczs2.png" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+27: "GET http://channelpic.360doc.com/2023/20230228/202322815241256116554.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+28: "GET http://channelpic.360doc.com/2023/20230228/202322815204496233300.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+29: "POST http://ocsp.digicert.com/" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+29: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
+32: "GET http://userimage8.360doc.com/23/0226/11/61949285_202302261141180988_main.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+30: "GET http://thumbnail1.360doc.com/videoimg/2023/02/28/196405_1677574622414.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+34: "GET http://userimage8.360doc.com/23/0221/14/81711893_202302211445430558_main.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+35: "GET http://userimage8.360doc.com/23/0220/12/81701799_202302201218560840_main.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+31: "GET http://userimage8.360doc.com/22/0428/21/30221200_202204282142260412_main.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+33: "GET http://pubimage.360doc.com/head/cartoon/007.gif" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+37: "GET http://userimage8.360doc.com/23/0207/20/81602598_202302072021570939_main.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+36: "GET http://thumbnail1.360doc.com/videoimg/2023/02/28/135503_1677574589289.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+39: "GET http://userimage8.360doc.com/22/0518/16/79665121_202205181630260655_main.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+40: "GET http://thumbnail1.360doc.com/videoimg/2023/02/28/194043_1677574603711.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+38: "GET http://thumbnail1.360doc.com/videoimg/2023/02/28/195447_1677574616305.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+41: "GET http://thumbnail1.360doc.com/videoimg/2023/02/28/193252_1677574596883.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+42: "GET http://userimage8.360doc.com/20/0602/17/70293747_202006021710200660_main.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+43: "GET http://thumbnail1.360doc.com/videoimg/2023/02/28/200443_1677574610226.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+24: not in cache
+24: Requesting "GET http://eclick.360doc.com/pcpage.jpg?code=69-1&1677601008917" from eclick.360doc.com
+21: Received "HTTP/1.1 200 OK" from www.360doc.com
+21: NOTE Cache-Control: max-age=1296000
+21: NOTE Expires: Wed Mar 15 16:16:49 2023
+21: NOTE Last-Modified: Thu Aug 4 09:09:56 2022
+21: Responding "HTTP/1.1 200 OK"
+21: cacheable, expires at Wed Mar 15 16:16:49 2023
+44: "GET http://userimage8.360doc.com/22/0709/22/79655200_202207092216340285_main.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+17: not in cache
+17: Requesting "GET http://pubimage.360doc.com/index7/bannerl_2.jpg?t=2019012801" from pubimage.360doc.com
+15: not in cache
+15: Requesting "GET http://pubimage.360doc.com/index7/dingtu.gif" from pubimage.360doc.com
+26: not in cache
+26: Requesting "GET http://pubimage.360doc.com/index7/str_yczs2.png" from pubimage.360doc.com
+16: not in cache
+16: Requesting "GET http://pubimage.360doc.com/index7/bannerl_1.jpg" from pubimage.360doc.com
+14: not in cache
+14: Requesting "GET http://pubimage.360doc.com/index7/bannerl_3.jpg" from pubimage.360doc.com
+18: not in cache
+18: Requesting "GET http://pubimage.360doc.com/index7/index_rightgg.jpg" from pubimage.360doc.com
+12: not in cache
+12: Requesting "GET http://pubimage.360doc.com/index7/nlogo.jpg" from pubimage.360doc.com
+13: not in cache
+13: Requesting "GET http://pubimage.360doc.com/index7/bannerl_4.jpg" from pubimage.360doc.com
+33: not in cache
+33: Requesting "GET http://pubimage.360doc.com/head/cartoon/007.gif" from pubimage.360doc.com
+15: Received "HTTP/1.1 200 OK" from pubimage.360doc.com
+15: NOTE Cache-Control: max-age=2592000
+26: Received "HTTP/1.1 200 OK" from pubimage.360doc.com
+17: Received "HTTP/1.1 200 OK" from pubimage.360doc.com
+26: NOTE Cache-Control: max-age=2592000
+26: NOTE Expires: Thu Mar 30 16:16:49 2023
+26: NOTE ETag: 61c046ce-af96
+26: NOTE Last-Modified: Mon Dec 20 09:03:10 2021
+17: NOTE Cache-Control: max-age=2592000
+16: Received "HTTP/1.1 200 OK" from pubimage.360doc.com
+16: NOTE Cache-Control: max-age=2592000
+14: Received "HTTP/1.1 200 OK" from pubimage.360doc.com
+14: NOTE Cache-Control: max-age=2592000
+13: Received "HTTP/1.1 200 OK" from pubimage.360doc.com
+13: NOTE Cache-Control: max-age=2592000
+12: Received "HTTP/1.1 200 OK" from pubimage.360doc.com
+12: NOTE Cache-Control: max-age=2592000
+18: Received "HTTP/1.1 200 OK" from pubimage.360doc.com
+18: NOTE Cache-Control: max-age=2592000
+14: NOTE Expires: Thu Mar 30 16:16:49 2023
+12: NOTE Expires: Thu Mar 30 16:16:49 2023
+13: NOTE Expires: Thu Mar 30 16:16:49 2023
+18: NOTE Expires: Thu Mar 30 16:16:49 2023
+13: NOTE ETag: 5cb819a4-5443
+14: NOTE ETag: 5cb819a3-68ef
+18: NOTE ETag: 5f2ba054-332f
+13: NOTE Last-Modified: Thu Apr 18 06:31:00 2019
+14: NOTE Last-Modified: Thu Apr 18 06:30:59 2019
+18: NOTE Last-Modified: Thu Aug 6 06:16:52 2020
+12: NOTE ETag: 5cb819a9-5644
+13: Responding "HTTP/1.1 200 OK"
+12: NOTE Last-Modified: Thu Apr 18 06:31:05 2019
+13: cacheable, expires at Thu Mar 30 16:16:49 2023
+33: Received "HTTP/1.1 206 Partial Content" from pubimage.360doc.com
+33: NOTE Cache-Control: max-age=2592000
+33: NOTE Expires: Thu Mar 30 16:16:49 2023
+33: NOTE ETag: 587c5791-53be
+33: NOTE Last-Modified: Mon Jan 16 05:18:09 2017
+33: Responding "HTTP/1.1 206 Partial Content"
+33: cacheable, expires at Thu Mar 30 16:16:49 2023
+14: Responding "HTTP/1.1 200 OK"
+14: cacheable, expires at Thu Mar 30 16:16:49 2023
+18: Responding "HTTP/1.1 200 OK"
+18: cacheable, expires at Thu Mar 30 16:16:49 2023
+12: Responding "HTTP/1.1 200 OK"
+12: cacheable, expires at Thu Mar 30 16:16:49 2023
+16: NOTE Expires: Thu Mar 30 16:16:49 2023
+16: NOTE ETag: 5cb819a3-5ba2
+16: NOTE Last-Modified: Thu Apr 18 06:30:59 2019
+16: Responding "HTTP/1.1 200 OK"
+16: cacheable, expires at Thu Mar 30 16:16:49 2023
+15: NOTE Expires: Thu Mar 30 16:16:49 2023
+26: Responding "HTTP/1.1 200 OK"
+26: cacheable, expires at Thu Mar 30 16:16:49 2023
+15: NOTE ETag: 5cb819a6-54e
+15: NOTE Last-Modified: Thu Apr 18 06:31:02 2019
+15: Responding "HTTP/1.1 200 OK"
+15: cacheable, expires at Thu Mar 30 16:16:49 2023
+17: NOTE Expires: Thu Mar 30 16:16:49 2023
+17: NOTE ETag: 5cb819a3-5408
+17: NOTE Last-Modified: Thu Apr 18 06:30:59 2019
+17: Responding "HTTP/1.1 200 OK"
+17: cacheable, expires at Thu Mar 30 16:16:49 2023
+49: "GET http://pubimage.360doc.com/head/cartoon/004.gif" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+46: "GET http://userimage8.360doc.com/22/0625/14/80003927_202206251436470489_main.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+47: "GET http://ebookimage.360doc.com/productinfo/6628/6628_cover_1647597240177.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+45: "GET http://userimage8.360doc.com/19/0725/10/13513920_201907251035100363_main.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+48: "GET http://ebookimage.360doc.com/productinfo/6779/6779_cover_1647943040536.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+50: "GET http://ebookimage.360doc.com/productinfo/7139/7139_cover_1653640671662.jpeg" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+51: "GET http://ebookimage.360doc.com/productinfo/7459/7459_cover_1655888994677.jpeg" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+52: "GET http://ebookimage.360doc.com/productinfo/5477/5477_cover_1587970038698.jpeg" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+53: "GET http://ebookimage.360doc.com/productinfo/7065/7065_cover_1648459178102.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+24: Received "HTTP/1.1 200 OK" from eclick.360doc.com
+24: NOTE Cache-Control:  no-cache
+24: Responding "HTTP/1.1 200 OK"
+24: not cacheable because no-cache.
+54: "GET http://product.360doc.com/ajax/Common.ashx?callback=jQuery18007239596538101917_1677601008895&op=GetAppValue_YidunCaptchaId&sign=93E6CB7419971F7F96129579C8F0F853B744621E&_=1677601009700" from 10.197.24.174 @ Tue Feb 28 16:16:49 2023
+46: not in cache
+46: Requesting "GET http://userimage8.360doc.com/22/0625/14/80003927_202206251436470489_main.jpg" from userimage8.360doc.com
+39: not in cache
+39: Requesting "GET http://userimage8.360doc.com/22/0518/16/79665121_202205181630260655_main.jpg" from userimage8.360doc.com
+32: not in cache
+32: Requesting "GET http://userimage8.360doc.com/23/0226/11/61949285_202302261141180988_main.jpg" from userimage8.360doc.com
+31: not in cache
+31: Requesting "GET http://userimage8.360doc.com/22/0428/21/30221200_202204282142260412_main.jpg" from userimage8.360doc.com
+34: not in cache
+34: Requesting "GET http://userimage8.360doc.com/23/0221/14/81711893_202302211445430558_main.jpg" from userimage8.360doc.com
+37: not in cache
+37: Requesting "GET http://userimage8.360doc.com/23/0207/20/81602598_202302072021570939_main.jpg" from userimage8.360doc.com
+42: not in cache
+42: Requesting "GET http://userimage8.360doc.com/20/0602/17/70293747_202006021710200660_main.jpg" from userimage8.360doc.com
+44: not in cache
+44: Requesting "GET http://userimage8.360doc.com/22/0709/22/79655200_202207092216340285_main.jpg" from userimage8.360doc.com
+49: not in cache
+49: Requesting "GET http://pubimage.360doc.com/head/cartoon/004.gif" from pubimage.360doc.com
+49: Received "HTTP/1.1 200 OK" from pubimage.360doc.com
+49: NOTE Cache-Control: max-age=2592000
+49: NOTE Expires: Thu Mar 30 16:16:50 2023
+49: NOTE ETag: 587c5791-8db0
+49: NOTE Last-Modified: Mon Jan 16 05:18:09 2017
+49: Responding "HTTP/1.1 200 OK"
+49: cacheable, expires at Thu Mar 30 16:16:50 2023
+55: "GET http://www.360doc.com/clippertool/getnoteclipperASHX.ashx?type=10&jsoncallback=jsonp1677601009706" from 10.197.24.174 @ Tue Feb 28 16:16:50 2023
+39: Received "HTTP/1.1 200 OK" from userimage8.360doc.com
+39: Responding "HTTP/1.1 200 OK"
+31: Received "HTTP/1.1 200 OK" from userimage8.360doc.com
+31: Responding "HTTP/1.1 200 OK"
+46: Received "HTTP/1.1 200 OK" from userimage8.360doc.com
+46: Responding "HTTP/1.1 200 OK"
+34: Received "HTTP/1.1 200 OK" from userimage8.360doc.com
+34: Responding "HTTP/1.1 200 OK"
+56: "GET http://channelpic.360doc.com/2023/20230228/2023228152024822101584.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:50 2023
+57: "GET http://channelpic.360doc.com/2023/20230227/2023227155113400169172.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:50 2023
+58: "GET http://channelpic.360doc.com/2023/20230224/202322415465525791873.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:50 2023
+42: Received "HTTP/1.1 200 OK" from userimage8.360doc.com
+42: Responding "HTTP/1.1 200 OK"
+59: "GET http://channelpic.360doc.com/2023/20230223/2023223152640994123923.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:50 2023
+44: Received "HTTP/1.1 200 OK" from userimage8.360doc.com
+44: Responding "HTTP/1.1 200 OK"
+60: "GET http://channelpic.360doc.com/2023/20230222/2023222155410431106042.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:50 2023
+32: Received "HTTP/1.1 200 OK" from userimage8.360doc.com
+32: Responding "HTTP/1.1 200 OK"
+61: "GET http://channelpic.360doc.com/2023/20230228/2023228105917337130240.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:50 2023
+62: "GET http://channelpic.360doc.com/2023/20230228/202322810592980683401.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:50 2023
+55: not in cache
+55: Requesting "GET http://www.360doc.com/clippertool/getnoteclipperASHX.ashx?type=10&jsoncallback=jsonp1677601009706" from www.360doc.com
+28: not in cache
+28: Requesting "GET http://channelpic.360doc.com/2023/20230228/202322815204496233300.jpg" from channelpic.360doc.com
+27: not in cache
+27: Requesting "GET http://channelpic.360doc.com/2023/20230228/202322815241256116554.jpg" from channelpic.360doc.com
+22: not in cache
+22: Requesting "GET http://channelpic.360doc.com/2023/20230228/202322815164965088960.jpg" from channelpic.360doc.com
+25: not in cache
+25: Requesting "GET http://channelpic.360doc.com/2023/20230228/20232281524122565512.jpg" from channelpic.360doc.com
+23: not in cache
+23: Requesting "GET http://channelpic.360doc.com/2023/20230228/202322815205912086543.jpg" from channelpic.360doc.com
+52: not in cache
+52: Requesting "GET http://ebookimage.360doc.com/productinfo/5477/5477_cover_1587970038698.jpeg" from ebookimage.360doc.com
+48: not in cache
+48: Requesting "GET http://ebookimage.360doc.com/productinfo/6779/6779_cover_1647943040536.jpg" from ebookimage.360doc.com
+47: not in cache
+47: Requesting "GET http://ebookimage.360doc.com/productinfo/6628/6628_cover_1647597240177.jpg" from ebookimage.360doc.com
+50: not in cache
+50: Requesting "GET http://ebookimage.360doc.com/productinfo/7139/7139_cover_1653640671662.jpeg" from ebookimage.360doc.com
+51: not in cache
+51: Requesting "GET http://ebookimage.360doc.com/productinfo/7459/7459_cover_1655888994677.jpeg" from ebookimage.360doc.com
+56: not in cache
+56: Requesting "GET http://channelpic.360doc.com/2023/20230228/2023228152024822101584.jpg" from channelpic.360doc.com
+57: not in cache
+57: Requesting "GET http://channelpic.360doc.com/2023/20230227/2023227155113400169172.jpg" from channelpic.360doc.com
+59: not in cache
+59: Requesting "GET http://channelpic.360doc.com/2023/20230223/2023223152640994123923.jpg" from channelpic.360doc.com
+58: not in cache
+58: Requesting "GET http://channelpic.360doc.com/2023/20230224/202322415465525791873.jpg" from channelpic.360doc.com
+28: Received "HTTP/1.1 200 OK" from channelpic.360doc.com
+28: Responding "HTTP/1.1 200 OK"
+22: Received "HTTP/1.1 200 OK" from channelpic.360doc.com
+22: Responding "HTTP/1.1 200 OK"
+25: Received "HTTP/1.1 200 OK" from channelpic.360doc.com
+25: Responding "HTTP/1.1 200 OK"
+27: Received "HTTP/1.1 200 OK" from channelpic.360doc.com
+27: Responding "HTTP/1.1 200 OK"
+23: Received "HTTP/1.1 200 OK" from channelpic.360doc.com
+23: Responding "HTTP/1.1 200 OK"
+64: "GET http://channelpic.360doc.com/2022/20221223/20221223183029317140888.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:50 2023
+65: "GET http://channelpic.360doc.com/2022/20221209/2022129165530176158009.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:50 2023
+63: "GET http://channelpic.360doc.com/2022/20221218/2022121822321925892311.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:50 2023
+66: "GET http://channelpic.360doc.com/2022/20221203/2022123154457568106389.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:50 2023
+48: Received "HTTP/1.1 200 OK" from ebookimage.360doc.com
+48: Responding "HTTP/1.1 200 OK"
+67: "GET http://channelpic.360doc.com/2022/20221118/202211181736972284799.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:50 2023
+47: Received "HTTP/1.1 206 Partial Content" from ebookimage.360doc.com
+47: Responding "HTTP/1.1 206 Partial Content"
+50: Received "HTTP/1.1 200 OK" from ebookimage.360doc.com
+50: Responding "HTTP/1.1 200 OK"
+59: Received "HTTP/1.1 206 Partial Content" from channelpic.360doc.com
+59: Responding "HTTP/1.1 206 Partial Content"
+57: Received "HTTP/1.1 206 Partial Content" from channelpic.360doc.com
+57: Responding "HTTP/1.1 206 Partial Content"
+52: Received "HTTP/1.1 206 Partial Content" from ebookimage.360doc.com
+52: Responding "HTTP/1.1 206 Partial Content"
+68: "GET http://ebookimage.360doc.com/productinfo/6902/6902_cover_1647943583755.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:50 2023
+58: Received "HTTP/1.1 206 Partial Content" from channelpic.360doc.com
+58: Responding "HTTP/1.1 206 Partial Content"
+69: "GET http://ebookimage.360doc.com/productinfo/5341/5341_cover_1585299396545.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:50 2023
+70: "GET http://ebookimage.360doc.com/productinfo/5393/5393_cover_1585299447810.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:50 2023
+71: "GET http://channelpic.360doc.com/2022/20221223/20221223183029270126273.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:50 2023
+72: "GET http://channelpic.360doc.com/2022/20221218/20221218223219305204065.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:50 2023
+20: not in cache
+20: Requesting "GET http://hm.baidu.com/hm.js?d86954201130d615136257dde062a503" from hm.baidu.com
+73: "GET http://channelpic.360doc.com/2022/20221209/2022129165530160134368.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:50 2023
+74: "GET http://channelpic.360doc.com/2022/20221118/2022111817369769106783.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:50 2023
+54: not in cache
+54: Requesting "GET http://product.360doc.com/ajax/Common.ashx?callback=jQuery18007239596538101917_1677601008895&op=GetAppValue_YidunCaptchaId&sign=93E6CB7419971F7F96129579C8F0F853B744621E&_=1677601009700" from product.360doc.com
+51: Received "HTTP/1.1 206 Partial Content" from ebookimage.360doc.com
+51: Responding "HTTP/1.1 206 Partial Content"
+75: "GET http://channelpic.360doc.com/2022/20221223/20221223183029301112616.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:50 2023
+37: Received "HTTP/1.1 200 OK" from userimage8.360doc.com
+37: Responding "HTTP/1.1 200 OK"
+55: Received "HTTP/1.1 200 OK" from www.360doc.com
+55: Responding "HTTP/1.1 200 OK"
+55: not cacheable because is private.
+63: not in cache
+63: Requesting "GET http://channelpic.360doc.com/2022/20221218/2022121822321925892311.jpg" from channelpic.360doc.com
+62: not in cache
+62: Requesting "GET http://channelpic.360doc.com/2023/20230228/202322810592980683401.jpg" from channelpic.360doc.com
+64: not in cache
+64: Requesting "GET http://channelpic.360doc.com/2022/20221223/20221223183029317140888.jpg" from channelpic.360doc.com
+60: not in cache
+60: Requesting "GET http://channelpic.360doc.com/2023/20230222/2023222155410431106042.jpg" from channelpic.360doc.com
+65: not in cache
+65: Requesting "GET http://channelpic.360doc.com/2022/20221209/2022129165530176158009.jpg" from channelpic.360doc.com
+66: not in cache
+66: Requesting "GET http://channelpic.360doc.com/2022/20221203/2022123154457568106389.jpg" from channelpic.360doc.com
+76: "GET http://channelpic.360doc.com/2022/20221203/202212315445760183181.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:50 2023
+77: "GET http://channelpic.360doc.com/2022/20221203/202212315445760079972.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:50 2023
+61: not in cache
+61: Requesting "GET http://channelpic.360doc.com/2023/20230228/2023228105917337130240.jpg" from channelpic.360doc.com
+67: not in cache
+67: Requesting "GET http://channelpic.360doc.com/2022/20221118/202211181736972284799.jpg" from channelpic.360doc.com
+30: not in cache
+30: Requesting "GET http://thumbnail1.360doc.com/videoimg/2023/02/28/196405_1677574622414.jpg" from thumbnail1.360doc.com
+38: not in cache
+38: Requesting "GET http://thumbnail1.360doc.com/videoimg/2023/02/28/195447_1677574616305.jpg" from thumbnail1.360doc.com
+40: not in cache
+40: Requesting "GET http://thumbnail1.360doc.com/videoimg/2023/02/28/194043_1677574603711.jpg" from thumbnail1.360doc.com
+36: not in cache
+36: Requesting "GET http://thumbnail1.360doc.com/videoimg/2023/02/28/135503_1677574589289.jpg" from thumbnail1.360doc.com
+43: not in cache
+43: Requesting "GET http://thumbnail1.360doc.com/videoimg/2023/02/28/200443_1677574610226.jpg" from thumbnail1.360doc.com
+68: not in cache
+68: Requesting "GET http://ebookimage.360doc.com/productinfo/6902/6902_cover_1647943583755.jpg" from ebookimage.360doc.com
+69: not in cache
+69: Requesting "GET http://ebookimage.360doc.com/productinfo/5341/5341_cover_1585299396545.jpg" from ebookimage.360doc.com
+70: not in cache
+70: Requesting "GET http://ebookimage.360doc.com/productinfo/5393/5393_cover_1585299447810.jpg" from ebookimage.360doc.com
+45: not in cache
+45: Requesting "GET http://userimage8.360doc.com/19/0725/10/13513920_201907251035100363_main.jpg" from userimage8.360doc.com
+35: not in cache
+35: Requesting "GET http://userimage8.360doc.com/23/0220/12/81701799_202302201218560840_main.jpg" from userimage8.360doc.com
+20: Received "HTTP/1.1 304 Not Modified" from hm.baidu.com
+20: NOTE Cache-Control: max-age=0
+20: NOTE Expires: Tue Feb 28 16:16:51 2023
+20: Responding "HTTP/1.1 304 Not Modified"
+20: cacheable, expires at Tue Feb 28 16:16:51 2023
+20: Responding "HTTP/1.1 502 Bad Gateway"
+78: "CONNECT safebrowsing.googleapis.com:443" from 10.197.24.174 @ Tue Feb 28 16:16:51 2023
+66: Received "HTTP/1.1 206 Partial Content" from channelpic.360doc.com
+66: Responding "HTTP/1.1 206 Partial Content"
+63: Received "HTTP/1.1 304 Not Modified" from channelpic.360doc.com
+63: Responding "HTTP/1.1 304 Not Modified"
+63: Responding "HTTP/1.1 502 Bad Gateway"
+64: Received "HTTP/1.1 304 Not Modified" from channelpic.360doc.com
+64: Responding "HTTP/1.1 304 Not Modified"
+64: Responding "HTTP/1.1 502 Bad Gateway"
+62: Received "HTTP/1.1 200 OK" from channelpic.360doc.com
+62: Responding "HTTP/1.1 200 OK"
+60: Received "HTTP/1.1 206 Partial Content" from channelpic.360doc.com
+60: Responding "HTTP/1.1 206 Partial Content"
+65: Received "HTTP/1.1 206 Partial Content" from channelpic.360doc.com
+65: Responding "HTTP/1.1 206 Partial Content"
+78: Requesting "CONNECT safebrowsing.googleapis.com:443" from safebrowsing.googleapis.com
+78: Responding "HTTP/1.1 200 OK"
+67: Received "HTTP/1.1 304 Not Modified" from channelpic.360doc.com
+67: Responding "HTTP/1.1 304 Not Modified"
+67: Responding "HTTP/1.1 502 Bad Gateway"
+61: Received "HTTP/1.1 200 OK" from channelpic.360doc.com
+61: Responding "HTTP/1.1 200 OK"
+54: Received "HTTP/1.1 200 OK" from product.360doc.com
+54: Responding "HTTP/1.1 200 OK"
+54: not cacheable because is private.
+30: Received "HTTP/1.1 200 OK" from thumbnail1.360doc.com
+30: Responding "HTTP/1.1 200 OK"
+79: "GET http://www.360doc.com/ajax/ReadingRoom/getJCWJJData.ashx?cid=0&pagenum=21&sign=F673367B1C390D106F4ABE988309F461A908932D&_=1677601011023" from 10.197.24.174 @ Tue Feb 28 16:16:51 2023
+68: Received "HTTP/1.1 206 Partial Content" from ebookimage.360doc.com
+68: Responding "HTTP/1.1 206 Partial Content"
+43: Received "HTTP/1.1 200 OK" from thumbnail1.360doc.com
+43: Responding "HTTP/1.1 200 OK"
+36: Received "HTTP/1.1 200 OK" from thumbnail1.360doc.com
+36: Responding "HTTP/1.1 200 OK"
+80: "CONNECT hm.baidu.com:443" from 10.197.24.174 @ Tue Feb 28 16:16:51 2023
+40: Received "HTTP/1.1 200 OK" from thumbnail1.360doc.com
+40: Responding "HTTP/1.1 200 OK"
+69: Received "HTTP/1.1 206 Partial Content" from ebookimage.360doc.com
+69: Responding "HTTP/1.1 206 Partial Content"
+70: Received "HTTP/1.1 206 Partial Content" from ebookimage.360doc.com
+70: Responding "HTTP/1.1 206 Partial Content"
+84: "GET http://channelpic.360doc.com/2023/20230227/2023227155113400169172.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:51 2023
+82: "GET http://v.trustutn.org/images/cert/bottom_large_img.png" from 10.197.24.174 @ Tue Feb 28 16:16:51 2023
+85: "GET http://channelpic.360doc.com/2023/20230224/202322415465525791873.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:51 2023
+81: "GET http://channelpic.360doc.com/2023/20230228/202322815164965088960.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:51 2023
+83: "GET http://cstaticdun.126.net/plugins.min.js?v=27960016" from 10.197.24.174 @ Tue Feb 28 16:16:51 2023
+86: "GET http://channelpic.360doc.com/2023/20230228/202322815205912086543.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:51 2023
+87: "GET http://channelpic.360doc.com/2023/20230228/202322815204496233300.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:51 2023
+88: "GET http://channelpic.360doc.com/2023/20230223/2023223152640994123923.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:51 2023
+45: Received "HTTP/1.1 200 OK" from userimage8.360doc.com
+45: Responding "HTTP/1.1 200 OK"
+35: Received "HTTP/1.1 200 OK" from userimage8.360doc.com
+35: Responding "HTTP/1.1 200 OK"
+90: "GET http://channelpic.360doc.com/2023/20230228/20232281524122565512.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:51 2023
+89: "GET http://channelpic.360doc.com/2023/20230228/202322815241256116554.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:51 2023
+92: "GET http://channelpic.360doc.com/2022/20221127/2022112790064491601.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:51 2023
+91: "GET http://channelpic.360doc.com/2022/20221209/2022129165530146219125.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:51 2023
+94: "GET http://channelpic.360doc.com/2022/20221209/2022129165530129163808.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:51 2023
+97: "GET http://channelpic.360doc.com/2022/20221218/20221218223219289131678.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:51 2023
+93: "GET http://channelpic.360doc.com/2022/20221118/20221118173637956114091.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:51 2023
+96: "GET http://channelpic.360doc.com/2022/20221223/20221223183029286151106.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:51 2023
+95: "GET http://channelpic.360doc.com/2022/20221203/2022123154457584200637.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:51 2023
+56: Received "HTTP/1.1 200 OK" from channelpic.360doc.com
+56: Responding "HTTP/1.1 200 OK"
+71: not in cache
+71: Requesting "GET http://channelpic.360doc.com/2022/20221223/20221223183029270126273.jpg" from channelpic.360doc.com
+74: not in cache
+74: Requesting "GET http://channelpic.360doc.com/2022/20221118/2022111817369769106783.jpg" from channelpic.360doc.com
+75: not in cache
+75: Requesting "GET http://channelpic.360doc.com/2022/20221223/20221223183029301112616.jpg" from channelpic.360doc.com
+72: not in cache
+72: Requesting "GET http://channelpic.360doc.com/2022/20221218/20221218223219305204065.jpg" from channelpic.360doc.com
+77: not in cache
+77: Requesting "GET http://channelpic.360doc.com/2022/20221203/202212315445760079972.jpg" from channelpic.360doc.com
+73: not in cache
+73: Requesting "GET http://channelpic.360doc.com/2022/20221209/2022129165530160134368.jpg" from channelpic.360doc.com
+79: not in cache
+79: Requesting "GET http://www.360doc.com/ajax/ReadingRoom/getJCWJJData.ashx?cid=0&pagenum=21&sign=F673367B1C390D106F4ABE988309F461A908932D&_=1677601011023" from www.360doc.com
+99: "GET http://channelpic.360doc.com/2022/20221127/20221127900613115214.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:51 2023
+98: "POST http://ocsp.pki.goog/gts1c3" from 10.197.24.174 @ Tue Feb 28 16:16:51 2023
+53: not in cache
+53: Requesting "GET http://ebookimage.360doc.com/productinfo/7065/7065_cover_1648459178102.jpg" from ebookimage.360doc.com
+98: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+81: not in cache
+81: Requesting "GET http://channelpic.360doc.com/2023/20230228/202322815164965088960.jpg" from channelpic.360doc.com
+84: not in cache
+84: Requesting "GET http://channelpic.360doc.com/2023/20230227/2023227155113400169172.jpg" from channelpic.360doc.com
+86: not in cache
+86: Requesting "GET http://channelpic.360doc.com/2023/20230228/202322815205912086543.jpg" from channelpic.360doc.com
+88: not in cache
+88: Requesting "GET http://channelpic.360doc.com/2023/20230223/2023223152640994123923.jpg" from channelpic.360doc.com
+87: not in cache
+87: Requesting "GET http://channelpic.360doc.com/2023/20230228/202322815204496233300.jpg" from channelpic.360doc.com
+85: not in cache
+85: Requesting "GET http://channelpic.360doc.com/2023/20230224/202322415465525791873.jpg" from channelpic.360doc.com
+89: not in cache
+89: Requesting "GET http://channelpic.360doc.com/2023/20230228/202322815241256116554.jpg" from channelpic.360doc.com
+90: not in cache
+90: Requesting "GET http://channelpic.360doc.com/2023/20230228/20232281524122565512.jpg" from channelpic.360doc.com
+94: not in cache
+94: Requesting "GET http://channelpic.360doc.com/2022/20221209/2022129165530129163808.jpg" from channelpic.360doc.com
+92: not in cache
+92: Requesting "GET http://channelpic.360doc.com/2022/20221127/2022112790064491601.jpg" from channelpic.360doc.com
+74: Received "HTTP/1.1 304 Not Modified" from channelpic.360doc.com
+74: Responding "HTTP/1.1 304 Not Modified"
+74: Responding "HTTP/1.1 502 Bad Gateway"
+71: Received "HTTP/1.1 304 Not Modified" from channelpic.360doc.com
+71: Responding "HTTP/1.1 304 Not Modified"
+71: Responding "HTTP/1.1 502 Bad Gateway"
+97: not in cache
+97: Requesting "GET http://channelpic.360doc.com/2022/20221218/20221218223219289131678.jpg" from channelpic.360doc.com
+72: Received "HTTP/1.1 304 Not Modified" from channelpic.360doc.com
+72: Responding "HTTP/1.1 304 Not Modified"
+72: Responding "HTTP/1.1 502 Bad Gateway"
+93: not in cache
+93: Requesting "GET http://channelpic.360doc.com/2022/20221118/20221118173637956114091.jpg" from channelpic.360doc.com
+96: not in cache
+96: Requesting "GET http://channelpic.360doc.com/2022/20221223/20221223183029286151106.jpg" from channelpic.360doc.com
+75: Received "HTTP/1.1 304 Not Modified" from channelpic.360doc.com
+75: Responding "HTTP/1.1 304 Not Modified"
+75: Responding "HTTP/1.1 502 Bad Gateway"
+91: not in cache
+91: Requesting "GET http://channelpic.360doc.com/2022/20221209/2022129165530146219125.jpg" from channelpic.360doc.com
+95: not in cache
+95: Requesting "GET http://channelpic.360doc.com/2022/20221203/2022123154457584200637.jpg" from channelpic.360doc.com
+77: Received "HTTP/1.1 200 OK" from channelpic.360doc.com
+77: Responding "HTTP/1.1 200 OK"
+73: Received "HTTP/1.1 304 Not Modified" from channelpic.360doc.com
+73: Responding "HTTP/1.1 304 Not Modified"
+73: Responding "HTTP/1.1 502 Bad Gateway"
+53: Received "HTTP/1.1 206 Partial Content" from ebookimage.360doc.com
+53: Responding "HTTP/1.1 206 Partial Content"
+99: not in cache
+99: Requesting "GET http://channelpic.360doc.com/2022/20221127/20221127900613115214.jpg" from channelpic.360doc.com
+100: "GET http://channelpic.360doc.com/2022/20221118/202211181736978443598.jpg" from 10.197.24.174 @ Tue Feb 28 16:16:51 2023
+83: not in cache
+83: Requesting "GET http://cstaticdun.126.net/plugins.min.js?v=27960016" from cstaticdun.126.net
+80: Requesting "CONNECT hm.baidu.com:443" from hm.baidu.com
+80: Responding "HTTP/1.1 200 OK"
+84: Received "HTTP/1.1 206 Partial Content" from channelpic.360doc.com
+84: Responding "HTTP/1.1 206 Partial Content"
+86: Received "HTTP/1.1 206 Partial Content" from channelpic.360doc.com
+86: Responding "HTTP/1.1 206 Partial Content"
+88: Received "HTTP/1.1 206 Partial Content" from channelpic.360doc.com
+88: Responding "HTTP/1.1 206 Partial Content"
+87: Received "HTTP/1.1 206 Partial Content" from channelpic.360doc.com
+87: Responding "HTTP/1.1 206 Partial Content"
+85: Received "HTTP/1.1 206 Partial Content" from channelpic.360doc.com
+85: Responding "HTTP/1.1 206 Partial Content"
+89: Received "HTTP/1.1 206 Partial Content" from channelpic.360doc.com
+89: Responding "HTTP/1.1 206 Partial Content"
+94: Received "HTTP/1.1 206 Partial Content" from channelpic.360doc.com
+94: Responding "HTTP/1.1 206 Partial Content"
+92: Received "HTTP/1.1 200 OK" from channelpic.360doc.com
+92: Responding "HTTP/1.1 200 OK"
+90: Received "HTTP/1.1 206 Partial Content" from channelpic.360doc.com
+90: Responding "HTTP/1.1 206 Partial Content"
+97: Received "HTTP/1.1 206 Partial Content" from channelpic.360doc.com
+97: Responding "HTTP/1.1 206 Partial Content"
+96: Received "HTTP/1.1 206 Partial Content" from channelpic.360doc.com
+96: Responding "HTTP/1.1 206 Partial Content"
+93: Received "HTTP/1.1 200 OK" from channelpic.360doc.com
+93: Responding "HTTP/1.1 200 OK"
+83: Received "HTTP/1.1 200 OK" from cstaticdun.126.net
+83: NOTE Cache-Control: max-age=300
+83: NOTE Expires: Tue Feb 28 16:21:51 2023
+83: NOTE Last-Modified: Mon Feb 20 10:11:28 2023
+83: Responding "HTTP/1.1 200 OK"
+83: cacheable, expires at Tue Feb 28 16:21:51 2023
+95: Received "HTTP/1.1 206 Partial Content" from channelpic.360doc.com
+95: Responding "HTTP/1.1 206 Partial Content"
+91: Received "HTTP/1.1 206 Partial Content" from channelpic.360doc.com
+91: Responding "HTTP/1.1 206 Partial Content"
+99: Received "HTTP/1.1 206 Partial Content" from channelpic.360doc.com
+99: Responding "HTTP/1.1 206 Partial Content"
+101: "GET http://cstatic.dun.163yun.com/plugins.min.js?v=27960016" from 10.197.24.174 @ Tue Feb 28 16:16:51 2023
+82: not in cache
+82: Requesting "GET http://v.trustutn.org/images/cert/bottom_large_img.png" from v.trustutn.org
+79: Received "HTTP/1.1 200 OK" from www.360doc.com
+79: NOTE Expires: Tue Feb 28 16:46:51 2023
+79: NOTE Last-Modified: Tue Feb 28 16:16:51 2023
+79: Responding "HTTP/1.1 200 OK"
+79: cacheable, expires at Tue Feb 28 16:46:51 2023
+41: not in cache
+41: Requesting "GET http://thumbnail1.360doc.com/videoimg/2023/02/28/193252_1677574596883.jpg" from thumbnail1.360doc.com
+102: "POST http://ocsp.globalsign.com/gsrsaovsslca2018" from 10.197.24.174 @ Tue Feb 28 16:16:52 2023
+82: Received "HTTP/1.1 302 Moved Temporarily" from v.trustutn.org
+82: Responding "HTTP/1.1 302 Moved Temporarily"
+102: Requesting "POST http://ocsp.globalsign.com/gsrsaovsslca2018" from ocsp.globalsign.com
+103: "CONNECT v.trustutn.org:443" from 10.197.24.174 @ Tue Feb 28 16:16:52 2023
+81: Received "HTTP/1.1 206 Partial Content" from channelpic.360doc.com
+81: Responding "HTTP/1.1 206 Partial Content"
+76: not in cache
+76: Requesting "GET http://channelpic.360doc.com/2022/20221203/202212315445760183181.jpg" from channelpic.360doc.com
+76: Received "HTTP/1.1 304 Not Modified" from channelpic.360doc.com
+76: Responding "HTTP/1.1 304 Not Modified"
+76: Responding "HTTP/1.1 502 Bad Gateway"
+101: not in cache
+101: Requesting "GET http://cstatic.dun.163yun.com/plugins.min.js?v=27960016" from cstatic.dun.163yun.com
+103: Requesting "CONNECT v.trustutn.org:443" from v.trustutn.org
+103: Responding "HTTP/1.1 200 OK"
+101: Received "HTTP/1.1 200 OK" from cstatic.dun.163yun.com
+101: NOTE Cache-Control: max-age=300
+101: NOTE Expires: Tue Feb 28 16:21:53 2023
+101: NOTE Last-Modified: Mon Feb 20 10:11:28 2023
+101: Responding "HTTP/1.1 200 OK"
+101: cacheable, expires at Tue Feb 28 16:21:53 2023
+104: "POST http://ocsp.crlocsp.cn/" from 10.197.24.174 @ Tue Feb 28 16:16:53 2023
+100: not in cache
+100: Requesting "GET http://channelpic.360doc.com/2022/20221118/202211181736978443598.jpg" from channelpic.360doc.com
+78: Tunnel closed
+78: Tunnel closed
+100: Received "HTTP/1.1 206 Partial Content" from channelpic.360doc.com
+100: Responding "HTTP/1.1 206 Partial Content"
+104: Requesting "POST http://ocsp.crlocsp.cn/" from ocsp.crlocsp.cn
+105: "CONNECT staticcdn.shuidi.cn:443" from 10.197.24.174 @ Tue Feb 28 16:16:55 2023
+105: Requesting "CONNECT staticcdn.shuidi.cn:443" from staticcdn.shuidi.cn
+105: Responding "HTTP/1.1 200 OK"
+106: "POST http://ocsp.crlocsp.cn/" from 10.197.24.174 @ Tue Feb 28 16:16:56 2023
+106: Requesting "POST http://ocsp.crlocsp.cn/" from ocsp.crlocsp.cn
+107: "GET http://detectportal.firefox.com/canonical.html" from 10.197.24.174 @ Tue Feb 28 16:16:57 2023
+107: not in cache
+107: Requesting "GET http://detectportal.firefox.com/canonical.html" from detectportal.firefox.com
+107: Received "HTTP/1.1 200 OK" from detectportal.firefox.com
+107: NOTE Cache-Control: max-age=0
+107: NOTE Expires: Tue Feb 28 16:16:57 2023
+107: Responding "HTTP/1.1 200 OK"
+107: cacheable, expires at Tue Feb 28 16:16:57 2023
+105: Tunnel closed
+105: Tunnel closed
+108: "GET http://www.httpwatch.com/httpgallery/chunked/chunkedimage.aspx" from 10.197.24.174 @ Tue Feb 28 16:16:57 2023
+109: "GET http://detectportal.firefox.com/success.txt?ipv4" from 10.197.24.174 @ Tue Feb 28 16:16:57 2023
+109: not in cache
+109: Requesting "GET http://detectportal.firefox.com/success.txt?ipv4" from detectportal.firefox.com
+109: Received "HTTP/1.1 200 OK" from detectportal.firefox.com
+109: NOTE Cache-Control: max-age=0
+109: NOTE Expires: Tue Feb 28 16:16:57 2023
+109: Responding "HTTP/1.1 200 OK"
+109: cacheable, expires at Tue Feb 28 16:16:57 2023
+108: not in cache
+108: Requesting "GET http://www.httpwatch.com/httpgallery/chunked/chunkedimage.aspx" from www.httpwatch.com
+108: Received "HTTP/1.1 200 OK" from www.httpwatch.com
+108: NOTE Cache-Control:  no-cache
+108: Responding "HTTP/1.1 200 OK"
+108: not cacheable because no-cache.
+80: Tunnel closed
+80: Tunnel closed
+4: Received "HTTP/1.1 408 Request Timeout" from ocsp.digicert.com
+110: "POST http://ocsp.digicert.com/" from 10.197.24.174 @ Tue Feb 28 16:17:02 2023
+110: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com

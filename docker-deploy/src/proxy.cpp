@@ -370,11 +370,12 @@ void Proxy::handleRequest(int thread_id) {
   std::vector<char> buffer(MAX_LENGTH, 0);
   int idx = 0;
   int len_recv = recv(client_connection_fd, &(buffer.data()[idx]), MAX_LENGTH, 0);
-  // std::cout << buffer.data() << std::endl;
+  std::cout << "=============Request:=============" << std::endl;
+  std::cout << buffer.data() << std::endl;
 
   std::string client_request_str(buffer.data());
   httpcommand request_info(client_request_str);
-  // std::cout << request_info.method << std::endl;
+  //std::cout << request_info.method << std::endl;
 
   if (!request_info.checkBadRequest(client_connection_fd, thread_id)) {
     close(client_connection_fd);
