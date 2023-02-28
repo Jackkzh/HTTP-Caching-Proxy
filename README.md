@@ -1,7 +1,21 @@
 # HTTP-Caching-Proxy
 
 # Instruction
+Before implement, ensure you do not have conflict container and images, if you do, please do follow:
+```
+sudo docker ps -a
+sudo docker images
+sudo docker rmi <image_id>
+```
 
+if pop an error, then:
+```
+sudo docker stop <contain_id>
+sudo docker rm <contain_id>
+sudo dokcer rmi <image_id>
+```
+----
+----
 After git clone our repo, you should run (if you want to check logfile):
 ```
 sudo docker-compose up -d
