@@ -51,24 +51,20 @@ void Cache::put(std::string key, ResponseInfo response) {
   if (cache.size() >= maxEntries) {
     cache.erase(cache.begin());
   }
-  // ResponseInfo item = {
-  //     response.content, response.expirationTime, response.lastModified, response.eTag};
-
-  // if (response.lastModified != "") {
-  //   item.lastModified = response.lastModified;
-  // }
-  // if (response.eTag != "") {
-  //   item.eTag = response.eTag;
-  // }
-
   cache[key] = response;
 }
 
+/**
+ * This function removes all entries from the cache.
+*/
 void Cache::clear() {
   std::lock_guard<std::mutex> lock(cacheMutex);
   cache.clear();
 }
 
+/**
+ * This function removes all expired entries from the cache.
+*/
 void Cache::cleanup() {
   std::vector<std::string> expiredKeys;
   TimeMake t;
@@ -93,7 +89,8 @@ void Cache::cleanup() {
  * @param eTag the ETag of the response, if available.
  * @return True if the cached response is still valid, false otherwise.
  */
-bool Cache::validate(std::string key, std::string & request) {
+bool Cache::validate(std::string key,
+                     std::string & request) {  // request -- is request sent by broser
   std::lock_guard<std::mutex> lock(cacheMutex);
   cleanup();
   // Check if the cache has the requested URL
@@ -129,10 +126,7 @@ void Cache::printCache() {
   std::map<std::string, ResponseInfo>::iterator it = cache.begin();
   std::cout << "=================Cache===================" << std::endl;
   while (it != cache.end()) {
-    std::cout << "-----------------------------" << std::endl;
     std::cout << "Request: " << it->first << std::endl;
-    it->second.printCacheFields();
-    std::cout << "------------------------------" << std::endl;
     ++it;
   }
   std::cout << "=================Cache Size===================" << std::endl;

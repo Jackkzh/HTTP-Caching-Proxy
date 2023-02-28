@@ -2,7 +2,6 @@
 #define __HELPER__H__
 #include <arpa/inet.h>
 #include <assert.h>
-#include <boost/date_time/posix_time/posix_time.hpp>
 #include <netdb.h>
 #include <sys/socket.h>
 #include <unistd.h>

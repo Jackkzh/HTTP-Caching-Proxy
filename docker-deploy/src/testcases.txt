@@ -1,0 +1,87 @@
+Test CONNECT
+Input:
+https://www.google.com
+
+Output:
+================================================================================
+1: "CONNECT www.google.com:443" from 174.109.103.165 @ Mon Feb 27 23:31:20 2023
+1: Requesting "CONNECT www.google.com:443" from www.google.com
+1: Responding "HTTP/1.1 200 OK"
+4: "CONNECT adservice.google.com:443" from 174.109.103.165 @ Mon Feb 27 23:31:21 2023
+4: Requesting "CONNECT adservice.google.com:443" from adservice.google.com
+4: Responding "HTTP/1.1 200 OK"
+5: "CONNECT googleads.g.doubleclick.net:443" from 174.109.103.165 @ Mon Feb 27 23:31:22 2023
+5: Requesting "CONNECT googleads.g.doubleclick.net:443" from googleads.g.doubleclick.net
+5: Responding "HTTP/1.1 200 OK"
+6: "POST http://ocsp.pki.goog/gts1c3" from 174.109.103.165 @ Mon Feb 27 23:31:22 2023
+6: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+5: Tunnel closed
+5: Tunnel closed
+3: Responding "HTTP/1.1 400 Bad Request"
+2: Responding "HTTP/1.1 400 Bad Request"
+3: " " from 174.109.103.165 @ Mon Feb 27 23:31:24 2023
+2: " " from 174.109.103.165 @ Mon Feb 27 23:31:24 2023
+1: Tunnel closed
+1: Tunnel closed
+4: Tunnel closed
+4: Tunnel closed
+================================================================================
+
+Test GET
+Input:
+
+
+Output:
+================================================================================
+
+================================================================================
+
+
+Test POST
+Input:
+
+
+Output:
+================================================================================
+
+================================================================================
+
+
+Test Cache (no in cache first and then add to cache)
+Input:
+
+
+Output:
+================================================================================
+
+================================================================================
+
+
+Test Chunked
+Input:
+
+
+Output:
+================================================================================
+
+================================================================================
+
+Test "max-age" - 1
+Input:
+
+
+Output:
+================================================================================
+
+================================================================================
+
+
+
+Test "max-age" - 2
+Input:
+
+
+Output:
+================================================================================
+
+================================================================================

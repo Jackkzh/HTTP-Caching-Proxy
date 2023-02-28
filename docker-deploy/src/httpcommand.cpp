@@ -1,19 +1,27 @@
 #include "httpcommand.h"
 
 httpcommand::httpcommand() :
-    request(""), method(""), port(""), host(""), url(""), isBadRequest(false) {
+    request(""),
+    method(""),
+    port(""),
+    host(""),
+    url(""),
+    isBadRequest(false),
+    maxStale(0) {
 }
+
 /**
-  * read the request string and parse the method, host, port and
-  * url
-  * @param req request string
-*/
-httpcommand::httpcommand(std::string req) : request(req) {
-  std::cout << req << std::endl;
+ * read the request string and parse the method, host, port and
+ * url
+ * @param req request string
+ */
+httpcommand::httpcommand(std::string req) : request(req), maxStale(0) {
+  // std::cout << req << std::endl;
   parseMethod();
   parseHostPort();
   parseURL();
   parseValidInfo();
+  parseMaxStale();
 };
 
 void httpcommand::printRequestInfo() {
@@ -28,9 +36,9 @@ void httpcommand::printRequestInfo() {
   std::cout << "------------------" << std::endl;
 }
 /**
-  * request-line   = method SP request-target SP HTTP-version CRLF
-  * get method
-*/
+ * request-line   = method SP request-target SP HTTP-version CRLF
+ * get method
+ */
 void httpcommand::parseMethod() {
   if (request.size() == 0) {
     // handle the error
@@ -41,19 +49,18 @@ void httpcommand::parseMethod() {
 }
 
 /**
-  * Port: an optional port number in decimal following
-  * the host and delimited from it by a single colon(":") character.
-  * the "http" scheme defines a default port of "80"
-  * 
-  * request format could be: CONNECT server.example.com:80 HTTP/1.1
-  *                          Host: server.example.com:80
-  * 
-  * or                       GET server.example.com HTTP/1.1
-  *                          Host: server.example.com
-  * get the host and port, while if there is not "Host: ", catch
-  * an exception
-*/
-
+ * Port: an optional port number in decimal following
+ * the host and delimited from it by a single colon(":") character.
+ * the "http" scheme defines a default port of "80"
+ *
+ * request format could be: CONNECT server.example.com:80 HTTP/1.1
+ *                          Host: server.example.com:80
+ *
+ * or                       GET server.example.com HTTP/1.1
+ *                          Host: server.example.com
+ * get the host and port, while if there is not "Host: ", catch
+ * an exception
+ */
 void httpcommand::parseHostPort() {
   std::string request_line = request.substr(0, request.find("\r\n", 0));
   size_t host_pos = request.find("Host: ", 0);
@@ -77,8 +84,8 @@ void httpcommand::parseHostPort() {
 }
 
 /**
-  * get whole url
-*/
+ * get whole url
+ */
 void httpcommand::parseURL() {
   int url_pos = request.find(" ", 0);
   int url_pos2 = request.find(" ", url_pos + 1);
@@ -93,6 +100,14 @@ void httpcommand::parseURL() {
 void httpcommand::parseValidInfo() {
   ifModifiedSince = "";
   ifNoneMatch = "";
+}
+
+void httpcommand::parseMaxStale() {
+  boost::regex re = boost::regex("max-stale=(\\d+)");
+  boost::smatch what;
+  if (boost::regex_search(request, what, re)) {
+    maxStale = std::stoi(what[1]);
+  }
 }
 
 bool httpcommand::checkBadRequest(int client_fd, int thread_id) {
