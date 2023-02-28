@@ -24,7 +24,7 @@ class Proxy {
   void acceptConnection(std::string & ip);
   int getPort();
   void requestCONNECT(int client_fd, int thread_id);
-  void connect_Transferdata(int recv_fd, int send_fd);
+  bool connect_Transferdata(int recv_fd, int send_fd);
   void handleRequest(int thread_id);
   void requestGET(int client_fd, httpcommand request, int thread_id);
   void run(int thread_id);

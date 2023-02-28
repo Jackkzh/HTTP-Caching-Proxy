@@ -1,53 +1,21 @@
-1: "GET http://httpstat.us/200" from 174.109.103.165 @ Mon Feb 27 22:51:02 2023
-1: not in cache
-1: Requesting "GET http://httpstat.us/200" from httpstat.us
+1: "CONNECT www.google.com:443" from 174.109.103.165 @ Mon Feb 27 23:31:20 2023
+1: Requesting "CONNECT www.google.com:443" from www.google.com
 1: Responding "HTTP/1.1 200 OK"
-2: "CONNECT mozilla.cloudflare-dns.com:443" from 174.109.103.165 @ Mon Feb 27 22:51:15 2023
-2: Requesting "CONNECT mozilla.cloudflare-dns.com:443" from mozilla.cloudflare-dns.com
-2: Responding "HTTP/1.1 200 OK"
-3: "GET http://httpbin.org/cache/60" from 174.109.103.165 @ Mon Feb 27 22:51:23 2023
-3: not in cache
-3: Requesting "GET http://httpbin.org/cache/60" from httpbin.org
-3: NOTE Cache-Control: max-age=60
-3: NOTE Expires: Mon Feb 27 22:52:23 2023
-3: cacheable, expires at Mon Feb 27 22:52:23 2023
-3: Responding "HTTP/1.1 200 OK"
-4: "GET http://httpbin.org/cache/60" from 174.109.103.165 @ Mon Feb 27 22:51:25 2023
-4: in cache, valid
-4: Responding "http://httpbin.org/cache/60"
-5: "CONNECT httpbin.org:443" from 174.109.103.165 @ Mon Feb 27 22:51:33 2023
-5: Requesting "CONNECT httpbin.org:443" from httpbin.org
+4: "CONNECT adservice.google.com:443" from 174.109.103.165 @ Mon Feb 27 23:31:21 2023
+4: Requesting "CONNECT adservice.google.com:443" from adservice.google.com
+4: Responding "HTTP/1.1 200 OK"
+5: "CONNECT googleads.g.doubleclick.net:443" from 174.109.103.165 @ Mon Feb 27 23:31:22 2023
+5: Requesting "CONNECT googleads.g.doubleclick.net:443" from googleads.g.doubleclick.net
 5: Responding "HTTP/1.1 200 OK"
-6: "POST http://ocsp.sca1b.amazontrust.com/" from 174.109.103.165 @ Mon Feb 27 22:51:34 2023
-6: Requesting "POST http://ocsp.sca1b.amazontrust.com/" from ocsp.sca1b.amazontrust.com
-8: "CONNECT contile-images.services.mozilla.com:443" from 174.109.103.165 @ Mon Feb 27 22:51:47 2023
-7: "CONNECT img-getpocket.cdn.mozilla.net:443" from 174.109.103.165 @ Mon Feb 27 22:51:47 2023
-8: Requesting "CONNECT contile-images.services.mozilla.com:443" from contile-images.services.mozilla.com
-8: Responding "HTTP/1.1 200 OK"
-7: Requesting "CONNECT img-getpocket.cdn.mozilla.net:443" from img-getpocket.cdn.mozilla.net
-7: Responding "HTTP/1.1 200 OK"
-9: "CONNECT incoming.telemetry.mozilla.org:443" from 174.109.103.165 @ Mon Feb 27 22:51:47 2023
-9: Requesting "CONNECT incoming.telemetry.mozilla.org:443" from incoming.telemetry.mozilla.org
-9: Responding "HTTP/1.1 200 OK"
-10: "POST http://ocsp.digicert.com/" from 174.109.103.165 @ Mon Feb 27 22:51:48 2023
-10: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
-11: "CONNECT incoming.telemetry.mozilla.org:443" from 174.109.103.165 @ Mon Feb 27 22:51:49 2023
-11: Requesting "CONNECT incoming.telemetry.mozilla.org:443" from incoming.telemetry.mozilla.org
-11: Responding "HTTP/1.1 200 OK"
-12: "POST http://ocsp.digicert.com/" from 174.109.103.165 @ Mon Feb 27 22:51:49 2023
-12: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
-13: "GET http://httpbin.org/cache/86400" from 174.109.103.165 @ Mon Feb 27 22:52:18 2023
-13: not in cache
-13: Requesting "GET http://httpbin.org/cache/86400" from httpbin.org
-13: NOTE Cache-Control: max-age=86400
-13: NOTE Expires: Tue Feb 28 22:52:18 2023
-13: cacheable, expires at Tue Feb 28 22:52:18 2023
-13: Responding "HTTP/1.1 200 OK"
-14: "CONNECT shavar.services.mozilla.com:443" from 174.109.103.165 @ Mon Feb 27 22:52:19 2023
-14: Requesting "CONNECT shavar.services.mozilla.com:443" from shavar.services.mozilla.com
-14: Responding "HTTP/1.1 200 OK"
-15: "POST http://ocsp.digicert.com/" from 174.109.103.165 @ Mon Feb 27 22:52:19 2023
-15: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
-16: "GET http://httpbin.org/cache/86400" from 174.109.103.165 @ Mon Feb 27 22:52:25 2023
-16: in cache, valid
-16: Responding "http://httpbin.org/cache/86400"
+6: "POST http://ocsp.pki.goog/gts1c3" from 174.109.103.165 @ Mon Feb 27 23:31:22 2023
+6: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+5: Tunnel closed
+5: Tunnel closed
+3: Responding "HTTP/1.1 400 Bad Request"
+2: Responding "HTTP/1.1 400 Bad Request"
+3: " " from 174.109.103.165 @ Mon Feb 27 23:31:24 2023
+2: " " from 174.109.103.165 @ Mon Feb 27 23:31:24 2023
+1: Tunnel closed
+1: Tunnel closed
+4: Tunnel closed
+4: Tunnel closed

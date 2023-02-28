@@ -173,20 +173,12 @@ void Proxy::requestCONNECT(int client_fd, int thread_id) {
       throw myException(msg);
     }
     if (FD_ISSET(client_connection_fd, &read_fds)) {
-      try {
-        connect_Transferdata(client_connection_fd, client_fd);
-      }
-      catch (myException & e) {
-        std::cout << e.what() << std::endl;
+      if (!connect_Transferdata(client_connection_fd, client_fd)) {
         break;
       }
     }
     else if (FD_ISSET(client_fd, &read_fds)) {
-      try {
-        connect_Transferdata(client_fd, client_connection_fd);
-      }
-      catch (myException & e) {
-        std::cout << e.what() << std::endl;
+      if (!connect_Transferdata(client_fd, client_connection_fd)) {
         break;
       }
     }
@@ -203,7 +195,7 @@ void Proxy::requestCONNECT(int client_fd, int thread_id) {
  * @param fd1 send_fd
  * @param fd2 recv_fd
  */
-void Proxy::connect_Transferdata(int fd1, int fd2) {
+bool Proxy::connect_Transferdata(int fd1, int fd2) {
   std::vector<char> buffer(MAX_LENGTH, 0);
   int total = 0;
   int n = 0;
@@ -212,16 +204,20 @@ void Proxy::connect_Transferdata(int fd1, int fd2) {
     buffer.resize(total + 2 * MAX_LENGTH);
     total += n;
   }
+  if (n < 0) {
+    return false;
+  }
   total += n;
   buffer.resize(total);
 
   if (buffer.empty()) {
-    return;
+    return false;
   }
   int status = send(fd2, &buffer.data()[0], buffer.size(), 0);
-  if (status == -1) {
-    throw myException("Error(CONNECT_send): transfer data failed.");
+  if (status <= 0) {
+    return false;
   }
+  return true;
 }
 
 /**
@@ -343,7 +339,6 @@ void Proxy::requestPOST(int client_fd, httpcommand request_info, int thread_id) 
   recv_len += n;
   std::string buffer_str(buffer);
   TimeMake t;
-  std::cout << buffer_str << std::endl;
 
   response_info.parseResponse(buffer_str, t.getTime());
   while (recv_len < response_info.content_length) {
@@ -393,6 +388,8 @@ void Proxy::handleRequest(int thread_id) {
             request_info.url + "\" from " + request_info.host;
       logFile.log(msg);
       requestCONNECT(client_fd, thread_id);
+      msg = std::to_string(thread_id) + ": Tunnel closed";
+      logFile.log(msg);
     }
     else if (request_info.method == "GET") {
       if (!cache.has(request_info.url)) {  // not in cache

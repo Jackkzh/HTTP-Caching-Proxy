@@ -6,7 +6,7 @@
  */
 void ResponseInfo::setContentLength(std::string & buffer) {
   response = buffer;
-  std::cout << response << std::endl;
+  //std::cout << response << std::endl;
   content_length = -1;
   std::size_t end = buffer.find("\r\n\r\n");
   if (end != std::string::npos) {
@@ -94,7 +94,7 @@ void ResponseInfo::checkStatus(std::string & buffer) {
  */
 void ResponseInfo::setCacheControl(std::string & buffer) {
   TimeMake t;
-  std::cout << buffer << std::endl;
+  //std::cout << buffer << std::endl;
   std::size_t end = buffer.find("\r\n\r\n");
   if (end != std::string::npos) {
     std::string headers = buffer.substr(0, end);
@@ -218,7 +218,7 @@ void ResponseInfo::setFreshLifeTime(int maxStale) {
   }
   else if (maxAge != -1) {
     freshLifeTime = maxAge + maxStale;
-    std::cout << freshLifeTime << std::endl;
+    //std::cout << freshLifeTime << std::endl;
   }
   else if (expirationTime != "") {
     freshLifeTime = t.timeMinus(expirationTime, date) + maxStale;
