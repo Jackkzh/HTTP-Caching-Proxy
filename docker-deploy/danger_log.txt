@@ -1,4 +1,21 @@
 Danger Log
+
+Cache policy:
+Size: we set it in proxy.cpp: Cache cache(10 * 1024 * 1024);
+
+When a request comes in, the cache should be checked to see if it has a matching response.
+If the cache entry exists and is not expired, the response should be returned immediately.
+When the response in cache is expired and there's no Etag and Last-Modified field in it, 
+we erase it from cache. Otherwise we check revalidatation, if need revalidate, add 
+If-None-Match and If-Modified-Since fields to the request header, send it to server 
+and check the response is 200OK or 304.If it's 200 OK, we erase the old response 
+from cache and ask for a new one. Otherwise we reuse the response in cache.
+If not need validate, then we check if it is fresh (follow the instruction and formula in RFC).
+If it is not fresh, we recache it. Otherwise, we reuse it.
+If the server responds with a 200 OK status code, the new response should be cached and returned.
+If the cache entry does not exist, the proxy should forward the request to the origin server 
+and cache the response.
+
 -------------------------------------------------------------------
 -------------------------------------------------------------------
 We make storng exception guarantee (in sockets building and Http request
