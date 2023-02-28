@@ -19,7 +19,7 @@
 
 #include "httpcommand.h"
 #define MAX_LENGTH 65536
-#define logFileLocation "./proxy.log"  //"/var/log/erss/proxy.log"
+#define logFileLocation "/var/log/erss/proxy.log"  //"/var/log/erss/proxy.log"
 
 class Logger {
  private:
