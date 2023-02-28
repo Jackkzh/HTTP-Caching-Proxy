@@ -1,5 +1,8 @@
 Danger Log
-
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+We make storng exception guarantee (in sockets building and Http request
+handle, we all set srong exception guarantees)
 -------------------------------------------------------------------
 -------------------------------------------------------------------
 In our cache strategy, we ignore the cache-control options in request 
