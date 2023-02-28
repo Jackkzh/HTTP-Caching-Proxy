@@ -270,7 +270,6 @@ void Proxy::requestGET(int client_fd, httpcommand request, int thread_id) {
         send(client_connection_fd, buffer, recv_first, 0);
         sendChunkPacket(client_fd, client_connection_fd);
     } else {
-        std::cout << "***test ****" << std::endl;
         size_t header_end = buffer_str.find("\r\n\r\n");
         int header_len = header_end + 4;
         int recv_left = response_info.content_length - (recv_first - header_len);
@@ -281,7 +280,6 @@ void Proxy::requestGET(int client_fd, httpcommand request, int thread_id) {
             recv_left -= len;
         }
         bool isBad = response_info.checkBadGateway(client_fd, thread_id);
-        std::cout << buffer << std::endl;
         send(client_connection_fd, buffer, recv_first + recv_len, 0);
     }
 
@@ -339,8 +337,6 @@ void Proxy::requestPOST(int client_fd, httpcommand request_info, int thread_id) 
     ResponseInfo response_info;
 
     ssize_t n = recv(client_fd, buffer + recv_len, sizeof(buffer) - recv_len, 0);
-    std::cout << "&&&&&&&&&" << std::endl;
-    std::cout << buffer << std::endl;
 
     if (n == -1) {
         // perror("recv"); // **** not necessarily an error, it's due to server side connection closed ****
@@ -369,23 +365,9 @@ void Proxy::requestPOST(int client_fd, httpcommand request_info, int thread_id) 
     }
     send(client_connection_fd, buffer, n + recv_len, 0);
 
-    // while (recv_len < response_info.content_length) {
-    //     ssize_t n = recv(client_fd, buffer + recv_len, sizeof(buffer) - recv_len, 0);
-    //     if (n == -1) {
-    //         // perror("recv"); // **** not necessarily an error, it's due to server side connection closed ****
-    //         return;  // **** should be using return instead of exit ****
-    //     }
-    //     if (n > 0 && i == 0) {
-    //         msg = std::to_string(thread_id) + ": Responding \"" + tolog;
-    //         logFile.log(msg);
-    //     }
-    //     recv_len += n;
-    // }
-
     // std::cout << "****************" << std::endl;
     // std::cout << buffer << std::endl;
 
-    // send(client_connection_fd, buffer, strlen(buffer), 0);
     close(client_fd);
     close(client_connection_fd);
 }
