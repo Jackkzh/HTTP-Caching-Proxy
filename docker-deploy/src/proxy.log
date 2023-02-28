@@ -1,21 +1,50 @@
-1: "CONNECT www.google.com:443" from 174.109.103.165 @ Mon Feb 27 23:31:20 2023
+1: "CONNECT www.google.com:443" from 45.37.116.131 @ Tue Feb 28 00:02:32 2023
 1: Requesting "CONNECT www.google.com:443" from www.google.com
 1: Responding "HTTP/1.1 200 OK"
-4: "CONNECT adservice.google.com:443" from 174.109.103.165 @ Mon Feb 27 23:31:21 2023
-4: Requesting "CONNECT adservice.google.com:443" from adservice.google.com
+1: Tunnel closed
+1: Tunnel closed
+2: "CONNECT www.google.com:443" from 45.37.116.131 @ Tue Feb 28 00:02:32 2023
+2: Requesting "CONNECT www.google.com:443" from www.google.com
+2: Responding "HTTP/1.1 200 OK"
+3: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Tue Feb 28 00:02:32 2023
+3: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+4: "CONNECT firefox.settings.services.mozilla.com:443" from 45.37.116.131 @ Tue Feb 28 00:02:34 2023
+4: Requesting "CONNECT firefox.settings.services.mozilla.com:443" from firefox.settings.services.mozilla.com
 4: Responding "HTTP/1.1 200 OK"
-5: "CONNECT googleads.g.doubleclick.net:443" from 174.109.103.165 @ Mon Feb 27 23:31:22 2023
-5: Requesting "CONNECT googleads.g.doubleclick.net:443" from googleads.g.doubleclick.net
-5: Responding "HTTP/1.1 200 OK"
-6: "POST http://ocsp.pki.goog/gts1c3" from 174.109.103.165 @ Mon Feb 27 23:31:22 2023
-6: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
-5: Tunnel closed
-5: Tunnel closed
-3: Responding "HTTP/1.1 400 Bad Request"
-2: Responding "HTTP/1.1 400 Bad Request"
-3: " " from 174.109.103.165 @ Mon Feb 27 23:31:24 2023
-2: " " from 174.109.103.165 @ Mon Feb 27 23:31:24 2023
-1: Tunnel closed
-1: Tunnel closed
-4: Tunnel closed
-4: Tunnel closed
+6: "CONNECT incoming.telemetry.mozilla.org:443" from 45.37.116.131 @ Tue Feb 28 00:02:35 2023
+6: Requesting "CONNECT incoming.telemetry.mozilla.org:443" from incoming.telemetry.mozilla.org
+6: Responding "HTTP/1.1 200 OK"
+7: "GET http://www.testingmcafeesites.com/index.htmlfdsa" from 45.37.116.131 @ Tue Feb 28 00:02:35 2023
+8: "POST http://ocsp.digicert.com/" from 45.37.116.131 @ Tue Feb 28 00:02:35 2023
+8: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
+7: not in cache
+7: Requesting "GET http://www.testingmcafeesites.com/index.htmlfdsa" from www.testingmcafeesites.com
+7: Received "HTTP/1.1 404 Not Found" from www.testingmcafeesites.com
+7: Responding "HTTP/1.1 404 Not Found"
+9: "CONNECT i.ytimg.com:443" from 45.37.116.131 @ Tue Feb 28 00:02:36 2023
+9: Requesting "CONNECT i.ytimg.com:443" from i.ytimg.com
+9: Responding "HTTP/1.1 200 OK"
+13: "CONNECT play.google.com:443" from 45.37.116.131 @ Tue Feb 28 00:02:36 2023
+13: Requesting "CONNECT play.google.com:443" from play.google.com
+13: Responding "HTTP/1.1 200 OK"
+14: "CONNECT adservice.google.com:443" from 45.37.116.131 @ Tue Feb 28 00:02:36 2023
+15: "CONNECT safebrowsing.googleapis.com:443" from 45.37.116.131 @ Tue Feb 28 00:02:36 2023
+14: Requesting "CONNECT adservice.google.com:443" from adservice.google.com
+14: Responding "HTTP/1.1 200 OK"
+15: Requesting "CONNECT safebrowsing.googleapis.com:443" from safebrowsing.googleapis.com
+15: Responding "HTTP/1.1 200 OK"
+15: Tunnel closed
+15: Tunnel closed
+17: "CONNECT googleads.g.doubleclick.net:443" from 45.37.116.131 @ Tue Feb 28 00:02:36 2023
+17: Requesting "CONNECT googleads.g.doubleclick.net:443" from googleads.g.doubleclick.net
+17: Responding "HTTP/1.1 200 OK"
+18: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Tue Feb 28 00:02:37 2023
+18: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+10: "CONNECT www.gstatic.com:443" from 45.37.116.131 @ Tue Feb 28 00:02:37 2023
+19: "CONNECT www.youtube.com:443" from 45.37.116.131 @ Tue Feb 28 00:02:37 2023
+10: Requesting "CONNECT www.gstatic.com:443" from www.gstatic.com
+10: Responding "HTTP/1.1 200 OK"
+10: Tunnel closed
+10: Tunnel closed
+19: Requesting "CONNECT www.youtube.com:443" from www.youtube.com
+19: Responding "HTTP/1.1 200 OK"
