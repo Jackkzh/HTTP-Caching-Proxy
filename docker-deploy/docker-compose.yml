@@ -5,8 +5,8 @@ services:
     build: ./src
     image: project2_final
     container_name: proj2_container
-    command: /var/log/erss/run.sh
+    command: /app/run.sh
     volumes:
-      - ./src:/var/log/erss
+      - ./src:/app
     ports:
       - "12345:12345"

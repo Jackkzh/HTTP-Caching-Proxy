@@ -1,81 +1,455 @@
-1: "CONNECT www.youtube.com:443" from 10.197.90.119 @ Tue Feb 28 21:50:26 2023
-1: Requesting "CONNECT www.youtube.com:443" from www.youtube.com
+1: "GET http://detectportal.firefox.com/canonical.html" from 45.37.116.131 @ Wed Mar  1 05:35:57 2023
+1: not in cache
+1: Requesting "GET http://detectportal.firefox.com/canonical.html" from detectportal.firefox.com
+2: "CONNECT contile.services.mozilla.com:443" from 45.37.116.131 @ Wed Mar  1 05:35:57 2023
+1: Received "HTTP/1.1 200 OK" from detectportal.firefox.com
+1: NOTE Cache-Control: max-age=0
+1: NOTE Expires: Wed Mar  1 05:35:57 2023
 1: Responding "HTTP/1.1 200 OK"
-2: "POST http://ocsp.pki.goog/gts1c3" from 10.197.90.119 @ Tue Feb 28 21:50:26 2023
-2: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
-3: "CONNECT www.google.com:443" from 10.197.90.119 @ Tue Feb 28 21:51:13 2023
-3: Requesting "CONNECT www.google.com:443" from www.google.com
+1: cacheable, expires at Wed Mar  1 05:35:57 2023
+3: "CONNECT spocs.getpocket.com:443" from 45.37.116.131 @ Wed Mar  1 05:35:57 2023
+2: Requesting "CONNECT contile.services.mozilla.com:443" from contile.services.mozilla.com
+2: Responding "HTTP/1.1 200 OK"
+4: "CONNECT content-signature-2.cdn.mozilla.net:443" from 45.37.116.131 @ Wed Mar  1 05:35:57 2023
+3: Requesting "CONNECT spocs.getpocket.com:443" from spocs.getpocket.com
 3: Responding "HTTP/1.1 200 OK"
-4: "CONNECT safebrowsing.googleapis.com:443" from 10.197.90.119 @ Tue Feb 28 21:51:40 2023
-4: Requesting "CONNECT safebrowsing.googleapis.com:443" from safebrowsing.googleapis.com
+5: "GET http://detectportal.firefox.com/success.txt?ipv4" from 45.37.116.131 @ Wed Mar  1 05:35:57 2023
+4: Requesting "CONNECT content-signature-2.cdn.mozilla.net:443" from content-signature-2.cdn.mozilla.net
 4: Responding "HTTP/1.1 200 OK"
-4: Tunnel closed
-4: Tunnel closed
-5: "CONNECT play.google.com:443" from 10.197.90.119 @ Tue Feb 28 21:53:00 2023
-5: Requesting "CONNECT play.google.com:443" from play.google.com
+5: not in cache
+5: Requesting "GET http://detectportal.firefox.com/success.txt?ipv4" from detectportal.firefox.com
+5: Received "HTTP/1.1 200 OK" from detectportal.firefox.com
+5: NOTE Cache-Control: max-age=0
+5: NOTE Expires: Wed Mar  1 05:35:57 2023
 5: Responding "HTTP/1.1 200 OK"
-6: "CONNECT contile.services.mozilla.com:443" from 10.197.90.119 @ Tue Feb 28 21:53:10 2023
-6: Requesting "CONNECT contile.services.mozilla.com:443" from contile.services.mozilla.com
-6: Responding "HTTP/1.1 200 OK"
-7: "CONNECT contile-images.services.mozilla.com:443" from 10.197.90.119 @ Tue Feb 28 21:53:10 2023
-7: Requesting "CONNECT contile-images.services.mozilla.com:443" from contile-images.services.mozilla.com
+5: cacheable, expires at Wed Mar  1 05:35:57 2023
+10: "CONNECT normandy.cdn.mozilla.net:443" from 45.37.116.131 @ Wed Mar  1 05:35:57 2023
+9: "POST http://r3.o.lencr.org/" from 45.37.116.131 @ Wed Mar  1 05:35:57 2023
+8: "POST http://ocsp.sca1b.amazontrust.com/" from 45.37.116.131 @ Wed Mar  1 05:35:57 2023
+9: Requesting "POST http://r3.o.lencr.org/" from r3.o.lencr.org
+8: Requesting "POST http://ocsp.sca1b.amazontrust.com/" from ocsp.sca1b.amazontrust.com
+10: Requesting "CONNECT normandy.cdn.mozilla.net:443" from normandy.cdn.mozilla.net
+10: Responding "HTTP/1.1 200 OK"
+7: "CONNECT firefox.settings.services.mozilla.com:443" from 45.37.116.131 @ Wed Mar  1 05:35:57 2023
+6: "POST http://r3.o.lencr.org/" from 45.37.116.131 @ Wed Mar  1 05:35:57 2023
+6: Requesting "POST http://r3.o.lencr.org/" from r3.o.lencr.org
+7: Requesting "CONNECT firefox.settings.services.mozilla.com:443" from firefox.settings.services.mozilla.com
 7: Responding "HTTP/1.1 200 OK"
-1: Tunnel closed
-1: Tunnel closed
-8: "GET http://www.httpwatch.com/httpgallery/methods/?AddX=2&AddY=12&B1=Add" from 10.197.90.119 @ Tue Feb 28 21:53:30 2023
-8: not in cache
-8: Requesting "GET http://www.httpwatch.com/httpgallery/methods/?AddX=2&AddY=12&B1=Add" from www.httpwatch.com
-8: Received "HTTP/1.1 200 OK" from www.httpwatch.com
-8: NOTE Cache-Control:  no-cache
-8: Responding "HTTP/1.1 200 OK"
-8: not cacheable because no-cache.
-9: "GET http://www.httpwatch.com/httpgallery/methods/retry.png" from 10.197.90.119 @ Tue Feb 28 21:53:30 2023
-15: "CONNECT www.httpwatch.com:443" from 10.197.90.119 @ Tue Feb 28 21:53:30 2023
-9: not in cache
-9: Requesting "GET http://www.httpwatch.com/httpgallery/methods/retry.png" from www.httpwatch.com
-15: Requesting "CONNECT www.httpwatch.com:443" from www.httpwatch.com
+11: "CONNECT img-getpocket.cdn.mozilla.net:443" from 45.37.116.131 @ Wed Mar  1 05:35:57 2023
+12: "CONNECT img-getpocket.cdn.mozilla.net:443" from 45.37.116.131 @ Wed Mar  1 05:35:57 2023
+13: "CONNECT img-getpocket.cdn.mozilla.net:443" from 45.37.116.131 @ Wed Mar  1 05:35:57 2023
+16: "CONNECT img-getpocket.cdn.mozilla.net:443" from 45.37.116.131 @ 
+15: "CONNECT safebrowsing.googleapis.com:443" from 45.37.116.131 @ Wed Mar  1 05:35:57 2023
+18: "CONNECT img-getpocket.cdn.mozilla.net:443" from 45.37.116.131 @ Wed Mar  1 05:35:57 2023
+17: "CONNECT img-getpocket.cdn.mozilla.net:443" from 45.37.116.131 @ Wed Mar  1 05:35:57 2023
+14: "POST http://r3.o.lencr.org/" from 45.37.116.131 @ Wed Mar  1 05:35:57 2023
+14: Requesting "POST http://r3.o.lencr.org/" from r3.o.lencr.org
+15: Requesting "CONNECT safebrowsing.googleapis.com:443" from safebrowsing.googleapis.com
 15: Responding "HTTP/1.1 200 OK"
-9: Received "HTTP/1.1 304 Not Modified" from www.httpwatch.com
-9: NOTE Cache-Control: max-age=0
-9: NOTE Expires: Tue Feb 28 21:53:30 2023
-9: NOTE ETag: b46ba5c8bb2fd81:0
-9: Responding "HTTP/1.1 304 Not Modified"
-9: cacheable, expires at Tue Feb 28 21:53:30 2023
-9: Responding "HTTP/1.1 502 Bad Gateway"
-17: "CONNECT www.google-analytics.com:443" from 10.197.90.119 @ Tue Feb 28 21:53:30 2023
-17: Requesting "CONNECT www.google-analytics.com:443" from www.google-analytics.com
+19: "CONNECT incoming.telemetry.mozilla.org:443" from 45.37.116.131 @ Wed Mar  1 05:35:57 2023
+20: "POST http://r3.o.lencr.org/" from 45.37.116.131 @ Wed Mar  1 05:35:57 2023
+20: Requesting "POST http://r3.o.lencr.org/" from r3.o.lencr.org
+16: Requesting "CONNECT img-getpocket.cdn.mozilla.net:443" from img-getpocket.cdn.mozilla.net
+16: Responding "HTTP/1.1 200 OK"
+13: Requesting "CONNECT img-getpocket.cdn.mozilla.net:443" from img-getpocket.cdn.mozilla.net
+13: Responding "HTTP/1.1 200 OK"
+18: Requesting "CONNECT img-getpocket.cdn.mozilla.net:443" from img-getpocket.cdn.mozilla.net
+18: Responding "HTTP/1.1 200 OK"
+12: Requesting "CONNECT img-getpocket.cdn.mozilla.net:443" from img-getpocket.cdn.mozilla.net
+12: Responding "HTTP/1.1 200 OK"
+11: Requesting "CONNECT img-getpocket.cdn.mozilla.net:443" from img-getpocket.cdn.mozilla.net
+11: Responding "HTTP/1.1 200 OK"
+17: Requesting "CONNECT img-getpocket.cdn.mozilla.net:443" from img-getpocket.cdn.mozilla.net
 17: Responding "HTTP/1.1 200 OK"
-12: "POST http://www.httpwatch.com/httpgallery/methods/?AddX=2&AddY=12&B1=Add" from 10.197.90.119 @ Tue Feb 28 21:53:32 2023
-12: Requesting "POST http://www.httpwatch.com/httpgallery/methods/?AddX=2&AddY=12&B1=Add" from www.httpwatch.com
-12: Received "HTTP/1.1 200 OK" from www.httpwatch.com
-10: "GET http://www.httpwatch.com/httpgallery/methods/retry.png" from 10.197.90.119 @ Tue Feb 28 21:53:32 2023
-10: not in cache
-10: Requesting "GET http://www.httpwatch.com/httpgallery/methods/retry.png" from www.httpwatch.com
-10: Received "HTTP/1.1 304 Not Modified" from www.httpwatch.com
-10: NOTE Cache-Control: max-age=0
-10: NOTE Expires: Tue Feb 28 21:53:32 2023
-10: NOTE ETag: b46ba5c8bb2fd81:0
-10: Responding "HTTP/1.1 304 Not Modified"
-10: cacheable, expires at Tue Feb 28 21:53:32 2023
-10: Responding "HTTP/1.1 502 Bad Gateway"
-13: Responding "HTTP/1.1 400 Bad Request"
-13: " " from 10.197.90.119 @ Tue Feb 28 21:53:36 2023
-14: Responding "HTTP/1.1 400 Bad Request"
-14: " " from 10.197.90.119 @ Tue Feb 28 21:53:36 2023
-11: Responding "HTTP/1.1 400 Bad Request"
-11: " " from 10.197.90.119 @ Tue Feb 28 21:53:36 2023
-16: Responding "HTTP/1.1 400 Bad Request"
-16: " " from 10.197.90.119 @ Tue Feb 28 21:53:36 2023
-18: "POST http://www.httpwatch.com/httpgallery/methods/?AddX=2&AddY=12&B1=Add" from 10.197.90.119 @ Tue Feb 28 21:53:36 2023
-18: Requesting "POST http://www.httpwatch.com/httpgallery/methods/?AddX=2&AddY=12&B1=Add" from www.httpwatch.com
-18: Received "HTTP/1.1 200 OK" from www.httpwatch.com
-19: "GET http://www.httpwatch.com/httpgallery/methods/retry.png" from 10.197.90.119 @ Tue Feb 28 21:53:36 2023
-19: not in cache
-19: Requesting "GET http://www.httpwatch.com/httpgallery/methods/retry.png" from www.httpwatch.com
-19: Received "HTTP/1.1 304 Not Modified" from www.httpwatch.com
-19: NOTE Cache-Control: max-age=0
-19: NOTE Expires: Tue Feb 28 21:53:36 2023
-19: NOTE ETag: b46ba5c8bb2fd81:0
-19: Responding "HTTP/1.1 304 Not Modified"
-19: cacheable, expires at Tue Feb 28 21:53:36 2023
-19: Responding "HTTP/1.1 502 Bad Gateway"
+22: "CONNECT incoming.telemetry.mozilla.org:443" from 45.37.116.131 @ Wed Mar  1 05:35:58 2023
+21: "CONNECT incoming.telemetry.mozilla.org:443" from 45.37.116.131 @ Wed Mar  1 05:35:58 2023
+19: Requesting "CONNECT incoming.telemetry.mozilla.org:443" from incoming.telemetry.mozilla.org
+22: Requesting "CONNECT incoming.telemetry.mozilla.org:443" from incoming.telemetry.mozilla.org
+19: Responding "HTTP/1.1 200 OK"
+21: Requesting "CONNECT incoming.telemetry.mozilla.org:443" from incoming.telemetry.mozilla.org
+22: Responding "HTTP/1.1 200 OK"
+21: Responding "HTTP/1.1 200 OK"
+23: "CONNECT incoming.telemetry.mozilla.org:443" from 45.37.116.131 @ Wed Mar  1 05:35:58 2023
+23: Requesting "CONNECT incoming.telemetry.mozilla.org:443" from incoming.telemetry.mozilla.org
+23: Responding "HTTP/1.1 200 OK"
+24: "CONNECT incoming.telemetry.mozilla.org:443" from 45.37.116.131 @ Wed Mar  1 05:35:58 2023
+25: "CONNECT firefox.settings.services.mozilla.com:443" from 45.37.116.131 @ Wed Mar  1 05:35:58 2023
+26: "CONNECT firefox.settings.services.mozilla.com:443" from 45.37.116.131 @ Wed Mar  1 05:35:58 2023
+28: "CONNECT firefox.settings.services.mozilla.com:443" from 45.37.116.131 @ Wed Mar  1 05:35:58 2023
+27: "CONNECT firefox.settings.services.mozilla.com:443" from 45.37.116.131 @ Wed Mar  1 05:35:58 2023
+24: Requesting "CONNECT incoming.telemetry.mozilla.org:443" from incoming.telemetry.mozilla.org
+24: Responding "HTTP/1.1 200 OK"
+29: "CONNECT aus5.mozilla.org:443" from 45.37.116.131 @ Wed Mar  1 05:35:58 2023
+28: Requesting "CONNECT firefox.settings.services.mozilla.com:443" from firefox.settings.services.mozilla.com
+28: Responding "HTTP/1.1 200 OK"
+27: Requesting "CONNECT firefox.settings.services.mozilla.com:443" from firefox.settings.services.mozilla.com
+27: Responding "HTTP/1.1 200 OK"
+25: Requesting "CONNECT firefox.settings.services.mozilla.com:443" from firefox.settings.services.mozilla.com
+25: Responding "HTTP/1.1 200 OK"
+26: Requesting "CONNECT firefox.settings.services.mozilla.com:443" from firefox.settings.services.mozilla.com
+26: Responding "HTTP/1.1 200 OK"
+29: Requesting "CONNECT aus5.mozilla.org:443" from aus5.mozilla.org
+29: Responding "HTTP/1.1 200 OK"
+30: "CONNECT firefox.settings.services.mozilla.com:443" from 45.37.116.131 @ Wed Mar  1 05:35:58 2023
+30: Requesting "CONNECT firefox.settings.services.mozilla.com:443" from firefox.settings.services.mozilla.com
+30: Responding "HTTP/1.1 200 OK"
+31: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Wed Mar  1 05:35:59 2023
+31: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+33: "POST http://r3.o.lencr.org/" from 45.37.116.131 @ Wed Mar  1 05:35:59 2023
+32: "POST http://r3.o.lencr.org/" from 45.37.116.131 @ Wed Mar  1 05:35:59 2023
+33: Requesting "POST http://r3.o.lencr.org/" from r3.o.lencr.org
+32: Requesting "POST http://r3.o.lencr.org/" from r3.o.lencr.org
+34: "CONNECT contile-images.services.mozilla.com:443" from 45.37.116.131 @ Wed Mar  1 05:35:59 2023
+35: "CONNECT contile-images.services.mozilla.com:443" from 45.37.116.131 @ Wed Mar  1 05:35:59 2023
+34: Requesting "CONNECT contile-images.services.mozilla.com:443" from contile-images.services.mozilla.com
+34: Responding "HTTP/1.1 200 OK"
+37: "CONNECT getpocket.cdn.mozilla.net:443" from 45.37.116.131 @ Wed Mar  1 05:35:59 2023
+36: "CONNECT incoming.telemetry.mozilla.org:443" from 45.37.116.131 @ Wed Mar  1 05:35:59 2023
+38: "CONNECT incoming.telemetry.mozilla.org:443" from 45.37.116.131 @ Wed Mar  1 05:35:59 2023
+35: Requesting "CONNECT contile-images.services.mozilla.com:443" from contile-images.services.mozilla.com
+35: Responding "HTTP/1.1 200 OK"
+36: Requesting "CONNECT incoming.telemetry.mozilla.org:443" from incoming.telemetry.mozilla.org
+36: Responding "HTTP/1.1 200 OK"
+38: Requesting "CONNECT incoming.telemetry.mozilla.org:443" from incoming.telemetry.mozilla.org
+38: Responding "HTTP/1.1 200 OK"
+37: Requesting "CONNECT getpocket.cdn.mozilla.net:443" from getpocket.cdn.mozilla.net
+37: Responding "HTTP/1.1 200 OK"
+39: "POST http://r3.o.lencr.org/" from 45.37.116.131 @ Wed Mar  1 05:35:59 2023
+39: Requesting "POST http://r3.o.lencr.org/" from r3.o.lencr.org
+40: "CONNECT classify-client.services.mozilla.com:443" from 45.37.116.131 @ Wed Mar  1 05:35:59 2023
+41: "POST http://r3.o.lencr.org/" from 45.37.116.131 @ Wed Mar  1 05:35:59 2023
+41: Requesting "POST http://r3.o.lencr.org/" from r3.o.lencr.org
+40: Requesting "CONNECT classify-client.services.mozilla.com:443" from classify-client.services.mozilla.com
+40: Responding "HTTP/1.1 200 OK"
+26: Tunnel closed
+26: Tunnel closed
+28: Tunnel closed
+25: Tunnel closed
+30: Tunnel closed
+30: Tunnel closed
+28: Tunnel closed
+25: Tunnel closed
+27: Tunnel closed
+27: Tunnel closed
+15: Tunnel closed
+15: Tunnel closed
+43: "POST http://ocsp.digicert.com/" from 45.37.116.131 @ Wed Mar  1 05:36:01 2023
+44: "POST http://ocsp.digicert.com/" from 45.37.116.131 @ Wed Mar  1 05:36:01 2023
+44: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
+43: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
+17: Tunnel closed
+17: Tunnel closed
+12: Tunnel closed
+12: Tunnel closed
+42: "POST http://r3.o.lencr.org/" from 45.37.116.131 @ Wed Mar  1 05:36:01 2023
+42: Requesting "POST http://r3.o.lencr.org/" from r3.o.lencr.org
+45: "POST http://ocsp.digicert.com/" from 45.37.116.131 @ Wed Mar  1 05:36:01 2023
+45: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
+18: Tunnel closed
+18: Tunnel closed
+46: "POST http://ocsp.digicert.com/" from 45.37.116.131 @ Wed Mar  1 05:36:01 2023
+46: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
+13: Tunnel closed
+13: Tunnel closed
+47: "CONNECT shavar.services.mozilla.com:443" from 45.37.116.131 @ Wed Mar  1 05:36:03 2023
+47: Requesting "CONNECT shavar.services.mozilla.com:443" from shavar.services.mozilla.com
+47: Responding "HTTP/1.1 200 OK"
+48: "POST http://ocsp.digicert.com/" from 45.37.116.131 @ Wed Mar  1 05:36:03 2023
+48: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
+16: Tunnel closed
+16: Tunnel closed
+49: "POST http://ocsp.digicert.com/" from 45.37.116.131 @ Wed Mar  1 05:36:03 2023
+50: "POST http://r3.o.lencr.org/" from 45.37.116.131 @ Wed Mar  1 05:36:03 2023
+50: Requesting "POST http://r3.o.lencr.org/" from r3.o.lencr.org
+49: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
+51: "POST http://r3.o.lencr.org/" from 45.37.116.131 @ Wed Mar  1 05:36:03 2023
+51: Requesting "POST http://r3.o.lencr.org/" from r3.o.lencr.org
+22: Tunnel closed
+22: Tunnel closed
+38: Tunnel closed
+38: Tunnel closed
+52: "POST http://r3.o.lencr.org/" from 45.37.116.131 @ Wed Mar  1 05:36:03 2023
+52: Requesting "POST http://r3.o.lencr.org/" from r3.o.lencr.org
+21: Tunnel closed
+21: Tunnel closed
+36: Tunnel closed
+36: Tunnel closed
+23: Tunnel closed
+23: Tunnel closed
+53: "POST http://r3.o.lencr.org/" from 45.37.116.131 @ Wed Mar  1 05:36:05 2023
+53: Requesting "POST http://r3.o.lencr.org/" from r3.o.lencr.org
+54: "POST http://ocsp.digicert.com/" from 45.37.116.131 @ Wed Mar  1 05:36:05 2023
+54: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
+35: Tunnel closed
+35: Tunnel closed
+55: "CONNECT firefox.settings.services.mozilla.com:443" from 45.37.116.131 @ Wed Mar  1 05:36:06 2023
+55: Requesting "CONNECT firefox.settings.services.mozilla.com:443" from firefox.settings.services.mozilla.com
+55: Responding "HTTP/1.1 200 OK"
+56: "CONNECT content-signature-2.cdn.mozilla.net:443" from 45.37.116.131 @ Wed Mar  1 05:36:07 2023
+56: Requesting "CONNECT content-signature-2.cdn.mozilla.net:443" from content-signature-2.cdn.mozilla.net
+56: Responding "HTTP/1.1 200 OK"
+47: Tunnel closed
+47: Tunnel closed
+57: "CONNECT www.google.com:443" from 45.37.116.131 @ Wed Mar  1 05:36:16 2023
+57: Requesting "CONNECT www.google.com:443" from www.google.com
+57: Responding "HTTP/1.1 200 OK"
+58: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Wed Mar  1 05:36:17 2023
+58: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+61: "CONNECT id.google.com:443" from 45.37.116.131 @ Wed Mar  1 05:36:19 2023
+62: "CONNECT ssl.gstatic.com:443" from 45.37.116.131 @ Wed Mar  1 05:36:19 2023
+61: Requesting "CONNECT id.google.com:443" from id.google.com
+61: Responding "HTTP/1.1 200 OK"
+62: Requesting "CONNECT ssl.gstatic.com:443" from ssl.gstatic.com
+62: Responding "HTTP/1.1 200 OK"
+63: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Wed Mar  1 05:36:19 2023
+64: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Wed Mar  1 05:36:19 2023
+63: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+64: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+69: "CONNECT apis.google.com:443" from 45.37.116.131 @ Wed Mar  1 05:36:20 2023
+69: Requesting "CONNECT apis.google.com:443" from apis.google.com
+69: Responding "HTTP/1.1 200 OK"
+60: "CONNECT www.gstatic.com:443" from 45.37.116.131 @ Wed Mar  1 05:36:20 2023
+60: Requesting "CONNECT www.gstatic.com:443" from www.gstatic.com
+60: Responding "HTTP/1.1 200 OK"
+70: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Wed Mar  1 05:36:20 2023
+70: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+72: "CONNECT safebrowsing.googleapis.com:443" from 45.37.116.131 @ Wed Mar  1 05:36:20 2023
+71: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Wed Mar  1 05:36:20 2023
+72: Requesting "CONNECT safebrowsing.googleapis.com:443" from safebrowsing.googleapis.com
+72: Responding "HTTP/1.1 200 OK"
+71: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+76: "CONNECT play.google.com:443" from 45.37.116.131 @ Wed Mar  1 05:36:20 2023
+73: "CONNECT ssl.gstatic.com:443" from 45.37.116.131 @ Wed Mar  1 05:36:20 2023
+74: "CONNECT ssl.gstatic.com:443" from 45.37.116.131 @ Wed Mar  1 05:36:20 2023
+73: Requesting "CONNECT ssl.gstatic.com:443" from ssl.gstatic.com
+73: Responding "HTTP/1.1 200 OK"
+74: Requesting "CONNECT ssl.gstatic.com:443" from ssl.gstatic.com
+74: Responding "HTTP/1.1 200 OK"
+76: Requesting "CONNECT play.google.com:443" from play.google.com
+76: Responding "HTTP/1.1 200 OK"
+72: Tunnel closed
+72: Tunnel closed
+77: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Wed Mar  1 05:36:20 2023
+77: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+65: "CONNECT www.gstatic.com:443" from 45.37.116.131 @ Wed Mar  1 05:36:20 2023
+65: Requesting "CONNECT www.gstatic.com:443" from www.gstatic.com
+65: Responding "HTTP/1.1 200 OK"
+73: Tunnel closed
+73: Tunnel closed
+75: "CONNECT play.google.com:443" from 45.37.116.131 @ Wed Mar  1 05:36:21 2023
+75: Requesting "CONNECT play.google.com:443" from play.google.com
+75: Responding "HTTP/1.1 200 OK"
+60: Tunnel closed
+60: Tunnel closed
+74: Tunnel closed
+74: Tunnel closed
+79: "CONNECT encrypted-tbn0.gstatic.com:443" from 45.37.116.131 @ Wed Mar  1 05:36:22 2023
+78: "CONNECT adservice.google.com:443" from 45.37.116.131 @ Wed Mar  1 05:36:22 2023
+81: "CONNECT encrypted-tbn0.gstatic.com:443" from 45.37.116.131 @ Wed Mar  1 05:36:22 2023
+80: "CONNECT encrypted-tbn0.gstatic.com:443" from 45.37.116.131 @ Wed Mar  1 05:36:22 2023
+82: "CONNECT encrypted-tbn0.gstatic.com:443" from 45.37.116.131 @ Wed Mar  1 05:36:22 2023
+79: Requesting "CONNECT encrypted-tbn0.gstatic.com:443" from encrypted-tbn0.gstatic.com
+79: Responding "HTTP/1.1 200 OK"
+82: Requesting "CONNECT encrypted-tbn0.gstatic.com:443" from encrypted-tbn0.gstatic.com
+82: Responding "HTTP/1.1 200 OK"
+80: Requesting "CONNECT encrypted-tbn0.gstatic.com:443" from encrypted-tbn0.gstatic.com
+80: Responding "HTTP/1.1 200 OK"
+81: Requesting "CONNECT encrypted-tbn0.gstatic.com:443" from encrypted-tbn0.gstatic.com
+81: Responding "HTTP/1.1 200 OK"
+78: Requesting "CONNECT adservice.google.com:443" from adservice.google.com
+78: Responding "HTTP/1.1 200 OK"
+79: Tunnel closed
+79: Tunnel closed
+80: Tunnel closed
+80: Tunnel closed
+81: Tunnel closed
+81: Tunnel closed
+83: "CONNECT googleads.g.doubleclick.net:443" from 45.37.116.131 @ Wed Mar  1 05:36:22 2023
+83: Requesting "CONNECT googleads.g.doubleclick.net:443" from googleads.g.doubleclick.net
+83: Responding "HTTP/1.1 200 OK"
+84: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Wed Mar  1 05:36:23 2023
+84: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+85: "CONNECT www.google.com:443" from 45.37.116.131 @ Wed Mar  1 05:36:23 2023
+85: Requesting "CONNECT www.google.com:443" from www.google.com
+85: Responding "HTTP/1.1 200 OK"
+85: Tunnel closed
+85: Tunnel closed
+86: "CONNECT www.google.com:443" from 45.37.116.131 @ Wed Mar  1 05:36:23 2023
+86: Requesting "CONNECT www.google.com:443" from www.google.com
+86: Responding "HTTP/1.1 200 OK"
+86: Tunnel closed
+86: Tunnel closed
+87: "CONNECT www.google.com:443" from 45.37.116.131 @ Wed Mar  1 05:36:23 2023
+87: Requesting "CONNECT www.google.com:443" from www.google.com
+87: Responding "HTTP/1.1 200 OK"
+88: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Wed Mar  1 05:36:23 2023
+88: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+87: Tunnel closed
+87: Tunnel closed
+59: Responding "HTTP/1.1 400 Bad Request"
+59: " " from 45.37.116.131 @ Wed Mar  1 05:36:24 2023
+89: "GET http://www.httpwatch.com/httpgallery/methods/" from 45.37.116.131 @ Wed Mar  1 05:36:25 2023
+89: not in cache
+89: Requesting "GET http://www.httpwatch.com/httpgallery/methods/" from www.httpwatch.com
+68: Responding "HTTP/1.1 400 Bad Request"
+68: " " from 45.37.116.131 @ Wed Mar  1 05:36:25 2023
+67: Responding "HTTP/1.1 400 Bad Request"
+67: " " from 45.37.116.131 @ Wed Mar  1 05:36:25 2023
+66: Responding "HTTP/1.1 400 Bad Request"
+66: " " from 45.37.116.131 @ Wed Mar  1 05:36:25 2023
+89: Received "HTTP/1.1 200 OK" from www.httpwatch.com
+89: NOTE Cache-Control:  no-cache
+89: Responding "HTTP/1.1 200 OK"
+89: not cacheable because no-cache.
+90: "GET http://www.httpwatch.com/assets/images/arrow1.gif" from 45.37.116.131 @ Wed Mar  1 05:36:26 2023
+92: "GET http://www.httpwatch.com/assets/images/menu-btn-bg.png" from 45.37.116.131 @ Wed Mar  1 05:36:26 2023
+93: "GET http://www.httpwatch.com/assets/images/httpwatch_32x32.png" from 45.37.116.131 @ Wed Mar  1 05:36:26 2023
+96: "GET http://www.httpwatch.com/httpgallery/methods/retry.png" from 45.37.116.131 @ Wed Mar  1 05:36:26 2023
+94: "GET http://www.httpwatch.com/assets/images/logo1.png" from 45.37.116.131 @ Wed Mar  1 05:36:26 2023
+95: "GET http://www.httpwatch.com/assets/images/page-head-bg.gif" from 45.37.116.131 @ Wed Mar  1 05:36:26 2023
+93: not in cache
+93: Requesting "GET http://www.httpwatch.com/assets/images/httpwatch_32x32.png" from www.httpwatch.com
+90: not in cache
+90: Requesting "GET http://www.httpwatch.com/assets/images/arrow1.gif" from www.httpwatch.com
+92: not in cache
+92: Requesting "GET http://www.httpwatch.com/assets/images/menu-btn-bg.png" from www.httpwatch.com
+94: not in cache
+94: Requesting "GET http://www.httpwatch.com/assets/images/logo1.png" from www.httpwatch.com
+95: not in cache
+95: Requesting "GET http://www.httpwatch.com/assets/images/page-head-bg.gif" from www.httpwatch.com
+96: not in cache
+96: Requesting "GET http://www.httpwatch.com/httpgallery/methods/retry.png" from www.httpwatch.com
+90: Received "HTTP/1.1 301 Moved Permanently" from www.httpwatch.com
+90: Responding "HTTP/1.1 301 Moved Permanently"
+92: Received "HTTP/1.1 301 Moved Permanently" from www.httpwatch.com
+92: Responding "HTTP/1.1 301 Moved Permanently"
+94: Received "HTTP/1.1 301 Moved Permanently" from www.httpwatch.com
+94: Responding "HTTP/1.1 301 Moved Permanently"
+95: Received "HTTP/1.1 301 Moved Permanently" from www.httpwatch.com
+95: Responding "HTTP/1.1 301 Moved Permanently"
+93: Received "HTTP/1.1 301 Moved Permanently" from www.httpwatch.com
+93: Responding "HTTP/1.1 301 Moved Permanently"
+96: Received "HTTP/1.1 200 OK" from www.httpwatch.com
+96: NOTE Cache-Control: max-age=0
+96: NOTE Expires: Wed Mar  1 05:36:26 2023
+96: NOTE ETag: b46ba5c8bb2fd81:0
+96: NOTE Last-Modified: Fri Mar 4 11:34:17 2022
+96: Responding "HTTP/1.1 200 OK"
+96: cacheable, expires at Wed Mar  1 05:36:26 2023
+98: "CONNECT www.httpwatch.com:443" from 45.37.116.131 @ Wed Mar  1 05:36:26 2023
+97: "CONNECT www.httpwatch.com:443" from 45.37.116.131 @ Wed Mar  1 05:36:26 2023
+101: "CONNECT www.httpwatch.com:443" from 45.37.116.131 @ Wed Mar  1 05:36:26 2023
+99: "CONNECT www.httpwatch.com:443" from 45.37.116.131 @ Wed Mar  1 05:36:26 2023
+100: "CONNECT www.httpwatch.com:443" from 45.37.116.131 @ Wed Mar  1 05:36:26 2023
+97: Requesting "CONNECT www.httpwatch.com:443" from www.httpwatch.com
+97: Responding "HTTP/1.1 200 OK"
+101: Requesting "CONNECT www.httpwatch.com:443" from www.httpwatch.com
+101: Responding "HTTP/1.1 200 OK"
+98: Requesting "CONNECT www.httpwatch.com:443" from www.httpwatch.com
+98: Responding "HTTP/1.1 200 OK"
+99: Requesting "CONNECT www.httpwatch.com:443" from www.httpwatch.com
+99: Responding "HTTP/1.1 200 OK"
+100: Requesting "CONNECT www.httpwatch.com:443" from www.httpwatch.com
+100: Responding "HTTP/1.1 200 OK"
+91: "GET http://www.httpwatch.com/assets/images/logo2.png" from 45.37.116.131 @ Wed Mar  1 05:36:26 2023
+91: not in cache
+91: Requesting "GET http://www.httpwatch.com/assets/images/logo2.png" from www.httpwatch.com
+91: Received "HTTP/1.1 301 Moved Permanently" from www.httpwatch.com
+91: Responding "HTTP/1.1 301 Moved Permanently"
+101: Tunnel closed
+101: Tunnel closed
+97: Tunnel closed
+97: Tunnel closed
+100: Tunnel closed
+100: Tunnel closed
+98: Tunnel closed
+98: Tunnel closed
+102: "CONNECT www.google-analytics.com:443" from 45.37.116.131 @ Wed Mar  1 05:36:26 2023
+102: Requesting "CONNECT www.google-analytics.com:443" from www.google-analytics.com
+102: Responding "HTTP/1.1 200 OK"
+104: "POST http://ocsp.pki.goog/gts1c3" from 45.37.116.131 @ Wed Mar  1 05:36:26 2023
+104: Requesting "POST http://ocsp.pki.goog/gts1c3" from ocsp.pki.goog
+105: "POST http://www.httpwatch.com/httpgallery/methods/" from 45.37.116.131 @ Wed Mar  1 05:36:30 2023
+105: Requesting "POST http://www.httpwatch.com/httpgallery/methods/" from www.httpwatch.com
+105: Received "HTTP/1.1 200 OK" from www.httpwatch.com
+106: "GET http://www.httpwatch.com/httpgallery/methods/retry.png" from 45.37.116.131 @ Wed Mar  1 05:36:30 2023
+106: not in cache
+106: Requesting "GET http://www.httpwatch.com/httpgallery/methods/retry.png" from www.httpwatch.com
+106: Received "HTTP/1.1 304 Not Modified" from www.httpwatch.com
+106: NOTE Cache-Control: max-age=0
+106: NOTE Expires: Wed Mar  1 05:36:30 2023
+106: NOTE ETag: b46ba5c8bb2fd81:0
+106: Responding "HTTP/1.1 304 Not Modified"
+106: cacheable, expires at Wed Mar  1 05:36:30 2023
+106: Responding "HTTP/1.1 502 Bad Gateway"
+103: Responding "HTTP/1.1 400 Bad Request"
+103: " " from 45.37.116.131 @ Wed Mar  1 05:36:31 2023
+107: "POST http://www.httpwatch.com/httpgallery/methods/" from 45.37.116.131 @ Wed Mar  1 05:36:32 2023
+107: Requesting "POST http://www.httpwatch.com/httpgallery/methods/" from www.httpwatch.com
+107: Received "HTTP/1.1 200 OK" from www.httpwatch.com
+108: "GET http://www.httpwatch.com/httpgallery/methods/retry.png" from 45.37.116.131 @ Wed Mar  1 05:36:32 2023
+108: not in cache
+108: Requesting "GET http://www.httpwatch.com/httpgallery/methods/retry.png" from www.httpwatch.com
+108: Received "HTTP/1.1 304 Not Modified" from www.httpwatch.com
+108: NOTE Cache-Control: max-age=0
+108: NOTE Expires: Wed Mar  1 05:36:32 2023
+108: NOTE ETag: b46ba5c8bb2fd81:0
+108: Responding "HTTP/1.1 304 Not Modified"
+108: cacheable, expires at Wed Mar  1 05:36:32 2023
+108: Responding "HTTP/1.1 502 Bad Gateway"
+109: "POST http://www.httpwatch.com/httpgallery/methods/" from 45.37.116.131 @ Wed Mar  1 05:36:34 2023
+109: Requesting "POST http://www.httpwatch.com/httpgallery/methods/" from www.httpwatch.com
+109: Received "HTTP/1.1 200 OK" from www.httpwatch.com
+112: "GET http://www.httpwatch.com/httpgallery/methods/retry.png" from 45.37.116.131 @ Wed Mar  1 05:36:34 2023
+112: not in cache
+112: Requesting "GET http://www.httpwatch.com/httpgallery/methods/retry.png" from www.httpwatch.com
+112: Received "HTTP/1.1 304 Not Modified" from www.httpwatch.com
+112: NOTE Cache-Control: max-age=0
+112: NOTE Expires: Wed Mar  1 05:36:34 2023
+112: NOTE ETag: b46ba5c8bb2fd81:0
+112: Responding "HTTP/1.1 304 Not Modified"
+112: cacheable, expires at Wed Mar  1 05:36:34 2023
+112: Responding "HTTP/1.1 502 Bad Gateway"
+111: Responding "HTTP/1.1 400 Bad Request"
+111: " " from 45.37.116.131 @ Wed Mar  1 05:36:35 2023
+110: Responding "HTTP/1.1 400 Bad Request"
+110: " " from 45.37.116.131 @ Wed Mar  1 05:36:35 2023
+113: Responding "HTTP/1.1 400 Bad Request"
+113: " " from 45.37.116.131 @ Wed Mar  1 05:36:38 2023
+114: "GET http://detectportal.firefox.com/canonical.html" from 45.37.116.131 @ Wed Mar  1 05:36:57 2023
+114: not in cache
+114: Requesting "GET http://detectportal.firefox.com/canonical.html" from detectportal.firefox.com
+114: Received "HTTP/1.1 200 OK" from detectportal.firefox.com
+114: NOTE Cache-Control: max-age=0
+114: NOTE Expires: Wed Mar  1 05:36:57 2023
+114: Responding "HTTP/1.1 200 OK"
+114: cacheable, expires at Wed Mar  1 05:36:57 2023
+115: "GET http://detectportal.firefox.com/success.txt?ipv4" from 45.37.116.131 @ Wed Mar  1 05:36:57 2023
+115: not in cache
+115: Requesting "GET http://detectportal.firefox.com/success.txt?ipv4" from detectportal.firefox.com
+115: Received "HTTP/1.1 200 OK" from detectportal.firefox.com
+115: NOTE Cache-Control: max-age=0
+115: NOTE Expires: Wed Mar  1 05:36:57 2023
+115: Responding "HTTP/1.1 200 OK"
+115: cacheable, expires at Wed Mar  1 05:36:57 2023
+43: Received "HTTP/1.1 408 Request Timeout" from ocsp.digicert.com
+44: Received "HTTP/1.1 408 Request Timeout" from ocsp.digicert.com
+117: "POST http://ocsp.digicert.com/" from 45.37.116.131 @ Wed Mar  1 05:37:02 2023
+117: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
+46: Received "HTTP/1.1 408 Request Timeout" from ocsp.digicert.com
+116: "POST http://ocsp.digicert.com/" from 45.37.116.131 @ Wed Mar  1 05:37:02 2023
+116: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
+45: Received "HTTP/1.1 408 Request Timeout" from ocsp.digicert.com
+119: "POST http://ocsp.digicert.com/" from 45.37.116.131 @ Wed Mar  1 05:37:02 2023
+119: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
+118: "POST http://ocsp.digicert.com/" from 45.37.116.131 @ Wed Mar  1 05:37:02 2023
+118: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
+48: Received "HTTP/1.1 408 Request Timeout" from ocsp.digicert.com
+49: Received "HTTP/1.1 408 Request Timeout" from ocsp.digicert.com
+120: "POST http://ocsp.digicert.com/" from 45.37.116.131 @ Wed Mar  1 05:37:04 2023
+120: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
+121: "POST http://ocsp.digicert.com/" from 45.37.116.131 @ Wed Mar  1 05:37:04 2023
+121: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
+54: Received "HTTP/1.1 408 Request Timeout" from ocsp.digicert.com
+122: "POST http://ocsp.digicert.com/" from 45.37.116.131 @ Wed Mar  1 05:37:06 2023
+122: Requesting "POST http://ocsp.digicert.com/" from ocsp.digicert.com
